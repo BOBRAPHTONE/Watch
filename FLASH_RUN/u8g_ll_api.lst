@@ -1,0 +1,2728 @@
+   1              		.cpu cortex-m3
+   2              		.eabi_attribute 20, 1
+   3              		.eabi_attribute 21, 1
+   4              		.eabi_attribute 23, 3
+   5              		.eabi_attribute 24, 1
+   6              		.eabi_attribute 25, 1
+   7              		.eabi_attribute 26, 1
+   8              		.eabi_attribute 30, 2
+   9              		.eabi_attribute 34, 1
+  10              		.eabi_attribute 18, 4
+  11              		.file	"u8g_ll_api.c"
+  12              		.text
+  13              	.Ltext0:
+  14              		.cfi_sections	.debug_frame
+  15              		.section	.text.u8g_call_dev_fn,"ax",%progbits
+  16              		.align	1
+  17              		.p2align 2,,3
+  18              		.global	u8g_call_dev_fn
+  19              		.syntax unified
+  20              		.thumb
+  21              		.thumb_func
+  22              		.fpu softvfp
+  24              	u8g_call_dev_fn:
+  25              	.LFB0:
+  26              		.file 1 "u8g/u8g_ll_api.c"
+   1:u8g/u8g_ll_api.c **** /*
+   2:u8g/u8g_ll_api.c **** 
+   3:u8g/u8g_ll_api.c ****   u8g_ll_api.c
+   4:u8g/u8g_ll_api.c ****   
+   5:u8g/u8g_ll_api.c ****   low level api
+   6:u8g/u8g_ll_api.c **** 
+   7:u8g/u8g_ll_api.c ****   Universal 8bit Graphics Library
+   8:u8g/u8g_ll_api.c ****   
+   9:u8g/u8g_ll_api.c ****   Copyright (c) 2011, olikraus@gmail.com
+  10:u8g/u8g_ll_api.c ****   All rights reserved.
+  11:u8g/u8g_ll_api.c **** 
+  12:u8g/u8g_ll_api.c ****   Redistribution and use in source and binary forms, with or without modification, 
+  13:u8g/u8g_ll_api.c ****   are permitted provided that the following conditions are met:
+  14:u8g/u8g_ll_api.c **** 
+  15:u8g/u8g_ll_api.c ****   * Redistributions of source code must retain the above copyright notice, this list 
+  16:u8g/u8g_ll_api.c ****     of conditions and the following disclaimer.
+  17:u8g/u8g_ll_api.c ****     
+  18:u8g/u8g_ll_api.c ****   * Redistributions in binary form must reproduce the above copyright notice, this 
+  19:u8g/u8g_ll_api.c ****     list of conditions and the following disclaimer in the documentation and/or other 
+  20:u8g/u8g_ll_api.c ****     materials provided with the distribution.
+  21:u8g/u8g_ll_api.c **** 
+  22:u8g/u8g_ll_api.c ****   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND 
+  23:u8g/u8g_ll_api.c ****   CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, 
+  24:u8g/u8g_ll_api.c ****   INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF 
+  25:u8g/u8g_ll_api.c ****   MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE 
+  26:u8g/u8g_ll_api.c ****   DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR 
+  27:u8g/u8g_ll_api.c ****   CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, 
+  28:u8g/u8g_ll_api.c ****   SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
+  29:u8g/u8g_ll_api.c ****   NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; 
+  30:u8g/u8g_ll_api.c ****   LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER 
+  31:u8g/u8g_ll_api.c ****   CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, 
+  32:u8g/u8g_ll_api.c ****   STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
+  33:u8g/u8g_ll_api.c ****   ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF 
+  34:u8g/u8g_ll_api.c ****   ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.  
+  35:u8g/u8g_ll_api.c ****   
+  36:u8g/u8g_ll_api.c **** 
+  37:u8g/u8g_ll_api.c **** */
+  38:u8g/u8g_ll_api.c **** 
+  39:u8g/u8g_ll_api.c **** #include <stddef.h>
+  40:u8g/u8g_ll_api.c **** #include "u8g.h"
+  41:u8g/u8g_ll_api.c **** 
+  42:u8g/u8g_ll_api.c **** uint8_t u8g_call_dev_fn(u8g_t *u8g, u8g_dev_t *dev, uint8_t msg, void *arg)
+  43:u8g/u8g_ll_api.c **** {
+  27              		.loc 1 43 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31              		@ link register save eliminated.
+  32              	.LVL0:
+  33 0000 10B4     		push	{r4}
+  34              	.LCFI0:
+  35              		.cfi_def_cfa_offset 4
+  36              		.cfi_offset 4, -4
+  44:u8g/u8g_ll_api.c ****   return dev->dev_fn(u8g, dev, msg, arg); 
+  37              		.loc 1 44 0
+  38 0002 0C68     		ldr	r4, [r1]
+  39 0004 A446     		mov	ip, r4
+  45:u8g/u8g_ll_api.c **** }
+  40              		.loc 1 45 0
+  41 0006 10BC     		pop	{r4}
+  42              	.LCFI1:
+  43              		.cfi_restore 4
+  44              		.cfi_def_cfa_offset 0
+  44:u8g/u8g_ll_api.c ****   return dev->dev_fn(u8g, dev, msg, arg); 
+  45              		.loc 1 44 0
+  46 0008 6047     		bx	ip
+  47              	.LVL1:
+  48              		.cfi_endproc
+  49              	.LFE0:
+  51 000a 00BF     		.section	.text.u8g_InitLL,"ax",%progbits
+  52              		.align	1
+  53              		.p2align 2,,3
+  54              		.global	u8g_InitLL
+  55              		.syntax unified
+  56              		.thumb
+  57              		.thumb_func
+  58              		.fpu softvfp
+  60              	u8g_InitLL:
+  61              	.LFB1:
+  46:u8g/u8g_ll_api.c **** 
+  47:u8g/u8g_ll_api.c **** /*====================================================================*/
+  48:u8g/u8g_ll_api.c **** 
+  49:u8g/u8g_ll_api.c **** uint8_t u8g_InitLL(u8g_t *u8g, u8g_dev_t *dev)
+  50:u8g/u8g_ll_api.c **** {
+  62              		.loc 1 50 0
+  63              		.cfi_startproc
+  64              		@ args = 0, pretend = 0, frame = 0
+  65              		@ frame_needed = 0, uses_anonymous_args = 0
+  66              	.LVL2:
+  67 0000 70B5     		push	{r4, r5, r6, lr}
+  68              	.LCFI2:
+  69              		.cfi_def_cfa_offset 16
+  70              		.cfi_offset 4, -16
+  71              		.cfi_offset 5, -12
+  72              		.cfi_offset 6, -8
+  73              		.cfi_offset 14, -4
+  74              		.loc 1 50 0
+  75 0002 0446     		mov	r4, r0
+  76 0004 0D46     		mov	r5, r1
+  51:u8g/u8g_ll_api.c ****   uint8_t r;
+  52:u8g/u8g_ll_api.c ****   u8g->state_cb(U8G_STATE_MSG_BACKUP_ENV);
+  77              		.loc 1 52 0
+  78 0006 436B     		ldr	r3, [r0, #52]
+  79 0008 0220     		movs	r0, #2
+  80              	.LVL3:
+  81 000a 9847     		blx	r3
+  82              	.LVL4:
+  83              	.LBB86:
+  84              	.LBB87:
+  44:u8g/u8g_ll_api.c **** }
+  85              		.loc 1 44 0
+  86 000c 2946     		mov	r1, r5
+  87 000e 0A22     		movs	r2, #10
+  88 0010 2E68     		ldr	r6, [r5]
+  89 0012 2046     		mov	r0, r4
+  90 0014 0023     		movs	r3, #0
+  91 0016 B047     		blx	r6
+  92              	.LVL5:
+  93 0018 0546     		mov	r5, r0
+  94              	.LVL6:
+  95              	.LBE87:
+  96              	.LBE86:
+  53:u8g/u8g_ll_api.c ****   r =  u8g_call_dev_fn(u8g, dev, U8G_DEV_MSG_INIT, NULL);
+  54:u8g/u8g_ll_api.c ****   u8g->state_cb(U8G_STATE_MSG_BACKUP_U8G);
+  97              		.loc 1 54 0
+  98 001a 636B     		ldr	r3, [r4, #52]
+  99 001c 0320     		movs	r0, #3
+ 100 001e 9847     		blx	r3
+ 101              	.LVL7:
+  55:u8g/u8g_ll_api.c ****   u8g->state_cb(U8G_STATE_MSG_RESTORE_ENV);
+ 102              		.loc 1 55 0
+ 103 0020 636B     		ldr	r3, [r4, #52]
+ 104 0022 0020     		movs	r0, #0
+ 105 0024 9847     		blx	r3
+ 106              	.LVL8:
+  56:u8g/u8g_ll_api.c ****   return r;
+  57:u8g/u8g_ll_api.c **** }
+ 107              		.loc 1 57 0
+ 108 0026 2846     		mov	r0, r5
+ 109 0028 70BD     		pop	{r4, r5, r6, pc}
+ 110              		.cfi_endproc
+ 111              	.LFE1:
+ 113 002a 00BF     		.section	.text.u8g_FirstPageLL,"ax",%progbits
+ 114              		.align	1
+ 115              		.p2align 2,,3
+ 116              		.global	u8g_FirstPageLL
+ 117              		.syntax unified
+ 118              		.thumb
+ 119              		.thumb_func
+ 120              		.fpu softvfp
+ 122              	u8g_FirstPageLL:
+ 123              	.LFB2:
+  58:u8g/u8g_ll_api.c **** 
+  59:u8g/u8g_ll_api.c **** void u8g_FirstPageLL(u8g_t *u8g, u8g_dev_t *dev)
+  60:u8g/u8g_ll_api.c **** {  
+ 124              		.loc 1 60 0
+ 125              		.cfi_startproc
+ 126              		@ args = 0, pretend = 0, frame = 0
+ 127              		@ frame_needed = 0, uses_anonymous_args = 0
+ 128              	.LVL9:
+ 129 0000 70B5     		push	{r4, r5, r6, lr}
+ 130              	.LCFI3:
+ 131              		.cfi_def_cfa_offset 16
+ 132              		.cfi_offset 4, -16
+ 133              		.cfi_offset 5, -12
+ 134              		.cfi_offset 6, -8
+ 135              		.cfi_offset 14, -4
+ 136              		.loc 1 60 0
+ 137 0002 0446     		mov	r4, r0
+ 138 0004 0D46     		mov	r5, r1
+  61:u8g/u8g_ll_api.c ****   u8g->state_cb(U8G_STATE_MSG_BACKUP_ENV);
+ 139              		.loc 1 61 0
+ 140 0006 436B     		ldr	r3, [r0, #52]
+ 141 0008 0220     		movs	r0, #2
+ 142              	.LVL10:
+ 143 000a 9847     		blx	r3
+ 144              	.LVL11:
+  62:u8g/u8g_ll_api.c ****   u8g->state_cb(U8G_STATE_MSG_RESTORE_U8G);
+ 145              		.loc 1 62 0
+ 146 000c 636B     		ldr	r3, [r4, #52]
+ 147 000e 0120     		movs	r0, #1
+ 148 0010 9847     		blx	r3
+ 149              	.LVL12:
+ 150              	.LBB88:
+ 151              	.LBB89:
+  44:u8g/u8g_ll_api.c **** }
+ 152              		.loc 1 44 0
+ 153 0012 2E68     		ldr	r6, [r5]
+ 154 0014 2946     		mov	r1, r5
+ 155 0016 2046     		mov	r0, r4
+ 156 0018 0023     		movs	r3, #0
+ 157 001a 1422     		movs	r2, #20
+ 158 001c B047     		blx	r6
+ 159              	.LVL13:
+ 160              	.LBE89:
+ 161              	.LBE88:
+ 162              	.LBB90:
+ 163              	.LBB91:
+ 164 001e 04F13803 		add	r3, r4, #56
+ 165              	.LVL14:
+ 166 0022 2E68     		ldr	r6, [r5]
+ 167 0024 2946     		mov	r1, r5
+ 168 0026 2046     		mov	r0, r4
+ 169 0028 1722     		movs	r2, #23
+ 170 002a B047     		blx	r6
+ 171              	.LVL15:
+ 172              	.LBE91:
+ 173              	.LBE90:
+  63:u8g/u8g_ll_api.c ****   u8g_call_dev_fn(u8g, dev, U8G_DEV_MSG_PAGE_FIRST, NULL);
+  64:u8g/u8g_ll_api.c ****   u8g_call_dev_fn(u8g, dev, U8G_DEV_MSG_GET_PAGE_BOX, &(u8g->current_page));
+  65:u8g/u8g_ll_api.c ****   u8g->state_cb(U8G_STATE_MSG_RESTORE_ENV);
+ 174              		.loc 1 65 0
+ 175 002c 636B     		ldr	r3, [r4, #52]
+ 176 002e 0020     		movs	r0, #0
+  66:u8g/u8g_ll_api.c **** }
+ 177              		.loc 1 66 0
+ 178 0030 BDE87040 		pop	{r4, r5, r6, lr}
+ 179              	.LCFI4:
+ 180              		.cfi_restore 14
+ 181              		.cfi_restore 6
+ 182              		.cfi_restore 5
+ 183              		.cfi_restore 4
+ 184              		.cfi_def_cfa_offset 0
+ 185              	.LVL16:
+  65:u8g/u8g_ll_api.c **** }
+ 186              		.loc 1 65 0
+ 187 0034 1847     		bx	r3	@ indirect register sibling call
+ 188              	.LVL17:
+ 189              		.cfi_endproc
+ 190              	.LFE2:
+ 192 0036 00BF     		.section	.text.u8g_NextPageLL,"ax",%progbits
+ 193              		.align	1
+ 194              		.p2align 2,,3
+ 195              		.global	u8g_NextPageLL
+ 196              		.syntax unified
+ 197              		.thumb
+ 198              		.thumb_func
+ 199              		.fpu softvfp
+ 201              	u8g_NextPageLL:
+ 202              	.LFB3:
+  67:u8g/u8g_ll_api.c **** 
+  68:u8g/u8g_ll_api.c **** uint8_t u8g_NextPageLL(u8g_t *u8g, u8g_dev_t *dev)
+  69:u8g/u8g_ll_api.c **** {  
+ 203              		.loc 1 69 0
+ 204              		.cfi_startproc
+ 205              		@ args = 0, pretend = 0, frame = 0
+ 206              		@ frame_needed = 0, uses_anonymous_args = 0
+ 207              	.LVL18:
+ 208 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 209              	.LCFI5:
+ 210              		.cfi_def_cfa_offset 24
+ 211              		.cfi_offset 3, -24
+ 212              		.cfi_offset 4, -20
+ 213              		.cfi_offset 5, -16
+ 214              		.cfi_offset 6, -12
+ 215              		.cfi_offset 7, -8
+ 216              		.cfi_offset 14, -4
+ 217              		.loc 1 69 0
+ 218 0002 0446     		mov	r4, r0
+ 219 0004 0D46     		mov	r5, r1
+  70:u8g/u8g_ll_api.c ****   uint8_t r;
+  71:u8g/u8g_ll_api.c ****   u8g->state_cb(U8G_STATE_MSG_BACKUP_ENV);
+ 220              		.loc 1 71 0
+ 221 0006 436B     		ldr	r3, [r0, #52]
+ 222 0008 0220     		movs	r0, #2
+ 223              	.LVL19:
+ 224 000a 9847     		blx	r3
+ 225              	.LVL20:
+  72:u8g/u8g_ll_api.c ****   u8g->state_cb(U8G_STATE_MSG_RESTORE_U8G);
+ 226              		.loc 1 72 0
+ 227 000c 636B     		ldr	r3, [r4, #52]
+ 228 000e 0120     		movs	r0, #1
+ 229 0010 9847     		blx	r3
+ 230              	.LVL21:
+ 231              	.LBB92:
+ 232              	.LBB93:
+  44:u8g/u8g_ll_api.c **** }
+ 233              		.loc 1 44 0
+ 234 0012 2E68     		ldr	r6, [r5]
+ 235 0014 2946     		mov	r1, r5
+ 236 0016 2046     		mov	r0, r4
+ 237 0018 0023     		movs	r3, #0
+ 238 001a 1522     		movs	r2, #21
+ 239 001c B047     		blx	r6
+ 240              	.LVL22:
+ 241              	.LBE93:
+ 242              	.LBE92:
+  73:u8g/u8g_ll_api.c ****   r = u8g_call_dev_fn(u8g, dev, U8G_DEV_MSG_PAGE_NEXT, NULL);
+  74:u8g/u8g_ll_api.c ****   if ( r != 0 )
+ 243              		.loc 1 74 0
+ 244 001e 0646     		mov	r6, r0
+ 245 0020 30B1     		cbz	r0, .L9
+ 246              	.LVL23:
+ 247              	.LBB94:
+ 248              	.LBB95:
+  44:u8g/u8g_ll_api.c **** }
+ 249              		.loc 1 44 0
+ 250 0022 2F68     		ldr	r7, [r5]
+ 251 0024 2946     		mov	r1, r5
+ 252 0026 04F13803 		add	r3, r4, #56
+ 253              	.LVL24:
+ 254 002a 1722     		movs	r2, #23
+ 255 002c 2046     		mov	r0, r4
+ 256 002e B847     		blx	r7
+ 257              	.LVL25:
+ 258              	.L9:
+ 259              	.LBE95:
+ 260              	.LBE94:
+  75:u8g/u8g_ll_api.c ****   {
+  76:u8g/u8g_ll_api.c ****     u8g_call_dev_fn(u8g, dev, U8G_DEV_MSG_GET_PAGE_BOX, &(u8g->current_page));
+  77:u8g/u8g_ll_api.c ****   }
+  78:u8g/u8g_ll_api.c ****   u8g->state_cb(U8G_STATE_MSG_RESTORE_ENV);
+ 261              		.loc 1 78 0
+ 262 0030 636B     		ldr	r3, [r4, #52]
+ 263 0032 0020     		movs	r0, #0
+ 264 0034 9847     		blx	r3
+ 265              	.LVL26:
+  79:u8g/u8g_ll_api.c ****   return r;
+  80:u8g/u8g_ll_api.c **** }
+ 266              		.loc 1 80 0
+ 267 0036 3046     		mov	r0, r6
+ 268 0038 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 269              		.cfi_endproc
+ 270              	.LFE3:
+ 272 003a 00BF     		.section	.text.u8g_SetContrastLL,"ax",%progbits
+ 273              		.align	1
+ 274              		.p2align 2,,3
+ 275              		.global	u8g_SetContrastLL
+ 276              		.syntax unified
+ 277              		.thumb
+ 278              		.thumb_func
+ 279              		.fpu softvfp
+ 281              	u8g_SetContrastLL:
+ 282              	.LFB4:
+  81:u8g/u8g_ll_api.c **** 
+  82:u8g/u8g_ll_api.c **** uint8_t u8g_SetContrastLL(u8g_t *u8g, u8g_dev_t *dev, uint8_t contrast)
+  83:u8g/u8g_ll_api.c **** {  
+ 283              		.loc 1 83 0
+ 284              		.cfi_startproc
+ 285              		@ args = 0, pretend = 0, frame = 8
+ 286              		@ frame_needed = 0, uses_anonymous_args = 0
+ 287              	.LVL27:
+ 288 0000 10B5     		push	{r4, lr}
+ 289              	.LCFI6:
+ 290              		.cfi_def_cfa_offset 8
+ 291              		.cfi_offset 4, -8
+ 292              		.cfi_offset 14, -4
+ 293 0002 82B0     		sub	sp, sp, #8
+ 294              	.LCFI7:
+ 295              		.cfi_def_cfa_offset 16
+ 296              	.LVL28:
+ 297              		.loc 1 83 0
+ 298 0004 02AB     		add	r3, sp, #8
+ 299 0006 03F8012D 		strb	r2, [r3, #-1]!
+ 300              	.LBB96:
+ 301              	.LBB97:
+  44:u8g/u8g_ll_api.c **** }
+ 302              		.loc 1 44 0
+ 303 000a 0C68     		ldr	r4, [r1]
+ 304 000c 0F22     		movs	r2, #15
+ 305              	.LVL29:
+ 306 000e A047     		blx	r4
+ 307              	.LVL30:
+ 308              	.LBE97:
+ 309              	.LBE96:
+  84:u8g/u8g_ll_api.c ****   return u8g_call_dev_fn(u8g, dev, U8G_DEV_MSG_CONTRAST, &contrast);
+  85:u8g/u8g_ll_api.c **** }
+ 310              		.loc 1 85 0
+ 311 0010 02B0     		add	sp, sp, #8
+ 312              	.LCFI8:
+ 313              		.cfi_def_cfa_offset 8
+ 314              		@ sp needed
+ 315 0012 10BD     		pop	{r4, pc}
+ 316              		.cfi_endproc
+ 317              	.LFE4:
+ 319              		.section	.text.u8g_DrawPixelLL,"ax",%progbits
+ 320              		.align	1
+ 321              		.p2align 2,,3
+ 322              		.global	u8g_DrawPixelLL
+ 323              		.syntax unified
+ 324              		.thumb
+ 325              		.thumb_func
+ 326              		.fpu softvfp
+ 328              	u8g_DrawPixelLL:
+ 329              	.LFB5:
+  86:u8g/u8g_ll_api.c **** 
+  87:u8g/u8g_ll_api.c **** void u8g_DrawPixelLL(u8g_t *u8g, u8g_dev_t *dev, u8g_uint_t x, u8g_uint_t y)
+  88:u8g/u8g_ll_api.c **** {
+ 330              		.loc 1 88 0
+ 331              		.cfi_startproc
+ 332              		@ args = 0, pretend = 0, frame = 0
+ 333              		@ frame_needed = 0, uses_anonymous_args = 0
+ 334              		@ link register save eliminated.
+ 335              	.LVL31:
+ 336 0000 10B4     		push	{r4}
+ 337              	.LCFI9:
+ 338              		.cfi_def_cfa_offset 4
+ 339              		.cfi_offset 4, -4
+  89:u8g/u8g_ll_api.c ****   u8g_dev_arg_pixel_t *arg = &(u8g->arg_pixel);
+  90:u8g/u8g_ll_api.c ****   arg->x = x;
+ 340              		.loc 1 90 0
+ 341 0002 80F82D20 		strb	r2, [r0, #45]
+  91:u8g/u8g_ll_api.c ****   arg->y = y;
+ 342              		.loc 1 91 0
+ 343 0006 80F82E30 		strb	r3, [r0, #46]
+ 344              	.LVL32:
+ 345              	.LBB98:
+ 346              	.LBB99:
+  44:u8g/u8g_ll_api.c **** }
+ 347              		.loc 1 44 0
+ 348 000a 0C68     		ldr	r4, [r1]
+ 349 000c 00F12D03 		add	r3, r0, #45
+ 350              	.LVL33:
+ 351 0010 A446     		mov	ip, r4
+ 352 0012 3222     		movs	r2, #50
+ 353              	.LVL34:
+ 354              	.LBE99:
+ 355              	.LBE98:
+  92:u8g/u8g_ll_api.c ****   u8g_call_dev_fn(u8g, dev, U8G_DEV_MSG_SET_PIXEL, arg);
+  93:u8g/u8g_ll_api.c **** }
+ 356              		.loc 1 93 0
+ 357 0014 10BC     		pop	{r4}
+ 358              	.LCFI10:
+ 359              		.cfi_restore 4
+ 360              		.cfi_def_cfa_offset 0
+ 361              	.LBB101:
+ 362              	.LBB100:
+  44:u8g/u8g_ll_api.c **** }
+ 363              		.loc 1 44 0
+ 364 0016 6047     		bx	ip
+ 365              	.LVL35:
+ 366              	.LBE100:
+ 367              	.LBE101:
+ 368              		.cfi_endproc
+ 369              	.LFE5:
+ 371              		.section	.text.u8g_Draw8PixelLL,"ax",%progbits
+ 372              		.align	1
+ 373              		.p2align 2,,3
+ 374              		.global	u8g_Draw8PixelLL
+ 375              		.syntax unified
+ 376              		.thumb
+ 377              		.thumb_func
+ 378              		.fpu softvfp
+ 380              	u8g_Draw8PixelLL:
+ 381              	.LFB6:
+  94:u8g/u8g_ll_api.c **** 
+  95:u8g/u8g_ll_api.c **** void u8g_Draw8PixelLL(u8g_t *u8g, u8g_dev_t *dev, u8g_uint_t x, u8g_uint_t y, uint8_t dir, uint8_t 
+  96:u8g/u8g_ll_api.c **** {
+ 382              		.loc 1 96 0
+ 383              		.cfi_startproc
+ 384              		@ args = 8, pretend = 0, frame = 0
+ 385              		@ frame_needed = 0, uses_anonymous_args = 0
+ 386              		@ link register save eliminated.
+ 387              	.LVL36:
+ 388 0000 30B4     		push	{r4, r5}
+ 389              	.LCFI11:
+ 390              		.cfi_def_cfa_offset 8
+ 391              		.cfi_offset 4, -8
+ 392              		.cfi_offset 5, -4
+  97:u8g/u8g_ll_api.c ****   u8g_dev_arg_pixel_t *arg = &(u8g->arg_pixel);
+  98:u8g/u8g_ll_api.c ****   arg->x = x;
+ 393              		.loc 1 98 0
+ 394 0002 80F82D20 		strb	r2, [r0, #45]
+  96:u8g/u8g_ll_api.c ****   u8g_dev_arg_pixel_t *arg = &(u8g->arg_pixel);
+ 395              		.loc 1 96 0
+ 396 0006 9DF80850 		ldrb	r5, [sp, #8]	@ zero_extendqisi2
+ 397 000a 9DF80C20 		ldrb	r2, [sp, #12]	@ zero_extendqisi2
+ 398              	.LVL37:
+  99:u8g/u8g_ll_api.c ****   arg->y = y;
+ 399              		.loc 1 99 0
+ 400 000e 80F82E30 		strb	r3, [r0, #46]
+ 100:u8g/u8g_ll_api.c ****   arg->dir = dir;
+ 101:u8g/u8g_ll_api.c ****   arg->pixel = pixel;
+ 401              		.loc 1 101 0
+ 402 0012 80F82F20 		strb	r2, [r0, #47]
+ 403              	.LVL38:
+ 100:u8g/u8g_ll_api.c ****   arg->dir = dir;
+ 404              		.loc 1 100 0
+ 405 0016 80F83050 		strb	r5, [r0, #48]
+ 406              	.LBB102:
+ 407              	.LBB103:
+  44:u8g/u8g_ll_api.c **** }
+ 408              		.loc 1 44 0
+ 409 001a 0C68     		ldr	r4, [r1]
+ 410 001c 00F12D03 		add	r3, r0, #45
+ 411              	.LVL39:
+ 412 0020 A446     		mov	ip, r4
+ 413              	.LBE103:
+ 414              	.LBE102:
+ 102:u8g/u8g_ll_api.c ****   u8g_call_dev_fn(u8g, dev, U8G_DEV_MSG_SET_8PIXEL, arg);
+ 103:u8g/u8g_ll_api.c **** }
+ 415              		.loc 1 103 0
+ 416 0022 30BC     		pop	{r4, r5}
+ 417              	.LCFI12:
+ 418              		.cfi_restore 5
+ 419              		.cfi_restore 4
+ 420              		.cfi_def_cfa_offset 0
+ 421              	.LVL40:
+ 422              	.LBB105:
+ 423              	.LBB104:
+  44:u8g/u8g_ll_api.c **** }
+ 424              		.loc 1 44 0
+ 425 0024 3B22     		movs	r2, #59
+ 426 0026 6047     		bx	ip
+ 427              	.LVL41:
+ 428              	.LBE104:
+ 429              	.LBE105:
+ 430              		.cfi_endproc
+ 431              	.LFE6:
+ 433              		.section	.text.u8g_Draw4TPixelLL,"ax",%progbits
+ 434              		.align	1
+ 435              		.p2align 2,,3
+ 436              		.global	u8g_Draw4TPixelLL
+ 437              		.syntax unified
+ 438              		.thumb
+ 439              		.thumb_func
+ 440              		.fpu softvfp
+ 442              	u8g_Draw4TPixelLL:
+ 443              	.LFB7:
+ 104:u8g/u8g_ll_api.c **** 
+ 105:u8g/u8g_ll_api.c **** void u8g_Draw4TPixelLL(u8g_t *u8g, u8g_dev_t *dev, u8g_uint_t x, u8g_uint_t y, uint8_t dir, uint8_t
+ 106:u8g/u8g_ll_api.c **** {
+ 444              		.loc 1 106 0
+ 445              		.cfi_startproc
+ 446              		@ args = 8, pretend = 0, frame = 0
+ 447              		@ frame_needed = 0, uses_anonymous_args = 0
+ 448              		@ link register save eliminated.
+ 449              	.LVL42:
+ 450 0000 30B4     		push	{r4, r5}
+ 451              	.LCFI13:
+ 452              		.cfi_def_cfa_offset 8
+ 453              		.cfi_offset 4, -8
+ 454              		.cfi_offset 5, -4
+ 107:u8g/u8g_ll_api.c ****   u8g_dev_arg_pixel_t *arg = &(u8g->arg_pixel);
+ 108:u8g/u8g_ll_api.c ****   arg->x = x;
+ 455              		.loc 1 108 0
+ 456 0002 80F82D20 		strb	r2, [r0, #45]
+ 106:u8g/u8g_ll_api.c ****   u8g_dev_arg_pixel_t *arg = &(u8g->arg_pixel);
+ 457              		.loc 1 106 0
+ 458 0006 9DF80850 		ldrb	r5, [sp, #8]	@ zero_extendqisi2
+ 459 000a 9DF80C20 		ldrb	r2, [sp, #12]	@ zero_extendqisi2
+ 460              	.LVL43:
+ 109:u8g/u8g_ll_api.c ****   arg->y = y;
+ 461              		.loc 1 109 0
+ 462 000e 80F82E30 		strb	r3, [r0, #46]
+ 110:u8g/u8g_ll_api.c ****   arg->dir = dir;
+ 111:u8g/u8g_ll_api.c ****   arg->pixel = pixel;
+ 463              		.loc 1 111 0
+ 464 0012 80F82F20 		strb	r2, [r0, #47]
+ 465              	.LVL44:
+ 110:u8g/u8g_ll_api.c ****   arg->dir = dir;
+ 466              		.loc 1 110 0
+ 467 0016 80F83050 		strb	r5, [r0, #48]
+ 468              	.LBB106:
+ 469              	.LBB107:
+  44:u8g/u8g_ll_api.c **** }
+ 470              		.loc 1 44 0
+ 471 001a 0C68     		ldr	r4, [r1]
+ 472 001c 00F12D03 		add	r3, r0, #45
+ 473              	.LVL45:
+ 474 0020 A446     		mov	ip, r4
+ 475              	.LBE107:
+ 476              	.LBE106:
+ 112:u8g/u8g_ll_api.c ****   u8g_call_dev_fn(u8g, dev, U8G_DEV_MSG_SET_4TPIXEL, arg);
+ 113:u8g/u8g_ll_api.c **** }
+ 477              		.loc 1 113 0
+ 478 0022 30BC     		pop	{r4, r5}
+ 479              	.LCFI14:
+ 480              		.cfi_restore 5
+ 481              		.cfi_restore 4
+ 482              		.cfi_def_cfa_offset 0
+ 483              	.LVL46:
+ 484              	.LBB109:
+ 485              	.LBB108:
+  44:u8g/u8g_ll_api.c **** }
+ 486              		.loc 1 44 0
+ 487 0024 2D22     		movs	r2, #45
+ 488 0026 6047     		bx	ip
+ 489              	.LVL47:
+ 490              	.LBE108:
+ 491              	.LBE109:
+ 492              		.cfi_endproc
+ 493              	.LFE7:
+ 495              		.section	.text.u8g_GetWidthLL,"ax",%progbits
+ 496              		.align	1
+ 497              		.p2align 2,,3
+ 498              		.global	u8g_GetWidthLL
+ 499              		.syntax unified
+ 500              		.thumb
+ 501              		.thumb_func
+ 502              		.fpu softvfp
+ 504              	u8g_GetWidthLL:
+ 505              	.LFB8:
+ 114:u8g/u8g_ll_api.c **** 
+ 115:u8g/u8g_ll_api.c **** 
+ 116:u8g/u8g_ll_api.c **** #ifdef U8G_DEV_MSG_IS_BBX_INTERSECTION
+ 117:u8g/u8g_ll_api.c **** uint8_t u8g_IsBBXIntersectionLL(u8g_t *u8g, u8g_dev_t *dev, u8g_uint_t x, u8g_uint_t y, u8g_uint_t 
+ 118:u8g/u8g_ll_api.c **** {  
+ 119:u8g/u8g_ll_api.c ****   return u8g_call_dev_fn(u8g, dev, U8G_DEV_MSG_IS_BBX_INTERSECTION, &arg);
+ 120:u8g/u8g_ll_api.c **** }
+ 121:u8g/u8g_ll_api.c **** #endif
+ 122:u8g/u8g_ll_api.c **** 
+ 123:u8g/u8g_ll_api.c **** 
+ 124:u8g/u8g_ll_api.c **** 
+ 125:u8g/u8g_ll_api.c **** u8g_uint_t u8g_GetWidthLL(u8g_t *u8g, u8g_dev_t *dev)
+ 126:u8g/u8g_ll_api.c **** {
+ 506              		.loc 1 126 0
+ 507              		.cfi_startproc
+ 508              		@ args = 0, pretend = 0, frame = 8
+ 509              		@ frame_needed = 0, uses_anonymous_args = 0
+ 510              	.LVL48:
+ 511 0000 10B5     		push	{r4, lr}
+ 512              	.LCFI15:
+ 513              		.cfi_def_cfa_offset 8
+ 514              		.cfi_offset 4, -8
+ 515              		.cfi_offset 14, -4
+ 516 0002 82B0     		sub	sp, sp, #8
+ 517              	.LCFI16:
+ 518              		.cfi_def_cfa_offset 16
+ 519              	.LVL49:
+ 520              	.LBB110:
+ 521              	.LBB111:
+  44:u8g/u8g_ll_api.c **** }
+ 522              		.loc 1 44 0
+ 523 0004 0C68     		ldr	r4, [r1]
+ 524 0006 0DF10703 		add	r3, sp, #7
+ 525              	.LVL50:
+ 526 000a 4622     		movs	r2, #70
+ 527 000c A047     		blx	r4
+ 528              	.LVL51:
+ 529              	.LBE111:
+ 530              	.LBE110:
+ 127:u8g/u8g_ll_api.c ****   u8g_uint_t r;
+ 128:u8g/u8g_ll_api.c ****   u8g_call_dev_fn(u8g, dev, U8G_DEV_MSG_GET_WIDTH, &r);
+ 129:u8g/u8g_ll_api.c ****   return r;
+ 130:u8g/u8g_ll_api.c **** }
+ 531              		.loc 1 130 0
+ 532 000e 9DF80700 		ldrb	r0, [sp, #7]	@ zero_extendqisi2
+ 533 0012 02B0     		add	sp, sp, #8
+ 534              	.LCFI17:
+ 535              		.cfi_def_cfa_offset 8
+ 536              		@ sp needed
+ 537 0014 10BD     		pop	{r4, pc}
+ 538              		.cfi_endproc
+ 539              	.LFE8:
+ 541 0016 00BF     		.section	.text.u8g_GetHeightLL,"ax",%progbits
+ 542              		.align	1
+ 543              		.p2align 2,,3
+ 544              		.global	u8g_GetHeightLL
+ 545              		.syntax unified
+ 546              		.thumb
+ 547              		.thumb_func
+ 548              		.fpu softvfp
+ 550              	u8g_GetHeightLL:
+ 551              	.LFB9:
+ 131:u8g/u8g_ll_api.c **** 
+ 132:u8g/u8g_ll_api.c **** u8g_uint_t u8g_GetHeightLL(u8g_t *u8g, u8g_dev_t *dev)
+ 133:u8g/u8g_ll_api.c **** {       
+ 552              		.loc 1 133 0
+ 553              		.cfi_startproc
+ 554              		@ args = 0, pretend = 0, frame = 8
+ 555              		@ frame_needed = 0, uses_anonymous_args = 0
+ 556              	.LVL52:
+ 557 0000 10B5     		push	{r4, lr}
+ 558              	.LCFI18:
+ 559              		.cfi_def_cfa_offset 8
+ 560              		.cfi_offset 4, -8
+ 561              		.cfi_offset 14, -4
+ 562 0002 82B0     		sub	sp, sp, #8
+ 563              	.LCFI19:
+ 564              		.cfi_def_cfa_offset 16
+ 565              	.LVL53:
+ 566              	.LBB112:
+ 567              	.LBB113:
+  44:u8g/u8g_ll_api.c **** }
+ 568              		.loc 1 44 0
+ 569 0004 0C68     		ldr	r4, [r1]
+ 570 0006 0DF10703 		add	r3, sp, #7
+ 571              	.LVL54:
+ 572 000a 4722     		movs	r2, #71
+ 573 000c A047     		blx	r4
+ 574              	.LVL55:
+ 575              	.LBE113:
+ 576              	.LBE112:
+ 134:u8g/u8g_ll_api.c ****   u8g_uint_t r;
+ 135:u8g/u8g_ll_api.c ****   u8g_call_dev_fn(u8g, dev, U8G_DEV_MSG_GET_HEIGHT, &r);
+ 136:u8g/u8g_ll_api.c ****   return r;
+ 137:u8g/u8g_ll_api.c **** }
+ 577              		.loc 1 137 0
+ 578 000e 9DF80700 		ldrb	r0, [sp, #7]	@ zero_extendqisi2
+ 579 0012 02B0     		add	sp, sp, #8
+ 580              	.LCFI20:
+ 581              		.cfi_def_cfa_offset 8
+ 582              		@ sp needed
+ 583 0014 10BD     		pop	{r4, pc}
+ 584              		.cfi_endproc
+ 585              	.LFE9:
+ 587 0016 00BF     		.section	.text.u8g_GetModeLL,"ax",%progbits
+ 588              		.align	1
+ 589              		.p2align 2,,3
+ 590              		.global	u8g_GetModeLL
+ 591              		.syntax unified
+ 592              		.thumb
+ 593              		.thumb_func
+ 594              		.fpu softvfp
+ 596              	u8g_GetModeLL:
+ 597              	.LFB10:
+ 138:u8g/u8g_ll_api.c **** 
+ 139:u8g/u8g_ll_api.c **** u8g_uint_t u8g_GetModeLL(u8g_t *u8g, u8g_dev_t *dev)
+ 140:u8g/u8g_ll_api.c **** {       
+ 598              		.loc 1 140 0
+ 599              		.cfi_startproc
+ 600              		@ args = 0, pretend = 0, frame = 0
+ 601              		@ frame_needed = 0, uses_anonymous_args = 0
+ 602              		@ link register save eliminated.
+ 603              	.LVL56:
+ 604 0000 10B4     		push	{r4}
+ 605              	.LCFI21:
+ 606              		.cfi_def_cfa_offset 4
+ 607              		.cfi_offset 4, -4
+ 608              	.LBB114:
+ 609              	.LBB115:
+  44:u8g/u8g_ll_api.c **** }
+ 610              		.loc 1 44 0
+ 611 0002 0C68     		ldr	r4, [r1]
+ 612 0004 0023     		movs	r3, #0
+ 613 0006 A446     		mov	ip, r4
+ 614 0008 4822     		movs	r2, #72
+ 615              	.LBE115:
+ 616              	.LBE114:
+ 141:u8g/u8g_ll_api.c ****   return u8g_call_dev_fn(u8g, dev, U8G_DEV_MSG_GET_MODE, NULL);
+ 142:u8g/u8g_ll_api.c **** }
+ 617              		.loc 1 142 0
+ 618 000a 10BC     		pop	{r4}
+ 619              	.LCFI22:
+ 620              		.cfi_restore 4
+ 621              		.cfi_def_cfa_offset 0
+ 622              	.LBB117:
+ 623              	.LBB116:
+  44:u8g/u8g_ll_api.c **** }
+ 624              		.loc 1 44 0
+ 625 000c 6047     		bx	ip
+ 626              	.LVL57:
+ 627              	.LBE116:
+ 628              	.LBE117:
+ 629              		.cfi_endproc
+ 630              	.LFE10:
+ 632 000e 00BF     		.section	.text.u8g_UpdateDimension,"ax",%progbits
+ 633              		.align	1
+ 634              		.p2align 2,,3
+ 635              		.global	u8g_UpdateDimension
+ 636              		.syntax unified
+ 637              		.thumb
+ 638              		.thumb_func
+ 639              		.fpu softvfp
+ 641              	u8g_UpdateDimension:
+ 642              	.LFB11:
+ 143:u8g/u8g_ll_api.c **** 
+ 144:u8g/u8g_ll_api.c **** 
+ 145:u8g/u8g_ll_api.c **** 
+ 146:u8g/u8g_ll_api.c **** /*====================================================================*/
+ 147:u8g/u8g_ll_api.c **** 
+ 148:u8g/u8g_ll_api.c **** void u8g_UpdateDimension(u8g_t *u8g)
+ 149:u8g/u8g_ll_api.c **** {
+ 643              		.loc 1 149 0
+ 644              		.cfi_startproc
+ 645              		@ args = 0, pretend = 0, frame = 8
+ 646              		@ frame_needed = 0, uses_anonymous_args = 0
+ 647              	.LVL58:
+ 648 0000 30B5     		push	{r4, r5, lr}
+ 649              	.LCFI23:
+ 650              		.cfi_def_cfa_offset 12
+ 651              		.cfi_offset 4, -12
+ 652              		.cfi_offset 5, -8
+ 653              		.cfi_offset 14, -4
+ 654 0002 0446     		mov	r4, r0
+ 150:u8g/u8g_ll_api.c ****   u8g->width = u8g_GetWidthLL(u8g, u8g->dev);
+ 655              		.loc 1 150 0
+ 656 0004 4168     		ldr	r1, [r0, #4]
+ 657              	.LVL59:
+ 149:u8g/u8g_ll_api.c ****   u8g->width = u8g_GetWidthLL(u8g, u8g->dev);
+ 658              		.loc 1 149 0
+ 659 0006 83B0     		sub	sp, sp, #12
+ 660              	.LCFI24:
+ 661              		.cfi_def_cfa_offset 24
+ 662              	.LVL60:
+ 663              	.LBB118:
+ 664              	.LBB119:
+ 665              	.LBB120:
+ 666              	.LBB121:
+  44:u8g/u8g_ll_api.c **** }
+ 667              		.loc 1 44 0
+ 668 0008 0D68     		ldr	r5, [r1]
+ 669 000a 0DF10703 		add	r3, sp, #7
+ 670              	.LVL61:
+ 671 000e 4622     		movs	r2, #70
+ 672 0010 A847     		blx	r5
+ 673              	.LVL62:
+ 674              	.LBE121:
+ 675              	.LBE120:
+ 129:u8g/u8g_ll_api.c **** }
+ 676              		.loc 1 129 0
+ 677 0012 9DF80730 		ldrb	r3, [sp, #7]	@ zero_extendqisi2
+ 678              	.LVL63:
+ 679              	.LBE119:
+ 680              	.LBE118:
+ 151:u8g/u8g_ll_api.c ****   u8g->height = u8g_GetHeightLL(u8g, u8g->dev);
+ 681              		.loc 1 151 0
+ 682 0016 6168     		ldr	r1, [r4, #4]
+ 683              	.LVL64:
+ 150:u8g/u8g_ll_api.c ****   u8g->height = u8g_GetHeightLL(u8g, u8g->dev);
+ 684              		.loc 1 150 0
+ 685 0018 2370     		strb	r3, [r4]
+ 686              	.LBB122:
+ 687              	.LBB123:
+ 688              	.LBB124:
+ 689              	.LBB125:
+  44:u8g/u8g_ll_api.c **** }
+ 690              		.loc 1 44 0
+ 691 001a 0D68     		ldr	r5, [r1]
+ 692 001c 0DF10703 		add	r3, sp, #7
+ 693              	.LVL65:
+ 694 0020 2046     		mov	r0, r4
+ 695 0022 4722     		movs	r2, #71
+ 696 0024 A847     		blx	r5
+ 697              	.LVL66:
+ 698              	.LBE125:
+ 699              	.LBE124:
+ 136:u8g/u8g_ll_api.c **** }
+ 700              		.loc 1 136 0
+ 701 0026 9DF80730 		ldrb	r3, [sp, #7]	@ zero_extendqisi2
+ 702              	.LVL67:
+ 703              	.LBE123:
+ 704              	.LBE122:
+ 152:u8g/u8g_ll_api.c ****   u8g->mode = u8g_GetModeLL(u8g, u8g->dev);
+ 705              		.loc 1 152 0
+ 706 002a 6168     		ldr	r1, [r4, #4]
+ 707              	.LVL68:
+ 151:u8g/u8g_ll_api.c ****   u8g->mode = u8g_GetModeLL(u8g, u8g->dev);
+ 708              		.loc 1 151 0
+ 709 002c 6370     		strb	r3, [r4, #1]
+ 710              	.LBB126:
+ 711              	.LBB127:
+ 712              	.LBB128:
+  44:u8g/u8g_ll_api.c **** }
+ 713              		.loc 1 44 0
+ 714 002e 0D68     		ldr	r5, [r1]
+ 715 0030 2046     		mov	r0, r4
+ 716 0032 0023     		movs	r3, #0
+ 717 0034 4822     		movs	r2, #72
+ 718 0036 A847     		blx	r5
+ 719              	.LVL69:
+ 720              	.LBE128:
+ 721              	.LBE127:
+ 722              	.LBE126:
+ 153:u8g/u8g_ll_api.c ****   /* 9 Dec 2012: u8g_scale.c requires update of current page */
+ 154:u8g/u8g_ll_api.c ****   u8g_call_dev_fn(u8g, u8g->dev, U8G_DEV_MSG_GET_PAGE_BOX, &(u8g->current_page));
+ 723              		.loc 1 154 0
+ 724 0038 6168     		ldr	r1, [r4, #4]
+ 725              	.LVL70:
+ 152:u8g/u8g_ll_api.c ****   /* 9 Dec 2012: u8g_scale.c requires update of current page */
+ 726              		.loc 1 152 0
+ 727 003a E074     		strb	r0, [r4, #19]
+ 728              	.LBB129:
+ 729              	.LBB130:
+  44:u8g/u8g_ll_api.c **** }
+ 730              		.loc 1 44 0
+ 731 003c 0D68     		ldr	r5, [r1]
+ 732 003e 04F13803 		add	r3, r4, #56
+ 733              	.LVL71:
+ 734 0042 2046     		mov	r0, r4
+ 735 0044 1722     		movs	r2, #23
+ 736 0046 A847     		blx	r5
+ 737              	.LVL72:
+ 738              	.LBE130:
+ 739              	.LBE129:
+ 155:u8g/u8g_ll_api.c **** }
+ 740              		.loc 1 155 0
+ 741 0048 03B0     		add	sp, sp, #12
+ 742              	.LCFI25:
+ 743              		.cfi_def_cfa_offset 12
+ 744              		@ sp needed
+ 745 004a 30BD     		pop	{r4, r5, pc}
+ 746              		.cfi_endproc
+ 747              	.LFE11:
+ 749              		.section	.text.u8g_Begin,"ax",%progbits
+ 750              		.align	1
+ 751              		.p2align 2,,3
+ 752              		.global	u8g_Begin
+ 753              		.syntax unified
+ 754              		.thumb
+ 755              		.thumb_func
+ 756              		.fpu softvfp
+ 758              	u8g_Begin:
+ 759              	.LFB13:
+ 156:u8g/u8g_ll_api.c **** 
+ 157:u8g/u8g_ll_api.c **** static void u8g_init_data(u8g_t *u8g)
+ 158:u8g/u8g_ll_api.c **** {
+ 159:u8g/u8g_ll_api.c ****   u8g->font = NULL;
+ 160:u8g/u8g_ll_api.c ****   u8g->cursor_font = NULL;
+ 161:u8g/u8g_ll_api.c ****   u8g->cursor_bg_color = 0;
+ 162:u8g/u8g_ll_api.c ****   u8g->cursor_fg_color = 1;
+ 163:u8g/u8g_ll_api.c ****   u8g->cursor_encoding = 34;
+ 164:u8g/u8g_ll_api.c ****   u8g->cursor_fn = (u8g_draw_cursor_fn)0;
+ 165:u8g/u8g_ll_api.c **** 
+ 166:u8g/u8g_ll_api.c **** #if defined(U8G_WITH_PINLIST)  
+ 167:u8g/u8g_ll_api.c ****   {
+ 168:u8g/u8g_ll_api.c ****     uint8_t i;
+ 169:u8g/u8g_ll_api.c ****     for( i = 0; i < U8G_PIN_LIST_LEN; i++ )
+ 170:u8g/u8g_ll_api.c ****       u8g->pin_list[i] = U8G_PIN_NONE;
+ 171:u8g/u8g_ll_api.c ****   }
+ 172:u8g/u8g_ll_api.c **** #endif
+ 173:u8g/u8g_ll_api.c ****   
+ 174:u8g/u8g_ll_api.c ****   u8g_SetColorIndex(u8g, 1);
+ 175:u8g/u8g_ll_api.c **** 
+ 176:u8g/u8g_ll_api.c ****   u8g_SetFontPosBaseline(u8g);
+ 177:u8g/u8g_ll_api.c ****   
+ 178:u8g/u8g_ll_api.c ****   u8g->font_height_mode = U8G_FONT_HEIGHT_MODE_XTEXT;
+ 179:u8g/u8g_ll_api.c ****   u8g->font_ref_ascent = 0;
+ 180:u8g/u8g_ll_api.c ****   u8g->font_ref_descent = 0;
+ 181:u8g/u8g_ll_api.c ****   u8g->font_line_spacing_factor = 64;           /* 64 = 1.0, 77 = 1.2 line spacing factor */
+ 182:u8g/u8g_ll_api.c ****   u8g->line_spacing = 0;
+ 183:u8g/u8g_ll_api.c ****   
+ 184:u8g/u8g_ll_api.c ****   u8g->state_cb = u8g_state_dummy_cb;
+ 185:u8g/u8g_ll_api.c **** 
+ 186:u8g/u8g_ll_api.c **** }
+ 187:u8g/u8g_ll_api.c **** 
+ 188:u8g/u8g_ll_api.c **** uint8_t u8g_Begin(u8g_t *u8g)
+ 189:u8g/u8g_ll_api.c **** {
+ 760              		.loc 1 189 0
+ 761              		.cfi_startproc
+ 762              		@ args = 0, pretend = 0, frame = 0
+ 763              		@ frame_needed = 0, uses_anonymous_args = 0
+ 764              	.LVL73:
+ 765 0000 10B5     		push	{r4, lr}
+ 766              	.LCFI26:
+ 767              		.cfi_def_cfa_offset 8
+ 768              		.cfi_offset 4, -8
+ 769              		.cfi_offset 14, -4
+ 190:u8g/u8g_ll_api.c ****   /* call and init low level driver and com device */
+ 191:u8g/u8g_ll_api.c ****   if ( u8g_InitLL(u8g, u8g->dev) == 0 )
+ 770              		.loc 1 191 0
+ 771 0002 054B     		ldr	r3, .L37
+ 772 0004 4168     		ldr	r1, [r0, #4]
+ 189:u8g/u8g_ll_api.c ****   /* call and init low level driver and com device */
+ 773              		.loc 1 189 0
+ 774 0006 0446     		mov	r4, r0
+ 775              		.loc 1 191 0
+ 776 0008 9847     		blx	r3
+ 777              	.LVL74:
+ 778 000a 00B9     		cbnz	r0, .L36
+ 192:u8g/u8g_ll_api.c ****     return 0;
+ 193:u8g/u8g_ll_api.c ****   /* fetch width and height from the low level */
+ 194:u8g/u8g_ll_api.c ****   u8g_UpdateDimension(u8g);
+ 195:u8g/u8g_ll_api.c ****   return 1;
+ 196:u8g/u8g_ll_api.c **** }
+ 779              		.loc 1 196 0
+ 780 000c 10BD     		pop	{r4, pc}
+ 781              	.LVL75:
+ 782              	.L36:
+ 194:u8g/u8g_ll_api.c ****   return 1;
+ 783              		.loc 1 194 0
+ 784 000e 2046     		mov	r0, r4
+ 785 0010 024B     		ldr	r3, .L37+4
+ 786 0012 9847     		blx	r3
+ 787              	.LVL76:
+ 195:u8g/u8g_ll_api.c **** }
+ 788              		.loc 1 195 0
+ 789 0014 0120     		movs	r0, #1
+ 790              		.loc 1 196 0
+ 791 0016 10BD     		pop	{r4, pc}
+ 792              	.LVL77:
+ 793              	.L38:
+ 794              		.align	2
+ 795              	.L37:
+ 796 0018 00000000 		.word	u8g_InitLL
+ 797 001c 00000000 		.word	u8g_UpdateDimension
+ 798              		.cfi_endproc
+ 799              	.LFE13:
+ 801              		.section	.text.u8g_Init,"ax",%progbits
+ 802              		.align	1
+ 803              		.p2align 2,,3
+ 804              		.global	u8g_Init
+ 805              		.syntax unified
+ 806              		.thumb
+ 807              		.thumb_func
+ 808              		.fpu softvfp
+ 810              	u8g_Init:
+ 811              	.LFB14:
+ 197:u8g/u8g_ll_api.c **** 
+ 198:u8g/u8g_ll_api.c **** uint8_t u8g_Init(u8g_t *u8g, u8g_dev_t *dev)
+ 199:u8g/u8g_ll_api.c **** {
+ 812              		.loc 1 199 0
+ 813              		.cfi_startproc
+ 814              		@ args = 0, pretend = 0, frame = 0
+ 815              		@ frame_needed = 0, uses_anonymous_args = 0
+ 816              	.LVL78:
+ 817 0000 70B5     		push	{r4, r5, r6, lr}
+ 818              	.LCFI27:
+ 819              		.cfi_def_cfa_offset 16
+ 820              		.cfi_offset 4, -16
+ 821              		.cfi_offset 5, -12
+ 822              		.cfi_offset 6, -8
+ 823              		.cfi_offset 14, -4
+ 824              	.LBB131:
+ 825              	.LBB132:
+ 161:u8g/u8g_ll_api.c ****   u8g->cursor_fg_color = 1;
+ 826              		.loc 1 161 0
+ 827 0002 2222     		movs	r2, #34
+ 159:u8g/u8g_ll_api.c ****   u8g->cursor_font = NULL;
+ 828              		.loc 1 159 0
+ 829 0004 0025     		movs	r5, #0
+ 160:u8g/u8g_ll_api.c ****   u8g->cursor_bg_color = 0;
+ 830              		.loc 1 160 0
+ 831 0006 0123     		movs	r3, #1
+ 832              	.LBE132:
+ 833              	.LBE131:
+ 834              		.loc 1 199 0
+ 835 0008 0446     		mov	r4, r0
+ 836              	.LVL79:
+ 837 000a 0E46     		mov	r6, r1
+ 838              	.LBB136:
+ 839              	.LBB135:
+ 161:u8g/u8g_ll_api.c ****   u8g->cursor_fg_color = 1;
+ 840              		.loc 1 161 0
+ 841 000c 8274     		strb	r2, [r0, #18]
+ 159:u8g/u8g_ll_api.c ****   u8g->cursor_font = NULL;
+ 842              		.loc 1 159 0
+ 843 000e C0E90255 		strd	r5, r5, [r0, #8]
+ 164:u8g/u8g_ll_api.c **** 
+ 844              		.loc 1 164 0
+ 845 0012 8561     		str	r5, [r0, #24]
+ 846              	.LVL80:
+ 160:u8g/u8g_ll_api.c ****   u8g->cursor_bg_color = 0;
+ 847              		.loc 1 160 0
+ 848 0014 0382     		strh	r3, [r0, #16]	@ movhi
+ 849              	.LBB133:
+ 850              	.LBB134:
+ 200:u8g/u8g_ll_api.c ****   u8g_init_data(u8g);
+ 201:u8g/u8g_ll_api.c ****   u8g->dev = dev;
+ 202:u8g/u8g_ll_api.c ****   
+ 203:u8g/u8g_ll_api.c ****   /* On the Arduino Environment this will lead to two calls to u8g_Begin(), the following line will
+ 204:u8g/u8g_ll_api.c ****   /* if - in future releases - this is removed, then still call u8g_UpdateDimension() */
+ 205:u8g/u8g_ll_api.c ****   /* if Arduino call u8g_UpdateDimension else u8g_Begin */
+ 206:u8g/u8g_ll_api.c ****   /* issue 146 */
+ 207:u8g/u8g_ll_api.c ****   return u8g_Begin(u8g);
+ 208:u8g/u8g_ll_api.c **** }
+ 209:u8g/u8g_ll_api.c **** 
+ 210:u8g/u8g_ll_api.c **** /* special init for pure ARM systems */
+ 211:u8g/u8g_ll_api.c **** uint8_t u8g_InitComFn(u8g_t *u8g, u8g_dev_t *dev, u8g_com_fnptr com_fn)
+ 212:u8g/u8g_ll_api.c **** {
+ 213:u8g/u8g_ll_api.c ****   u8g_init_data(u8g);
+ 214:u8g/u8g_ll_api.c ****   
+ 215:u8g/u8g_ll_api.c **** #if defined(U8G_WITH_PINLIST)  
+ 216:u8g/u8g_ll_api.c ****   {
+ 217:u8g/u8g_ll_api.c ****     uint8_t i;
+ 218:u8g/u8g_ll_api.c ****     for( i = 0; i < U8G_PIN_LIST_LEN; i++ )
+ 219:u8g/u8g_ll_api.c ****       u8g->pin_list[i] = U8G_PIN_DUMMY;
+ 220:u8g/u8g_ll_api.c ****   }
+ 221:u8g/u8g_ll_api.c **** #endif
+ 222:u8g/u8g_ll_api.c ****   
+ 223:u8g/u8g_ll_api.c ****   u8g->dev = dev;
+ 224:u8g/u8g_ll_api.c ****   
+ 225:u8g/u8g_ll_api.c ****   /* replace the device procedure with a custom communication procedure */
+ 226:u8g/u8g_ll_api.c ****   u8g->dev->com_fn = com_fn;
+ 227:u8g/u8g_ll_api.c ****   
+ 228:u8g/u8g_ll_api.c ****   /* On the Arduino Environment this will lead to two calls to u8g_Begin(), the following line will
+ 229:u8g/u8g_ll_api.c ****   /* if - in future releases - this is removed, then still call u8g_UpdateDimension() */
+ 230:u8g/u8g_ll_api.c ****   /* if Arduino call u8g_UpdateDimension else u8g_Begin */
+ 231:u8g/u8g_ll_api.c ****   /* issue 146 */
+ 232:u8g/u8g_ll_api.c ****   return u8g_Begin(u8g);
+ 233:u8g/u8g_ll_api.c **** }
+ 234:u8g/u8g_ll_api.c **** 
+ 235:u8g/u8g_ll_api.c **** 
+ 236:u8g/u8g_ll_api.c **** #if defined(U8G_WITH_PINLIST)  
+ 237:u8g/u8g_ll_api.c **** uint8_t u8g_InitSPI(u8g_t *u8g, u8g_dev_t *dev, uint8_t sck, uint8_t mosi, uint8_t cs, uint8_t a0, 
+ 238:u8g/u8g_ll_api.c **** {
+ 239:u8g/u8g_ll_api.c ****   
+ 240:u8g/u8g_ll_api.c ****   /* fill data structure with some suitable values */
+ 241:u8g/u8g_ll_api.c ****   u8g_init_data(u8g);
+ 242:u8g/u8g_ll_api.c ****   u8g->dev = dev;
+ 243:u8g/u8g_ll_api.c ****     
+ 244:u8g/u8g_ll_api.c ****   /* assign user pins */
+ 245:u8g/u8g_ll_api.c ****   u8g->pin_list[U8G_PI_SCK] = sck;
+ 246:u8g/u8g_ll_api.c ****   u8g->pin_list[U8G_PI_MOSI] = mosi;
+ 247:u8g/u8g_ll_api.c ****   u8g->pin_list[U8G_PI_CS] = cs;
+ 248:u8g/u8g_ll_api.c ****   u8g->pin_list[U8G_PI_A0] = a0;
+ 249:u8g/u8g_ll_api.c ****   u8g->pin_list[U8G_PI_RESET] = reset;
+ 250:u8g/u8g_ll_api.c ****   
+ 251:u8g/u8g_ll_api.c ****   /* On the Arduino Environment this will lead to two calls to u8g_Begin(), the following line will
+ 252:u8g/u8g_ll_api.c ****   /* if - in future releases - this is removed, then still call u8g_UpdateDimension() */
+ 253:u8g/u8g_ll_api.c ****   /* if Arduino call u8g_UpdateDimension else u8g_Begin */
+ 254:u8g/u8g_ll_api.c ****   /* issue 146 */
+ 255:u8g/u8g_ll_api.c ****   return u8g_Begin(u8g);
+ 256:u8g/u8g_ll_api.c **** }
+ 257:u8g/u8g_ll_api.c **** 
+ 258:u8g/u8g_ll_api.c **** uint8_t u8g_InitHWSPI(u8g_t *u8g, u8g_dev_t *dev, uint8_t cs, uint8_t a0, uint8_t reset)
+ 259:u8g/u8g_ll_api.c **** {
+ 260:u8g/u8g_ll_api.c ****   /* fill data structure with some suitable values */
+ 261:u8g/u8g_ll_api.c ****   u8g_init_data(u8g);
+ 262:u8g/u8g_ll_api.c ****   u8g->dev = dev;
+ 263:u8g/u8g_ll_api.c ****   
+ 264:u8g/u8g_ll_api.c ****   
+ 265:u8g/u8g_ll_api.c ****   /* assign user pins */
+ 266:u8g/u8g_ll_api.c ****   u8g->pin_list[U8G_PI_CS] = cs;
+ 267:u8g/u8g_ll_api.c ****   u8g->pin_list[U8G_PI_A0] = a0;
+ 268:u8g/u8g_ll_api.c ****   u8g->pin_list[U8G_PI_RESET] = reset;
+ 269:u8g/u8g_ll_api.c ****   
+ 270:u8g/u8g_ll_api.c ****   return u8g_Begin(u8g);
+ 271:u8g/u8g_ll_api.c **** }
+ 272:u8g/u8g_ll_api.c **** 
+ 273:u8g/u8g_ll_api.c **** uint8_t u8g_InitI2C(u8g_t *u8g, u8g_dev_t *dev, uint8_t options)
+ 274:u8g/u8g_ll_api.c **** {
+ 275:u8g/u8g_ll_api.c ****   /* fill data structure with some suitable values */
+ 276:u8g/u8g_ll_api.c ****   u8g_init_data(u8g);
+ 277:u8g/u8g_ll_api.c ****   u8g->dev = dev;
+ 278:u8g/u8g_ll_api.c ****     
+ 279:u8g/u8g_ll_api.c ****   u8g->pin_list[U8G_PI_I2C_OPTION] = options;
+ 280:u8g/u8g_ll_api.c ****   
+ 281:u8g/u8g_ll_api.c ****   return u8g_Begin(u8g);
+ 282:u8g/u8g_ll_api.c **** }
+ 283:u8g/u8g_ll_api.c **** 
+ 284:u8g/u8g_ll_api.c **** 
+ 285:u8g/u8g_ll_api.c **** uint8_t u8g_Init8BitFixedPort(u8g_t *u8g, u8g_dev_t *dev, uint8_t en, uint8_t cs, uint8_t di, uint8
+ 286:u8g/u8g_ll_api.c **** {
+ 287:u8g/u8g_ll_api.c ****   
+ 288:u8g/u8g_ll_api.c ****   /* fill data structure with some suitable values */
+ 289:u8g/u8g_ll_api.c ****   u8g_init_data(u8g);
+ 290:u8g/u8g_ll_api.c ****   u8g->dev = dev;
+ 291:u8g/u8g_ll_api.c ****     
+ 292:u8g/u8g_ll_api.c ****   /* assign user pins */
+ 293:u8g/u8g_ll_api.c **** 
+ 294:u8g/u8g_ll_api.c ****   u8g->pin_list[U8G_PI_EN] = en;
+ 295:u8g/u8g_ll_api.c ****   u8g->pin_list[U8G_PI_CS] = cs;
+ 296:u8g/u8g_ll_api.c ****   u8g->pin_list[U8G_PI_DI] = di;
+ 297:u8g/u8g_ll_api.c ****   u8g->pin_list[U8G_PI_RW] = rw;
+ 298:u8g/u8g_ll_api.c ****   u8g->pin_list[U8G_PI_RESET] = reset;
+ 299:u8g/u8g_ll_api.c **** 
+ 300:u8g/u8g_ll_api.c ****   return u8g_Begin(u8g);
+ 301:u8g/u8g_ll_api.c **** }
+ 302:u8g/u8g_ll_api.c **** 
+ 303:u8g/u8g_ll_api.c **** uint8_t u8g_Init8Bit(u8g_t *u8g, u8g_dev_t *dev, uint8_t d0, uint8_t d1, uint8_t d2, uint8_t d3, ui
+ 304:u8g/u8g_ll_api.c ****   uint8_t en, uint8_t cs1, uint8_t cs2, uint8_t di, uint8_t rw, uint8_t reset)
+ 305:u8g/u8g_ll_api.c **** {
+ 306:u8g/u8g_ll_api.c ****   
+ 307:u8g/u8g_ll_api.c ****   /* fill data structure with some suitable values */
+ 308:u8g/u8g_ll_api.c ****   u8g_init_data(u8g);
+ 309:u8g/u8g_ll_api.c ****   u8g->dev = dev;
+ 310:u8g/u8g_ll_api.c ****     
+ 311:u8g/u8g_ll_api.c ****   /* assign user pins */
+ 312:u8g/u8g_ll_api.c **** 
+ 313:u8g/u8g_ll_api.c ****   u8g->pin_list[U8G_PI_D0] = d0;
+ 314:u8g/u8g_ll_api.c ****   u8g->pin_list[U8G_PI_D1] = d1;
+ 315:u8g/u8g_ll_api.c ****   u8g->pin_list[U8G_PI_D2] = d2;
+ 316:u8g/u8g_ll_api.c ****   u8g->pin_list[U8G_PI_D3] = d3;
+ 317:u8g/u8g_ll_api.c ****   u8g->pin_list[U8G_PI_D4] = d4;
+ 318:u8g/u8g_ll_api.c ****   u8g->pin_list[U8G_PI_D5] = d5;
+ 319:u8g/u8g_ll_api.c ****   u8g->pin_list[U8G_PI_D6] = d6;
+ 320:u8g/u8g_ll_api.c ****   u8g->pin_list[U8G_PI_D7] = d7;
+ 321:u8g/u8g_ll_api.c **** 
+ 322:u8g/u8g_ll_api.c ****   u8g->pin_list[U8G_PI_EN] = en;
+ 323:u8g/u8g_ll_api.c ****   u8g->pin_list[U8G_PI_CS1] = cs1;
+ 324:u8g/u8g_ll_api.c ****   u8g->pin_list[U8G_PI_CS2] = cs2;
+ 325:u8g/u8g_ll_api.c ****   u8g->pin_list[U8G_PI_DI] = di;
+ 326:u8g/u8g_ll_api.c ****   u8g->pin_list[U8G_PI_RW] = rw;
+ 327:u8g/u8g_ll_api.c ****   u8g->pin_list[U8G_PI_RESET] = reset;
+ 328:u8g/u8g_ll_api.c ****   
+ 329:u8g/u8g_ll_api.c ****   return u8g_Begin(u8g);
+ 330:u8g/u8g_ll_api.c **** }
+ 331:u8g/u8g_ll_api.c **** 
+ 332:u8g/u8g_ll_api.c **** /*
+ 333:u8g/u8g_ll_api.c **** 
+ 334:u8g/u8g_ll_api.c ****   PIN_D0 8
+ 335:u8g/u8g_ll_api.c ****   PIN_D1 9
+ 336:u8g/u8g_ll_api.c ****   PIN_D2 10
+ 337:u8g/u8g_ll_api.c ****   PIN_D3 11
+ 338:u8g/u8g_ll_api.c ****   PIN_D4 4
+ 339:u8g/u8g_ll_api.c ****   PIN_D5 5
+ 340:u8g/u8g_ll_api.c ****   PIN_D6 6
+ 341:u8g/u8g_ll_api.c ****   PIN_D7 7
+ 342:u8g/u8g_ll_api.c **** 
+ 343:u8g/u8g_ll_api.c ****   PIN_CS 14
+ 344:u8g/u8g_ll_api.c ****   PIN_A0 15
+ 345:u8g/u8g_ll_api.c ****   PIN_RESET 16
+ 346:u8g/u8g_ll_api.c ****   PIN_WR 17
+ 347:u8g/u8g_ll_api.c ****   PIN_RD 18
+ 348:u8g/u8g_ll_api.c ****   
+ 349:u8g/u8g_ll_api.c ****   u8g_InitRW8Bit(u8g, dev, d0, d1, d2, d3, d4, d5, d6, d7, cs, a0, wr, rd, reset)
+ 350:u8g/u8g_ll_api.c ****   u8g_InitRW8Bit(u8g, dev,  8,  9, 10, 11,  4,  5,  6,  7, 14, 15, 17, 18, 16)
+ 351:u8g/u8g_ll_api.c **** 
+ 352:u8g/u8g_ll_api.c **** */
+ 353:u8g/u8g_ll_api.c **** 
+ 354:u8g/u8g_ll_api.c **** uint8_t u8g_InitRW8Bit(u8g_t *u8g, u8g_dev_t *dev, uint8_t d0, uint8_t d1, uint8_t d2, uint8_t d3, 
+ 355:u8g/u8g_ll_api.c ****   uint8_t cs, uint8_t a0, uint8_t wr, uint8_t rd, uint8_t reset)
+ 356:u8g/u8g_ll_api.c **** {
+ 357:u8g/u8g_ll_api.c ****   
+ 358:u8g/u8g_ll_api.c ****   /* fill data structure with some suitable values */
+ 359:u8g/u8g_ll_api.c ****   u8g_init_data(u8g);
+ 360:u8g/u8g_ll_api.c ****   u8g->dev = dev;
+ 361:u8g/u8g_ll_api.c ****     
+ 362:u8g/u8g_ll_api.c ****   /* assign user pins */
+ 363:u8g/u8g_ll_api.c **** 
+ 364:u8g/u8g_ll_api.c ****   u8g->pin_list[U8G_PI_D0] = d0;
+ 365:u8g/u8g_ll_api.c ****   u8g->pin_list[U8G_PI_D1] = d1;
+ 366:u8g/u8g_ll_api.c ****   u8g->pin_list[U8G_PI_D2] = d2;
+ 367:u8g/u8g_ll_api.c ****   u8g->pin_list[U8G_PI_D3] = d3;
+ 368:u8g/u8g_ll_api.c ****   u8g->pin_list[U8G_PI_D4] = d4;
+ 369:u8g/u8g_ll_api.c ****   u8g->pin_list[U8G_PI_D5] = d5;
+ 370:u8g/u8g_ll_api.c ****   u8g->pin_list[U8G_PI_D6] = d6;
+ 371:u8g/u8g_ll_api.c ****   u8g->pin_list[U8G_PI_D7] = d7;
+ 372:u8g/u8g_ll_api.c **** 
+ 373:u8g/u8g_ll_api.c ****   u8g->pin_list[U8G_PI_CS] = cs;
+ 374:u8g/u8g_ll_api.c ****   u8g->pin_list[U8G_PI_A0] = a0;
+ 375:u8g/u8g_ll_api.c ****   u8g->pin_list[U8G_PI_WR] = wr;
+ 376:u8g/u8g_ll_api.c ****   u8g->pin_list[U8G_PI_RD] = rd;
+ 377:u8g/u8g_ll_api.c ****   u8g->pin_list[U8G_PI_RESET] = reset;
+ 378:u8g/u8g_ll_api.c ****   
+ 379:u8g/u8g_ll_api.c ****   return u8g_Begin(u8g);
+ 380:u8g/u8g_ll_api.c **** }
+ 381:u8g/u8g_ll_api.c **** #endif /* defined(U8G_WITH_PINLIST)  */
+ 382:u8g/u8g_ll_api.c **** 
+ 383:u8g/u8g_ll_api.c **** void u8g_FirstPage(u8g_t *u8g)
+ 384:u8g/u8g_ll_api.c **** {
+ 385:u8g/u8g_ll_api.c ****   u8g_FirstPageLL(u8g, u8g->dev);
+ 386:u8g/u8g_ll_api.c **** }
+ 387:u8g/u8g_ll_api.c **** 
+ 388:u8g/u8g_ll_api.c **** uint8_t u8g_NextPage(u8g_t *u8g)
+ 389:u8g/u8g_ll_api.c **** {
+ 390:u8g/u8g_ll_api.c ****   if  ( u8g->cursor_fn != (u8g_draw_cursor_fn)0 )
+ 391:u8g/u8g_ll_api.c ****   {
+ 392:u8g/u8g_ll_api.c ****     u8g->cursor_fn(u8g);
+ 393:u8g/u8g_ll_api.c ****   }
+ 394:u8g/u8g_ll_api.c ****   return u8g_NextPageLL(u8g, u8g->dev);
+ 395:u8g/u8g_ll_api.c **** }
+ 396:u8g/u8g_ll_api.c **** 
+ 397:u8g/u8g_ll_api.c **** uint8_t u8g_SetContrast(u8g_t *u8g, uint8_t contrast)
+ 398:u8g/u8g_ll_api.c **** {
+ 399:u8g/u8g_ll_api.c ****   return u8g_SetContrastLL(u8g, u8g->dev, contrast);
+ 400:u8g/u8g_ll_api.c **** }
+ 401:u8g/u8g_ll_api.c **** 
+ 402:u8g/u8g_ll_api.c **** void u8g_SleepOn(u8g_t *u8g)
+ 403:u8g/u8g_ll_api.c **** {
+ 404:u8g/u8g_ll_api.c ****   u8g_call_dev_fn(u8g, u8g->dev, U8G_DEV_MSG_SLEEP_ON, NULL);
+ 405:u8g/u8g_ll_api.c **** }
+ 406:u8g/u8g_ll_api.c **** 
+ 407:u8g/u8g_ll_api.c **** void u8g_SleepOff(u8g_t *u8g)
+ 408:u8g/u8g_ll_api.c **** {
+ 409:u8g/u8g_ll_api.c ****   u8g_call_dev_fn(u8g, u8g->dev, U8G_DEV_MSG_SLEEP_OFF, NULL);
+ 410:u8g/u8g_ll_api.c **** }
+ 411:u8g/u8g_ll_api.c **** 
+ 412:u8g/u8g_ll_api.c **** 
+ 413:u8g/u8g_ll_api.c **** void u8g_DrawPixel(u8g_t *u8g, u8g_uint_t x, u8g_uint_t y)
+ 414:u8g/u8g_ll_api.c **** {
+ 415:u8g/u8g_ll_api.c ****   u8g_DrawPixelLL(u8g, u8g->dev, x, y);
+ 416:u8g/u8g_ll_api.c **** }
+ 417:u8g/u8g_ll_api.c **** 
+ 418:u8g/u8g_ll_api.c **** void u8g_Draw8Pixel(u8g_t *u8g, u8g_uint_t x, u8g_uint_t y, uint8_t dir, uint8_t pixel)
+ 419:u8g/u8g_ll_api.c **** {
+ 420:u8g/u8g_ll_api.c ****   u8g_Draw8PixelLL(u8g, u8g->dev, x, y, dir, pixel);
+ 421:u8g/u8g_ll_api.c **** }
+ 422:u8g/u8g_ll_api.c **** 
+ 423:u8g/u8g_ll_api.c **** void u8g_Draw4TPixel(u8g_t *u8g, u8g_uint_t x, u8g_uint_t y, uint8_t dir, uint8_t pixel)
+ 424:u8g/u8g_ll_api.c **** {
+ 425:u8g/u8g_ll_api.c ****   u8g_Draw4TPixelLL(u8g, u8g->dev, x, y, dir, pixel);
+ 426:u8g/u8g_ll_api.c **** }
+ 427:u8g/u8g_ll_api.c **** 
+ 428:u8g/u8g_ll_api.c **** 
+ 429:u8g/u8g_ll_api.c **** /* u8g_IsBBXIntersection() has been moved to u8g_clip.c */
+ 430:u8g/u8g_ll_api.c **** #ifdef OBSOLETE_CODE
+ 431:u8g/u8g_ll_api.c **** uint8_t u8g_IsBBXIntersection(u8g_t *u8g, u8g_uint_t x, u8g_uint_t y, u8g_uint_t w, u8g_uint_t h)
+ 432:u8g/u8g_ll_api.c **** {
+ 433:u8g/u8g_ll_api.c ****   /* new code */
+ 434:u8g/u8g_ll_api.c ****   u8g_dev_arg_bbx_t arg;
+ 435:u8g/u8g_ll_api.c ****   arg.x = x;
+ 436:u8g/u8g_ll_api.c ****   arg.y = y;
+ 437:u8g/u8g_ll_api.c ****   arg.w = w;
+ 438:u8g/u8g_ll_api.c ****   arg.h = h;
+ 439:u8g/u8g_ll_api.c ****   return u8g_is_box_bbx_intersection(&(u8g->current_page), &arg);
+ 440:u8g/u8g_ll_api.c **** 
+ 441:u8g/u8g_ll_api.c ****   /* old code */
+ 442:u8g/u8g_ll_api.c ****   //return u8g_IsBBXIntersectionLL(u8g, u8g->dev, x, y, w, h);
+ 443:u8g/u8g_ll_api.c **** }
+ 444:u8g/u8g_ll_api.c **** #endif
+ 445:u8g/u8g_ll_api.c **** 
+ 446:u8g/u8g_ll_api.c **** /*
+ 447:u8g/u8g_ll_api.c ****   idx: index for the palette entry (0..255)
+ 448:u8g/u8g_ll_api.c ****   r: value for red (0..255)
+ 449:u8g/u8g_ll_api.c ****   g: value for green (0..255)
+ 450:u8g/u8g_ll_api.c ****   b: value for blue (0..255)
+ 451:u8g/u8g_ll_api.c **** */
+ 452:u8g/u8g_ll_api.c **** void u8g_SetColorEntry(u8g_t *u8g, uint8_t idx, uint8_t r, uint8_t g, uint8_t b)
+ 453:u8g/u8g_ll_api.c **** {
+ 454:u8g/u8g_ll_api.c ****   u8g_dev_arg_irgb_t irgb;
+ 455:u8g/u8g_ll_api.c ****   irgb.idx = idx;
+ 456:u8g/u8g_ll_api.c ****   irgb.r = r;
+ 457:u8g/u8g_ll_api.c ****   irgb.g = g;
+ 458:u8g/u8g_ll_api.c ****   irgb.b = b;  
+ 459:u8g/u8g_ll_api.c ****   u8g_call_dev_fn(u8g, u8g->dev, U8G_DEV_MSG_SET_COLOR_ENTRY, &irgb);
+ 460:u8g/u8g_ll_api.c **** }
+ 461:u8g/u8g_ll_api.c **** 
+ 462:u8g/u8g_ll_api.c **** void u8g_SetColorIndex(u8g_t *u8g, uint8_t idx)
+ 463:u8g/u8g_ll_api.c **** {
+ 464:u8g/u8g_ll_api.c ****   u8g->arg_pixel.color = idx;
+ 851              		.loc 1 464 0
+ 852 0016 80F83130 		strb	r3, [r0, #49]
+ 853              	.LVL81:
+ 854              	.LBE134:
+ 855              	.LBE133:
+ 176:u8g/u8g_ll_api.c ****   
+ 856              		.loc 1 176 0
+ 857 001a 074B     		ldr	r3, .L41
+ 858 001c 9847     		blx	r3
+ 859              	.LVL82:
+ 178:u8g/u8g_ll_api.c ****   u8g->font_ref_ascent = 0;
+ 860              		.loc 1 178 0
+ 861 001e 074A     		ldr	r2, .L41+4
+ 184:u8g/u8g_ll_api.c **** 
+ 862              		.loc 1 184 0
+ 863 0020 074B     		ldr	r3, .L41+8
+ 181:u8g/u8g_ll_api.c ****   u8g->line_spacing = 0;
+ 864              		.loc 1 181 0
+ 865 0022 84F82C50 		strb	r5, [r4, #44]
+ 178:u8g/u8g_ll_api.c ****   u8g->font_ref_ascent = 0;
+ 866              		.loc 1 178 0
+ 867 0026 A262     		str	r2, [r4, #40]
+ 184:u8g/u8g_ll_api.c **** 
+ 868              		.loc 1 184 0
+ 869 0028 6363     		str	r3, [r4, #52]
+ 870              	.LVL83:
+ 871              	.LBE135:
+ 872              	.LBE136:
+ 201:u8g/u8g_ll_api.c ****   
+ 873              		.loc 1 201 0
+ 874 002a 6660     		str	r6, [r4, #4]
+ 207:u8g/u8g_ll_api.c **** }
+ 875              		.loc 1 207 0
+ 876 002c 2046     		mov	r0, r4
+ 208:u8g/u8g_ll_api.c **** 
+ 877              		.loc 1 208 0
+ 878 002e BDE87040 		pop	{r4, r5, r6, lr}
+ 879              	.LCFI28:
+ 880              		.cfi_restore 14
+ 881              		.cfi_restore 6
+ 882              		.cfi_restore 5
+ 883              		.cfi_restore 4
+ 884              		.cfi_def_cfa_offset 0
+ 885              	.LVL84:
+ 207:u8g/u8g_ll_api.c **** }
+ 886              		.loc 1 207 0
+ 887 0032 044B     		ldr	r3, .L41+12
+ 888 0034 1847     		bx	r3
+ 889              	.LVL85:
+ 890              	.L42:
+ 891 0036 00BF     		.align	2
+ 892              	.L41:
+ 893 0038 00000000 		.word	u8g_SetFontPosBaseline
+ 894 003c 01000040 		.word	1073741825
+ 895 0040 00000000 		.word	u8g_state_dummy_cb
+ 896 0044 00000000 		.word	u8g_Begin
+ 897              		.cfi_endproc
+ 898              	.LFE14:
+ 900              		.section	.text.u8g_InitComFn,"ax",%progbits
+ 901              		.align	1
+ 902              		.p2align 2,,3
+ 903              		.global	u8g_InitComFn
+ 904              		.syntax unified
+ 905              		.thumb
+ 906              		.thumb_func
+ 907              		.fpu softvfp
+ 909              	u8g_InitComFn:
+ 910              	.LFB15:
+ 212:u8g/u8g_ll_api.c ****   u8g_init_data(u8g);
+ 911              		.loc 1 212 0
+ 912              		.cfi_startproc
+ 913              		@ args = 0, pretend = 0, frame = 0
+ 914              		@ frame_needed = 0, uses_anonymous_args = 0
+ 915              	.LVL86:
+ 916 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+ 917              	.LCFI29:
+ 918              		.cfi_def_cfa_offset 24
+ 919              		.cfi_offset 4, -24
+ 920              		.cfi_offset 5, -20
+ 921              		.cfi_offset 6, -16
+ 922              		.cfi_offset 7, -12
+ 923              		.cfi_offset 8, -8
+ 924              		.cfi_offset 14, -4
+ 925              	.LBB137:
+ 926              	.LBB138:
+ 160:u8g/u8g_ll_api.c ****   u8g->cursor_bg_color = 0;
+ 927              		.loc 1 160 0
+ 928 0004 0123     		movs	r3, #1
+ 159:u8g/u8g_ll_api.c ****   u8g->cursor_font = NULL;
+ 929              		.loc 1 159 0
+ 930 0006 0025     		movs	r5, #0
+ 161:u8g/u8g_ll_api.c ****   u8g->cursor_fg_color = 1;
+ 931              		.loc 1 161 0
+ 932 0008 4FF0220C 		mov	ip, #34
+ 933              	.LBE138:
+ 934              	.LBE137:
+ 212:u8g/u8g_ll_api.c ****   u8g_init_data(u8g);
+ 935              		.loc 1 212 0
+ 936 000c 0446     		mov	r4, r0
+ 937              	.LVL87:
+ 938 000e 0E46     		mov	r6, r1
+ 939 0010 1746     		mov	r7, r2
+ 940              	.LBB142:
+ 941              	.LBB141:
+ 159:u8g/u8g_ll_api.c ****   u8g->cursor_font = NULL;
+ 942              		.loc 1 159 0
+ 943 0012 C0E90255 		strd	r5, r5, [r0, #8]
+ 164:u8g/u8g_ll_api.c **** 
+ 944              		.loc 1 164 0
+ 945 0016 8561     		str	r5, [r0, #24]
+ 946              	.LVL88:
+ 160:u8g/u8g_ll_api.c ****   u8g->cursor_bg_color = 0;
+ 947              		.loc 1 160 0
+ 948 0018 0382     		strh	r3, [r0, #16]	@ movhi
+ 949              	.LBB139:
+ 950              	.LBB140:
+ 951              		.loc 1 464 0
+ 952 001a 80F83130 		strb	r3, [r0, #49]
+ 953              	.LVL89:
+ 954              	.LBE140:
+ 955              	.LBE139:
+ 161:u8g/u8g_ll_api.c ****   u8g->cursor_fg_color = 1;
+ 956              		.loc 1 161 0
+ 957 001e 80F812C0 		strb	ip, [r0, #18]
+ 176:u8g/u8g_ll_api.c ****   
+ 958              		.loc 1 176 0
+ 959 0022 074B     		ldr	r3, .L45
+ 960 0024 9847     		blx	r3
+ 961              	.LVL90:
+ 178:u8g/u8g_ll_api.c ****   u8g->font_ref_ascent = 0;
+ 962              		.loc 1 178 0
+ 963 0026 074A     		ldr	r2, .L45+4
+ 184:u8g/u8g_ll_api.c **** 
+ 964              		.loc 1 184 0
+ 965 0028 074B     		ldr	r3, .L45+8
+ 181:u8g/u8g_ll_api.c ****   u8g->line_spacing = 0;
+ 966              		.loc 1 181 0
+ 967 002a 84F82C50 		strb	r5, [r4, #44]
+ 178:u8g/u8g_ll_api.c ****   u8g->font_ref_ascent = 0;
+ 968              		.loc 1 178 0
+ 969 002e A262     		str	r2, [r4, #40]
+ 184:u8g/u8g_ll_api.c **** 
+ 970              		.loc 1 184 0
+ 971 0030 6363     		str	r3, [r4, #52]
+ 972              	.LVL91:
+ 973              	.LBE141:
+ 974              	.LBE142:
+ 223:u8g/u8g_ll_api.c ****   
+ 975              		.loc 1 223 0
+ 976 0032 6660     		str	r6, [r4, #4]
+ 232:u8g/u8g_ll_api.c **** }
+ 977              		.loc 1 232 0
+ 978 0034 2046     		mov	r0, r4
+ 226:u8g/u8g_ll_api.c ****   
+ 979              		.loc 1 226 0
+ 980 0036 B760     		str	r7, [r6, #8]
+ 232:u8g/u8g_ll_api.c **** }
+ 981              		.loc 1 232 0
+ 982 0038 044B     		ldr	r3, .L45+12
+ 233:u8g/u8g_ll_api.c **** 
+ 983              		.loc 1 233 0
+ 984 003a BDE8F041 		pop	{r4, r5, r6, r7, r8, lr}
+ 985              	.LCFI30:
+ 986              		.cfi_restore 14
+ 987              		.cfi_restore 8
+ 988              		.cfi_restore 7
+ 989              		.cfi_restore 6
+ 990              		.cfi_restore 5
+ 991              		.cfi_restore 4
+ 992              		.cfi_def_cfa_offset 0
+ 993              	.LVL92:
+ 232:u8g/u8g_ll_api.c **** }
+ 994              		.loc 1 232 0
+ 995 003e 1847     		bx	r3
+ 996              	.LVL93:
+ 997              	.L46:
+ 998              		.align	2
+ 999              	.L45:
+ 1000 0040 00000000 		.word	u8g_SetFontPosBaseline
+ 1001 0044 01000040 		.word	1073741825
+ 1002 0048 00000000 		.word	u8g_state_dummy_cb
+ 1003 004c 00000000 		.word	u8g_Begin
+ 1004              		.cfi_endproc
+ 1005              	.LFE15:
+ 1007              		.section	.text.u8g_FirstPage,"ax",%progbits
+ 1008              		.align	1
+ 1009              		.p2align 2,,3
+ 1010              		.global	u8g_FirstPage
+ 1011              		.syntax unified
+ 1012              		.thumb
+ 1013              		.thumb_func
+ 1014              		.fpu softvfp
+ 1016              	u8g_FirstPage:
+ 1017              	.LFB16:
+ 384:u8g/u8g_ll_api.c ****   u8g_FirstPageLL(u8g, u8g->dev);
+ 1018              		.loc 1 384 0
+ 1019              		.cfi_startproc
+ 1020              		@ args = 0, pretend = 0, frame = 0
+ 1021              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1022              		@ link register save eliminated.
+ 1023              	.LVL94:
+ 385:u8g/u8g_ll_api.c **** }
+ 1024              		.loc 1 385 0
+ 1025 0000 4168     		ldr	r1, [r0, #4]
+ 1026 0002 014B     		ldr	r3, .L48
+ 1027 0004 1847     		bx	r3	@ indirect register sibling call
+ 1028              	.LVL95:
+ 1029              	.L49:
+ 1030 0006 00BF     		.align	2
+ 1031              	.L48:
+ 1032 0008 00000000 		.word	u8g_FirstPageLL
+ 1033              		.cfi_endproc
+ 1034              	.LFE16:
+ 1036              		.section	.text.u8g_NextPage,"ax",%progbits
+ 1037              		.align	1
+ 1038              		.p2align 2,,3
+ 1039              		.global	u8g_NextPage
+ 1040              		.syntax unified
+ 1041              		.thumb
+ 1042              		.thumb_func
+ 1043              		.fpu softvfp
+ 1045              	u8g_NextPage:
+ 1046              	.LFB17:
+ 389:u8g/u8g_ll_api.c ****   if  ( u8g->cursor_fn != (u8g_draw_cursor_fn)0 )
+ 1047              		.loc 1 389 0
+ 1048              		.cfi_startproc
+ 1049              		@ args = 0, pretend = 0, frame = 0
+ 1050              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1051              	.LVL96:
+ 390:u8g/u8g_ll_api.c ****   {
+ 1052              		.loc 1 390 0
+ 1053 0000 8369     		ldr	r3, [r0, #24]
+ 389:u8g/u8g_ll_api.c ****   if  ( u8g->cursor_fn != (u8g_draw_cursor_fn)0 )
+ 1054              		.loc 1 389 0
+ 1055 0002 10B5     		push	{r4, lr}
+ 1056              	.LCFI31:
+ 1057              		.cfi_def_cfa_offset 8
+ 1058              		.cfi_offset 4, -8
+ 1059              		.cfi_offset 14, -4
+ 389:u8g/u8g_ll_api.c ****   if  ( u8g->cursor_fn != (u8g_draw_cursor_fn)0 )
+ 1060              		.loc 1 389 0
+ 1061 0004 0446     		mov	r4, r0
+ 390:u8g/u8g_ll_api.c ****   {
+ 1062              		.loc 1 390 0
+ 1063 0006 03B1     		cbz	r3, .L51
+ 392:u8g/u8g_ll_api.c ****   }
+ 1064              		.loc 1 392 0
+ 1065 0008 9847     		blx	r3
+ 1066              	.LVL97:
+ 1067              	.L51:
+ 394:u8g/u8g_ll_api.c **** }
+ 1068              		.loc 1 394 0
+ 1069 000a 6168     		ldr	r1, [r4, #4]
+ 1070 000c 2046     		mov	r0, r4
+ 395:u8g/u8g_ll_api.c **** 
+ 1071              		.loc 1 395 0
+ 1072 000e BDE81040 		pop	{r4, lr}
+ 1073              	.LCFI32:
+ 1074              		.cfi_restore 14
+ 1075              		.cfi_restore 4
+ 1076              		.cfi_def_cfa_offset 0
+ 1077              	.LVL98:
+ 394:u8g/u8g_ll_api.c **** }
+ 1078              		.loc 1 394 0
+ 1079 0012 014B     		ldr	r3, .L56
+ 1080 0014 1847     		bx	r3
+ 1081              	.LVL99:
+ 1082              	.L57:
+ 1083 0016 00BF     		.align	2
+ 1084              	.L56:
+ 1085 0018 00000000 		.word	u8g_NextPageLL
+ 1086              		.cfi_endproc
+ 1087              	.LFE17:
+ 1089              		.section	.text.u8g_SetContrast,"ax",%progbits
+ 1090              		.align	1
+ 1091              		.p2align 2,,3
+ 1092              		.global	u8g_SetContrast
+ 1093              		.syntax unified
+ 1094              		.thumb
+ 1095              		.thumb_func
+ 1096              		.fpu softvfp
+ 1098              	u8g_SetContrast:
+ 1099              	.LFB18:
+ 398:u8g/u8g_ll_api.c ****   return u8g_SetContrastLL(u8g, u8g->dev, contrast);
+ 1100              		.loc 1 398 0
+ 1101              		.cfi_startproc
+ 1102              		@ args = 0, pretend = 0, frame = 8
+ 1103              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1104              	.LVL100:
+ 1105 0000 10B5     		push	{r4, lr}
+ 1106              	.LCFI33:
+ 1107              		.cfi_def_cfa_offset 8
+ 1108              		.cfi_offset 4, -8
+ 1109              		.cfi_offset 14, -4
+ 1110 0002 82B0     		sub	sp, sp, #8
+ 1111              	.LCFI34:
+ 1112              		.cfi_def_cfa_offset 16
+ 399:u8g/u8g_ll_api.c **** }
+ 1113              		.loc 1 399 0
+ 1114 0004 4268     		ldr	r2, [r0, #4]
+ 1115              	.LVL101:
+ 1116 0006 02AB     		add	r3, sp, #8
+ 1117 0008 03F8011D 		strb	r1, [r3, #-1]!
+ 1118              	.LVL102:
+ 1119              	.LBB143:
+ 1120              	.LBB144:
+ 1121              	.LBB145:
+ 1122              	.LBB146:
+  44:u8g/u8g_ll_api.c **** }
+ 1123              		.loc 1 44 0
+ 1124 000c 1468     		ldr	r4, [r2]
+ 1125 000e 1146     		mov	r1, r2
+ 1126              	.LVL103:
+ 1127 0010 0F22     		movs	r2, #15
+ 1128              	.LVL104:
+ 1129 0012 A047     		blx	r4
+ 1130              	.LVL105:
+ 1131              	.LBE146:
+ 1132              	.LBE145:
+ 1133              	.LBE144:
+ 1134              	.LBE143:
+ 400:u8g/u8g_ll_api.c **** 
+ 1135              		.loc 1 400 0
+ 1136 0014 02B0     		add	sp, sp, #8
+ 1137              	.LCFI35:
+ 1138              		.cfi_def_cfa_offset 8
+ 1139              		@ sp needed
+ 1140 0016 10BD     		pop	{r4, pc}
+ 1141              		.cfi_endproc
+ 1142              	.LFE18:
+ 1144              		.section	.text.u8g_SleepOn,"ax",%progbits
+ 1145              		.align	1
+ 1146              		.p2align 2,,3
+ 1147              		.global	u8g_SleepOn
+ 1148              		.syntax unified
+ 1149              		.thumb
+ 1150              		.thumb_func
+ 1151              		.fpu softvfp
+ 1153              	u8g_SleepOn:
+ 1154              	.LFB19:
+ 403:u8g/u8g_ll_api.c ****   u8g_call_dev_fn(u8g, u8g->dev, U8G_DEV_MSG_SLEEP_ON, NULL);
+ 1155              		.loc 1 403 0
+ 1156              		.cfi_startproc
+ 1157              		@ args = 0, pretend = 0, frame = 0
+ 1158              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1159              		@ link register save eliminated.
+ 1160              	.LVL106:
+ 404:u8g/u8g_ll_api.c **** }
+ 1161              		.loc 1 404 0
+ 1162 0000 4168     		ldr	r1, [r0, #4]
+ 1163              	.LVL107:
+ 403:u8g/u8g_ll_api.c ****   u8g_call_dev_fn(u8g, u8g->dev, U8G_DEV_MSG_SLEEP_ON, NULL);
+ 1164              		.loc 1 403 0
+ 1165 0002 10B4     		push	{r4}
+ 1166              	.LCFI36:
+ 1167              		.cfi_def_cfa_offset 4
+ 1168              		.cfi_offset 4, -4
+ 1169              	.LBB147:
+ 1170              	.LBB148:
+  44:u8g/u8g_ll_api.c **** }
+ 1171              		.loc 1 44 0
+ 1172 0004 0C68     		ldr	r4, [r1]
+ 1173 0006 0023     		movs	r3, #0
+ 1174 0008 A446     		mov	ip, r4
+ 1175 000a 1022     		movs	r2, #16
+ 1176              	.LBE148:
+ 1177              	.LBE147:
+ 405:u8g/u8g_ll_api.c **** 
+ 1178              		.loc 1 405 0
+ 1179 000c 10BC     		pop	{r4}
+ 1180              	.LCFI37:
+ 1181              		.cfi_restore 4
+ 1182              		.cfi_def_cfa_offset 0
+ 1183              	.LBB150:
+ 1184              	.LBB149:
+  44:u8g/u8g_ll_api.c **** }
+ 1185              		.loc 1 44 0
+ 1186 000e 6047     		bx	ip
+ 1187              	.LVL108:
+ 1188              	.LBE149:
+ 1189              	.LBE150:
+ 1190              		.cfi_endproc
+ 1191              	.LFE19:
+ 1193              		.section	.text.u8g_SleepOff,"ax",%progbits
+ 1194              		.align	1
+ 1195              		.p2align 2,,3
+ 1196              		.global	u8g_SleepOff
+ 1197              		.syntax unified
+ 1198              		.thumb
+ 1199              		.thumb_func
+ 1200              		.fpu softvfp
+ 1202              	u8g_SleepOff:
+ 1203              	.LFB20:
+ 408:u8g/u8g_ll_api.c ****   u8g_call_dev_fn(u8g, u8g->dev, U8G_DEV_MSG_SLEEP_OFF, NULL);
+ 1204              		.loc 1 408 0
+ 1205              		.cfi_startproc
+ 1206              		@ args = 0, pretend = 0, frame = 0
+ 1207              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1208              		@ link register save eliminated.
+ 1209              	.LVL109:
+ 409:u8g/u8g_ll_api.c **** }
+ 1210              		.loc 1 409 0
+ 1211 0000 4168     		ldr	r1, [r0, #4]
+ 1212              	.LVL110:
+ 408:u8g/u8g_ll_api.c ****   u8g_call_dev_fn(u8g, u8g->dev, U8G_DEV_MSG_SLEEP_OFF, NULL);
+ 1213              		.loc 1 408 0
+ 1214 0002 10B4     		push	{r4}
+ 1215              	.LCFI38:
+ 1216              		.cfi_def_cfa_offset 4
+ 1217              		.cfi_offset 4, -4
+ 1218              	.LBB151:
+ 1219              	.LBB152:
+  44:u8g/u8g_ll_api.c **** }
+ 1220              		.loc 1 44 0
+ 1221 0004 0C68     		ldr	r4, [r1]
+ 1222 0006 0023     		movs	r3, #0
+ 1223 0008 A446     		mov	ip, r4
+ 1224 000a 1122     		movs	r2, #17
+ 1225              	.LBE152:
+ 1226              	.LBE151:
+ 410:u8g/u8g_ll_api.c **** 
+ 1227              		.loc 1 410 0
+ 1228 000c 10BC     		pop	{r4}
+ 1229              	.LCFI39:
+ 1230              		.cfi_restore 4
+ 1231              		.cfi_def_cfa_offset 0
+ 1232              	.LBB154:
+ 1233              	.LBB153:
+  44:u8g/u8g_ll_api.c **** }
+ 1234              		.loc 1 44 0
+ 1235 000e 6047     		bx	ip
+ 1236              	.LVL111:
+ 1237              	.LBE153:
+ 1238              	.LBE154:
+ 1239              		.cfi_endproc
+ 1240              	.LFE20:
+ 1242              		.section	.text.u8g_DrawPixel,"ax",%progbits
+ 1243              		.align	1
+ 1244              		.p2align 2,,3
+ 1245              		.global	u8g_DrawPixel
+ 1246              		.syntax unified
+ 1247              		.thumb
+ 1248              		.thumb_func
+ 1249              		.fpu softvfp
+ 1251              	u8g_DrawPixel:
+ 1252              	.LFB21:
+ 414:u8g/u8g_ll_api.c ****   u8g_DrawPixelLL(u8g, u8g->dev, x, y);
+ 1253              		.loc 1 414 0
+ 1254              		.cfi_startproc
+ 1255              		@ args = 0, pretend = 0, frame = 0
+ 1256              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1257              		@ link register save eliminated.
+ 1258              	.LVL112:
+ 1259 0000 0346     		mov	r3, r0
+ 1260 0002 30B4     		push	{r4, r5}
+ 1261              	.LCFI40:
+ 1262              		.cfi_def_cfa_offset 8
+ 1263              		.cfi_offset 4, -8
+ 1264              		.cfi_offset 5, -4
+ 415:u8g/u8g_ll_api.c **** }
+ 1265              		.loc 1 415 0
+ 1266 0004 4468     		ldr	r4, [r0, #4]
+ 1267              	.LVL113:
+ 1268              	.LBB155:
+ 1269              	.LBB156:
+  90:u8g/u8g_ll_api.c ****   arg->y = y;
+ 1270              		.loc 1 90 0
+ 1271 0006 80F82D10 		strb	r1, [r0, #45]
+  91:u8g/u8g_ll_api.c ****   u8g_call_dev_fn(u8g, dev, U8G_DEV_MSG_SET_PIXEL, arg);
+ 1272              		.loc 1 91 0
+ 1273 000a 80F82E20 		strb	r2, [r0, #46]
+ 1274              	.LVL114:
+ 1275              	.LBB157:
+ 1276              	.LBB158:
+  44:u8g/u8g_ll_api.c **** }
+ 1277              		.loc 1 44 0
+ 1278 000e 2568     		ldr	r5, [r4]
+ 1279 0010 2146     		mov	r1, r4
+ 1280              	.LVL115:
+ 1281 0012 AC46     		mov	ip, r5
+ 1282              	.LBE158:
+ 1283              	.LBE157:
+ 1284              	.LBE156:
+ 1285              	.LBE155:
+ 416:u8g/u8g_ll_api.c **** 
+ 1286              		.loc 1 416 0
+ 1287 0014 30BC     		pop	{r4, r5}
+ 1288              	.LCFI41:
+ 1289              		.cfi_restore 5
+ 1290              		.cfi_restore 4
+ 1291              		.cfi_def_cfa_offset 0
+ 1292              	.LVL116:
+ 1293              	.LBB162:
+ 1294              	.LBB161:
+ 1295              	.LBB160:
+ 1296              	.LBB159:
+  44:u8g/u8g_ll_api.c **** }
+ 1297              		.loc 1 44 0
+ 1298 0016 2D33     		adds	r3, r3, #45
+ 1299              	.LVL117:
+ 1300 0018 3222     		movs	r2, #50
+ 1301              	.LVL118:
+ 1302 001a 6047     		bx	ip
+ 1303              	.LVL119:
+ 1304              	.LBE159:
+ 1305              	.LBE160:
+ 1306              	.LBE161:
+ 1307              	.LBE162:
+ 1308              		.cfi_endproc
+ 1309              	.LFE21:
+ 1311              		.section	.text.u8g_Draw8Pixel,"ax",%progbits
+ 1312              		.align	1
+ 1313              		.p2align 2,,3
+ 1314              		.global	u8g_Draw8Pixel
+ 1315              		.syntax unified
+ 1316              		.thumb
+ 1317              		.thumb_func
+ 1318              		.fpu softvfp
+ 1320              	u8g_Draw8Pixel:
+ 1321              	.LFB22:
+ 419:u8g/u8g_ll_api.c ****   u8g_Draw8PixelLL(u8g, u8g->dev, x, y, dir, pixel);
+ 1322              		.loc 1 419 0
+ 1323              		.cfi_startproc
+ 1324              		@ args = 4, pretend = 0, frame = 0
+ 1325              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1326              		@ link register save eliminated.
+ 1327              	.LVL120:
+ 1328 0000 30B4     		push	{r4, r5}
+ 1329              	.LCFI42:
+ 1330              		.cfi_def_cfa_offset 8
+ 1331              		.cfi_offset 4, -8
+ 1332              		.cfi_offset 5, -4
+ 419:u8g/u8g_ll_api.c ****   u8g_Draw8PixelLL(u8g, u8g->dev, x, y, dir, pixel);
+ 1333              		.loc 1 419 0
+ 1334 0002 9DF80850 		ldrb	r5, [sp, #8]	@ zero_extendqisi2
+ 1335              	.LBB163:
+ 1336              	.LBB164:
+  98:u8g/u8g_ll_api.c ****   arg->y = y;
+ 1337              		.loc 1 98 0
+ 1338 0006 80F82D10 		strb	r1, [r0, #45]
+ 1339              	.LBE164:
+ 1340              	.LBE163:
+ 420:u8g/u8g_ll_api.c **** }
+ 1341              		.loc 1 420 0
+ 1342 000a 4168     		ldr	r1, [r0, #4]
+ 1343              	.LVL121:
+ 1344              	.LBB171:
+ 1345              	.LBB169:
+  99:u8g/u8g_ll_api.c ****   arg->dir = dir;
+ 1346              		.loc 1 99 0
+ 1347 000c 80F82E20 		strb	r2, [r0, #46]
+ 100:u8g/u8g_ll_api.c ****   arg->pixel = pixel;
+ 1348              		.loc 1 100 0
+ 1349 0010 80F83030 		strb	r3, [r0, #48]
+ 101:u8g/u8g_ll_api.c ****   u8g_call_dev_fn(u8g, dev, U8G_DEV_MSG_SET_8PIXEL, arg);
+ 1350              		.loc 1 101 0
+ 1351 0014 80F82F50 		strb	r5, [r0, #47]
+ 1352              	.LVL122:
+ 1353              	.LBB165:
+ 1354              	.LBB166:
+  44:u8g/u8g_ll_api.c **** }
+ 1355              		.loc 1 44 0
+ 1356 0018 0C68     		ldr	r4, [r1]
+ 1357 001a 00F12D03 		add	r3, r0, #45
+ 1358              	.LVL123:
+ 1359 001e A446     		mov	ip, r4
+ 1360              	.LBE166:
+ 1361              	.LBE165:
+ 1362              	.LBE169:
+ 1363              	.LBE171:
+ 421:u8g/u8g_ll_api.c **** 
+ 1364              		.loc 1 421 0
+ 1365 0020 30BC     		pop	{r4, r5}
+ 1366              	.LCFI43:
+ 1367              		.cfi_restore 5
+ 1368              		.cfi_restore 4
+ 1369              		.cfi_def_cfa_offset 0
+ 1370              	.LVL124:
+ 1371              	.LBB172:
+ 1372              	.LBB170:
+ 1373              	.LBB168:
+ 1374              	.LBB167:
+  44:u8g/u8g_ll_api.c **** }
+ 1375              		.loc 1 44 0
+ 1376 0022 3B22     		movs	r2, #59
+ 1377              	.LVL125:
+ 1378 0024 6047     		bx	ip
+ 1379              	.LVL126:
+ 1380              	.LBE167:
+ 1381              	.LBE168:
+ 1382              	.LBE170:
+ 1383              	.LBE172:
+ 1384              		.cfi_endproc
+ 1385              	.LFE22:
+ 1387 0026 00BF     		.section	.text.u8g_Draw4TPixel,"ax",%progbits
+ 1388              		.align	1
+ 1389              		.p2align 2,,3
+ 1390              		.global	u8g_Draw4TPixel
+ 1391              		.syntax unified
+ 1392              		.thumb
+ 1393              		.thumb_func
+ 1394              		.fpu softvfp
+ 1396              	u8g_Draw4TPixel:
+ 1397              	.LFB23:
+ 424:u8g/u8g_ll_api.c ****   u8g_Draw4TPixelLL(u8g, u8g->dev, x, y, dir, pixel);
+ 1398              		.loc 1 424 0
+ 1399              		.cfi_startproc
+ 1400              		@ args = 4, pretend = 0, frame = 0
+ 1401              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1402              		@ link register save eliminated.
+ 1403              	.LVL127:
+ 1404 0000 30B4     		push	{r4, r5}
+ 1405              	.LCFI44:
+ 1406              		.cfi_def_cfa_offset 8
+ 1407              		.cfi_offset 4, -8
+ 1408              		.cfi_offset 5, -4
+ 424:u8g/u8g_ll_api.c ****   u8g_Draw4TPixelLL(u8g, u8g->dev, x, y, dir, pixel);
+ 1409              		.loc 1 424 0
+ 1410 0002 9DF80850 		ldrb	r5, [sp, #8]	@ zero_extendqisi2
+ 1411              	.LBB173:
+ 1412              	.LBB174:
+ 108:u8g/u8g_ll_api.c ****   arg->y = y;
+ 1413              		.loc 1 108 0
+ 1414 0006 80F82D10 		strb	r1, [r0, #45]
+ 1415              	.LBE174:
+ 1416              	.LBE173:
+ 425:u8g/u8g_ll_api.c **** }
+ 1417              		.loc 1 425 0
+ 1418 000a 4168     		ldr	r1, [r0, #4]
+ 1419              	.LVL128:
+ 1420              	.LBB181:
+ 1421              	.LBB179:
+ 109:u8g/u8g_ll_api.c ****   arg->dir = dir;
+ 1422              		.loc 1 109 0
+ 1423 000c 80F82E20 		strb	r2, [r0, #46]
+ 110:u8g/u8g_ll_api.c ****   arg->pixel = pixel;
+ 1424              		.loc 1 110 0
+ 1425 0010 80F83030 		strb	r3, [r0, #48]
+ 111:u8g/u8g_ll_api.c ****   u8g_call_dev_fn(u8g, dev, U8G_DEV_MSG_SET_4TPIXEL, arg);
+ 1426              		.loc 1 111 0
+ 1427 0014 80F82F50 		strb	r5, [r0, #47]
+ 1428              	.LVL129:
+ 1429              	.LBB175:
+ 1430              	.LBB176:
+  44:u8g/u8g_ll_api.c **** }
+ 1431              		.loc 1 44 0
+ 1432 0018 0C68     		ldr	r4, [r1]
+ 1433 001a 00F12D03 		add	r3, r0, #45
+ 1434              	.LVL130:
+ 1435 001e A446     		mov	ip, r4
+ 1436              	.LBE176:
+ 1437              	.LBE175:
+ 1438              	.LBE179:
+ 1439              	.LBE181:
+ 426:u8g/u8g_ll_api.c **** 
+ 1440              		.loc 1 426 0
+ 1441 0020 30BC     		pop	{r4, r5}
+ 1442              	.LCFI45:
+ 1443              		.cfi_restore 5
+ 1444              		.cfi_restore 4
+ 1445              		.cfi_def_cfa_offset 0
+ 1446              	.LVL131:
+ 1447              	.LBB182:
+ 1448              	.LBB180:
+ 1449              	.LBB178:
+ 1450              	.LBB177:
+  44:u8g/u8g_ll_api.c **** }
+ 1451              		.loc 1 44 0
+ 1452 0022 2D22     		movs	r2, #45
+ 1453              	.LVL132:
+ 1454 0024 6047     		bx	ip
+ 1455              	.LVL133:
+ 1456              	.LBE177:
+ 1457              	.LBE178:
+ 1458              	.LBE180:
+ 1459              	.LBE182:
+ 1460              		.cfi_endproc
+ 1461              	.LFE23:
+ 1463 0026 00BF     		.section	.text.u8g_SetColorEntry,"ax",%progbits
+ 1464              		.align	1
+ 1465              		.p2align 2,,3
+ 1466              		.global	u8g_SetColorEntry
+ 1467              		.syntax unified
+ 1468              		.thumb
+ 1469              		.thumb_func
+ 1470              		.fpu softvfp
+ 1472              	u8g_SetColorEntry:
+ 1473              	.LFB24:
+ 453:u8g/u8g_ll_api.c ****   u8g_dev_arg_irgb_t irgb;
+ 1474              		.loc 1 453 0
+ 1475              		.cfi_startproc
+ 1476              		@ args = 4, pretend = 0, frame = 8
+ 1477              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1478              	.LVL134:
+ 1479 0000 30B5     		push	{r4, r5, lr}
+ 1480              	.LCFI46:
+ 1481              		.cfi_def_cfa_offset 12
+ 1482              		.cfi_offset 4, -12
+ 1483              		.cfi_offset 5, -8
+ 1484              		.cfi_offset 14, -4
+ 1485 0002 83B0     		sub	sp, sp, #12
+ 1486              	.LCFI47:
+ 1487              		.cfi_def_cfa_offset 24
+ 453:u8g/u8g_ll_api.c ****   u8g_dev_arg_irgb_t irgb;
+ 1488              		.loc 1 453 0
+ 1489 0004 9DF81850 		ldrb	r5, [sp, #24]	@ zero_extendqisi2
+ 459:u8g/u8g_ll_api.c **** }
+ 1490              		.loc 1 459 0
+ 1491 0008 4468     		ldr	r4, [r0, #4]
+ 455:u8g/u8g_ll_api.c ****   irgb.r = r;
+ 1492              		.loc 1 455 0
+ 1493 000a 8DF80410 		strb	r1, [sp, #4]
+ 456:u8g/u8g_ll_api.c ****   irgb.g = g;
+ 1494              		.loc 1 456 0
+ 1495 000e 8DF80520 		strb	r2, [sp, #5]
+ 457:u8g/u8g_ll_api.c ****   irgb.b = b;  
+ 1496              		.loc 1 457 0
+ 1497 0012 8DF80630 		strb	r3, [sp, #6]
+ 458:u8g/u8g_ll_api.c ****   u8g_call_dev_fn(u8g, u8g->dev, U8G_DEV_MSG_SET_COLOR_ENTRY, &irgb);
+ 1498              		.loc 1 458 0
+ 1499 0016 8DF80750 		strb	r5, [sp, #7]
+ 1500              	.LVL135:
+ 1501              	.LBB183:
+ 1502              	.LBB184:
+  44:u8g/u8g_ll_api.c **** }
+ 1503              		.loc 1 44 0
+ 1504 001a 2568     		ldr	r5, [r4]
+ 1505 001c 2146     		mov	r1, r4
+ 1506              	.LVL136:
+ 1507 001e 01AB     		add	r3, sp, #4
+ 1508              	.LVL137:
+ 1509 0020 3C22     		movs	r2, #60
+ 1510              	.LVL138:
+ 1511 0022 A847     		blx	r5
+ 1512              	.LVL139:
+ 1513              	.LBE184:
+ 1514              	.LBE183:
+ 460:u8g/u8g_ll_api.c **** 
+ 1515              		.loc 1 460 0
+ 1516 0024 03B0     		add	sp, sp, #12
+ 1517              	.LCFI48:
+ 1518              		.cfi_def_cfa_offset 12
+ 1519              		@ sp needed
+ 1520 0026 30BD     		pop	{r4, r5, pc}
+ 1521              		.cfi_endproc
+ 1522              	.LFE24:
+ 1524              		.section	.text.u8g_SetColorIndex,"ax",%progbits
+ 1525              		.align	1
+ 1526              		.p2align 2,,3
+ 1527              		.global	u8g_SetColorIndex
+ 1528              		.syntax unified
+ 1529              		.thumb
+ 1530              		.thumb_func
+ 1531              		.fpu softvfp
+ 1533              	u8g_SetColorIndex:
+ 1534              	.LFB25:
+ 463:u8g/u8g_ll_api.c ****   u8g->arg_pixel.color = idx;
+ 1535              		.loc 1 463 0
+ 1536              		.cfi_startproc
+ 1537              		@ args = 0, pretend = 0, frame = 0
+ 1538              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1539              		@ link register save eliminated.
+ 1540              	.LVL140:
+ 1541              		.loc 1 464 0
+ 1542 0000 80F83110 		strb	r1, [r0, #49]
+ 465:u8g/u8g_ll_api.c ****   /*u8g->color_index = idx; */ /* must be removed */
+ 466:u8g/u8g_ll_api.c **** }
+ 1543              		.loc 1 466 0
+ 1544 0004 7047     		bx	lr
+ 1545              		.cfi_endproc
+ 1546              	.LFE25:
+ 1548 0006 00BF     		.section	.text.u8g_SetHiColor,"ax",%progbits
+ 1549              		.align	1
+ 1550              		.p2align 2,,3
+ 1551              		.global	u8g_SetHiColor
+ 1552              		.syntax unified
+ 1553              		.thumb
+ 1554              		.thumb_func
+ 1555              		.fpu softvfp
+ 1557              	u8g_SetHiColor:
+ 1558              	.LFB26:
+ 467:u8g/u8g_ll_api.c **** 
+ 468:u8g/u8g_ll_api.c **** void u8g_SetHiColor(u8g_t *u8g, uint16_t rgb)
+ 469:u8g/u8g_ll_api.c **** {
+ 1559              		.loc 1 469 0
+ 1560              		.cfi_startproc
+ 1561              		@ args = 0, pretend = 0, frame = 0
+ 1562              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1563              		@ link register save eliminated.
+ 1564              	.LVL141:
+ 470:u8g/u8g_ll_api.c ****   u8g->arg_pixel.color = rgb&255;
+ 471:u8g/u8g_ll_api.c ****   u8g->arg_pixel.hi_color = rgb>>8;
+ 1565              		.loc 1 471 0
+ 1566 0000 0B0A     		lsrs	r3, r1, #8
+ 470:u8g/u8g_ll_api.c ****   u8g->arg_pixel.color = rgb&255;
+ 1567              		.loc 1 470 0
+ 1568 0002 80F83110 		strb	r1, [r0, #49]
+ 1569              		.loc 1 471 0
+ 1570 0006 80F83230 		strb	r3, [r0, #50]
+ 472:u8g/u8g_ll_api.c ****   /*u8g->color_index = idx; */ /* must be removed */
+ 473:u8g/u8g_ll_api.c **** }
+ 1571              		.loc 1 473 0
+ 1572 000a 7047     		bx	lr
+ 1573              		.cfi_endproc
+ 1574              	.LFE26:
+ 1576              		.section	.text.u8g_SetHiColorByRGB,"ax",%progbits
+ 1577              		.align	1
+ 1578              		.p2align 2,,3
+ 1579              		.global	u8g_SetHiColorByRGB
+ 1580              		.syntax unified
+ 1581              		.thumb
+ 1582              		.thumb_func
+ 1583              		.fpu softvfp
+ 1585              	u8g_SetHiColorByRGB:
+ 1586              	.LFB27:
+ 474:u8g/u8g_ll_api.c **** 
+ 475:u8g/u8g_ll_api.c **** void u8g_SetHiColorByRGB(u8g_t *u8g, uint8_t r, uint8_t g, uint8_t b)
+ 476:u8g/u8g_ll_api.c **** {
+ 1587              		.loc 1 476 0
+ 1588              		.cfi_startproc
+ 1589              		@ args = 0, pretend = 0, frame = 0
+ 1590              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1591              		@ link register save eliminated.
+ 1592              	.LVL142:
+ 1593 0000 10B4     		push	{r4}
+ 1594              	.LCFI49:
+ 1595              		.cfi_def_cfa_offset 4
+ 1596              		.cfi_offset 4, -4
+ 477:u8g/u8g_ll_api.c ****   
+ 478:u8g/u8g_ll_api.c ****   r &= ~7;
+ 479:u8g/u8g_ll_api.c ****   g >>= 2;
+ 480:u8g/u8g_ll_api.c ****   b >>= 3;
+ 1597              		.loc 1 480 0
+ 1598 0002 DB08     		lsrs	r3, r3, #3
+ 1599              	.LVL143:
+ 481:u8g/u8g_ll_api.c ****   u8g->arg_pixel.color = b;
+ 482:u8g/u8g_ll_api.c ****   u8g->arg_pixel.color |= (g & 7) << 5;
+ 1600              		.loc 1 482 0
+ 1601 0004 9408     		lsrs	r4, r2, #2
+ 478:u8g/u8g_ll_api.c ****   g >>= 2;
+ 1602              		.loc 1 478 0
+ 1603 0006 01F0F801 		and	r1, r1, #248
+ 1604              	.LVL144:
+ 1605              		.loc 1 482 0
+ 1606 000a 43EA4413 		orr	r3, r3, r4, lsl #5
+ 483:u8g/u8g_ll_api.c ****   u8g->arg_pixel.hi_color = r;
+ 484:u8g/u8g_ll_api.c ****   u8g->arg_pixel.hi_color |= (g>>3) & 7;
+ 1607              		.loc 1 484 0
+ 1608 000e 41EA5212 		orr	r2, r1, r2, lsr #5
+ 1609              	.LVL145:
+ 482:u8g/u8g_ll_api.c ****   u8g->arg_pixel.hi_color = r;
+ 1610              		.loc 1 482 0
+ 1611 0012 80F83130 		strb	r3, [r0, #49]
+ 1612              		.loc 1 484 0
+ 1613 0016 80F83220 		strb	r2, [r0, #50]
+ 485:u8g/u8g_ll_api.c ****   
+ 486:u8g/u8g_ll_api.c ****   //u8g_SetHiColor(u8g, U8G_GET_HICOLOR_BY_RGB(r,g,b));
+ 487:u8g/u8g_ll_api.c **** }
+ 1614              		.loc 1 487 0
+ 1615 001a 10BC     		pop	{r4}
+ 1616              	.LCFI50:
+ 1617              		.cfi_restore 4
+ 1618              		.cfi_def_cfa_offset 0
+ 1619 001c 7047     		bx	lr
+ 1620              		.cfi_endproc
+ 1621              	.LFE27:
+ 1623 001e 00BF     		.section	.text.u8g_SetRGB,"ax",%progbits
+ 1624              		.align	1
+ 1625              		.p2align 2,,3
+ 1626              		.global	u8g_SetRGB
+ 1627              		.syntax unified
+ 1628              		.thumb
+ 1629              		.thumb_func
+ 1630              		.fpu softvfp
+ 1632              	u8g_SetRGB:
+ 1633              	.LFB28:
+ 488:u8g/u8g_ll_api.c **** 
+ 489:u8g/u8g_ll_api.c **** void u8g_SetRGB(u8g_t *u8g, uint8_t r, uint8_t g, uint8_t b)
+ 490:u8g/u8g_ll_api.c **** {
+ 1634              		.loc 1 490 0
+ 1635              		.cfi_startproc
+ 1636              		@ args = 0, pretend = 0, frame = 0
+ 1637              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1638              		@ link register save eliminated.
+ 1639              	.LVL146:
+ 1640 0000 10B4     		push	{r4}
+ 1641              	.LCFI51:
+ 1642              		.cfi_def_cfa_offset 4
+ 1643              		.cfi_offset 4, -4
+ 491:u8g/u8g_ll_api.c ****   if ( u8g->mode == U8G_MODE_R3G3B2 ) 
+ 1644              		.loc 1 491 0
+ 1645 0002 C47C     		ldrb	r4, [r0, #19]	@ zero_extendqisi2
+ 1646 0004 282C     		cmp	r4, #40
+ 1647 0006 17D0     		beq	.L81
+ 492:u8g/u8g_ll_api.c ****   {
+ 493:u8g/u8g_ll_api.c ****     r &= 0x0e0;
+ 494:u8g/u8g_ll_api.c ****     g &= 0x0e0;
+ 495:u8g/u8g_ll_api.c ****     g >>= 3;
+ 496:u8g/u8g_ll_api.c ****     b >>= 6;
+ 497:u8g/u8g_ll_api.c ****     u8g->arg_pixel.color = r | g | b;
+ 498:u8g/u8g_ll_api.c ****   }
+ 499:u8g/u8g_ll_api.c ****   else if ( u8g->mode == U8G_MODE_HICOLOR )
+ 1648              		.loc 1 499 0
+ 1649 0008 302C     		cmp	r4, #48
+ 1650 000a 07D0     		beq	.L82
+ 500:u8g/u8g_ll_api.c ****   {
+ 501:u8g/u8g_ll_api.c ****     u8g_SetHiColorByRGB(u8g, r,g,b);
+ 502:u8g/u8g_ll_api.c ****   }
+ 503:u8g/u8g_ll_api.c ****   else
+ 504:u8g/u8g_ll_api.c ****   {
+ 505:u8g/u8g_ll_api.c ****     u8g->arg_pixel.color = r;
+ 1651              		.loc 1 505 0
+ 1652 000c 80F83110 		strb	r1, [r0, #49]
+ 506:u8g/u8g_ll_api.c ****     u8g->arg_pixel.hi_color = g;
+ 1653              		.loc 1 506 0
+ 1654 0010 80F83220 		strb	r2, [r0, #50]
+ 507:u8g/u8g_ll_api.c ****     u8g->arg_pixel.blue = b;
+ 1655              		.loc 1 507 0
+ 1656 0014 80F83330 		strb	r3, [r0, #51]
+ 508:u8g/u8g_ll_api.c ****   }
+ 509:u8g/u8g_ll_api.c **** }
+ 1657              		.loc 1 509 0
+ 1658 0018 10BC     		pop	{r4}
+ 1659              	.LCFI52:
+ 1660              		.cfi_remember_state
+ 1661              		.cfi_restore 4
+ 1662              		.cfi_def_cfa_offset 0
+ 1663 001a 7047     		bx	lr
+ 1664              	.L82:
+ 1665              	.LCFI53:
+ 1666              		.cfi_restore_state
+ 1667              	.LVL147:
+ 1668              	.LBB185:
+ 1669              	.LBB186:
+ 482:u8g/u8g_ll_api.c ****   u8g->arg_pixel.hi_color = r;
+ 1670              		.loc 1 482 0
+ 1671 001c 9408     		lsrs	r4, r2, #2
+ 480:u8g/u8g_ll_api.c ****   u8g->arg_pixel.color = b;
+ 1672              		.loc 1 480 0
+ 1673 001e DB08     		lsrs	r3, r3, #3
+ 1674              	.LVL148:
+ 478:u8g/u8g_ll_api.c ****   g >>= 2;
+ 1675              		.loc 1 478 0
+ 1676 0020 21F00701 		bic	r1, r1, #7
+ 1677              	.LVL149:
+ 482:u8g/u8g_ll_api.c ****   u8g->arg_pixel.hi_color = r;
+ 1678              		.loc 1 482 0
+ 1679 0024 43EA4413 		orr	r3, r3, r4, lsl #5
+ 484:u8g/u8g_ll_api.c ****   
+ 1680              		.loc 1 484 0
+ 1681 0028 41EA5212 		orr	r2, r1, r2, lsr #5
+ 1682              	.LVL150:
+ 1683 002c 80F83220 		strb	r2, [r0, #50]
+ 482:u8g/u8g_ll_api.c ****   u8g->arg_pixel.hi_color = r;
+ 1684              		.loc 1 482 0
+ 1685 0030 80F83130 		strb	r3, [r0, #49]
+ 1686              	.LBE186:
+ 1687              	.LBE185:
+ 1688              		.loc 1 509 0
+ 1689 0034 10BC     		pop	{r4}
+ 1690              	.LCFI54:
+ 1691              		.cfi_remember_state
+ 1692              		.cfi_restore 4
+ 1693              		.cfi_def_cfa_offset 0
+ 1694 0036 7047     		bx	lr
+ 1695              	.LVL151:
+ 1696              	.L81:
+ 1697              	.LCFI55:
+ 1698              		.cfi_restore_state
+ 1699 0038 D208     		lsrs	r2, r2, #3
+ 1700              	.LVL152:
+ 495:u8g/u8g_ll_api.c ****     b >>= 6;
+ 1701              		.loc 1 495 0
+ 1702 003a 02F01C02 		and	r2, r2, #28
+ 1703              	.LVL153:
+ 493:u8g/u8g_ll_api.c ****     g &= 0x0e0;
+ 1704              		.loc 1 493 0
+ 1705 003e 21F01F01 		bic	r1, r1, #31
+ 1706              	.LVL154:
+ 497:u8g/u8g_ll_api.c ****   }
+ 1707              		.loc 1 497 0
+ 1708 0042 1143     		orrs	r1, r1, r2
+ 1709 0044 41EA9313 		orr	r3, r1, r3, lsr #6
+ 1710              	.LVL155:
+ 1711 0048 80F83130 		strb	r3, [r0, #49]
+ 1712              		.loc 1 509 0
+ 1713 004c 10BC     		pop	{r4}
+ 1714              	.LCFI56:
+ 1715              		.cfi_restore 4
+ 1716              		.cfi_def_cfa_offset 0
+ 1717 004e 7047     		bx	lr
+ 1718              		.cfi_endproc
+ 1719              	.LFE28:
+ 1721              		.section	.text.u8g_GetColorIndex,"ax",%progbits
+ 1722              		.align	1
+ 1723              		.p2align 2,,3
+ 1724              		.global	u8g_GetColorIndex
+ 1725              		.syntax unified
+ 1726              		.thumb
+ 1727              		.thumb_func
+ 1728              		.fpu softvfp
+ 1730              	u8g_GetColorIndex:
+ 1731              	.LFB29:
+ 510:u8g/u8g_ll_api.c **** 
+ 511:u8g/u8g_ll_api.c **** 
+ 512:u8g/u8g_ll_api.c **** uint8_t u8g_GetColorIndex(u8g_t *u8g)
+ 513:u8g/u8g_ll_api.c **** {
+ 1732              		.loc 1 513 0
+ 1733              		.cfi_startproc
+ 1734              		@ args = 0, pretend = 0, frame = 0
+ 1735              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1736              		@ link register save eliminated.
+ 1737              	.LVL156:
+ 514:u8g/u8g_ll_api.c ****   return u8g->arg_pixel.color;
+ 515:u8g/u8g_ll_api.c **** }
+ 1738              		.loc 1 515 0
+ 1739 0000 90F83100 		ldrb	r0, [r0, #49]	@ zero_extendqisi2
+ 1740              	.LVL157:
+ 1741 0004 7047     		bx	lr
+ 1742              		.cfi_endproc
+ 1743              	.LFE29:
+ 1745 0006 00BF     		.section	.text.u8g_GetDefaultForegroundColor,"ax",%progbits
+ 1746              		.align	1
+ 1747              		.p2align 2,,3
+ 1748              		.global	u8g_GetDefaultForegroundColor
+ 1749              		.syntax unified
+ 1750              		.thumb
+ 1751              		.thumb_func
+ 1752              		.fpu softvfp
+ 1754              	u8g_GetDefaultForegroundColor:
+ 1755              	.LFB30:
+ 516:u8g/u8g_ll_api.c **** 
+ 517:u8g/u8g_ll_api.c **** uint8_t u8g_GetDefaultForegroundColor(u8g_t *u8g)
+ 518:u8g/u8g_ll_api.c **** {
+ 1756              		.loc 1 518 0
+ 1757              		.cfi_startproc
+ 1758              		@ args = 0, pretend = 0, frame = 0
+ 1759              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1760              		@ link register save eliminated.
+ 1761              	.LVL158:
+ 519:u8g/u8g_ll_api.c ****   uint8_t mode;
+ 520:u8g/u8g_ll_api.c ****   mode = u8g_GetMode(u8g);
+ 1762              		.loc 1 520 0
+ 1763 0000 C37C     		ldrb	r3, [r0, #19]	@ zero_extendqisi2
+ 1764              	.LVL159:
+ 521:u8g/u8g_ll_api.c ****   if ( mode == U8G_MODE_R3G3B2 ) 
+ 1765              		.loc 1 521 0
+ 1766 0002 282B     		cmp	r3, #40
+ 1767 0004 04D0     		beq	.L86
+ 522:u8g/u8g_ll_api.c ****     return 255;     /* white */
+ 523:u8g/u8g_ll_api.c ****   else if ( u8g_GetMode(u8g) == U8G_MODE_GRAY2BIT )
+ 1768              		.loc 1 523 0
+ 1769 0006 022B     		cmp	r3, #2
+ 524:u8g/u8g_ll_api.c ****     return 3;         /* max intensity */
+ 525:u8g/u8g_ll_api.c ****   else /* if ( u8g.getMode() == U8G_MODE_BW ) */
+ 526:u8g/u8g_ll_api.c ****     return 1;         /* pixel on */
+ 1770              		.loc 1 526 0
+ 1771 0008 0CBF     		ite	eq
+ 1772 000a 0320     		moveq	r0, #3
+ 1773              	.LVL160:
+ 1774 000c 0120     		movne	r0, #1
+ 1775 000e 7047     		bx	lr
+ 1776              	.LVL161:
+ 1777              	.L86:
+ 522:u8g/u8g_ll_api.c ****     return 255;     /* white */
+ 1778              		.loc 1 522 0
+ 1779 0010 FF20     		movs	r0, #255
+ 1780              	.LVL162:
+ 527:u8g/u8g_ll_api.c ****   return 1;
+ 528:u8g/u8g_ll_api.c **** }
+ 1781              		.loc 1 528 0
+ 1782 0012 7047     		bx	lr
+ 1783              		.cfi_endproc
+ 1784              	.LFE30:
+ 1786              		.section	.text.u8g_SetDefaultForegroundColor,"ax",%progbits
+ 1787              		.align	1
+ 1788              		.p2align 2,,3
+ 1789              		.global	u8g_SetDefaultForegroundColor
+ 1790              		.syntax unified
+ 1791              		.thumb
+ 1792              		.thumb_func
+ 1793              		.fpu softvfp
+ 1795              	u8g_SetDefaultForegroundColor:
+ 1796              	.LFB31:
+ 529:u8g/u8g_ll_api.c **** 
+ 530:u8g/u8g_ll_api.c **** void u8g_SetDefaultForegroundColor(u8g_t *u8g)
+ 531:u8g/u8g_ll_api.c **** {
+ 1797              		.loc 1 531 0
+ 1798              		.cfi_startproc
+ 1799              		@ args = 0, pretend = 0, frame = 0
+ 1800              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1801              		@ link register save eliminated.
+ 1802              	.LVL163:
+ 532:u8g/u8g_ll_api.c ****   if ( u8g->mode == U8G_MODE_HICOLOR )
+ 1803              		.loc 1 532 0
+ 1804 0000 C37C     		ldrb	r3, [r0, #19]	@ zero_extendqisi2
+ 1805 0002 302B     		cmp	r3, #48
+ 1806 0004 0CD0     		beq	.L94
+ 1807              	.LVL164:
+ 1808              	.LBB187:
+ 1809              	.LBB188:
+ 521:u8g/u8g_ll_api.c ****     return 255;     /* white */
+ 1810              		.loc 1 521 0
+ 1811 0006 282B     		cmp	r3, #40
+ 1812 0008 06D0     		beq	.L92
+ 523:u8g/u8g_ll_api.c ****     return 3;         /* max intensity */
+ 1813              		.loc 1 523 0
+ 1814 000a 022B     		cmp	r3, #2
+ 526:u8g/u8g_ll_api.c ****   return 1;
+ 1815              		.loc 1 526 0
+ 1816 000c 0CBF     		ite	eq
+ 1817 000e 0323     		moveq	r3, #3
+ 1818              	.LVL165:
+ 1819 0010 0123     		movne	r3, #1
+ 1820              	.LVL166:
+ 1821              	.LBE188:
+ 1822              	.LBE187:
+ 1823              	.LBB190:
+ 1824              	.LBB191:
+ 464:u8g/u8g_ll_api.c ****   /*u8g->color_index = idx; */ /* must be removed */
+ 1825              		.loc 1 464 0
+ 1826 0012 80F83130 		strb	r3, [r0, #49]
+ 1827              	.LBE191:
+ 1828              	.LBE190:
+ 533:u8g/u8g_ll_api.c ****   {
+ 534:u8g/u8g_ll_api.c ****     u8g->arg_pixel.color = 0x0ff;
+ 535:u8g/u8g_ll_api.c ****     u8g->arg_pixel.hi_color = 0x0ff;
+ 536:u8g/u8g_ll_api.c ****   }
+ 537:u8g/u8g_ll_api.c ****   else
+ 538:u8g/u8g_ll_api.c ****   {
+ 539:u8g/u8g_ll_api.c ****     u8g_SetColorIndex(u8g, u8g_GetDefaultForegroundColor(u8g));
+ 540:u8g/u8g_ll_api.c ****   }
+ 541:u8g/u8g_ll_api.c **** }
+ 1829              		.loc 1 541 0
+ 1830 0016 7047     		bx	lr
+ 1831              	.LVL167:
+ 1832              	.L92:
+ 1833              	.LBB193:
+ 1834              	.LBB189:
+ 522:u8g/u8g_ll_api.c ****   else if ( u8g_GetMode(u8g) == U8G_MODE_GRAY2BIT )
+ 1835              		.loc 1 522 0
+ 1836 0018 FF23     		movs	r3, #255
+ 1837              	.LVL168:
+ 1838              	.LBE189:
+ 1839              	.LBE193:
+ 1840              	.LBB194:
+ 1841              	.LBB192:
+ 464:u8g/u8g_ll_api.c ****   /*u8g->color_index = idx; */ /* must be removed */
+ 1842              		.loc 1 464 0
+ 1843 001a 80F83130 		strb	r3, [r0, #49]
+ 1844              	.LBE192:
+ 1845              	.LBE194:
+ 1846              		.loc 1 541 0
+ 1847 001e 7047     		bx	lr
+ 1848              	.LVL169:
+ 1849              	.L94:
+ 534:u8g/u8g_ll_api.c ****     u8g->arg_pixel.hi_color = 0x0ff;
+ 1850              		.loc 1 534 0
+ 1851 0020 FF23     		movs	r3, #255
+ 1852 0022 80F83130 		strb	r3, [r0, #49]
+ 535:u8g/u8g_ll_api.c ****   }
+ 1853              		.loc 1 535 0
+ 1854 0026 80F83230 		strb	r3, [r0, #50]
+ 1855 002a 7047     		bx	lr
+ 1856              		.cfi_endproc
+ 1857              	.LFE31:
+ 1859              		.section	.text.u8g_GetDefaultBackgroundColor,"ax",%progbits
+ 1860              		.align	1
+ 1861              		.p2align 2,,3
+ 1862              		.global	u8g_GetDefaultBackgroundColor
+ 1863              		.syntax unified
+ 1864              		.thumb
+ 1865              		.thumb_func
+ 1866              		.fpu softvfp
+ 1868              	u8g_GetDefaultBackgroundColor:
+ 1869              	.LFB32:
+ 542:u8g/u8g_ll_api.c **** 
+ 543:u8g/u8g_ll_api.c **** uint8_t u8g_GetDefaultBackgroundColor(u8g_t *u8g)
+ 544:u8g/u8g_ll_api.c **** {
+ 1870              		.loc 1 544 0
+ 1871              		.cfi_startproc
+ 1872              		@ args = 0, pretend = 0, frame = 0
+ 1873              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1874              		@ link register save eliminated.
+ 1875              	.LVL170:
+ 545:u8g/u8g_ll_api.c ****   return 0;
+ 546:u8g/u8g_ll_api.c **** }
+ 1876              		.loc 1 546 0
+ 1877 0000 0020     		movs	r0, #0
+ 1878              	.LVL171:
+ 1879 0002 7047     		bx	lr
+ 1880              		.cfi_endproc
+ 1881              	.LFE32:
+ 1883              		.section	.text.u8g_SetDefaultBackgroundColor,"ax",%progbits
+ 1884              		.align	1
+ 1885              		.p2align 2,,3
+ 1886              		.global	u8g_SetDefaultBackgroundColor
+ 1887              		.syntax unified
+ 1888              		.thumb
+ 1889              		.thumb_func
+ 1890              		.fpu softvfp
+ 1892              	u8g_SetDefaultBackgroundColor:
+ 1893              	.LFB33:
+ 547:u8g/u8g_ll_api.c **** 
+ 548:u8g/u8g_ll_api.c **** void u8g_SetDefaultBackgroundColor(u8g_t *u8g)
+ 549:u8g/u8g_ll_api.c **** {
+ 1894              		.loc 1 549 0
+ 1895              		.cfi_startproc
+ 1896              		@ args = 0, pretend = 0, frame = 0
+ 1897              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1898              		@ link register save eliminated.
+ 1899              	.LVL172:
+ 1900              	.LBB195:
+ 1901              	.LBB196:
+ 464:u8g/u8g_ll_api.c ****   /*u8g->color_index = idx; */ /* must be removed */
+ 1902              		.loc 1 464 0
+ 1903 0000 0023     		movs	r3, #0
+ 1904 0002 80F83130 		strb	r3, [r0, #49]
+ 1905              	.LVL173:
+ 1906              	.LBE196:
+ 1907              	.LBE195:
+ 550:u8g/u8g_ll_api.c ****   u8g_SetColorIndex(u8g, u8g_GetDefaultBackgroundColor(u8g));         /* pixel on / black */
+ 551:u8g/u8g_ll_api.c **** }
+ 1908              		.loc 1 551 0
+ 1909 0006 7047     		bx	lr
+ 1910              		.cfi_endproc
+ 1911              	.LFE33:
+ 1913              		.section	.text.u8g_GetDefaultMidColor,"ax",%progbits
+ 1914              		.align	1
+ 1915              		.p2align 2,,3
+ 1916              		.global	u8g_GetDefaultMidColor
+ 1917              		.syntax unified
+ 1918              		.thumb
+ 1919              		.thumb_func
+ 1920              		.fpu softvfp
+ 1922              	u8g_GetDefaultMidColor:
+ 1923              	.LFB34:
+ 552:u8g/u8g_ll_api.c **** 
+ 553:u8g/u8g_ll_api.c **** uint8_t u8g_GetDefaultMidColor(u8g_t *u8g)
+ 554:u8g/u8g_ll_api.c **** {
+ 1924              		.loc 1 554 0
+ 1925              		.cfi_startproc
+ 1926              		@ args = 0, pretend = 0, frame = 0
+ 1927              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1928              		@ link register save eliminated.
+ 1929              	.LVL174:
+ 555:u8g/u8g_ll_api.c ****   uint8_t mode;
+ 556:u8g/u8g_ll_api.c ****   mode = u8g_GetMode(u8g);
+ 557:u8g/u8g_ll_api.c ****   if ( mode == U8G_MODE_R3G3B2 ) 
+ 1930              		.loc 1 557 0
+ 1931 0000 C37C     		ldrb	r3, [r0, #19]	@ zero_extendqisi2
+ 1932 0002 282B     		cmp	r3, #40
+ 558:u8g/u8g_ll_api.c ****     return 0x06d;     /* gray: 01101101 */
+ 559:u8g/u8g_ll_api.c ****   else if ( u8g_GetMode(u8g) == U8G_MODE_GRAY2BIT )
+ 560:u8g/u8g_ll_api.c ****     return 1;         /* low mid intensity */
+ 561:u8g/u8g_ll_api.c ****   else /* if ( u8g.getMode() == U8G_MODE_BW ) */
+ 562:u8g/u8g_ll_api.c ****     return 1;         /* pixel on */
+ 563:u8g/u8g_ll_api.c ****   return 1;   /* default */
+ 564:u8g/u8g_ll_api.c **** }
+ 1933              		.loc 1 564 0
+ 1934 0004 0CBF     		ite	eq
+ 1935 0006 6D20     		moveq	r0, #109
+ 1936              	.LVL175:
+ 1937 0008 0120     		movne	r0, #1
+ 1938 000a 7047     		bx	lr
+ 1939              		.cfi_endproc
+ 1940              	.LFE34:
+ 1942              		.section	.text.u8g_SetDefaultMidColor,"ax",%progbits
+ 1943              		.align	1
+ 1944              		.p2align 2,,3
+ 1945              		.global	u8g_SetDefaultMidColor
+ 1946              		.syntax unified
+ 1947              		.thumb
+ 1948              		.thumb_func
+ 1949              		.fpu softvfp
+ 1951              	u8g_SetDefaultMidColor:
+ 1952              	.LFB35:
+ 565:u8g/u8g_ll_api.c **** 
+ 566:u8g/u8g_ll_api.c **** void u8g_SetDefaultMidColor(u8g_t *u8g)
+ 567:u8g/u8g_ll_api.c **** {
+ 1953              		.loc 1 567 0
+ 1954              		.cfi_startproc
+ 1955              		@ args = 0, pretend = 0, frame = 0
+ 1956              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1957              		@ link register save eliminated.
+ 1958              	.LVL176:
+ 1959              	.LBB197:
+ 1960              	.LBB198:
+ 557:u8g/u8g_ll_api.c ****     return 0x06d;     /* gray: 01101101 */
+ 1961              		.loc 1 557 0
+ 1962 0000 C37C     		ldrb	r3, [r0, #19]	@ zero_extendqisi2
+ 1963 0002 282B     		cmp	r3, #40
+ 560:u8g/u8g_ll_api.c ****   else /* if ( u8g.getMode() == U8G_MODE_BW ) */
+ 1964              		.loc 1 560 0
+ 1965 0004 0CBF     		ite	eq
+ 1966 0006 6D23     		moveq	r3, #109
+ 1967 0008 0123     		movne	r3, #1
+ 1968              	.LVL177:
+ 1969              	.LBE198:
+ 1970              	.LBE197:
+ 1971              	.LBB199:
+ 1972              	.LBB200:
+ 464:u8g/u8g_ll_api.c ****   /*u8g->color_index = idx; */ /* must be removed */
+ 1973              		.loc 1 464 0
+ 1974 000a 80F83130 		strb	r3, [r0, #49]
+ 1975              	.LVL178:
+ 1976              	.LBE200:
+ 1977              	.LBE199:
+ 568:u8g/u8g_ll_api.c ****   u8g_SetColorIndex(u8g, u8g_GetDefaultMidColor(u8g));
+ 569:u8g/u8g_ll_api.c **** }
+ 1978              		.loc 1 569 0
+ 1979 000e 7047     		bx	lr
+ 1980              		.cfi_endproc
+ 1981              	.LFE35:
+ 1983              		.text
+ 1984              	.Letext0:
+ 1985              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include\
+ 1986              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include\
+ 1987              		.file 4 "u8g/u8g.h"
+DEFINED SYMBOLS
+                            *ABS*:00000000 u8g_ll_api.c
+C:\Users\BOBAFW~1\AppData\Local\Temp\cciETtmj.s:16     .text.u8g_call_dev_fn:00000000 $t
+C:\Users\BOBAFW~1\AppData\Local\Temp\cciETtmj.s:24     .text.u8g_call_dev_fn:00000000 u8g_call_dev_fn
+C:\Users\BOBAFW~1\AppData\Local\Temp\cciETtmj.s:52     .text.u8g_InitLL:00000000 $t
+C:\Users\BOBAFW~1\AppData\Local\Temp\cciETtmj.s:60     .text.u8g_InitLL:00000000 u8g_InitLL
+C:\Users\BOBAFW~1\AppData\Local\Temp\cciETtmj.s:114    .text.u8g_FirstPageLL:00000000 $t
+C:\Users\BOBAFW~1\AppData\Local\Temp\cciETtmj.s:122    .text.u8g_FirstPageLL:00000000 u8g_FirstPageLL
+C:\Users\BOBAFW~1\AppData\Local\Temp\cciETtmj.s:193    .text.u8g_NextPageLL:00000000 $t
+C:\Users\BOBAFW~1\AppData\Local\Temp\cciETtmj.s:201    .text.u8g_NextPageLL:00000000 u8g_NextPageLL
+C:\Users\BOBAFW~1\AppData\Local\Temp\cciETtmj.s:273    .text.u8g_SetContrastLL:00000000 $t
+C:\Users\BOBAFW~1\AppData\Local\Temp\cciETtmj.s:281    .text.u8g_SetContrastLL:00000000 u8g_SetContrastLL
+C:\Users\BOBAFW~1\AppData\Local\Temp\cciETtmj.s:320    .text.u8g_DrawPixelLL:00000000 $t
+C:\Users\BOBAFW~1\AppData\Local\Temp\cciETtmj.s:328    .text.u8g_DrawPixelLL:00000000 u8g_DrawPixelLL
+C:\Users\BOBAFW~1\AppData\Local\Temp\cciETtmj.s:372    .text.u8g_Draw8PixelLL:00000000 $t
+C:\Users\BOBAFW~1\AppData\Local\Temp\cciETtmj.s:380    .text.u8g_Draw8PixelLL:00000000 u8g_Draw8PixelLL
+C:\Users\BOBAFW~1\AppData\Local\Temp\cciETtmj.s:434    .text.u8g_Draw4TPixelLL:00000000 $t
+C:\Users\BOBAFW~1\AppData\Local\Temp\cciETtmj.s:442    .text.u8g_Draw4TPixelLL:00000000 u8g_Draw4TPixelLL
+C:\Users\BOBAFW~1\AppData\Local\Temp\cciETtmj.s:496    .text.u8g_GetWidthLL:00000000 $t
+C:\Users\BOBAFW~1\AppData\Local\Temp\cciETtmj.s:504    .text.u8g_GetWidthLL:00000000 u8g_GetWidthLL
+C:\Users\BOBAFW~1\AppData\Local\Temp\cciETtmj.s:542    .text.u8g_GetHeightLL:00000000 $t
+C:\Users\BOBAFW~1\AppData\Local\Temp\cciETtmj.s:550    .text.u8g_GetHeightLL:00000000 u8g_GetHeightLL
+C:\Users\BOBAFW~1\AppData\Local\Temp\cciETtmj.s:588    .text.u8g_GetModeLL:00000000 $t
+C:\Users\BOBAFW~1\AppData\Local\Temp\cciETtmj.s:596    .text.u8g_GetModeLL:00000000 u8g_GetModeLL
+C:\Users\BOBAFW~1\AppData\Local\Temp\cciETtmj.s:633    .text.u8g_UpdateDimension:00000000 $t
+C:\Users\BOBAFW~1\AppData\Local\Temp\cciETtmj.s:641    .text.u8g_UpdateDimension:00000000 u8g_UpdateDimension
+C:\Users\BOBAFW~1\AppData\Local\Temp\cciETtmj.s:750    .text.u8g_Begin:00000000 $t
+C:\Users\BOBAFW~1\AppData\Local\Temp\cciETtmj.s:758    .text.u8g_Begin:00000000 u8g_Begin
+C:\Users\BOBAFW~1\AppData\Local\Temp\cciETtmj.s:796    .text.u8g_Begin:00000018 $d
+C:\Users\BOBAFW~1\AppData\Local\Temp\cciETtmj.s:802    .text.u8g_Init:00000000 $t
+C:\Users\BOBAFW~1\AppData\Local\Temp\cciETtmj.s:810    .text.u8g_Init:00000000 u8g_Init
+C:\Users\BOBAFW~1\AppData\Local\Temp\cciETtmj.s:893    .text.u8g_Init:00000038 $d
+C:\Users\BOBAFW~1\AppData\Local\Temp\cciETtmj.s:901    .text.u8g_InitComFn:00000000 $t
+C:\Users\BOBAFW~1\AppData\Local\Temp\cciETtmj.s:909    .text.u8g_InitComFn:00000000 u8g_InitComFn
+C:\Users\BOBAFW~1\AppData\Local\Temp\cciETtmj.s:1000   .text.u8g_InitComFn:00000040 $d
+C:\Users\BOBAFW~1\AppData\Local\Temp\cciETtmj.s:1008   .text.u8g_FirstPage:00000000 $t
+C:\Users\BOBAFW~1\AppData\Local\Temp\cciETtmj.s:1016   .text.u8g_FirstPage:00000000 u8g_FirstPage
+C:\Users\BOBAFW~1\AppData\Local\Temp\cciETtmj.s:1032   .text.u8g_FirstPage:00000008 $d
+C:\Users\BOBAFW~1\AppData\Local\Temp\cciETtmj.s:1037   .text.u8g_NextPage:00000000 $t
+C:\Users\BOBAFW~1\AppData\Local\Temp\cciETtmj.s:1045   .text.u8g_NextPage:00000000 u8g_NextPage
+C:\Users\BOBAFW~1\AppData\Local\Temp\cciETtmj.s:1085   .text.u8g_NextPage:00000018 $d
+C:\Users\BOBAFW~1\AppData\Local\Temp\cciETtmj.s:1090   .text.u8g_SetContrast:00000000 $t
+C:\Users\BOBAFW~1\AppData\Local\Temp\cciETtmj.s:1098   .text.u8g_SetContrast:00000000 u8g_SetContrast
+C:\Users\BOBAFW~1\AppData\Local\Temp\cciETtmj.s:1145   .text.u8g_SleepOn:00000000 $t
+C:\Users\BOBAFW~1\AppData\Local\Temp\cciETtmj.s:1153   .text.u8g_SleepOn:00000000 u8g_SleepOn
+C:\Users\BOBAFW~1\AppData\Local\Temp\cciETtmj.s:1194   .text.u8g_SleepOff:00000000 $t
+C:\Users\BOBAFW~1\AppData\Local\Temp\cciETtmj.s:1202   .text.u8g_SleepOff:00000000 u8g_SleepOff
+C:\Users\BOBAFW~1\AppData\Local\Temp\cciETtmj.s:1243   .text.u8g_DrawPixel:00000000 $t
+C:\Users\BOBAFW~1\AppData\Local\Temp\cciETtmj.s:1251   .text.u8g_DrawPixel:00000000 u8g_DrawPixel
+C:\Users\BOBAFW~1\AppData\Local\Temp\cciETtmj.s:1312   .text.u8g_Draw8Pixel:00000000 $t
+C:\Users\BOBAFW~1\AppData\Local\Temp\cciETtmj.s:1320   .text.u8g_Draw8Pixel:00000000 u8g_Draw8Pixel
+C:\Users\BOBAFW~1\AppData\Local\Temp\cciETtmj.s:1388   .text.u8g_Draw4TPixel:00000000 $t
+C:\Users\BOBAFW~1\AppData\Local\Temp\cciETtmj.s:1396   .text.u8g_Draw4TPixel:00000000 u8g_Draw4TPixel
+C:\Users\BOBAFW~1\AppData\Local\Temp\cciETtmj.s:1464   .text.u8g_SetColorEntry:00000000 $t
+C:\Users\BOBAFW~1\AppData\Local\Temp\cciETtmj.s:1472   .text.u8g_SetColorEntry:00000000 u8g_SetColorEntry
+C:\Users\BOBAFW~1\AppData\Local\Temp\cciETtmj.s:1525   .text.u8g_SetColorIndex:00000000 $t
+C:\Users\BOBAFW~1\AppData\Local\Temp\cciETtmj.s:1533   .text.u8g_SetColorIndex:00000000 u8g_SetColorIndex
+C:\Users\BOBAFW~1\AppData\Local\Temp\cciETtmj.s:1549   .text.u8g_SetHiColor:00000000 $t
+C:\Users\BOBAFW~1\AppData\Local\Temp\cciETtmj.s:1557   .text.u8g_SetHiColor:00000000 u8g_SetHiColor
+C:\Users\BOBAFW~1\AppData\Local\Temp\cciETtmj.s:1577   .text.u8g_SetHiColorByRGB:00000000 $t
+C:\Users\BOBAFW~1\AppData\Local\Temp\cciETtmj.s:1585   .text.u8g_SetHiColorByRGB:00000000 u8g_SetHiColorByRGB
+C:\Users\BOBAFW~1\AppData\Local\Temp\cciETtmj.s:1624   .text.u8g_SetRGB:00000000 $t
+C:\Users\BOBAFW~1\AppData\Local\Temp\cciETtmj.s:1632   .text.u8g_SetRGB:00000000 u8g_SetRGB
+C:\Users\BOBAFW~1\AppData\Local\Temp\cciETtmj.s:1722   .text.u8g_GetColorIndex:00000000 $t
+C:\Users\BOBAFW~1\AppData\Local\Temp\cciETtmj.s:1730   .text.u8g_GetColorIndex:00000000 u8g_GetColorIndex
+C:\Users\BOBAFW~1\AppData\Local\Temp\cciETtmj.s:1746   .text.u8g_GetDefaultForegroundColor:00000000 $t
+C:\Users\BOBAFW~1\AppData\Local\Temp\cciETtmj.s:1754   .text.u8g_GetDefaultForegroundColor:00000000 u8g_GetDefaultForegroundColor
+C:\Users\BOBAFW~1\AppData\Local\Temp\cciETtmj.s:1787   .text.u8g_SetDefaultForegroundColor:00000000 $t
+C:\Users\BOBAFW~1\AppData\Local\Temp\cciETtmj.s:1795   .text.u8g_SetDefaultForegroundColor:00000000 u8g_SetDefaultForegroundColor
+C:\Users\BOBAFW~1\AppData\Local\Temp\cciETtmj.s:1860   .text.u8g_GetDefaultBackgroundColor:00000000 $t
+C:\Users\BOBAFW~1\AppData\Local\Temp\cciETtmj.s:1868   .text.u8g_GetDefaultBackgroundColor:00000000 u8g_GetDefaultBackgroundColor
+C:\Users\BOBAFW~1\AppData\Local\Temp\cciETtmj.s:1884   .text.u8g_SetDefaultBackgroundColor:00000000 $t
+C:\Users\BOBAFW~1\AppData\Local\Temp\cciETtmj.s:1892   .text.u8g_SetDefaultBackgroundColor:00000000 u8g_SetDefaultBackgroundColor
+C:\Users\BOBAFW~1\AppData\Local\Temp\cciETtmj.s:1914   .text.u8g_GetDefaultMidColor:00000000 $t
+C:\Users\BOBAFW~1\AppData\Local\Temp\cciETtmj.s:1922   .text.u8g_GetDefaultMidColor:00000000 u8g_GetDefaultMidColor
+C:\Users\BOBAFW~1\AppData\Local\Temp\cciETtmj.s:1943   .text.u8g_SetDefaultMidColor:00000000 $t
+C:\Users\BOBAFW~1\AppData\Local\Temp\cciETtmj.s:1951   .text.u8g_SetDefaultMidColor:00000000 u8g_SetDefaultMidColor
+
+UNDEFINED SYMBOLS
+u8g_SetFontPosBaseline
+u8g_state_dummy_cb

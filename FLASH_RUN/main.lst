@@ -1,0 +1,2437 @@
+   1              		.cpu cortex-m3
+   2              		.eabi_attribute 20, 1
+   3              		.eabi_attribute 21, 1
+   4              		.eabi_attribute 23, 3
+   5              		.eabi_attribute 24, 1
+   6              		.eabi_attribute 25, 1
+   7              		.eabi_attribute 26, 1
+   8              		.eabi_attribute 30, 2
+   9              		.eabi_attribute 34, 1
+  10              		.eabi_attribute 18, 4
+  11              		.file	"main.c"
+  12              		.text
+  13              	.Ltext0:
+  14              		.cfi_sections	.debug_frame
+  15              		.section	.text.powerOff,"ax",%progbits
+  16              		.align	1
+  17              		.p2align 2,,3
+  18              		.global	powerOff
+  19              		.syntax unified
+  20              		.thumb
+  21              		.thumb_func
+  22              		.fpu softvfp
+  24              	powerOff:
+  25              	.LFB27:
+  26              		.file 1 "main.c"
+   1:main.c        **** // -*- coding: iso-latin-9-dos -*-
+   2:main.c        **** 
+   3:main.c        **** /* Includes ------------------------------------------------------------------*/
+   4:main.c        **** #include "stm32f10x.h"
+   5:main.c        **** #include "stm32f10x_dma.h"
+   6:main.c        **** 
+   7:main.c        **** 
+   8:main.c        **** #include "defines.h" 
+   9:main.c        **** #include "main.h" 
+  10:main.c        **** #include "lcd.h"
+  11:main.c        **** #include "utils.h"
+  12:main.c        **** #include "gps.h"
+  13:main.c        **** 
+  14:main.c        **** struct {
+  15:main.c        ****   int VBat;
+  16:main.c        ****   int TBat;
+  17:main.c        **** } ADCValues;
+  18:main.c        **** 
+  19:main.c        **** void powerOff(void)
+  20:main.c        **** {
+  27              		.loc 1 20 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31              		@ link register save eliminated.
+  21:main.c        ****   GPIO_WriteBit(PON_PORT,PON_PIN,Bit_RESET);
+  32              		.loc 1 21 0
+  33 0000 0022     		movs	r2, #0
+  34 0002 4FF48071 		mov	r1, #256
+  35 0006 0148     		ldr	r0, .L3
+  36 0008 014B     		ldr	r3, .L3+4
+  37 000a 1847     		bx	r3	@ indirect register sibling call
+  38              	.LVL0:
+  39              	.L4:
+  40              		.align	2
+  41              	.L3:
+  42 000c 00100140 		.word	1073811456
+  43 0010 00000000 		.word	GPIO_WriteBit
+  44              		.cfi_endproc
+  45              	.LFE27:
+  47              		.section	.text.powerOn,"ax",%progbits
+  48              		.align	1
+  49              		.p2align 2,,3
+  50              		.global	powerOn
+  51              		.syntax unified
+  52              		.thumb
+  53              		.thumb_func
+  54              		.fpu softvfp
+  56              	powerOn:
+  57              	.LFB28:
+  22:main.c        **** }
+  23:main.c        **** 
+  24:main.c        **** void powerOn(void)
+  25:main.c        **** {
+  58              		.loc 1 25 0
+  59              		.cfi_startproc
+  60              		@ args = 0, pretend = 0, frame = 0
+  61              		@ frame_needed = 0, uses_anonymous_args = 0
+  62              		@ link register save eliminated.
+  26:main.c        ****   GPIO_WriteBit(PON_PORT,PON_PIN,Bit_SET);
+  63              		.loc 1 26 0
+  64 0000 0122     		movs	r2, #1
+  65 0002 4FF48071 		mov	r1, #256
+  66 0006 0148     		ldr	r0, .L6
+  67 0008 014B     		ldr	r3, .L6+4
+  68 000a 1847     		bx	r3	@ indirect register sibling call
+  69              	.LVL1:
+  70              	.L7:
+  71              		.align	2
+  72              	.L6:
+  73 000c 00100140 		.word	1073811456
+  74 0010 00000000 		.word	GPIO_WriteBit
+  75              		.cfi_endproc
+  76              	.LFE28:
+  78              		.section	.text.gotoBootloader,"ax",%progbits
+  79              		.align	1
+  80              		.p2align 2,,3
+  81              		.global	gotoBootloader
+  82              		.syntax unified
+  83              		.thumb
+  84              		.thumb_func
+  85              		.fpu softvfp
+  87              	gotoBootloader:
+  88              	.LFB29:
+  27:main.c        **** }
+  28:main.c        **** 
+  29:main.c        **** void gotoBootloader(){
+  89              		.loc 1 29 0
+  90              		.cfi_startproc
+  91              		@ args = 0, pretend = 0, frame = 0
+  92              		@ frame_needed = 0, uses_anonymous_args = 0
+  93 0000 10B5     		push	{r4, lr}
+  94              	.LCFI0:
+  95              		.cfi_def_cfa_offset 8
+  96              		.cfi_offset 4, -8
+  97              		.cfi_offset 14, -4
+  30:main.c        ****   USART_Cmd(GPS_USART,DISABLE);
+  98              		.loc 1 30 0
+  99 0002 0021     		movs	r1, #0
+ 100 0004 0A48     		ldr	r0, .L10
+ 101 0006 0B4B     		ldr	r3, .L10+4
+ 102 0008 9847     		blx	r3
+ 103              	.LVL2:
+  31:main.c        ****   NVIC_SetVectorTable(NVIC_VectTab_FLASH, 0);
+ 104              		.loc 1 31 0
+ 105 000a 0021     		movs	r1, #0
+ 106 000c 4FF00060 		mov	r0, #134217728
+ 107 0010 094B     		ldr	r3, .L10+8
+ 108 0012 9847     		blx	r3
+ 109              	.LVL3:
+  32:main.c        ****   //Init BootLoader
+  33:main.c        ****   //Write 0x6675 ("fu") to BKP_DR10 and reset to BL
+  34:main.c        ****   /*Enable Backup Access */
+  35:main.c        ****   PWR_BackupAccessCmd(ENABLE);
+ 110              		.loc 1 35 0
+ 111 0014 0120     		movs	r0, #1
+ 112 0016 094B     		ldr	r3, .L10+12
+ 113 0018 9847     		blx	r3
+ 114              	.LVL4:
+  36:main.c        ****   BKP_WriteBackupRegister(BKP_DR10,0x6675);
+ 115              		.loc 1 36 0
+ 116 001a 094B     		ldr	r3, .L10+16
+ 117 001c 46F27561 		movw	r1, #26229
+ 118 0020 2820     		movs	r0, #40
+ 119 0022 9847     		blx	r3
+ 120              	.LVL5:
+  37:main.c        ****   int *ptr;
+  38:main.c        ****   ptr=(int*) 0x8000004;
+  39:main.c        ****   void (*fct)() = (void*)(*ptr);
+  40:main.c        ****   (*fct)();
+  41:main.c        **** }
+ 121              		.loc 1 41 0
+ 122 0024 BDE81040 		pop	{r4, lr}
+ 123              	.LCFI1:
+ 124              		.cfi_restore 14
+ 125              		.cfi_restore 4
+ 126              		.cfi_def_cfa_offset 0
+  39:main.c        ****   (*fct)();
+ 127              		.loc 1 39 0
+ 128 0028 064B     		ldr	r3, .L10+20
+ 129              	.LVL6:
+  40:main.c        **** }
+ 130              		.loc 1 40 0
+ 131 002a 1B68     		ldr	r3, [r3]
+ 132              	.LVL7:
+ 133 002c 1847     		bx	r3	@ indirect register sibling call
+ 134              	.LVL8:
+ 135              	.L11:
+ 136 002e 00BF     		.align	2
+ 137              	.L10:
+ 138 0030 00380140 		.word	1073821696
+ 139 0034 00000000 		.word	USART_Cmd
+ 140 0038 00000000 		.word	NVIC_SetVectorTable
+ 141 003c 00000000 		.word	PWR_BackupAccessCmd
+ 142 0040 00000000 		.word	BKP_WriteBackupRegister
+ 143 0044 04000008 		.word	134217732
+ 144              		.cfi_endproc
+ 145              	.LFE29:
+ 147              		.section	.text.switchLed,"ax",%progbits
+ 148              		.align	1
+ 149              		.p2align 2,,3
+ 150              		.global	switchLed
+ 151              		.syntax unified
+ 152              		.thumb
+ 153              		.thumb_func
+ 154              		.fpu softvfp
+ 156              	switchLed:
+ 157              	.LFB30:
+  42:main.c        **** 
+  43:main.c        **** void switchLed(int on)
+  44:main.c        **** {
+ 158              		.loc 1 44 0
+ 159              		.cfi_startproc
+ 160              		@ args = 0, pretend = 0, frame = 0
+ 161              		@ frame_needed = 0, uses_anonymous_args = 0
+ 162              		@ link register save eliminated.
+ 163              	.LVL9:
+  45:main.c        ****   if(on)
+  46:main.c        ****     LED_PORT->BSRR = LED_PIN;
+ 164              		.loc 1 46 0
+ 165 0000 2022     		movs	r2, #32
+ 166 0002 034B     		ldr	r3, .L16
+  45:main.c        ****   if(on)
+ 167              		.loc 1 45 0
+ 168 0004 08B9     		cbnz	r0, .L15
+  47:main.c        ****   else
+  48:main.c        ****     LED_PORT->BRR = LED_PIN;
+ 169              		.loc 1 48 0
+ 170 0006 5A61     		str	r2, [r3, #20]
+  49:main.c        **** }
+ 171              		.loc 1 49 0
+ 172 0008 7047     		bx	lr
+ 173              	.L15:
+  46:main.c        ****   else
+ 174              		.loc 1 46 0
+ 175 000a 1A61     		str	r2, [r3, #16]
+ 176 000c 7047     		bx	lr
+ 177              	.L17:
+ 178 000e 00BF     		.align	2
+ 179              	.L16:
+ 180 0010 000C0140 		.word	1073810432
+ 181              		.cfi_endproc
+ 182              	.LFE30:
+ 184              		.section	.text.dispInfos,"ax",%progbits
+ 185              		.align	1
+ 186              		.p2align 2,,3
+ 187              		.global	dispInfos
+ 188              		.syntax unified
+ 189              		.thumb
+ 190              		.thumb_func
+ 191              		.fpu softvfp
+ 193              	dispInfos:
+ 194              	.LFB31:
+  50:main.c        **** 
+  51:main.c        **** 
+  52:main.c        **** 
+  53:main.c        **** void dispInfos(){
+ 195              		.loc 1 53 0
+ 196              		.cfi_startproc
+ 197              		@ args = 0, pretend = 0, frame = 32
+ 198              		@ frame_needed = 0, uses_anonymous_args = 0
+ 199 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+ 200              	.LCFI2:
+ 201              		.cfi_def_cfa_offset 24
+ 202              		.cfi_offset 4, -24
+ 203              		.cfi_offset 5, -20
+ 204              		.cfi_offset 6, -16
+ 205              		.cfi_offset 7, -12
+ 206              		.cfi_offset 8, -8
+ 207              		.cfi_offset 14, -4
+ 208 0004 88B0     		sub	sp, sp, #32
+ 209              	.LCFI3:
+ 210              		.cfi_def_cfa_offset 56
+  54:main.c        ****   char tempStr[30];
+  55:main.c        ****   char numStr[10];
+  56:main.c        ****       
+  57:main.c        ****   LCDClearBuffer();
+  58:main.c        ****   LCDSetFontSize(SMALL);
+  59:main.c        ****   strcpy(tempStr,"Satellites : ");
+ 211              		.loc 1 59 0
+ 212 0006 6C46     		mov	r4, sp
+ 213 0008 2546     		mov	r5, r4
+  57:main.c        ****   LCDSetFontSize(SMALL);
+ 214              		.loc 1 57 0
+ 215 000a 424B     		ldr	r3, .L20
+ 216 000c 9847     		blx	r3
+ 217              	.LVL10:
+  58:main.c        ****   strcpy(tempStr,"Satellites : ");
+ 218              		.loc 1 58 0
+ 219 000e 0020     		movs	r0, #0
+ 220 0010 414B     		ldr	r3, .L20+4
+ 221 0012 9847     		blx	r3
+ 222              	.LVL11:
+ 223              		.loc 1 59 0
+ 224 0014 414B     		ldr	r3, .L20+8
+  60:main.c        ****   intToStr(nbSats,tempStr+strlen(tempStr));
+ 225              		.loc 1 60 0
+ 226 0016 424F     		ldr	r7, .L20+12
+  59:main.c        ****   intToStr(nbSats,tempStr+strlen(tempStr));
+ 227              		.loc 1 59 0
+ 228 0018 0FCB     		ldm	r3, {r0, r1, r2, r3}
+ 229 001a 07C5     		stmia	r5!, {r0, r1, r2}
+ 230              		.loc 1 60 0
+ 231 001c 414E     		ldr	r6, .L20+16
+  59:main.c        ****   intToStr(nbSats,tempStr+strlen(tempStr));
+ 232              		.loc 1 59 0
+ 233 001e 2B80     		strh	r3, [r5]	@ movhi
+ 234              		.loc 1 60 0
+ 235 0020 3868     		ldr	r0, [r7]
+ 236 0022 0DF10D01 		add	r1, sp, #13
+  61:main.c        ****   //LCDClearLine(0);
+  62:main.c        ****   LCDPrintStringXY(0,8,tempStr);
+ 237              		.loc 1 62 0
+ 238 0026 404D     		ldr	r5, .L20+20
+  60:main.c        ****   //LCDClearLine(0);
+ 239              		.loc 1 60 0
+ 240 0028 B047     		blx	r6
+ 241              	.LVL12:
+ 242              		.loc 1 62 0
+ 243 002a 2246     		mov	r2, r4
+ 244 002c 0821     		movs	r1, #8
+ 245 002e 0020     		movs	r0, #0
+ 246 0030 A847     		blx	r5
+ 247              	.LVL13:
+  63:main.c        ****       
+  64:main.c        ****   strcpy(tempStr,"Long : ");
+  65:main.c        ****   doubleToStr(longitude,tempStr+strlen(tempStr));
+ 248              		.loc 1 65 0
+ 249 0032 3E4F     		ldr	r7, .L20+24
+  64:main.c        ****   doubleToStr(longitude,tempStr+strlen(tempStr));
+ 250              		.loc 1 64 0
+ 251 0034 3E4B     		ldr	r3, .L20+28
+ 252              		.loc 1 65 0
+ 253 0036 0DF10702 		add	r2, sp, #7
+  64:main.c        ****   doubleToStr(longitude,tempStr+strlen(tempStr));
+ 254              		.loc 1 64 0
+ 255 003a 93E80300 		ldm	r3, {r0, r1}
+ 256 003e 84E80300 		stm	r4, {r0, r1}
+ 257              		.loc 1 65 0
+ 258 0042 D7E90001 		ldrd	r0, [r7]
+ 259 0046 3B4F     		ldr	r7, .L20+32
+ 260 0048 B847     		blx	r7
+ 261              	.LVL14:
+  66:main.c        ****   //LCDClearLine(15);
+  67:main.c        ****   LCDPrintStringXY(0,16,tempStr);
+ 262              		.loc 1 67 0
+ 263 004a 2246     		mov	r2, r4
+ 264 004c 1021     		movs	r1, #16
+ 265 004e 0020     		movs	r0, #0
+ 266 0050 A847     		blx	r5
+ 267              	.LVL15:
+  68:main.c        **** 
+  69:main.c        ****   strcpy(tempStr,"Lat : ");
+ 268              		.loc 1 69 0
+ 269 0052 394B     		ldr	r3, .L20+36
+  70:main.c        ****   doubleToStr(latitude,tempStr+strlen(tempStr));
+ 270              		.loc 1 70 0
+ 271 0054 DFF810C1 		ldr	ip, .L20+84
+  69:main.c        ****   doubleToStr(latitude,tempStr+strlen(tempStr));
+ 272              		.loc 1 69 0
+ 273 0058 93E80300 		ldm	r3, {r0, r1}
+ 274 005c 0B0C     		lsrs	r3, r1, #16
+ 275 005e 8DF80630 		strb	r3, [sp, #6]
+ 276 0062 0090     		str	r0, [sp]
+ 277 0064 ADF80410 		strh	r1, [sp, #4]	@ movhi
+ 278              		.loc 1 70 0
+ 279 0068 0DF10602 		add	r2, sp, #6
+ 280 006c DCE90001 		ldrd	r0, [ip]
+ 281 0070 B847     		blx	r7
+ 282              	.LVL16:
+  71:main.c        ****   //LCDClearLine(30);
+  72:main.c        ****   LCDPrintStringXY(0,24,tempStr);
+ 283              		.loc 1 72 0
+ 284 0072 2246     		mov	r2, r4
+ 285 0074 1821     		movs	r1, #24
+ 286 0076 0020     		movs	r0, #0
+ 287 0078 A847     		blx	r5
+ 288              	.LVL17:
+  73:main.c        **** 
+  74:main.c        ****   strcpy(tempStr,"Heure : ");
+ 289              		.loc 1 74 0
+ 290 007a 2346     		mov	r3, r4
+ 291 007c 2F4A     		ldr	r2, .L20+40
+  75:main.c        ****   intToStr(heures,tempStr+strlen(tempStr));
+ 292              		.loc 1 75 0
+ 293 007e 304F     		ldr	r7, .L20+44
+  74:main.c        ****   intToStr(heures,tempStr+strlen(tempStr));
+ 294              		.loc 1 74 0
+ 295 0080 07CA     		ldm	r2, {r0, r1, r2}
+ 296 0082 03C3     		stmia	r3!, {r0, r1}
+ 297              		.loc 1 75 0
+ 298 0084 02A9     		add	r1, sp, #8
+  74:main.c        ****   intToStr(heures,tempStr+strlen(tempStr));
+ 299              		.loc 1 74 0
+ 300 0086 1A70     		strb	r2, [r3]
+ 301              		.loc 1 75 0
+ 302 0088 3868     		ldr	r0, [r7]
+ 303 008a B047     		blx	r6
+ 304              	.LVL18:
+  76:main.c        ****   strcpy(tempStr+strlen(tempStr),"h");
+ 305              		.loc 1 76 0
+ 306 008c 2D4F     		ldr	r7, .L20+48
+ 307 008e 2046     		mov	r0, r4
+ 308 0090 B847     		blx	r7
+ 309              	.LVL19:
+ 310 0092 2D4B     		ldr	r3, .L20+52
+  77:main.c        ****   intToStr(minutes,tempStr+strlen(tempStr));
+  78:main.c        ****   strcpy(tempStr+strlen(tempStr),"m");
+  79:main.c        ****   intToStr(secondes,tempStr+strlen(tempStr));
+  80:main.c        ****   strcpy(tempStr+strlen(tempStr),"s");
+  81:main.c        ****   //LCDClearLine(45);
+  82:main.c        ****   LCDPrintStringXY(0,32,tempStr);
+  83:main.c        ****       
+  84:main.c        ****   strcpy(tempStr,"VBAT : ");
+  85:main.c        ****   intToStr(ADCValues.VBat,tempStr+strlen(tempStr));
+ 311              		.loc 1 85 0
+ 312 0094 DFF8D480 		ldr	r8, .L20+88
+  76:main.c        ****   strcpy(tempStr+strlen(tempStr),"h");
+ 313              		.loc 1 76 0
+ 314 0098 1B88     		ldrh	r3, [r3]	@ unaligned
+ 315 009a 2352     		strh	r3, [r4, r0]	@ unaligned
+  77:main.c        ****   intToStr(minutes,tempStr+strlen(tempStr));
+ 316              		.loc 1 77 0
+ 317 009c 2046     		mov	r0, r4
+ 318 009e B847     		blx	r7
+ 319              	.LVL20:
+ 320 00a0 2A4B     		ldr	r3, .L20+56
+ 321 00a2 2118     		adds	r1, r4, r0
+ 322 00a4 1868     		ldr	r0, [r3]
+ 323 00a6 B047     		blx	r6
+ 324              	.LVL21:
+  78:main.c        ****   intToStr(secondes,tempStr+strlen(tempStr));
+ 325              		.loc 1 78 0
+ 326 00a8 2046     		mov	r0, r4
+ 327 00aa B847     		blx	r7
+ 328              	.LVL22:
+ 329 00ac 284B     		ldr	r3, .L20+60
+ 330 00ae 1B88     		ldrh	r3, [r3]	@ unaligned
+ 331 00b0 2352     		strh	r3, [r4, r0]	@ unaligned
+  79:main.c        ****   strcpy(tempStr+strlen(tempStr),"s");
+ 332              		.loc 1 79 0
+ 333 00b2 2046     		mov	r0, r4
+ 334 00b4 B847     		blx	r7
+ 335              	.LVL23:
+ 336 00b6 274B     		ldr	r3, .L20+64
+ 337 00b8 2118     		adds	r1, r4, r0
+ 338 00ba 1868     		ldr	r0, [r3]
+ 339 00bc B047     		blx	r6
+ 340              	.LVL24:
+  80:main.c        ****   //LCDClearLine(45);
+ 341              		.loc 1 80 0
+ 342 00be 2046     		mov	r0, r4
+ 343 00c0 B847     		blx	r7
+ 344              	.LVL25:
+ 345 00c2 254B     		ldr	r3, .L20+68
+  82:main.c        ****       
+ 346              		.loc 1 82 0
+ 347 00c4 2246     		mov	r2, r4
+  80:main.c        ****   //LCDClearLine(45);
+ 348              		.loc 1 80 0
+ 349 00c6 1B88     		ldrh	r3, [r3]	@ unaligned
+  82:main.c        ****       
+ 350              		.loc 1 82 0
+ 351 00c8 2021     		movs	r1, #32
+  80:main.c        ****   //LCDClearLine(45);
+ 352              		.loc 1 80 0
+ 353 00ca 2352     		strh	r3, [r4, r0]	@ unaligned
+  82:main.c        ****       
+ 354              		.loc 1 82 0
+ 355 00cc 0020     		movs	r0, #0
+ 356 00ce A847     		blx	r5
+ 357              	.LVL26:
+  84:main.c        ****   intToStr(ADCValues.VBat,tempStr+strlen(tempStr));
+ 358              		.loc 1 84 0
+ 359 00d0 224B     		ldr	r3, .L20+72
+ 360 00d2 93E80300 		ldm	r3, {r0, r1}
+ 361 00d6 84E80300 		stm	r4, {r0, r1}
+ 362              		.loc 1 85 0
+ 363 00da 0DF10701 		add	r1, sp, #7
+ 364 00de D8F80000 		ldr	r0, [r8]
+ 365 00e2 B047     		blx	r6
+ 366              	.LVL27:
+  86:main.c        ****   //LCDClearLine(60);
+  87:main.c        ****   LCDPrintStringXY(0,40,tempStr);
+ 367              		.loc 1 87 0
+ 368 00e4 2246     		mov	r2, r4
+ 369 00e6 2821     		movs	r1, #40
+ 370 00e8 0020     		movs	r0, #0
+ 371 00ea A847     		blx	r5
+ 372              	.LVL28:
+  88:main.c        ****       
+  89:main.c        ****   strcpy(tempStr,"TEMP : ");
+ 373              		.loc 1 89 0
+ 374 00ec 1C4B     		ldr	r3, .L20+76
+ 375 00ee 93E80300 		ldm	r3, {r0, r1}
+ 376 00f2 84E80300 		stm	r4, {r0, r1}
+  90:main.c        ****   intToStr(ADCValues.TBat,tempStr+strlen(tempStr));
+ 377              		.loc 1 90 0
+ 378 00f6 0DF10701 		add	r1, sp, #7
+ 379 00fa D8F80400 		ldr	r0, [r8, #4]
+ 380 00fe B047     		blx	r6
+ 381              	.LVL29:
+  91:main.c        ****   //LCDClearLine(75);
+  92:main.c        ****   LCDPrintStringXY(0,48,tempStr);
+ 382              		.loc 1 92 0
+ 383 0100 2246     		mov	r2, r4
+ 384 0102 3021     		movs	r1, #48
+ 385 0104 0020     		movs	r0, #0
+ 386 0106 A847     		blx	r5
+ 387              	.LVL30:
+  93:main.c        ****       
+  94:main.c        ****   LCDDrawBuffer();
+ 388              		.loc 1 94 0
+ 389 0108 164B     		ldr	r3, .L20+80
+ 390 010a 9847     		blx	r3
+ 391              	.LVL31:
+  95:main.c        ****   //LCDPrintStringXY(0,60,debug);
+  96:main.c        **** }
+ 392              		.loc 1 96 0
+ 393 010c 08B0     		add	sp, sp, #32
+ 394              	.LCFI4:
+ 395              		.cfi_def_cfa_offset 24
+ 396              		@ sp needed
+ 397 010e BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 398              	.L21:
+ 399 0112 00BF     		.align	2
+ 400              	.L20:
+ 401 0114 00000000 		.word	LCDClearBuffer
+ 402 0118 00000000 		.word	LCDSetFontSize
+ 403 011c 00000000 		.word	.LC0
+ 404 0120 00000000 		.word	nbSats
+ 405 0124 00000000 		.word	intToStr
+ 406 0128 00000000 		.word	LCDPrintStringXY
+ 407 012c 00000000 		.word	longitude
+ 408 0130 10000000 		.word	.LC1
+ 409 0134 00000000 		.word	doubleToStr
+ 410 0138 18000000 		.word	.LC2
+ 411 013c 20000000 		.word	.LC3
+ 412 0140 00000000 		.word	heures
+ 413 0144 00000000 		.word	strlen
+ 414 0148 2C000000 		.word	.LC4
+ 415 014c 00000000 		.word	minutes
+ 416 0150 30000000 		.word	.LC5
+ 417 0154 00000000 		.word	secondes
+ 418 0158 34000000 		.word	.LC6
+ 419 015c 38000000 		.word	.LC7
+ 420 0160 40000000 		.word	.LC8
+ 421 0164 00000000 		.word	LCDDrawBuffer
+ 422 0168 00000000 		.word	latitude
+ 423 016c 00000000 		.word	ADCValues
+ 424              		.cfi_endproc
+ 425              	.LFE31:
+ 427              		.section	.text.dispImage,"ax",%progbits
+ 428              		.align	1
+ 429              		.p2align 2,,3
+ 430              		.global	dispImage
+ 431              		.syntax unified
+ 432              		.thumb
+ 433              		.thumb_func
+ 434              		.fpu softvfp
+ 436              	dispImage:
+ 437              	.LFB32:
+  97:main.c        **** 
+  98:main.c        **** void dispImage(){
+ 438              		.loc 1 98 0
+ 439              		.cfi_startproc
+ 440              		@ args = 0, pretend = 0, frame = 0
+ 441              		@ frame_needed = 0, uses_anonymous_args = 0
+ 442              		@ link register save eliminated.
+  99:main.c        ****   LCDDrawImageTest();
+ 443              		.loc 1 99 0
+ 444 0000 004B     		ldr	r3, .L23
+ 445 0002 1847     		bx	r3	@ indirect register sibling call
+ 446              	.LVL32:
+ 447              	.L24:
+ 448              		.align	2
+ 449              	.L23:
+ 450 0004 00000000 		.word	LCDDrawImageTest
+ 451              		.cfi_endproc
+ 452              	.LFE32:
+ 454              		.section	.text.dispTime,"ax",%progbits
+ 455              		.align	1
+ 456              		.p2align 2,,3
+ 457              		.global	dispTime
+ 458              		.syntax unified
+ 459              		.thumb
+ 460              		.thumb_func
+ 461              		.fpu softvfp
+ 463              	dispTime:
+ 464              	.LFB33:
+ 100:main.c        **** }
+ 101:main.c        **** 
+ 102:main.c        **** void dispTime(){
+ 465              		.loc 1 102 0
+ 466              		.cfi_startproc
+ 467              		@ args = 0, pretend = 0, frame = 32
+ 468              		@ frame_needed = 0, uses_anonymous_args = 0
+ 469 0000 30B5     		push	{r4, r5, lr}
+ 470              	.LCFI5:
+ 471              		.cfi_def_cfa_offset 12
+ 472              		.cfi_offset 4, -12
+ 473              		.cfi_offset 5, -8
+ 474              		.cfi_offset 14, -4
+ 103:main.c        ****   char tempStr[30];
+ 104:main.c        ****   char numStr[10];
+ 105:main.c        ****   LCDClearBuffer();
+ 475              		.loc 1 105 0
+ 476 0002 114B     		ldr	r3, .L27
+ 102:main.c        ****   char tempStr[30];
+ 477              		.loc 1 102 0
+ 478 0004 89B0     		sub	sp, sp, #36
+ 479              	.LCFI6:
+ 480              		.cfi_def_cfa_offset 48
+ 481              		.loc 1 105 0
+ 482 0006 9847     		blx	r3
+ 483              	.LVL33:
+ 106:main.c        **** 
+ 107:main.c        ****   LCDSetFontSize(LARGE);
+ 484              		.loc 1 107 0
+ 485 0008 0220     		movs	r0, #2
+ 486 000a 104B     		ldr	r3, .L27+4
+ 487 000c 9847     		blx	r3
+ 488              	.LVL34:
+ 108:main.c        ****   intToStr2(heures,tempStr);
+ 489              		.loc 1 108 0
+ 490 000e 104B     		ldr	r3, .L27+8
+ 491 0010 6946     		mov	r1, sp
+ 492 0012 1868     		ldr	r0, [r3]
+ 493 0014 0F4C     		ldr	r4, .L27+12
+ 494 0016 A047     		blx	r4
+ 495              	.LVL35:
+ 109:main.c        ****   strcpy(tempStr+strlen(tempStr),":");
+ 496              		.loc 1 109 0
+ 497 0018 0F4D     		ldr	r5, .L27+16
+ 498 001a 6846     		mov	r0, sp
+ 499 001c A847     		blx	r5
+ 500              	.LVL36:
+ 501 001e 0F4B     		ldr	r3, .L27+20
+ 502 0020 1B88     		ldrh	r3, [r3]	@ unaligned
+ 503 0022 2DF80030 		strh	r3, [sp, r0]	@ unaligned
+ 110:main.c        ****   intToStr2(minutes,tempStr+strlen(tempStr));
+ 504              		.loc 1 110 0
+ 505 0026 6846     		mov	r0, sp
+ 506 0028 A847     		blx	r5
+ 507              	.LVL37:
+ 508 002a 0D4B     		ldr	r3, .L27+24
+ 509 002c 0DEB0001 		add	r1, sp, r0
+ 510 0030 1868     		ldr	r0, [r3]
+ 511 0032 A047     		blx	r4
+ 512              	.LVL38:
+ 111:main.c        ****   LCDPrintStringXY(15,60,tempStr);
+ 513              		.loc 1 111 0
+ 514 0034 6A46     		mov	r2, sp
+ 515 0036 3C21     		movs	r1, #60
+ 516 0038 0F20     		movs	r0, #15
+ 517 003a 0A4B     		ldr	r3, .L27+28
+ 518 003c 9847     		blx	r3
+ 519              	.LVL39:
+ 112:main.c        ****   LCDDrawBuffer();
+ 520              		.loc 1 112 0
+ 521 003e 0A4B     		ldr	r3, .L27+32
+ 522 0040 9847     		blx	r3
+ 523              	.LVL40:
+ 113:main.c        **** }
+ 524              		.loc 1 113 0
+ 525 0042 09B0     		add	sp, sp, #36
+ 526              	.LCFI7:
+ 527              		.cfi_def_cfa_offset 12
+ 528              		@ sp needed
+ 529 0044 30BD     		pop	{r4, r5, pc}
+ 530              	.L28:
+ 531 0046 00BF     		.align	2
+ 532              	.L27:
+ 533 0048 00000000 		.word	LCDClearBuffer
+ 534 004c 00000000 		.word	LCDSetFontSize
+ 535 0050 00000000 		.word	heures
+ 536 0054 00000000 		.word	intToStr2
+ 537 0058 00000000 		.word	strlen
+ 538 005c 00000000 		.word	.LC9
+ 539 0060 00000000 		.word	minutes
+ 540 0064 00000000 		.word	LCDPrintStringXY
+ 541 0068 00000000 		.word	LCDDrawBuffer
+ 542              		.cfi_endproc
+ 543              	.LFE33:
+ 545              		.section	.text.dispPosition,"ax",%progbits
+ 546              		.align	1
+ 547              		.p2align 2,,3
+ 548              		.global	dispPosition
+ 549              		.syntax unified
+ 550              		.thumb
+ 551              		.thumb_func
+ 552              		.fpu softvfp
+ 554              	dispPosition:
+ 555              	.LFB34:
+ 114:main.c        **** 
+ 115:main.c        **** void dispPosition(){
+ 556              		.loc 1 115 0
+ 557              		.cfi_startproc
+ 558              		@ args = 0, pretend = 0, frame = 32
+ 559              		@ frame_needed = 0, uses_anonymous_args = 0
+ 560 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+ 561              	.LCFI8:
+ 562              		.cfi_def_cfa_offset 20
+ 563              		.cfi_offset 4, -20
+ 564              		.cfi_offset 5, -16
+ 565              		.cfi_offset 6, -12
+ 566              		.cfi_offset 7, -8
+ 567              		.cfi_offset 14, -4
+ 568 0002 89B0     		sub	sp, sp, #36
+ 569              	.LCFI9:
+ 570              		.cfi_def_cfa_offset 56
+ 116:main.c        ****   char tempStr[30];
+ 117:main.c        ****   char numStr[10];
+ 118:main.c        **** 
+ 119:main.c        ****   LCDClearBuffer();
+ 120:main.c        ****   LCDSetFontSize(NORMAL);
+ 121:main.c        ****   
+ 122:main.c        ****   LCDPrintStringXY(20,15,"Position");
+ 123:main.c        ****   
+ 124:main.c        ****   strcpy(tempStr,"Long : ");
+ 571              		.loc 1 124 0
+ 572 0004 6C46     		mov	r4, sp
+ 119:main.c        ****   LCDSetFontSize(NORMAL);
+ 573              		.loc 1 119 0
+ 574 0006 184B     		ldr	r3, .L31
+ 575 0008 9847     		blx	r3
+ 576              	.LVL41:
+ 120:main.c        ****   
+ 577              		.loc 1 120 0
+ 578 000a 184B     		ldr	r3, .L31+4
+ 579 000c 0120     		movs	r0, #1
+ 580 000e 9847     		blx	r3
+ 581              	.LVL42:
+ 122:main.c        ****   
+ 582              		.loc 1 122 0
+ 583 0010 174D     		ldr	r5, .L31+8
+ 584 0012 184A     		ldr	r2, .L31+12
+ 585 0014 0F21     		movs	r1, #15
+ 586 0016 1420     		movs	r0, #20
+ 587 0018 A847     		blx	r5
+ 588              	.LVL43:
+ 125:main.c        ****   doubleToStr(longitude,tempStr+strlen(tempStr));
+ 589              		.loc 1 125 0
+ 590 001a 174E     		ldr	r6, .L31+16
+ 124:main.c        ****   doubleToStr(longitude,tempStr+strlen(tempStr));
+ 591              		.loc 1 124 0
+ 592 001c 174B     		ldr	r3, .L31+20
+ 593              		.loc 1 125 0
+ 594 001e 0DF10702 		add	r2, sp, #7
+ 124:main.c        ****   doubleToStr(longitude,tempStr+strlen(tempStr));
+ 595              		.loc 1 124 0
+ 596 0022 93E80300 		ldm	r3, {r0, r1}
+ 597 0026 84E80300 		stm	r4, {r0, r1}
+ 598              		.loc 1 125 0
+ 599 002a D6E90001 		ldrd	r0, [r6]
+ 600 002e 144E     		ldr	r6, .L31+24
+ 601 0030 B047     		blx	r6
+ 602              	.LVL44:
+ 126:main.c        ****   LCDPrintStringXY(0,30,tempStr);
+ 603              		.loc 1 126 0
+ 604 0032 2246     		mov	r2, r4
+ 605 0034 1E21     		movs	r1, #30
+ 606 0036 0020     		movs	r0, #0
+ 607 0038 A847     		blx	r5
+ 608              	.LVL45:
+ 127:main.c        **** 
+ 128:main.c        ****   strcpy(tempStr,"Lat : ");
+ 609              		.loc 1 128 0
+ 610 003a 124B     		ldr	r3, .L31+28
+ 129:main.c        ****   doubleToStr(latitude,tempStr+strlen(tempStr));
+ 611              		.loc 1 129 0
+ 612 003c 124F     		ldr	r7, .L31+32
+ 128:main.c        ****   doubleToStr(latitude,tempStr+strlen(tempStr));
+ 613              		.loc 1 128 0
+ 614 003e 93E80300 		ldm	r3, {r0, r1}
+ 615 0042 0B0C     		lsrs	r3, r1, #16
+ 616 0044 8DF80630 		strb	r3, [sp, #6]
+ 617 0048 0090     		str	r0, [sp]
+ 618 004a ADF80410 		strh	r1, [sp, #4]	@ movhi
+ 619              		.loc 1 129 0
+ 620 004e 0DF10602 		add	r2, sp, #6
+ 621 0052 D7E90001 		ldrd	r0, [r7]
+ 622 0056 B047     		blx	r6
+ 623              	.LVL46:
+ 130:main.c        ****   LCDPrintStringXY(0,45,tempStr);
+ 624              		.loc 1 130 0
+ 625 0058 2246     		mov	r2, r4
+ 626 005a 2D21     		movs	r1, #45
+ 627 005c 0020     		movs	r0, #0
+ 628 005e A847     		blx	r5
+ 629              	.LVL47:
+ 131:main.c        ****   LCDDrawBuffer();
+ 630              		.loc 1 131 0
+ 631 0060 0A4B     		ldr	r3, .L31+36
+ 632 0062 9847     		blx	r3
+ 633              	.LVL48:
+ 132:main.c        **** }
+ 634              		.loc 1 132 0
+ 635 0064 09B0     		add	sp, sp, #36
+ 636              	.LCFI10:
+ 637              		.cfi_def_cfa_offset 20
+ 638              		@ sp needed
+ 639 0066 F0BD     		pop	{r4, r5, r6, r7, pc}
+ 640              	.L32:
+ 641              		.align	2
+ 642              	.L31:
+ 643 0068 00000000 		.word	LCDClearBuffer
+ 644 006c 00000000 		.word	LCDSetFontSize
+ 645 0070 00000000 		.word	LCDPrintStringXY
+ 646 0074 00000000 		.word	.LC10
+ 647 0078 00000000 		.word	longitude
+ 648 007c 10000000 		.word	.LC1
+ 649 0080 00000000 		.word	doubleToStr
+ 650 0084 18000000 		.word	.LC2
+ 651 0088 00000000 		.word	latitude
+ 652 008c 00000000 		.word	LCDDrawBuffer
+ 653              		.cfi_endproc
+ 654              	.LFE34:
+ 656              		.section	.text.dispUpdate,"ax",%progbits
+ 657              		.align	1
+ 658              		.p2align 2,,3
+ 659              		.global	dispUpdate
+ 660              		.syntax unified
+ 661              		.thumb
+ 662              		.thumb_func
+ 663              		.fpu softvfp
+ 665              	dispUpdate:
+ 666              	.LFB35:
+ 133:main.c        **** 
+ 134:main.c        **** 
+ 135:main.c        **** 
+ 136:main.c        **** void dispUpdate(){
+ 667              		.loc 1 136 0
+ 668              		.cfi_startproc
+ 669              		@ args = 0, pretend = 0, frame = 0
+ 670              		@ frame_needed = 0, uses_anonymous_args = 0
+ 671              		@ link register save eliminated.
+ 137:main.c        ****   switch(screen){
+ 672              		.loc 1 137 0
+ 673 0000 084B     		ldr	r3, .L40
+ 674 0002 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 675 0004 032B     		cmp	r3, #3
+ 676 0006 0BD8     		bhi	.L33
+ 677 0008 DFE803F0 		tbb	[pc, r3]
+ 678              	.L36:
+ 679 000c 08       		.byte	(.L35-.L36)/2
+ 680 000d 06       		.byte	(.L37-.L36)/2
+ 681 000e 04       		.byte	(.L38-.L36)/2
+ 682 000f 02       		.byte	(.L39-.L36)/2
+ 683              		.p2align 1
+ 684              	.L39:
+ 685              	.LBB10:
+ 686              	.LBB11:
+  99:main.c        **** }
+ 687              		.loc 1 99 0
+ 688 0010 054B     		ldr	r3, .L40+4
+ 689 0012 1847     		bx	r3	@ indirect register sibling call
+ 690              	.LVL49:
+ 691              	.L38:
+ 692              	.LBE11:
+ 693              	.LBE10:
+ 138:main.c        ****   case TIME:
+ 139:main.c        ****     dispTime();
+ 140:main.c        ****     break;
+ 141:main.c        ****   case POSITION:
+ 142:main.c        ****     dispPosition();
+ 143:main.c        ****     break;
+ 144:main.c        ****   case INFOS :
+ 145:main.c        ****     dispInfos();
+ 694              		.loc 1 145 0
+ 695 0014 054B     		ldr	r3, .L40+8
+ 696 0016 1847     		bx	r3	@ indirect register sibling call
+ 697              	.LVL50:
+ 698              	.L37:
+ 142:main.c        ****     break;
+ 699              		.loc 1 142 0
+ 700 0018 054B     		ldr	r3, .L40+12
+ 701 001a 1847     		bx	r3	@ indirect register sibling call
+ 702              	.LVL51:
+ 703              	.L35:
+ 139:main.c        ****     break;
+ 704              		.loc 1 139 0
+ 705 001c 054B     		ldr	r3, .L40+16
+ 706 001e 1847     		bx	r3	@ indirect register sibling call
+ 707              	.LVL52:
+ 708              	.L33:
+ 146:main.c        ****     break;
+ 147:main.c        ****   case IMAGE :
+ 148:main.c        ****     dispImage();
+ 149:main.c        ****     break;
+ 150:main.c        ****   default:
+ 151:main.c        ****     break;
+ 152:main.c        ****   }
+ 153:main.c        **** }
+ 709              		.loc 1 153 0
+ 710 0020 7047     		bx	lr
+ 711              	.L41:
+ 712 0022 00BF     		.align	2
+ 713              	.L40:
+ 714 0024 00000000 		.word	screen
+ 715 0028 00000000 		.word	LCDDrawImageTest
+ 716 002c 00000000 		.word	dispInfos
+ 717 0030 00000000 		.word	dispPosition
+ 718 0034 00000000 		.word	dispTime
+ 719              		.cfi_endproc
+ 720              	.LFE35:
+ 722              		.section	.text.USART_Configuration,"ax",%progbits
+ 723              		.align	1
+ 724              		.p2align 2,,3
+ 725              		.global	USART_Configuration
+ 726              		.syntax unified
+ 727              		.thumb
+ 728              		.thumb_func
+ 729              		.fpu softvfp
+ 731              	USART_Configuration:
+ 732              	.LFB37:
+ 154:main.c        **** 
+ 155:main.c        **** 
+ 156:main.c        **** 
+ 157:main.c        **** 
+ 158:main.c        **** int main(void)
+ 159:main.c        **** {
+ 160:main.c        ****   /* System Clocks Configuration */
+ 161:main.c        ****   RCC_Configuration();
+ 162:main.c        ****   /* Configure the GPIO ports */
+ 163:main.c        ****   GPIO_Configuration();
+ 164:main.c        **** 
+ 165:main.c        ****   /* Configure USART */
+ 166:main.c        ****   USART_Configuration();
+ 167:main.c        ****   /*Interruptions*/
+ 168:main.c        ****   NVIC_Configuration();
+ 169:main.c        ****   /*ADC Configuration*/
+ 170:main.c        ****   ADC_Configuration();
+ 171:main.c        ****   /*DMA Configuration */
+ 172:main.c        ****   DMA_Configuration();
+ 173:main.c        **** 
+ 174:main.c        ****   // Active l'alimentation
+ 175:main.c        ****   powerOn();  
+ 176:main.c        **** 
+ 177:main.c        ****   LCDInit();
+ 178:main.c        ****   
+ 179:main.c        ****   //LCDClearScreen();
+ 180:main.c        ****   //LCDPrintf("Enable GPS...");
+ 181:main.c        ****   USART_Cmd(GPS_USART,ENABLE);
+ 182:main.c        ****   //Active le GPS
+ 183:main.c        ****   gpsSetEnabled(TRUE);
+ 184:main.c        ****   //LCDPrintf("OK\n");
+ 185:main.c        ****   delai(1000);
+ 186:main.c        ****   //LCDPrintf("Init GPS...");
+ 187:main.c        ****   gpsInit();
+ 188:main.c        ****   //LCDPrintf("OK\n");
+ 189:main.c        ****  
+ 190:main.c        ****   //int updateData=TRUE;
+ 191:main.c        ****   screen = TIME;
+ 192:main.c        ****   int i=0;
+ 193:main.c        ****   while((BTN_GAUCHE_PORT->IDR & BTN_GAUCHE_PIN) != 0) 
+ 194:main.c        ****   {
+ 195:main.c        **** 
+ 196:main.c        ****     if(newGPSData){
+ 197:main.c        ****       dispUpdate();
+ 198:main.c        ****       newGPSData=FALSE;
+ 199:main.c        ****     }
+ 200:main.c        **** 
+ 201:main.c        ****     if((BTN_BACK_PORT->IDR & BTN_BACK_PIN) == 0){
+ 202:main.c        ****       switchLed(OFF);
+ 203:main.c        ****       gotoBootloader();
+ 204:main.c        ****     }
+ 205:main.c        **** 
+ 206:main.c        ****     if((BTN_DROITE_PORT->IDR & BTN_DROITE_PIN) == 0){
+ 207:main.c        ****       
+ 208:main.c        ****     }
+ 209:main.c        ****      
+ 210:main.c        ****     if((BTN_BAS_PORT->IDR & BTN_BAS_PIN) == 0){
+ 211:main.c        ****       screen = screen+1;
+ 212:main.c        ****       screen = screen%4;
+ 213:main.c        ****       dispUpdate();
+ 214:main.c        ****       for(i=0;i<100;i++)
+ 215:main.c        **** 	delai(10000);
+ 216:main.c        ****       //switchLed(ON);
+ 217:main.c        ****       
+ 218:main.c        ****     }  
+ 219:main.c        **** 
+ 220:main.c        ****     if((BTN_HAUT_PORT->IDR & BTN_HAUT_PIN) == 0){
+ 221:main.c        ****       screen = screen+3;
+ 222:main.c        ****       screen = screen%4;
+ 223:main.c        ****       dispUpdate();
+ 224:main.c        ****       for(i=0;i<100;i++)
+ 225:main.c        **** 	delai(10000); 
+ 226:main.c        ****     }
+ 227:main.c        ****   }  
+ 228:main.c        ****   powerOff();
+ 229:main.c        **** }
+ 230:main.c        **** 
+ 231:main.c        **** 
+ 232:main.c        **** /*******************************************************************************
+ 233:main.c        **** * Function Name  : USART_Configuration
+ 234:main.c        **** * Description    : Configures the USART
+ 235:main.c        **** * Input          : None
+ 236:main.c        **** * Output         : None
+ 237:main.c        **** * Return         : None
+ 238:main.c        **** *******************************************************************************/
+ 239:main.c        **** void USART_Configuration(void) {
+ 733              		.loc 1 239 0
+ 734              		.cfi_startproc
+ 735              		@ args = 0, pretend = 0, frame = 16
+ 736              		@ frame_needed = 0, uses_anonymous_args = 0
+ 737 0000 30B5     		push	{r4, r5, lr}
+ 738              	.LCFI11:
+ 739              		.cfi_def_cfa_offset 12
+ 740              		.cfi_offset 4, -12
+ 741              		.cfi_offset 5, -8
+ 742              		.cfi_offset 14, -4
+ 240:main.c        ****   USART_InitTypeDef   USART_InitStructure;
+ 241:main.c        **** 
+ 242:main.c        ****   // GPS USART 1
+ 243:main.c        ****   USART_InitStructure.USART_BaudRate = 38400;
+ 743              		.loc 1 243 0
+ 744 0002 0023     		movs	r3, #0
+ 745 0004 4FF41642 		mov	r2, #38400
+ 244:main.c        ****   USART_InitStructure.USART_WordLength = USART_WordLength_8b;
+ 245:main.c        ****   USART_InitStructure.USART_StopBits = USART_StopBits_1;
+ 746              		.loc 1 245 0
+ 747 0008 4FF44025 		mov	r5, #786432
+ 246:main.c        ****   USART_InitStructure.USART_Parity = USART_Parity_No;
+ 247:main.c        ****   USART_InitStructure.USART_HardwareFlowControl =   USART_HardwareFlowControl_None;
+ 248:main.c        ****   USART_InitStructure.USART_Mode = USART_Mode_Rx | USART_Mode_Tx;
+ 249:main.c        ****   USART_Init(GPS_USART, &USART_InitStructure);
+ 748              		.loc 1 249 0
+ 749 000c 094C     		ldr	r4, .L44
+ 239:main.c        ****   USART_InitTypeDef   USART_InitStructure;
+ 750              		.loc 1 239 0
+ 751 000e 85B0     		sub	sp, sp, #20
+ 752              	.LCFI12:
+ 753              		.cfi_def_cfa_offset 32
+ 754              		.loc 1 249 0
+ 755 0010 6946     		mov	r1, sp
+ 756 0012 2046     		mov	r0, r4
+ 243:main.c        ****   USART_InitStructure.USART_WordLength = USART_WordLength_8b;
+ 757              		.loc 1 243 0
+ 758 0014 0092     		str	r2, [sp]
+ 759 0016 0193     		str	r3, [sp, #4]
+ 248:main.c        ****   USART_Init(GPS_USART, &USART_InitStructure);
+ 760              		.loc 1 248 0
+ 761 0018 ADF80C30 		strh	r3, [sp, #12]	@ movhi
+ 762              		.loc 1 249 0
+ 763 001c 064A     		ldr	r2, .L44+4
+ 245:main.c        ****   USART_InitStructure.USART_Parity = USART_Parity_No;
+ 764              		.loc 1 245 0
+ 765 001e 0295     		str	r5, [sp, #8]
+ 766              		.loc 1 249 0
+ 767 0020 9047     		blx	r2
+ 768              	.LVL53:
+ 250:main.c        **** 
+ 251:main.c        ****   // Active les interruptions sur USART1
+ 252:main.c        ****   USART_ITConfig(GPS_USART,USART_IT_RXNE,ENABLE);
+ 769              		.loc 1 252 0
+ 770 0022 2046     		mov	r0, r4
+ 771 0024 0122     		movs	r2, #1
+ 772 0026 40F22551 		movw	r1, #1317
+ 773 002a 044B     		ldr	r3, .L44+8
+ 774 002c 9847     		blx	r3
+ 775              	.LVL54:
+ 253:main.c        **** }
+ 776              		.loc 1 253 0
+ 777 002e 05B0     		add	sp, sp, #20
+ 778              	.LCFI13:
+ 779              		.cfi_def_cfa_offset 12
+ 780              		@ sp needed
+ 781 0030 30BD     		pop	{r4, r5, pc}
+ 782              	.L45:
+ 783 0032 00BF     		.align	2
+ 784              	.L44:
+ 785 0034 00380140 		.word	1073821696
+ 786 0038 00000000 		.word	USART_Init
+ 787 003c 00000000 		.word	USART_ITConfig
+ 788              		.cfi_endproc
+ 789              	.LFE37:
+ 791              		.section	.text.RCC_Configuration,"ax",%progbits
+ 792              		.align	1
+ 793              		.p2align 2,,3
+ 794              		.global	RCC_Configuration
+ 795              		.syntax unified
+ 796              		.thumb
+ 797              		.thumb_func
+ 798              		.fpu softvfp
+ 800              	RCC_Configuration:
+ 801              	.LFB38:
+ 254:main.c        **** 
+ 255:main.c        **** 
+ 256:main.c        **** /*******************************************************************************
+ 257:main.c        **** * Function Name  : RCC_Configuration
+ 258:main.c        **** * Description    : Configures the different system clocks.
+ 259:main.c        **** * Input          : None
+ 260:main.c        **** * Output         : None
+ 261:main.c        **** * Return         : None
+ 262:main.c        **** *******************************************************************************/
+ 263:main.c        **** void RCC_Configuration(void) 
+ 264:main.c        **** {
+ 802              		.loc 1 264 0
+ 803              		.cfi_startproc
+ 804              		@ args = 0, pretend = 0, frame = 0
+ 805              		@ frame_needed = 0, uses_anonymous_args = 0
+ 806 0000 10B5     		push	{r4, lr}
+ 807              	.LCFI14:
+ 808              		.cfi_def_cfa_offset 8
+ 809              		.cfi_offset 4, -8
+ 810              		.cfi_offset 14, -4
+ 265:main.c        ****   /* Setup the microcontroller system. Initialize the Embedded Flash Interface,
+ 266:main.c        ****      initialize the PLL and update the SystemFrequency variable. */
+ 267:main.c        ****   SystemInit();
+ 811              		.loc 1 267 0
+ 812 0002 0C4B     		ldr	r3, .L48
+ 813 0004 9847     		blx	r3
+ 814              	.LVL55:
+ 268:main.c        ****   RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO, ENABLE);
+ 815              		.loc 1 268 0
+ 816 0006 0121     		movs	r1, #1
+ 817 0008 0B4C     		ldr	r4, .L48+4
+ 818 000a 0846     		mov	r0, r1
+ 819 000c A047     		blx	r4
+ 820              	.LVL56:
+ 269:main.c        ****   RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC | RCC_APB2Periph_GPIOA | RCC_APB2Periph_GPIOD |RCC_AP
+ 821              		.loc 1 269 0
+ 822 000e 0121     		movs	r1, #1
+ 823 0010 4FF40F70 		mov	r0, #572
+ 824 0014 A047     		blx	r4
+ 825              	.LVL57:
+ 270:main.c        ****   
+ 271:main.c        ****   /* Access to backup register */
+ 272:main.c        ****   RCC_APB2PeriphClockCmd(RCC_APB1Periph_BKP | RCC_APB1Periph_PWR, ENABLE );
+ 826              		.loc 1 272 0
+ 827 0016 0121     		movs	r1, #1
+ 828 0018 4FF0C050 		mov	r0, #402653184
+ 829 001c A047     		blx	r4
+ 830              	.LVL58:
+ 273:main.c        ****   
+ 274:main.c        ****   /* USART1 Clock */
+ 275:main.c        ****   RCC_APB2PeriphClockCmd(RCC_APB2Periph_USART1, ENABLE);  
+ 831              		.loc 1 275 0
+ 832 001e 0121     		movs	r1, #1
+ 833 0020 4FF48040 		mov	r0, #16384
+ 834 0024 A047     		blx	r4
+ 835              	.LVL59:
+ 276:main.c        ****   
+ 277:main.c        ****   /*DMA Clock*/
+ 278:main.c        ****   RCC_AHBPeriphClockCmd(RCC_AHBPeriph_DMA1, ENABLE);
+ 279:main.c        ****   
+ 280:main.c        ****   /* Timer3 Clock */
+ 281:main.c        ****   //RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM3, ENABLE);  
+ 282:main.c        **** }
+ 836              		.loc 1 282 0
+ 837 0026 BDE81040 		pop	{r4, lr}
+ 838              	.LCFI15:
+ 839              		.cfi_restore 14
+ 840              		.cfi_restore 4
+ 841              		.cfi_def_cfa_offset 0
+ 278:main.c        ****   
+ 842              		.loc 1 278 0
+ 843 002a 0121     		movs	r1, #1
+ 844 002c 034B     		ldr	r3, .L48+8
+ 845 002e 0846     		mov	r0, r1
+ 846 0030 1847     		bx	r3	@ indirect register sibling call
+ 847              	.LVL60:
+ 848              	.L49:
+ 849 0032 00BF     		.align	2
+ 850              	.L48:
+ 851 0034 00000000 		.word	SystemInit
+ 852 0038 00000000 		.word	RCC_APB2PeriphClockCmd
+ 853 003c 00000000 		.word	RCC_AHBPeriphClockCmd
+ 854              		.cfi_endproc
+ 855              	.LFE38:
+ 857              		.section	.text.ADC_Configuration,"ax",%progbits
+ 858              		.align	1
+ 859              		.p2align 2,,3
+ 860              		.global	ADC_Configuration
+ 861              		.syntax unified
+ 862              		.thumb
+ 863              		.thumb_func
+ 864              		.fpu softvfp
+ 866              	ADC_Configuration:
+ 867              	.LFB39:
+ 283:main.c        **** 
+ 284:main.c        **** /*******************************************************************************
+ 285:main.c        **** * Function Name  : ADC_Configuration
+ 286:main.c        **** * Description    : Configures Analog to digital converter
+ 287:main.c        **** * Input          : None
+ 288:main.c        **** * Output         : None
+ 289:main.c        **** * Return         : None
+ 290:main.c        **** *******************************************************************************/
+ 291:main.c        **** void ADC_Configuration(){
+ 868              		.loc 1 291 0
+ 869              		.cfi_startproc
+ 870              		@ args = 0, pretend = 0, frame = 24
+ 871              		@ frame_needed = 0, uses_anonymous_args = 0
+ 872 0000 70B5     		push	{r4, r5, r6, lr}
+ 873              	.LCFI16:
+ 874              		.cfi_def_cfa_offset 16
+ 875              		.cfi_offset 4, -16
+ 876              		.cfi_offset 5, -12
+ 877              		.cfi_offset 6, -8
+ 878              		.cfi_offset 14, -4
+ 292:main.c        ****   ADC_InitTypeDef ADC_InitStructure;
+ 293:main.c        ****   ADC_InitStructure.ADC_Mode = ADC_Mode_Independent;
+ 879              		.loc 1 293 0
+ 880 0002 0023     		movs	r3, #0
+ 294:main.c        ****   ADC_InitStructure.ADC_ScanConvMode = ENABLE;
+ 881              		.loc 1 294 0
+ 882 0004 0124     		movs	r4, #1
+ 295:main.c        ****   ADC_InitStructure.ADC_ContinuousConvMode = ENABLE;
+ 296:main.c        ****   ADC_InitStructure.ADC_ExternalTrigConv = ADC_ExternalTrigConv_None;
+ 883              		.loc 1 296 0
+ 884 0006 4FF46025 		mov	r5, #917504
+ 297:main.c        ****   ADC_InitStructure.ADC_DataAlign = ADC_DataAlign_Right;
+ 298:main.c        ****   ADC_InitStructure.ADC_NbrOfChannel = 2;
+ 885              		.loc 1 298 0
+ 886 000a 0226     		movs	r6, #2
+ 291:main.c        ****   ADC_InitTypeDef ADC_InitStructure;
+ 887              		.loc 1 291 0
+ 888 000c 86B0     		sub	sp, sp, #24
+ 889              	.LCFI17:
+ 890              		.cfi_def_cfa_offset 40
+ 299:main.c        ****   ADC_Init(ADC1,&ADC_InitStructure);
+ 891              		.loc 1 299 0
+ 892 000e 01A9     		add	r1, sp, #4
+ 893 0010 1B48     		ldr	r0, .L56
+ 894 0012 1C4A     		ldr	r2, .L56+4
+ 293:main.c        ****   ADC_InitStructure.ADC_ScanConvMode = ENABLE;
+ 895              		.loc 1 293 0
+ 896 0014 0193     		str	r3, [sp, #4]
+ 297:main.c        ****   ADC_InitStructure.ADC_NbrOfChannel = 2;
+ 897              		.loc 1 297 0
+ 898 0016 0493     		str	r3, [sp, #16]
+ 294:main.c        ****   ADC_InitStructure.ADC_ContinuousConvMode = ENABLE;
+ 899              		.loc 1 294 0
+ 900 0018 8DF80840 		strb	r4, [sp, #8]
+ 295:main.c        ****   ADC_InitStructure.ADC_ExternalTrigConv = ADC_ExternalTrigConv_None;
+ 901              		.loc 1 295 0
+ 902 001c 8DF80940 		strb	r4, [sp, #9]
+ 296:main.c        ****   ADC_InitStructure.ADC_DataAlign = ADC_DataAlign_Right;
+ 903              		.loc 1 296 0
+ 904 0020 0395     		str	r5, [sp, #12]
+ 298:main.c        ****   ADC_Init(ADC1,&ADC_InitStructure);
+ 905              		.loc 1 298 0
+ 906 0022 8DF81460 		strb	r6, [sp, #20]
+ 300:main.c        **** 
+ 301:main.c        ****   ADC_RegularChannelConfig(ADC1,ADC_Channel_1,1,ADC_SampleTime_239Cycles5);
+ 907              		.loc 1 301 0
+ 908 0026 184D     		ldr	r5, .L56+8
+ 299:main.c        **** 
+ 909              		.loc 1 299 0
+ 910 0028 9047     		blx	r2
+ 911              	.LVL61:
+ 912              		.loc 1 301 0
+ 913 002a 2246     		mov	r2, r4
+ 914 002c 2146     		mov	r1, r4
+ 915 002e 0723     		movs	r3, #7
+ 916 0030 1348     		ldr	r0, .L56
+ 917 0032 A847     		blx	r5
+ 918              	.LVL62:
+ 302:main.c        ****   ADC_RegularChannelConfig(ADC1,ADC_Channel_9,2,ADC_SampleTime_239Cycles5);
+ 919              		.loc 1 302 0
+ 920 0034 3246     		mov	r2, r6
+ 921 0036 0723     		movs	r3, #7
+ 922 0038 0921     		movs	r1, #9
+ 923 003a 1148     		ldr	r0, .L56
+ 924 003c A847     		blx	r5
+ 925              	.LVL63:
+ 303:main.c        ****   
+ 304:main.c        ****   ADC_DMACmd(ADC1, ENABLE);
+ 926              		.loc 1 304 0
+ 927 003e 2146     		mov	r1, r4
+ 928 0040 0F48     		ldr	r0, .L56
+ 929 0042 124B     		ldr	r3, .L56+12
+ 930 0044 9847     		blx	r3
+ 931              	.LVL64:
+ 305:main.c        ****   ADC_Cmd(ADC1,ENABLE);
+ 932              		.loc 1 305 0
+ 933 0046 2146     		mov	r1, r4
+ 934 0048 0D48     		ldr	r0, .L56
+ 935 004a 114B     		ldr	r3, .L56+16
+ 936 004c 9847     		blx	r3
+ 937              	.LVL65:
+ 306:main.c        ****   //Calibration
+ 307:main.c        ****   ADC_ResetCalibration(ADC1);
+ 938              		.loc 1 307 0
+ 939 004e 0C48     		ldr	r0, .L56
+ 940 0050 104B     		ldr	r3, .L56+20
+ 941 0052 9847     		blx	r3
+ 942              	.LVL66:
+ 943 0054 104D     		ldr	r5, .L56+24
+ 308:main.c        ****   while(ADC_GetCalibrationStatus(ADC1)){} // Wait for calibration reset
+ 944              		.loc 1 308 0
+ 945 0056 0A4C     		ldr	r4, .L56
+ 946              	.L51:
+ 947              		.loc 1 308 0 is_stmt 0 discriminator 1
+ 948 0058 2046     		mov	r0, r4
+ 949 005a A847     		blx	r5
+ 950              	.LVL67:
+ 951 005c 0028     		cmp	r0, #0
+ 952 005e FBD1     		bne	.L51
+ 309:main.c        ****   ADC_StartCalibration(ADC1);
+ 953              		.loc 1 309 0 is_stmt 1
+ 954 0060 0748     		ldr	r0, .L56
+ 955 0062 0E4B     		ldr	r3, .L56+28
+ 956 0064 9847     		blx	r3
+ 957              	.LVL68:
+ 958 0066 0E4D     		ldr	r5, .L56+32
+ 310:main.c        ****   while(ADC_GetResetCalibrationStatus(ADC1)){} //Wait for calibration finished
+ 959              		.loc 1 310 0
+ 960 0068 054C     		ldr	r4, .L56
+ 961              	.L52:
+ 962              		.loc 1 310 0 is_stmt 0 discriminator 1
+ 963 006a 2046     		mov	r0, r4
+ 964 006c A847     		blx	r5
+ 965              	.LVL69:
+ 966 006e 0028     		cmp	r0, #0
+ 967 0070 FBD1     		bne	.L52
+ 311:main.c        **** 
+ 312:main.c        **** 
+ 313:main.c        ****   //Start Conversion
+ 314:main.c        ****   ADC_SoftwareStartConvCmd(ADC1,ENABLE);
+ 968              		.loc 1 314 0 is_stmt 1
+ 969 0072 0121     		movs	r1, #1
+ 970 0074 0248     		ldr	r0, .L56
+ 971 0076 0B4B     		ldr	r3, .L56+36
+ 972 0078 9847     		blx	r3
+ 973              	.LVL70:
+ 315:main.c        **** }
+ 974              		.loc 1 315 0
+ 975 007a 06B0     		add	sp, sp, #24
+ 976              	.LCFI18:
+ 977              		.cfi_def_cfa_offset 16
+ 978              		@ sp needed
+ 979 007c 70BD     		pop	{r4, r5, r6, pc}
+ 980              	.L57:
+ 981 007e 00BF     		.align	2
+ 982              	.L56:
+ 983 0080 00240140 		.word	1073816576
+ 984 0084 00000000 		.word	ADC_Init
+ 985 0088 00000000 		.word	ADC_RegularChannelConfig
+ 986 008c 00000000 		.word	ADC_DMACmd
+ 987 0090 00000000 		.word	ADC_Cmd
+ 988 0094 00000000 		.word	ADC_ResetCalibration
+ 989 0098 00000000 		.word	ADC_GetCalibrationStatus
+ 990 009c 00000000 		.word	ADC_StartCalibration
+ 991 00a0 00000000 		.word	ADC_GetResetCalibrationStatus
+ 992 00a4 00000000 		.word	ADC_SoftwareStartConvCmd
+ 993              		.cfi_endproc
+ 994              	.LFE39:
+ 996              		.section	.text.DMA_Configuration,"ax",%progbits
+ 997              		.align	1
+ 998              		.p2align 2,,3
+ 999              		.global	DMA_Configuration
+ 1000              		.syntax unified
+ 1001              		.thumb
+ 1002              		.thumb_func
+ 1003              		.fpu softvfp
+ 1005              	DMA_Configuration:
+ 1006              	.LFB40:
+ 316:main.c        **** 
+ 317:main.c        **** 
+ 318:main.c        **** 
+ 319:main.c        **** /*******************************************************************************
+ 320:main.c        **** * Function Name  : DMA_Configuration
+ 321:main.c        **** * Description    : Configures DMA
+ 322:main.c        **** * Input          : None
+ 323:main.c        **** * Output         : None
+ 324:main.c        **** * Return         : None
+ 325:main.c        **** *******************************************************************************/
+ 326:main.c        **** void DMA_Configuration(){
+ 1007              		.loc 1 326 0
+ 1008              		.cfi_startproc
+ 1009              		@ args = 0, pretend = 0, frame = 48
+ 1010              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1011 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+ 1012              	.LCFI19:
+ 1013              		.cfi_def_cfa_offset 20
+ 1014              		.cfi_offset 4, -20
+ 1015              		.cfi_offset 5, -16
+ 1016              		.cfi_offset 6, -12
+ 1017              		.cfi_offset 7, -8
+ 1018              		.cfi_offset 14, -4
+ 327:main.c        **** 
+ 328:main.c        ****   DMA_DeInit(DMA1_Channel1);
+ 1019              		.loc 1 328 0
+ 1020 0002 144C     		ldr	r4, .L60
+ 326:main.c        **** 
+ 1021              		.loc 1 326 0
+ 1022 0004 8DB0     		sub	sp, sp, #52
+ 1023              	.LCFI20:
+ 1024              		.cfi_def_cfa_offset 72
+ 1025              		.loc 1 328 0
+ 1026 0006 2046     		mov	r0, r4
+ 1027 0008 134B     		ldr	r3, .L60+4
+ 1028 000a 9847     		blx	r3
+ 1029              	.LVL71:
+ 329:main.c        ****   
+ 330:main.c        ****   DMA_InitTypeDef DMA_InitStructure;
+ 331:main.c        ****   DMA_InitStructure.DMA_PeripheralBaseAddr = ADC1_DR_Address;
+ 332:main.c        ****   DMA_InitStructure.DMA_MemoryBaseAddr = (uint32_t)(&ADCValues) ;
+ 333:main.c        ****   DMA_InitStructure.DMA_DIR = DMA_DIR_PeripheralSRC ;
+ 334:main.c        ****   DMA_InitStructure.DMA_BufferSize = 2 ;
+ 335:main.c        ****   DMA_InitStructure.DMA_PeripheralInc = DMA_PeripheralInc_Disable  ;
+ 336:main.c        ****   DMA_InitStructure.DMA_MemoryInc=DMA_MemoryInc_Enable;
+ 1030              		.loc 1 336 0
+ 1031 000c 8027     		movs	r7, #128
+ 337:main.c        ****   DMA_InitStructure.DMA_PeripheralDataSize =DMA_PeripheralDataSize_HalfWord;
+ 1032              		.loc 1 337 0
+ 1033 000e 4FF48075 		mov	r5, #256
+ 338:main.c        ****   DMA_InitStructure.DMA_MemoryDataSize = DMA_MemoryDataSize_Word;
+ 1034              		.loc 1 338 0
+ 1035 0012 4FF40062 		mov	r2, #2048
+ 333:main.c        ****   DMA_InitStructure.DMA_BufferSize = 2 ;
+ 1036              		.loc 1 333 0
+ 1037 0016 0023     		movs	r3, #0
+ 339:main.c        ****   DMA_InitStructure.DMA_Mode = DMA_Mode_Circular ;
+ 1038              		.loc 1 339 0
+ 1039 0018 2021     		movs	r1, #32
+ 334:main.c        ****   DMA_InitStructure.DMA_PeripheralInc = DMA_PeripheralInc_Disable  ;
+ 1040              		.loc 1 334 0
+ 1041 001a 4FF0020C 		mov	ip, #2
+ 340:main.c        ****   DMA_InitStructure.DMA_Priority = DMA_Priority_High;
+ 1042              		.loc 1 340 0
+ 1043 001e 4FF40056 		mov	r6, #8192
+ 337:main.c        ****   DMA_InitStructure.DMA_MemoryDataSize = DMA_MemoryDataSize_Word;
+ 1044              		.loc 1 337 0
+ 1045 0022 CDE90675 		strd	r7, r5, [sp, #24]
+ 338:main.c        ****   DMA_InitStructure.DMA_Mode = DMA_Mode_Circular ;
+ 1046              		.loc 1 338 0
+ 1047 0026 0892     		str	r2, [sp, #32]
+ 331:main.c        ****   DMA_InitStructure.DMA_MemoryBaseAddr = (uint32_t)(&ADCValues) ;
+ 1048              		.loc 1 331 0
+ 1049 0028 0C4D     		ldr	r5, .L60+8
+ 332:main.c        ****   DMA_InitStructure.DMA_DIR = DMA_DIR_PeripheralSRC ;
+ 1050              		.loc 1 332 0
+ 1051 002a 0D4A     		ldr	r2, .L60+12
+ 341:main.c        ****   DMA_InitStructure.DMA_M2M = DMA_M2M_Disable;
+ 342:main.c        ****  
+ 343:main.c        ****   DMA_Init(DMA1_Channel1,&DMA_InitStructure);
+ 1052              		.loc 1 343 0
+ 1053 002c 2046     		mov	r0, r4
+ 333:main.c        ****   DMA_InitStructure.DMA_BufferSize = 2 ;
+ 1054              		.loc 1 333 0
+ 1055 002e 0393     		str	r3, [sp, #12]
+ 335:main.c        ****   DMA_InitStructure.DMA_MemoryInc=DMA_MemoryInc_Enable;
+ 1056              		.loc 1 335 0
+ 1057 0030 0593     		str	r3, [sp, #20]
+ 341:main.c        ****   DMA_InitStructure.DMA_M2M = DMA_M2M_Disable;
+ 1058              		.loc 1 341 0
+ 1059 0032 0B93     		str	r3, [sp, #44]
+ 339:main.c        ****   DMA_InitStructure.DMA_Priority = DMA_Priority_High;
+ 1060              		.loc 1 339 0
+ 1061 0034 0991     		str	r1, [sp, #36]
+ 1062              		.loc 1 343 0
+ 1063 0036 0B4B     		ldr	r3, .L60+16
+ 1064 0038 01A9     		add	r1, sp, #4
+ 334:main.c        ****   DMA_InitStructure.DMA_PeripheralInc = DMA_PeripheralInc_Disable  ;
+ 1065              		.loc 1 334 0
+ 1066 003a CDF810C0 		str	ip, [sp, #16]
+ 332:main.c        ****   DMA_InitStructure.DMA_DIR = DMA_DIR_PeripheralSRC ;
+ 1067              		.loc 1 332 0
+ 1068 003e CDE90152 		strd	r5, r2, [sp, #4]
+ 340:main.c        ****   DMA_InitStructure.DMA_M2M = DMA_M2M_Disable;
+ 1069              		.loc 1 340 0
+ 1070 0042 0A96     		str	r6, [sp, #40]
+ 1071              		.loc 1 343 0
+ 1072 0044 9847     		blx	r3
+ 1073              	.LVL72:
+ 344:main.c        ****   DMA_Cmd(DMA1_Channel1,ENABLE);
+ 1074              		.loc 1 344 0
+ 1075 0046 2046     		mov	r0, r4
+ 1076 0048 0121     		movs	r1, #1
+ 1077 004a 074B     		ldr	r3, .L60+20
+ 1078 004c 9847     		blx	r3
+ 1079              	.LVL73:
+ 345:main.c        **** }
+ 1080              		.loc 1 345 0
+ 1081 004e 0DB0     		add	sp, sp, #52
+ 1082              	.LCFI21:
+ 1083              		.cfi_def_cfa_offset 20
+ 1084              		@ sp needed
+ 1085 0050 F0BD     		pop	{r4, r5, r6, r7, pc}
+ 1086              	.L61:
+ 1087 0052 00BF     		.align	2
+ 1088              	.L60:
+ 1089 0054 08000240 		.word	1073872904
+ 1090 0058 00000000 		.word	DMA_DeInit
+ 1091 005c 4C240140 		.word	1073816652
+ 1092 0060 00000000 		.word	ADCValues
+ 1093 0064 00000000 		.word	DMA_Init
+ 1094 0068 00000000 		.word	DMA_Cmd
+ 1095              		.cfi_endproc
+ 1096              	.LFE40:
+ 1098              		.section	.text.NVIC_Configuration,"ax",%progbits
+ 1099              		.align	1
+ 1100              		.p2align 2,,3
+ 1101              		.global	NVIC_Configuration
+ 1102              		.syntax unified
+ 1103              		.thumb
+ 1104              		.thumb_func
+ 1105              		.fpu softvfp
+ 1107              	NVIC_Configuration:
+ 1108              	.LFB41:
+ 346:main.c        **** 
+ 347:main.c        **** /*******************************************************************************
+ 348:main.c        **** * Function Name  : NVIC_Configuration
+ 349:main.c        **** * Description    : Configures Vector Table base location.
+ 350:main.c        **** * Input          : None
+ 351:main.c        **** * Output         : None
+ 352:main.c        **** * Return         : None
+ 353:main.c        **** *******************************************************************************/
+ 354:main.c        **** extern uint32_t _isr_vectorsflash_offs;
+ 355:main.c        **** void NVIC_Configuration(void)
+ 356:main.c        **** {
+ 1109              		.loc 1 356 0
+ 1110              		.cfi_startproc
+ 1111              		@ args = 0, pretend = 0, frame = 8
+ 1112              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1113 0000 10B5     		push	{r4, lr}
+ 1114              	.LCFI22:
+ 1115              		.cfi_def_cfa_offset 8
+ 1116              		.cfi_offset 4, -8
+ 1117              		.cfi_offset 14, -4
+ 357:main.c        ****   /* Set the Vector Table base location at 0x08000000+_isr_vectorsflash_offs */
+ 358:main.c        ****   NVIC_SetVectorTable(NVIC_VectTab_FLASH, (uint32_t)&_isr_vectorsflash_offs);
+ 1118              		.loc 1 358 0
+ 1119 0002 0A49     		ldr	r1, .L64
+ 356:main.c        ****   /* Set the Vector Table base location at 0x08000000+_isr_vectorsflash_offs */
+ 1120              		.loc 1 356 0
+ 1121 0004 82B0     		sub	sp, sp, #8
+ 1122              	.LCFI23:
+ 1123              		.cfi_def_cfa_offset 16
+ 1124              		.loc 1 358 0
+ 1125 0006 4FF00060 		mov	r0, #134217728
+ 1126 000a 094B     		ldr	r3, .L64+4
+ 1127 000c 9847     		blx	r3
+ 1128              	.LVL74:
+ 359:main.c        ****   NVIC_InitTypeDef NVIC_InitStructure;
+ 360:main.c        ****   
+ 361:main.c        ****   /* USART1 Interrupts*/
+ 362:main.c        ****   NVIC_InitStructure.NVIC_IRQChannel = USART1_IRQn;
+ 1129              		.loc 1 362 0
+ 1130 000e 2524     		movs	r4, #37
+ 363:main.c        ****   NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
+ 1131              		.loc 1 363 0
+ 1132 0010 0021     		movs	r1, #0
+ 364:main.c        ****   NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+ 1133              		.loc 1 364 0
+ 1134 0012 0122     		movs	r2, #1
+ 365:main.c        ****   NVIC_Init(&NVIC_InitStructure);
+ 1135              		.loc 1 365 0
+ 1136 0014 01A8     		add	r0, sp, #4
+ 1137 0016 074B     		ldr	r3, .L64+8
+ 362:main.c        ****   NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
+ 1138              		.loc 1 362 0
+ 1139 0018 8DF80440 		strb	r4, [sp, #4]
+ 363:main.c        ****   NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+ 1140              		.loc 1 363 0
+ 1141 001c 8DF80610 		strb	r1, [sp, #6]
+ 364:main.c        ****   NVIC_Init(&NVIC_InitStructure);
+ 1142              		.loc 1 364 0
+ 1143 0020 8DF80720 		strb	r2, [sp, #7]
+ 1144              		.loc 1 365 0
+ 1145 0024 9847     		blx	r3
+ 1146              	.LVL75:
+ 366:main.c        ****   
+ 367:main.c        ****   /* TIM3 Interrupts */
+ 368:main.c        ****   /*NVIC_InitStructure.NVIC_IRQChannel = TIM3_IRQn;
+ 369:main.c        ****   NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
+ 370:main.c        ****   NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+ 371:main.c        ****   NVIC_Init(&NVIC_InitStructure);
+ 372:main.c        ****   */
+ 373:main.c        ****   /* USB Interrupts */
+ 374:main.c        ****   //NVIC_InitStructure.NVIC_IRQChannel = USB_LP_CAN1_RX0_IRQn;
+ 375:main.c        ****   //NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 1;
+ 376:main.c        ****   //NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
+ 377:main.c        ****   //NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+ 378:main.c        ****   //NVIC_Init(&NVIC_InitStructure);
+ 379:main.c        **** }
+ 1147              		.loc 1 379 0
+ 1148 0026 02B0     		add	sp, sp, #8
+ 1149              	.LCFI24:
+ 1150              		.cfi_def_cfa_offset 8
+ 1151              		@ sp needed
+ 1152 0028 10BD     		pop	{r4, pc}
+ 1153              	.L65:
+ 1154 002a 00BF     		.align	2
+ 1155              	.L64:
+ 1156 002c 00000000 		.word	_isr_vectorsflash_offs
+ 1157 0030 00000000 		.word	NVIC_SetVectorTable
+ 1158 0034 00000000 		.word	NVIC_Init
+ 1159              		.cfi_endproc
+ 1160              	.LFE41:
+ 1162              		.section	.text.GPIO_Configuration,"ax",%progbits
+ 1163              		.align	1
+ 1164              		.p2align 2,,3
+ 1165              		.global	GPIO_Configuration
+ 1166              		.syntax unified
+ 1167              		.thumb
+ 1168              		.thumb_func
+ 1169              		.fpu softvfp
+ 1171              	GPIO_Configuration:
+ 1172              	.LFB42:
+ 380:main.c        **** /*
+ 381:main.c        **** void TIM3_Configuration(void)
+ 382:main.c        **** {
+ 383:main.c        ****   TIM3->PSC = 23999;
+ 384:main.c        ****   TIM3->ARR = 1000;
+ 385:main.c        ****   TIM3->DIER = TIM_DIER_UIE; // Enable update interrupt (timer level)
+ 386:main.c        ****   TIM3->CR1 = TIM_CR1_CEN;   // Enable timer
+ 387:main.c        **** }
+ 388:main.c        **** */
+ 389:main.c        **** /*******************************************************************************
+ 390:main.c        **** * Function Name  : GPIO_Configuration
+ 391:main.c        **** * Description    : Configures the different GPIO ports.
+ 392:main.c        **** * Input          : None
+ 393:main.c        **** d
+ 394:main.c        **** d* Output         : None
+ 395:main.c        **** * Return         : None
+ 396:main.c        **** *******************************************************************************/
+ 397:main.c        **** void GPIO_Configuration(void)
+ 398:main.c        **** {
+ 1173              		.loc 1 398 0
+ 1174              		.cfi_startproc
+ 1175              		@ args = 0, pretend = 0, frame = 8
+ 1176              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1177 0000 2DE9F04F 		push	{r4, r5, r6, r7, r8, r9, r10, fp, lr}
+ 1178              	.LCFI25:
+ 1179              		.cfi_def_cfa_offset 36
+ 1180              		.cfi_offset 4, -36
+ 1181              		.cfi_offset 5, -32
+ 1182              		.cfi_offset 6, -28
+ 1183              		.cfi_offset 7, -24
+ 1184              		.cfi_offset 8, -20
+ 1185              		.cfi_offset 9, -16
+ 1186              		.cfi_offset 10, -12
+ 1187              		.cfi_offset 11, -8
+ 1188              		.cfi_offset 14, -4
+ 399:main.c        ****   GPIO_InitTypeDef GPIO_InitStructure;
+ 400:main.c        **** 
+ 401:main.c        ****   //Active l'alimentation
+ 402:main.c        ****   GPIO_InitStructure.GPIO_Pin =  PON_PIN;
+ 1189              		.loc 1 402 0
+ 1190 0004 4FF48073 		mov	r3, #256
+ 403:main.c        ****   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
+ 1191              		.loc 1 403 0
+ 1192 0008 1027     		movs	r7, #16
+ 404:main.c        ****   GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+ 1193              		.loc 1 404 0
+ 1194 000a 0326     		movs	r6, #3
+ 405:main.c        ****   GPIO_Init(PON_PORT, &GPIO_InitStructure);
+ 406:main.c        ****   
+ 407:main.c        ****   // Configure PA.8 as output push-pull (LED)
+ 408:main.c        ****   GPIO_InitStructure.GPIO_Pin =  LED_PIN;
+ 1195              		.loc 1 408 0
+ 1196 000c 4FF02008 		mov	r8, #32
+ 398:main.c        ****   GPIO_InitTypeDef GPIO_InitStructure;
+ 1197              		.loc 1 398 0
+ 1198 0010 83B0     		sub	sp, sp, #12
+ 1199              	.LCFI26:
+ 1200              		.cfi_def_cfa_offset 48
+ 409:main.c        ****   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
+ 410:main.c        ****   GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+ 411:main.c        ****   GPIO_Init(LED_PORT, &GPIO_InitStructure);
+ 1201              		.loc 1 411 0
+ 1202 0012 DFF8FCA0 		ldr	r10, .L68+16
+ 405:main.c        ****   
+ 1203              		.loc 1 405 0
+ 1204 0016 3A4C     		ldr	r4, .L68
+ 412:main.c        **** 
+ 413:main.c        ****   // LCD CS Output 
+ 414:main.c        ****   GPIO_InitStructure.GPIO_Pin =  LCD_CS_PIN;
+ 415:main.c        ****   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
+ 416:main.c        ****   GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+ 417:main.c        ****   GPIO_Init(LCD_CS_PORT, &GPIO_InitStructure);
+ 1205              		.loc 1 417 0
+ 1206 0018 3A4D     		ldr	r5, .L68+4
+ 405:main.c        ****   
+ 1207              		.loc 1 405 0
+ 1208 001a 01A9     		add	r1, sp, #4
+ 1209 001c 3A48     		ldr	r0, .L68+8
+ 402:main.c        ****   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
+ 1210              		.loc 1 402 0
+ 1211 001e ADF80430 		strh	r3, [sp, #4]	@ movhi
+ 403:main.c        ****   GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+ 1212              		.loc 1 403 0
+ 1213 0022 8DF80770 		strb	r7, [sp, #7]
+ 404:main.c        ****   GPIO_Init(PON_PORT, &GPIO_InitStructure);
+ 1214              		.loc 1 404 0
+ 1215 0026 8DF80660 		strb	r6, [sp, #6]
+ 405:main.c        ****   
+ 1216              		.loc 1 405 0
+ 1217 002a A047     		blx	r4
+ 1218              	.LVL76:
+ 411:main.c        **** 
+ 1219              		.loc 1 411 0
+ 1220 002c 01A9     		add	r1, sp, #4
+ 1221 002e 5046     		mov	r0, r10
+ 408:main.c        ****   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
+ 1222              		.loc 1 408 0
+ 1223 0030 ADF80480 		strh	r8, [sp, #4]	@ movhi
+ 409:main.c        ****   GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+ 1224              		.loc 1 409 0
+ 1225 0034 8DF80770 		strb	r7, [sp, #7]
+ 410:main.c        ****   GPIO_Init(LED_PORT, &GPIO_InitStructure);
+ 1226              		.loc 1 410 0
+ 1227 0038 8DF80660 		strb	r6, [sp, #6]
+ 411:main.c        **** 
+ 1228              		.loc 1 411 0
+ 1229 003c A047     		blx	r4
+ 1230              	.LVL77:
+ 1231              		.loc 1 417 0
+ 1232 003e 01A9     		add	r1, sp, #4
+ 1233 0040 2846     		mov	r0, r5
+ 418:main.c        ****   GPIO_WriteBit(LCD_CS_PORT,LCD_CS_PIN,Bit_SET);
+ 1234              		.loc 1 418 0
+ 1235 0042 DFF8D090 		ldr	r9, .L68+20
+ 414:main.c        ****   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
+ 1236              		.loc 1 414 0
+ 1237 0046 ADF80470 		strh	r7, [sp, #4]	@ movhi
+ 415:main.c        ****   GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+ 1238              		.loc 1 415 0
+ 1239 004a 8DF80770 		strb	r7, [sp, #7]
+ 416:main.c        ****   GPIO_Init(LCD_CS_PORT, &GPIO_InitStructure);
+ 1240              		.loc 1 416 0
+ 1241 004e 8DF80660 		strb	r6, [sp, #6]
+ 417:main.c        ****   GPIO_WriteBit(LCD_CS_PORT,LCD_CS_PIN,Bit_SET);
+ 1242              		.loc 1 417 0
+ 1243 0052 A047     		blx	r4
+ 1244              	.LVL78:
+ 1245              		.loc 1 418 0
+ 1246 0054 0122     		movs	r2, #1
+ 1247 0056 3946     		mov	r1, r7
+ 1248 0058 2846     		mov	r0, r5
+ 1249 005a C847     		blx	r9
+ 1250              	.LVL79:
+ 419:main.c        ****     
+ 420:main.c        ****   // LCD SDA Output 
+ 421:main.c        ****   GPIO_InitStructure.GPIO_Pin =  LCD_SDA_PIN;
+ 1251              		.loc 1 421 0
+ 1252 005c 8023     		movs	r3, #128
+ 422:main.c        ****   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
+ 423:main.c        ****   GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+ 424:main.c        ****   GPIO_Init(LCD_SDA_PORT, &GPIO_InitStructure);
+ 1253              		.loc 1 424 0
+ 1254 005e 01A9     		add	r1, sp, #4
+ 1255 0060 2846     		mov	r0, r5
+ 421:main.c        ****   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
+ 1256              		.loc 1 421 0
+ 1257 0062 ADF80430 		strh	r3, [sp, #4]	@ movhi
+ 422:main.c        ****   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
+ 1258              		.loc 1 422 0
+ 1259 0066 8DF80770 		strb	r7, [sp, #7]
+ 423:main.c        ****   GPIO_Init(LCD_SDA_PORT, &GPIO_InitStructure);
+ 1260              		.loc 1 423 0
+ 1261 006a 8DF80660 		strb	r6, [sp, #6]
+ 1262              		.loc 1 424 0
+ 1263 006e A047     		blx	r4
+ 1264              	.LVL80:
+ 425:main.c        **** 
+ 426:main.c        ****   // LCD CLK Output 
+ 427:main.c        ****   GPIO_InitStructure.GPIO_Pin =  LCD_CLK_PIN;
+ 428:main.c        ****   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
+ 429:main.c        ****   GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+ 430:main.c        ****   GPIO_Init(LCD_CLK_PORT, &GPIO_InitStructure);
+ 1265              		.loc 1 430 0
+ 1266 0070 01A9     		add	r1, sp, #4
+ 1267 0072 2846     		mov	r0, r5
+ 427:main.c        ****   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
+ 1268              		.loc 1 427 0
+ 1269 0074 ADF80480 		strh	r8, [sp, #4]	@ movhi
+ 428:main.c        ****   GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+ 1270              		.loc 1 428 0
+ 1271 0078 8DF80770 		strb	r7, [sp, #7]
+ 429:main.c        ****   GPIO_Init(LCD_CLK_PORT, &GPIO_InitStructure);
+ 1272              		.loc 1 429 0
+ 1273 007c 8DF80660 		strb	r6, [sp, #6]
+ 1274              		.loc 1 430 0
+ 1275 0080 A047     		blx	r4
+ 1276              	.LVL81:
+ 431:main.c        ****   GPIO_WriteBit(LCD_CLK_PORT,LCD_CLK_PIN,Bit_SET);
+ 1277              		.loc 1 431 0
+ 1278 0082 4146     		mov	r1, r8
+ 1279 0084 2846     		mov	r0, r5
+ 1280 0086 0122     		movs	r2, #1
+ 1281 0088 C847     		blx	r9
+ 1282              	.LVL82:
+ 432:main.c        **** 
+ 433:main.c        ****   
+ 434:main.c        ****   // USART TX : M->GPS
+ 435:main.c        ****   GPIO_InitStructure.GPIO_Pin =  GPS_USART_TX_PIN;
+ 1283              		.loc 1 435 0
+ 1284 008a 4FF40072 		mov	r2, #512
+ 436:main.c        ****   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;
+ 1285              		.loc 1 436 0
+ 1286 008e 1823     		movs	r3, #24
+ 437:main.c        ****   GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+ 438:main.c        ****   GPIO_Init(GPS_USART_TX_PORT, &GPIO_InitStructure);
+ 439:main.c        ****   
+ 440:main.c        ****   // USART RX : GPS->M
+ 441:main.c        ****   GPIO_InitStructure.GPIO_Pin =  GPS_USART_RX_PIN;
+ 442:main.c        ****   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;
+ 1287              		.loc 1 442 0
+ 1288 0090 4FF0040B 		mov	fp, #4
+ 438:main.c        ****   
+ 1289              		.loc 1 438 0
+ 1290 0094 01A9     		add	r1, sp, #4
+ 1291 0096 2846     		mov	r0, r5
+ 435:main.c        ****   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;
+ 1292              		.loc 1 435 0
+ 1293 0098 ADF80420 		strh	r2, [sp, #4]	@ movhi
+ 436:main.c        ****   GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+ 1294              		.loc 1 436 0
+ 1295 009c 8DF80730 		strb	r3, [sp, #7]
+ 437:main.c        ****   GPIO_Init(GPS_USART_TX_PORT, &GPIO_InitStructure);
+ 1296              		.loc 1 437 0
+ 1297 00a0 8DF80660 		strb	r6, [sp, #6]
+ 438:main.c        ****   
+ 1298              		.loc 1 438 0
+ 1299 00a4 A047     		blx	r4
+ 1300              	.LVL83:
+ 441:main.c        ****   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;
+ 1301              		.loc 1 441 0
+ 1302 00a6 4FF48063 		mov	r3, #1024
+ 443:main.c        ****   GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+ 444:main.c        ****   GPIO_Init(GPS_USART_RX_PORT, &GPIO_InitStructure);
+ 445:main.c        **** 
+ 446:main.c        ****   // GPS Power
+ 447:main.c        ****   GPIO_InitStructure.GPIO_Pin =  GPS_POWER_PIN;
+ 448:main.c        ****   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
+ 449:main.c        ****   GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+ 450:main.c        ****   GPIO_Init(GPS_POWER_PORT, &GPIO_InitStructure);
+ 451:main.c        ****   
+ 452:main.c        ****   // VBAT
+ 453:main.c        ****   GPIO_InitStructure.GPIO_Pin =  VBAT_PIN;
+ 1303              		.loc 1 453 0
+ 1304 00aa 4FF00209 		mov	r9, #2
+ 454:main.c        ****   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AIN;
+ 1305              		.loc 1 454 0
+ 1306 00ae 4FF00008 		mov	r8, #0
+ 444:main.c        **** 
+ 1307              		.loc 1 444 0
+ 1308 00b2 0DEB0B01 		add	r1, sp, fp
+ 1309 00b6 2846     		mov	r0, r5
+ 441:main.c        ****   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;
+ 1310              		.loc 1 441 0
+ 1311 00b8 ADF80430 		strh	r3, [sp, #4]	@ movhi
+ 443:main.c        ****   GPIO_Init(GPS_USART_RX_PORT, &GPIO_InitStructure);
+ 1312              		.loc 1 443 0
+ 1313 00bc 8DF80660 		strb	r6, [sp, #6]
+ 442:main.c        ****   GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+ 1314              		.loc 1 442 0
+ 1315 00c0 8DF807B0 		strb	fp, [sp, #7]
+ 444:main.c        **** 
+ 1316              		.loc 1 444 0
+ 1317 00c4 A047     		blx	r4
+ 1318              	.LVL84:
+ 450:main.c        ****   
+ 1319              		.loc 1 450 0
+ 1320 00c6 0DEB0B01 		add	r1, sp, fp
+ 1321 00ca 1048     		ldr	r0, .L68+12
+ 447:main.c        ****   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
+ 1322              		.loc 1 447 0
+ 1323 00cc ADF804B0 		strh	fp, [sp, #4]	@ movhi
+ 448:main.c        ****   GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+ 1324              		.loc 1 448 0
+ 1325 00d0 8DF80770 		strb	r7, [sp, #7]
+ 449:main.c        ****   GPIO_Init(GPS_POWER_PORT, &GPIO_InitStructure);
+ 1326              		.loc 1 449 0
+ 1327 00d4 8DF80660 		strb	r6, [sp, #6]
+ 450:main.c        ****   
+ 1328              		.loc 1 450 0
+ 1329 00d8 A047     		blx	r4
+ 1330              	.LVL85:
+ 455:main.c        ****   GPIO_Init(VBAT_PORT, &GPIO_InitStructure);
+ 1331              		.loc 1 455 0
+ 1332 00da 2846     		mov	r0, r5
+ 1333 00dc 0DEB0B01 		add	r1, sp, fp
+ 453:main.c        ****   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AIN;
+ 1334              		.loc 1 453 0
+ 1335 00e0 ADF80490 		strh	r9, [sp, #4]	@ movhi
+ 454:main.c        ****   GPIO_Init(VBAT_PORT, &GPIO_InitStructure);
+ 1336              		.loc 1 454 0
+ 1337 00e4 8DF80780 		strb	r8, [sp, #7]
+ 1338              		.loc 1 455 0
+ 1339 00e8 A047     		blx	r4
+ 1340              	.LVL86:
+ 456:main.c        **** 
+ 457:main.c        ****   // TBAT
+ 458:main.c        ****   GPIO_InitStructure.GPIO_Pin =  TBAT_PIN; 
+ 459:main.c        ****   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AIN;
+ 460:main.c        ****   GPIO_Init(TBAT_PORT, &GPIO_InitStructure);
+ 1341              		.loc 1 460 0
+ 1342 00ea 0DEB0B01 		add	r1, sp, fp
+ 1343 00ee 5046     		mov	r0, r10
+ 458:main.c        ****   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AIN;
+ 1344              		.loc 1 458 0
+ 1345 00f0 ADF80490 		strh	r9, [sp, #4]	@ movhi
+ 459:main.c        ****   GPIO_Init(TBAT_PORT, &GPIO_InitStructure);
+ 1346              		.loc 1 459 0
+ 1347 00f4 8DF80780 		strb	r8, [sp, #7]
+ 1348              		.loc 1 460 0
+ 1349 00f8 A047     		blx	r4
+ 1350              	.LVL87:
+ 461:main.c        ****   
+ 462:main.c        ****   /*
+ 463:main.c        ****   // Configure PC.7 as output push-pull (Motor)
+ 464:main.c        ****   GPIO_WriteBit(MOT_PORT,MOT_PIN,Bit_RESET);
+ 465:main.c        ****   GPIO_InitStructure.GPIO_Pin =  MOT_PIN;
+ 466:main.c        ****   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
+ 467:main.c        ****   GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+ 468:main.c        ****   GPIO_Init(MOT_PORT, &GPIO_InitStructure);
+ 469:main.c        **** 
+ 470:main.c        **** 
+ 471:main.c        ****   
+ 472:main.c        ****   // GPS Reset Pin
+ 473:main.c        ****   GPIO_InitStructure.GPIO_Pin =  GPS_RESET_PIN;
+ 474:main.c        ****   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
+ 475:main.c        ****   GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+ 476:main.c        ****   GPIO_Init(GPS_RESET_PORT, &GPIO_InitStructure);
+ 477:main.c        ****   
+ 478:main.c        ****   // LCD CS Output 
+ 479:main.c        ****   GPIO_InitStructure.GPIO_Pin =  LCD_CS_PIN;
+ 480:main.c        ****   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
+ 481:main.c        ****   GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+ 482:main.c        ****   GPIO_Init(LCD_CS_PORT, &GPIO_InitStructure);
+ 483:main.c        ****   GPIO_WriteBit(LCD_CS_PORT,LCD_CS_PIN,Bit_SET);
+ 484:main.c        ****     
+ 485:main.c        ****   // LCD SDA Output 
+ 486:main.c        ****   GPIO_InitStructure.GPIO_Pin =  LCD_SDA_PIN;
+ 487:main.c        ****   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
+ 488:main.c        ****   GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+ 489:main.c        ****   GPIO_Init(LCD_SDA_PORT, &GPIO_InitStructure);
+ 490:main.c        **** 
+ 491:main.c        ****   // LCD CLK Output 
+ 492:main.c        ****   GPIO_InitStructure.GPIO_Pin =  LCD_CLK_PIN;
+ 493:main.c        ****   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
+ 494:main.c        ****   GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+ 495:main.c        ****   GPIO_Init(LCD_CLK_PORT, &GPIO_InitStructure);
+ 496:main.c        ****   GPIO_WriteBit(LCD_CLK_PORT,LCD_CLK_PIN,Bit_SET);
+ 497:main.c        ****   
+ 498:main.c        ****   //GPIO_WriteBit(GPS_RESET_PORT,GPS_RESET_PIN,Bit_SET);
+ 499:main.c        ****   GPS_RESET_PORT->BRR = GPS_RESET_PIN;
+ 500:main.c        **** 
+ 501:main.c        ****   
+ 502:main.c        ****   */
+ 503:main.c        **** }
+ 1351              		.loc 1 503 0
+ 1352 00fa 03B0     		add	sp, sp, #12
+ 1353              	.LCFI27:
+ 1354              		.cfi_def_cfa_offset 36
+ 1355              		@ sp needed
+ 1356 00fc BDE8F08F 		pop	{r4, r5, r6, r7, r8, r9, r10, fp, pc}
+ 1357              	.L69:
+ 1358              		.align	2
+ 1359              	.L68:
+ 1360 0100 00000000 		.word	GPIO_Init
+ 1361 0104 00080140 		.word	1073809408
+ 1362 0108 00100140 		.word	1073811456
+ 1363 010c 00140140 		.word	1073812480
+ 1364 0110 000C0140 		.word	1073810432
+ 1365 0114 00000000 		.word	GPIO_WriteBit
+ 1366              		.cfi_endproc
+ 1367              	.LFE42:
+ 1369              		.section	.text.startup.main,"ax",%progbits
+ 1370              		.align	1
+ 1371              		.p2align 2,,3
+ 1372              		.global	main
+ 1373              		.syntax unified
+ 1374              		.thumb
+ 1375              		.thumb_func
+ 1376              		.fpu softvfp
+ 1378              	main:
+ 1379              	.LFB36:
+ 159:main.c        ****   /* System Clocks Configuration */
+ 1380              		.loc 1 159 0
+ 1381              		.cfi_startproc
+ 1382              		@ args = 0, pretend = 0, frame = 0
+ 1383              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1384 0000 2DE9F84F 		push	{r3, r4, r5, r6, r7, r8, r9, r10, fp, lr}
+ 1385              	.LCFI28:
+ 1386              		.cfi_def_cfa_offset 40
+ 1387              		.cfi_offset 3, -40
+ 1388              		.cfi_offset 4, -36
+ 1389              		.cfi_offset 5, -32
+ 1390              		.cfi_offset 6, -28
+ 1391              		.cfi_offset 7, -24
+ 1392              		.cfi_offset 8, -20
+ 1393              		.cfi_offset 9, -16
+ 1394              		.cfi_offset 10, -12
+ 1395              		.cfi_offset 11, -8
+ 1396              		.cfi_offset 14, -4
+ 161:main.c        ****   /* Configure the GPIO ports */
+ 1397              		.loc 1 161 0
+ 1398 0004 3D4B     		ldr	r3, .L90
+ 1399 0006 9847     		blx	r3
+ 1400              	.LVL88:
+ 163:main.c        **** 
+ 1401              		.loc 1 163 0
+ 1402 0008 3D4B     		ldr	r3, .L90+4
+ 1403 000a 9847     		blx	r3
+ 1404              	.LVL89:
+ 166:main.c        ****   /*Interruptions*/
+ 1405              		.loc 1 166 0
+ 1406 000c 3D4B     		ldr	r3, .L90+8
+ 1407 000e 9847     		blx	r3
+ 1408              	.LVL90:
+ 168:main.c        ****   /*ADC Configuration*/
+ 1409              		.loc 1 168 0
+ 1410 0010 3D4B     		ldr	r3, .L90+12
+ 1411 0012 9847     		blx	r3
+ 1412              	.LVL91:
+ 170:main.c        ****   /*DMA Configuration */
+ 1413              		.loc 1 170 0
+ 1414 0014 3D4B     		ldr	r3, .L90+16
+ 1415 0016 9847     		blx	r3
+ 1416              	.LVL92:
+ 172:main.c        **** 
+ 1417              		.loc 1 172 0
+ 1418 0018 3D4B     		ldr	r3, .L90+20
+ 1419 001a 9847     		blx	r3
+ 1420              	.LVL93:
+ 1421              	.LBB12:
+ 1422              	.LBB13:
+  26:main.c        **** }
+ 1423              		.loc 1 26 0
+ 1424 001c DFF81CB1 		ldr	fp, .L90+64
+ 1425 0020 0122     		movs	r2, #1
+ 1426 0022 4FF48071 		mov	r1, #256
+ 1427 0026 3B48     		ldr	r0, .L90+24
+ 1428 0028 D847     		blx	fp
+ 1429              	.LVL94:
+ 1430              	.LBE13:
+ 1431              	.LBE12:
+ 177:main.c        ****   
+ 1432              		.loc 1 177 0
+ 1433 002a 3B4B     		ldr	r3, .L90+28
+ 1434 002c 9847     		blx	r3
+ 1435              	.LVL95:
+ 181:main.c        ****   //Active le GPS
+ 1436              		.loc 1 181 0
+ 1437 002e 0121     		movs	r1, #1
+ 1438 0030 3A48     		ldr	r0, .L90+32
+ 1439 0032 3B4B     		ldr	r3, .L90+36
+ 1440 0034 9847     		blx	r3
+ 1441              	.LVL96:
+ 183:main.c        ****   //LCDPrintf("OK\n");
+ 1442              		.loc 1 183 0
+ 1443 0036 3B4B     		ldr	r3, .L90+40
+ 1444 0038 0120     		movs	r0, #1
+ 1445 003a 9847     		blx	r3
+ 1446              	.LVL97:
+ 185:main.c        ****   //LCDPrintf("Init GPS...");
+ 1447              		.loc 1 185 0
+ 1448 003c 3A4D     		ldr	r5, .L90+44
+ 1449 003e 4FF47A70 		mov	r0, #1000
+ 1450 0042 A847     		blx	r5
+ 1451              	.LVL98:
+ 187:main.c        ****   //LCDPrintf("OK\n");
+ 1452              		.loc 1 187 0
+ 1453 0044 394B     		ldr	r3, .L90+48
+ 1454 0046 9847     		blx	r3
+ 1455              	.LVL99:
+ 191:main.c        ****   int i=0;
+ 1456              		.loc 1 191 0
+ 1457 0048 0023     		movs	r3, #0
+ 1458 004a DFF8F490 		ldr	r9, .L90+68
+ 193:main.c        ****   {
+ 1459              		.loc 1 193 0
+ 1460 004e DFF8F480 		ldr	r8, .L90+72
+ 191:main.c        ****   int i=0;
+ 1461              		.loc 1 191 0
+ 1462 0052 89F80030 		strb	r3, [r9]
+ 1463              	.LVL100:
+ 196:main.c        ****       dispUpdate();
+ 1464              		.loc 1 196 0
+ 1465 0056 364F     		ldr	r7, .L90+52
+ 201:main.c        ****       switchLed(OFF);
+ 1466              		.loc 1 201 0
+ 1467 0058 2E4E     		ldr	r6, .L90+24
+ 197:main.c        ****       newGPSData=FALSE;
+ 1468              		.loc 1 197 0
+ 1469 005a DFF8ECA0 		ldr	r10, .L90+76
+ 193:main.c        ****   {
+ 1470              		.loc 1 193 0
+ 1471 005e 09E0     		b	.L76
+ 1472              	.LVL101:
+ 1473              	.L72:
+ 201:main.c        ****       switchLed(OFF);
+ 1474              		.loc 1 201 0
+ 1475 0060 B368     		ldr	r3, [r6, #8]
+ 1476 0062 9907     		lsls	r1, r3, #30
+ 1477 0064 14D5     		bpl	.L86
+ 1478              	.L73:
+ 206:main.c        ****       
+ 1479              		.loc 1 206 0
+ 1480 0066 B368     		ldr	r3, [r6, #8]
+ 210:main.c        ****       screen = screen+1;
+ 1481              		.loc 1 210 0
+ 1482 0068 B368     		ldr	r3, [r6, #8]
+ 1483 006a DA06     		lsls	r2, r3, #27
+ 1484 006c 19D5     		bpl	.L87
+ 1485              	.L74:
+ 220:main.c        ****       screen = screen+3;
+ 1486              		.loc 1 220 0
+ 1487 006e B368     		ldr	r3, [r6, #8]
+ 1488 0070 DB07     		lsls	r3, r3, #31
+ 1489 0072 27D5     		bpl	.L88
+ 1490              	.L76:
+ 193:main.c        ****   {
+ 1491              		.loc 1 193 0
+ 1492 0074 D8F80840 		ldr	r4, [r8, #8]
+ 1493 0078 14F00104 		ands	r4, r4, #1
+ 1494 007c 35D0     		beq	.L89
+ 1495              	.L78:
+ 196:main.c        ****       dispUpdate();
+ 1496              		.loc 1 196 0
+ 1497 007e 3B68     		ldr	r3, [r7]
+ 1498 0080 002B     		cmp	r3, #0
+ 1499 0082 EDD0     		beq	.L72
+ 197:main.c        ****       newGPSData=FALSE;
+ 1500              		.loc 1 197 0
+ 1501 0084 D047     		blx	r10
+ 1502              	.LVL102:
+ 198:main.c        ****     }
+ 1503              		.loc 1 198 0
+ 1504 0086 0023     		movs	r3, #0
+ 1505 0088 3B60     		str	r3, [r7]
+ 201:main.c        ****       switchLed(OFF);
+ 1506              		.loc 1 201 0
+ 1507 008a B368     		ldr	r3, [r6, #8]
+ 1508 008c 9907     		lsls	r1, r3, #30
+ 1509 008e EAD4     		bmi	.L73
+ 1510              	.L86:
+ 1511              	.LVL103:
+ 1512              	.LBB14:
+ 1513              	.LBB15:
+  48:main.c        **** }
+ 1514              		.loc 1 48 0
+ 1515 0090 2021     		movs	r1, #32
+ 1516 0092 284A     		ldr	r2, .L90+56
+ 1517              	.LBE15:
+ 1518              	.LBE14:
+ 203:main.c        ****     }
+ 1519              		.loc 1 203 0
+ 1520 0094 284B     		ldr	r3, .L90+60
+ 1521              	.LBB17:
+ 1522              	.LBB16:
+  48:main.c        **** }
+ 1523              		.loc 1 48 0
+ 1524 0096 5161     		str	r1, [r2, #20]
+ 1525              	.LVL104:
+ 1526              	.LBE16:
+ 1527              	.LBE17:
+ 203:main.c        ****     }
+ 1528              		.loc 1 203 0
+ 1529 0098 9847     		blx	r3
+ 1530              	.LVL105:
+ 206:main.c        ****       
+ 1531              		.loc 1 206 0
+ 1532 009a B368     		ldr	r3, [r6, #8]
+ 210:main.c        ****       screen = screen+1;
+ 1533              		.loc 1 210 0
+ 1534 009c B368     		ldr	r3, [r6, #8]
+ 1535 009e DA06     		lsls	r2, r3, #27
+ 1536 00a0 E5D4     		bmi	.L74
+ 1537              	.L87:
+ 211:main.c        ****       screen = screen%4;
+ 1538              		.loc 1 211 0
+ 1539 00a2 99F80030 		ldrb	r3, [r9]	@ zero_extendqisi2
+ 213:main.c        ****       for(i=0;i<100;i++)
+ 1540              		.loc 1 213 0
+ 1541 00a6 6424     		movs	r4, #100
+ 211:main.c        ****       screen = screen%4;
+ 1542              		.loc 1 211 0
+ 1543 00a8 0133     		adds	r3, r3, #1
+ 212:main.c        ****       dispUpdate();
+ 1544              		.loc 1 212 0
+ 1545 00aa 03F00303 		and	r3, r3, #3
+ 1546 00ae 89F80030 		strb	r3, [r9]
+ 213:main.c        ****       for(i=0;i<100;i++)
+ 1547              		.loc 1 213 0
+ 1548 00b2 D047     		blx	r10
+ 1549              	.LVL106:
+ 1550              	.L75:
+ 215:main.c        ****       //switchLed(ON);
+ 1551              		.loc 1 215 0 discriminator 3
+ 1552 00b4 42F21070 		movw	r0, #10000
+ 1553 00b8 A847     		blx	r5
+ 1554              	.LVL107:
+ 214:main.c        **** 	delai(10000);
+ 1555              		.loc 1 214 0 discriminator 3
+ 1556 00ba 013C     		subs	r4, r4, #1
+ 1557              	.LVL108:
+ 1558 00bc FAD1     		bne	.L75
+ 220:main.c        ****       screen = screen+3;
+ 1559              		.loc 1 220 0
+ 1560 00be B368     		ldr	r3, [r6, #8]
+ 1561 00c0 DB07     		lsls	r3, r3, #31
+ 1562 00c2 D7D4     		bmi	.L76
+ 1563              	.LVL109:
+ 1564              	.L88:
+ 221:main.c        ****       screen = screen%4;
+ 1565              		.loc 1 221 0
+ 1566 00c4 99F80030 		ldrb	r3, [r9]	@ zero_extendqisi2
+ 223:main.c        ****       for(i=0;i<100;i++)
+ 1567              		.loc 1 223 0
+ 1568 00c8 6424     		movs	r4, #100
+ 221:main.c        ****       screen = screen%4;
+ 1569              		.loc 1 221 0
+ 1570 00ca 0333     		adds	r3, r3, #3
+ 222:main.c        ****       dispUpdate();
+ 1571              		.loc 1 222 0
+ 1572 00cc 03F00303 		and	r3, r3, #3
+ 1573 00d0 89F80030 		strb	r3, [r9]
+ 223:main.c        ****       for(i=0;i<100;i++)
+ 1574              		.loc 1 223 0
+ 1575 00d4 D047     		blx	r10
+ 1576              	.LVL110:
+ 1577              	.L77:
+ 225:main.c        ****     }
+ 1578              		.loc 1 225 0 discriminator 3
+ 1579 00d6 42F21070 		movw	r0, #10000
+ 1580 00da A847     		blx	r5
+ 1581              	.LVL111:
+ 224:main.c        **** 	delai(10000); 
+ 1582              		.loc 1 224 0 discriminator 3
+ 1583 00dc 013C     		subs	r4, r4, #1
+ 1584              	.LVL112:
+ 1585 00de FAD1     		bne	.L77
+ 193:main.c        ****   {
+ 1586              		.loc 1 193 0
+ 1587 00e0 D8F80840 		ldr	r4, [r8, #8]
+ 1588              	.LVL113:
+ 1589 00e4 14F00104 		ands	r4, r4, #1
+ 1590 00e8 C9D1     		bne	.L78
+ 1591              	.L89:
+ 1592              	.LBB18:
+ 1593              	.LBB19:
+  21:main.c        **** }
+ 1594              		.loc 1 21 0
+ 1595 00ea 2246     		mov	r2, r4
+ 1596 00ec 4FF48071 		mov	r1, #256
+ 1597 00f0 0848     		ldr	r0, .L90+24
+ 1598 00f2 D847     		blx	fp
+ 1599              	.LVL114:
+ 1600              	.LBE19:
+ 1601              	.LBE18:
+ 229:main.c        **** 
+ 1602              		.loc 1 229 0
+ 1603 00f4 2046     		mov	r0, r4
+ 1604 00f6 BDE8F88F 		pop	{r3, r4, r5, r6, r7, r8, r9, r10, fp, pc}
+ 1605              	.L91:
+ 1606 00fa 00BF     		.align	2
+ 1607              	.L90:
+ 1608 00fc 00000000 		.word	RCC_Configuration
+ 1609 0100 00000000 		.word	GPIO_Configuration
+ 1610 0104 00000000 		.word	USART_Configuration
+ 1611 0108 00000000 		.word	NVIC_Configuration
+ 1612 010c 00000000 		.word	ADC_Configuration
+ 1613 0110 00000000 		.word	DMA_Configuration
+ 1614 0114 00100140 		.word	1073811456
+ 1615 0118 00000000 		.word	LCDInit
+ 1616 011c 00380140 		.word	1073821696
+ 1617 0120 00000000 		.word	USART_Cmd
+ 1618 0124 00000000 		.word	gpsSetEnabled
+ 1619 0128 00000000 		.word	delai
+ 1620 012c 00000000 		.word	gpsInit
+ 1621 0130 00000000 		.word	newGPSData
+ 1622 0134 000C0140 		.word	1073810432
+ 1623 0138 00000000 		.word	gotoBootloader
+ 1624 013c 00000000 		.word	GPIO_WriteBit
+ 1625 0140 00000000 		.word	screen
+ 1626 0144 00080140 		.word	1073809408
+ 1627 0148 00000000 		.word	dispUpdate
+ 1628              		.cfi_endproc
+ 1629              	.LFE36:
+ 1631              		.comm	ADCValues,8,4
+ 1632              		.comm	posY,4,4
+ 1633              		.comm	posX,4,4
+ 1634              		.comm	screen,1,1
+ 1635              		.section	.rodata.dispInfos.str1.4,"aMS",%progbits,1
+ 1636              		.align	2
+ 1637              	.LC0:
+ 1638 0000 53617465 		.ascii	"Satellites : \000"
+ 1638      6C6C6974 
+ 1638      6573203A 
+ 1638      2000
+ 1639 000e 0000     		.space	2
+ 1640              	.LC1:
+ 1641 0010 4C6F6E67 		.ascii	"Long : \000"
+ 1641      203A2000 
+ 1642              	.LC2:
+ 1643 0018 4C617420 		.ascii	"Lat : \000"
+ 1643      3A2000
+ 1644 001f 00       		.space	1
+ 1645              	.LC3:
+ 1646 0020 48657572 		.ascii	"Heure : \000"
+ 1646      65203A20 
+ 1646      00
+ 1647 0029 000000   		.space	3
+ 1648              	.LC4:
+ 1649 002c 6800     		.ascii	"h\000"
+ 1650 002e 0000     		.space	2
+ 1651              	.LC5:
+ 1652 0030 6D00     		.ascii	"m\000"
+ 1653 0032 0000     		.space	2
+ 1654              	.LC6:
+ 1655 0034 7300     		.ascii	"s\000"
+ 1656 0036 0000     		.space	2
+ 1657              	.LC7:
+ 1658 0038 56424154 		.ascii	"VBAT : \000"
+ 1658      203A2000 
+ 1659              	.LC8:
+ 1660 0040 54454D50 		.ascii	"TEMP : \000"
+ 1660      203A2000 
+ 1661              		.section	.rodata.dispPosition.str1.4,"aMS",%progbits,1
+ 1662              		.align	2
+ 1663              	.LC10:
+ 1664 0000 506F7369 		.ascii	"Position\000"
+ 1664      74696F6E 
+ 1664      00
+ 1665              		.section	.rodata.dispTime.str1.4,"aMS",%progbits,1
+ 1666              		.align	2
+ 1667              	.LC9:
+ 1668 0000 3A00     		.ascii	":\000"
+ 1669              		.text
+ 1670              	.Letext0:
+ 1671              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include\
+ 1672              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include\
+ 1673              		.file 4 "./Libraries/CMSIS/Core/CM3/system_stm32f10x.h"
+ 1674              		.file 5 "./Libraries/CMSIS/Core/CM3/stm32f10x.h"
+ 1675              		.file 6 "./Libraries/STM32F10x_StdPeriph_Driver/inc/stm32f10x_adc.h"
+ 1676              		.file 7 "./Libraries/STM32F10x_StdPeriph_Driver/inc/stm32f10x_gpio.h"
+ 1677              		.file 8 "./Libraries/STM32F10x_StdPeriph_Driver/inc/stm32f10x_usart.h"
+ 1678              		.file 9 "./Libraries/STM32F10x_StdPeriph_Driver/inc/misc.h"
+ 1679              		.file 10 "./Libraries/STM32F10x_StdPeriph_Driver/inc/stm32f10x_dma.h"
+ 1680              		.file 11 "main.h"
+ 1681              		.file 12 "u8g/u8g.h"
+ 1682              		.file 13 "lcd.h"
+ 1683              		.file 14 "utils.h"
+ 1684              		.file 15 "gps.h"
+ 1685              		.file 16 "./Libraries/STM32F10x_StdPeriph_Driver/inc/stm32f10x_rcc.h"
+ 1686              		.file 17 "./Libraries/STM32F10x_StdPeriph_Driver/inc/stm32f10x_pwr.h"
+ 1687              		.file 18 "./Libraries/STM32F10x_StdPeriph_Driver/inc/stm32f10x_bkp.h"
+ 1688              		.file 19 "<built-in>"
+DEFINED SYMBOLS
+                            *ABS*:00000000 main.c
+C:\Users\BOBAFW~1\AppData\Local\Temp\cctl4f5y.s:16     .text.powerOff:00000000 $t
+C:\Users\BOBAFW~1\AppData\Local\Temp\cctl4f5y.s:24     .text.powerOff:00000000 powerOff
+C:\Users\BOBAFW~1\AppData\Local\Temp\cctl4f5y.s:42     .text.powerOff:0000000c $d
+C:\Users\BOBAFW~1\AppData\Local\Temp\cctl4f5y.s:48     .text.powerOn:00000000 $t
+C:\Users\BOBAFW~1\AppData\Local\Temp\cctl4f5y.s:56     .text.powerOn:00000000 powerOn
+C:\Users\BOBAFW~1\AppData\Local\Temp\cctl4f5y.s:73     .text.powerOn:0000000c $d
+C:\Users\BOBAFW~1\AppData\Local\Temp\cctl4f5y.s:79     .text.gotoBootloader:00000000 $t
+C:\Users\BOBAFW~1\AppData\Local\Temp\cctl4f5y.s:87     .text.gotoBootloader:00000000 gotoBootloader
+C:\Users\BOBAFW~1\AppData\Local\Temp\cctl4f5y.s:138    .text.gotoBootloader:00000030 $d
+C:\Users\BOBAFW~1\AppData\Local\Temp\cctl4f5y.s:148    .text.switchLed:00000000 $t
+C:\Users\BOBAFW~1\AppData\Local\Temp\cctl4f5y.s:156    .text.switchLed:00000000 switchLed
+C:\Users\BOBAFW~1\AppData\Local\Temp\cctl4f5y.s:180    .text.switchLed:00000010 $d
+C:\Users\BOBAFW~1\AppData\Local\Temp\cctl4f5y.s:185    .text.dispInfos:00000000 $t
+C:\Users\BOBAFW~1\AppData\Local\Temp\cctl4f5y.s:193    .text.dispInfos:00000000 dispInfos
+C:\Users\BOBAFW~1\AppData\Local\Temp\cctl4f5y.s:401    .text.dispInfos:00000114 $d
+                            *COM*:00000008 ADCValues
+C:\Users\BOBAFW~1\AppData\Local\Temp\cctl4f5y.s:428    .text.dispImage:00000000 $t
+C:\Users\BOBAFW~1\AppData\Local\Temp\cctl4f5y.s:436    .text.dispImage:00000000 dispImage
+C:\Users\BOBAFW~1\AppData\Local\Temp\cctl4f5y.s:450    .text.dispImage:00000004 $d
+C:\Users\BOBAFW~1\AppData\Local\Temp\cctl4f5y.s:455    .text.dispTime:00000000 $t
+C:\Users\BOBAFW~1\AppData\Local\Temp\cctl4f5y.s:463    .text.dispTime:00000000 dispTime
+C:\Users\BOBAFW~1\AppData\Local\Temp\cctl4f5y.s:533    .text.dispTime:00000048 $d
+C:\Users\BOBAFW~1\AppData\Local\Temp\cctl4f5y.s:546    .text.dispPosition:00000000 $t
+C:\Users\BOBAFW~1\AppData\Local\Temp\cctl4f5y.s:554    .text.dispPosition:00000000 dispPosition
+C:\Users\BOBAFW~1\AppData\Local\Temp\cctl4f5y.s:643    .text.dispPosition:00000068 $d
+C:\Users\BOBAFW~1\AppData\Local\Temp\cctl4f5y.s:657    .text.dispUpdate:00000000 $t
+C:\Users\BOBAFW~1\AppData\Local\Temp\cctl4f5y.s:665    .text.dispUpdate:00000000 dispUpdate
+C:\Users\BOBAFW~1\AppData\Local\Temp\cctl4f5y.s:679    .text.dispUpdate:0000000c $d
+C:\Users\BOBAFW~1\AppData\Local\Temp\cctl4f5y.s:683    .text.dispUpdate:00000010 $t
+C:\Users\BOBAFW~1\AppData\Local\Temp\cctl4f5y.s:714    .text.dispUpdate:00000024 $d
+                            *COM*:00000001 screen
+C:\Users\BOBAFW~1\AppData\Local\Temp\cctl4f5y.s:723    .text.USART_Configuration:00000000 $t
+C:\Users\BOBAFW~1\AppData\Local\Temp\cctl4f5y.s:731    .text.USART_Configuration:00000000 USART_Configuration
+C:\Users\BOBAFW~1\AppData\Local\Temp\cctl4f5y.s:785    .text.USART_Configuration:00000034 $d
+C:\Users\BOBAFW~1\AppData\Local\Temp\cctl4f5y.s:792    .text.RCC_Configuration:00000000 $t
+C:\Users\BOBAFW~1\AppData\Local\Temp\cctl4f5y.s:800    .text.RCC_Configuration:00000000 RCC_Configuration
+C:\Users\BOBAFW~1\AppData\Local\Temp\cctl4f5y.s:851    .text.RCC_Configuration:00000034 $d
+C:\Users\BOBAFW~1\AppData\Local\Temp\cctl4f5y.s:858    .text.ADC_Configuration:00000000 $t
+C:\Users\BOBAFW~1\AppData\Local\Temp\cctl4f5y.s:866    .text.ADC_Configuration:00000000 ADC_Configuration
+C:\Users\BOBAFW~1\AppData\Local\Temp\cctl4f5y.s:983    .text.ADC_Configuration:00000080 $d
+C:\Users\BOBAFW~1\AppData\Local\Temp\cctl4f5y.s:997    .text.DMA_Configuration:00000000 $t
+C:\Users\BOBAFW~1\AppData\Local\Temp\cctl4f5y.s:1005   .text.DMA_Configuration:00000000 DMA_Configuration
+C:\Users\BOBAFW~1\AppData\Local\Temp\cctl4f5y.s:1089   .text.DMA_Configuration:00000054 $d
+C:\Users\BOBAFW~1\AppData\Local\Temp\cctl4f5y.s:1099   .text.NVIC_Configuration:00000000 $t
+C:\Users\BOBAFW~1\AppData\Local\Temp\cctl4f5y.s:1107   .text.NVIC_Configuration:00000000 NVIC_Configuration
+C:\Users\BOBAFW~1\AppData\Local\Temp\cctl4f5y.s:1156   .text.NVIC_Configuration:0000002c $d
+C:\Users\BOBAFW~1\AppData\Local\Temp\cctl4f5y.s:1163   .text.GPIO_Configuration:00000000 $t
+C:\Users\BOBAFW~1\AppData\Local\Temp\cctl4f5y.s:1171   .text.GPIO_Configuration:00000000 GPIO_Configuration
+C:\Users\BOBAFW~1\AppData\Local\Temp\cctl4f5y.s:1360   .text.GPIO_Configuration:00000100 $d
+C:\Users\BOBAFW~1\AppData\Local\Temp\cctl4f5y.s:1370   .text.startup.main:00000000 $t
+C:\Users\BOBAFW~1\AppData\Local\Temp\cctl4f5y.s:1378   .text.startup.main:00000000 main
+C:\Users\BOBAFW~1\AppData\Local\Temp\cctl4f5y.s:1608   .text.startup.main:000000fc $d
+                            *COM*:00000004 posY
+                            *COM*:00000004 posX
+C:\Users\BOBAFW~1\AppData\Local\Temp\cctl4f5y.s:1636   .rodata.dispInfos.str1.4:00000000 $d
+C:\Users\BOBAFW~1\AppData\Local\Temp\cctl4f5y.s:1662   .rodata.dispPosition.str1.4:00000000 $d
+C:\Users\BOBAFW~1\AppData\Local\Temp\cctl4f5y.s:1666   .rodata.dispTime.str1.4:00000000 $d
+
+UNDEFINED SYMBOLS
+GPIO_WriteBit
+USART_Cmd
+NVIC_SetVectorTable
+PWR_BackupAccessCmd
+BKP_WriteBackupRegister
+LCDClearBuffer
+LCDSetFontSize
+nbSats
+intToStr
+LCDPrintStringXY
+longitude
+doubleToStr
+heures
+strlen
+minutes
+secondes
+LCDDrawBuffer
+latitude
+LCDDrawImageTest
+intToStr2
+USART_Init
+USART_ITConfig
+SystemInit
+RCC_APB2PeriphClockCmd
+RCC_AHBPeriphClockCmd
+ADC_Init
+ADC_RegularChannelConfig
+ADC_DMACmd
+ADC_Cmd
+ADC_ResetCalibration
+ADC_GetCalibrationStatus
+ADC_StartCalibration
+ADC_GetResetCalibrationStatus
+ADC_SoftwareStartConvCmd
+DMA_DeInit
+DMA_Init
+DMA_Cmd
+_isr_vectorsflash_offs
+NVIC_Init
+GPIO_Init
+LCDInit
+gpsSetEnabled
+delai
+gpsInit
+newGPSData

@@ -1,0 +1,1176 @@
+   1              		.cpu cortex-m3
+   2              		.eabi_attribute 20, 1
+   3              		.eabi_attribute 21, 1
+   4              		.eabi_attribute 23, 3
+   5              		.eabi_attribute 24, 1
+   6              		.eabi_attribute 25, 1
+   7              		.eabi_attribute 26, 1
+   8              		.eabi_attribute 30, 2
+   9              		.eabi_attribute 34, 1
+  10              		.eabi_attribute 18, 4
+  11              		.file	"gps.c"
+  12              		.text
+  13              	.Ltext0:
+  14              		.cfi_sections	.debug_frame
+  15              		.section	.text.gpsSetEnabled,"ax",%progbits
+  16              		.align	1
+  17              		.p2align 2,,3
+  18              		.global	gpsSetEnabled
+  19              		.syntax unified
+  20              		.thumb
+  21              		.thumb_func
+  22              		.fpu softvfp
+  24              	gpsSetEnabled:
+  25              	.LFB27:
+  26              		.file 1 "gps.c"
+   1:gps.c         **** /*
+   2:gps.c         **** // global nmea sentences for ues in gps reset, etc.
+   3:gps.c         **** unsigned char DISABLE_GPGGA[26]="$PSRF103,00,00,00,01*24\r\n";
+   4:gps.c         **** unsigned char DISABLE_GPGLL[26]="$PSRF103,01,00,00,01*25\r\n";
+   5:gps.c         **** unsigned char DISABLE_GPGSA[26]="$PSRF103,02,00,00,01*26\r\n";
+   6:gps.c         **** unsigned char DISABLE_GPGSV[26]="$PSRF103,03,00,00,01*27\r\n";
+   7:gps.c         **** unsigned char DISABLE_GPRMC[26]="$PSRF103,04,00,00,01*20\r\n";
+   8:gps.c         **** unsigned char DISABLE_GPVTG[26]="$PSRF103,05,00,00,01*21\r\n";
+   9:gps.c         **** unsigned char ENABLE_GPGGA[26]="$PSRF103,00,00,01,01*25\r\n";
+  10:gps.c         **** unsigned char ENABLE_GPGLL[26]="$PSRF103,01,00,01,01*24\r\n";
+  11:gps.c         **** unsigned char ENABLE_GPGSA[26]="$PSRF103,02,00,01,01*27\r\n";
+  12:gps.c         **** unsigned char ENABLE_GPGSV[26]="$PSRF103,03,00,01,01*26\r\n";
+  13:gps.c         **** unsigned char ENABLE_GPRMC[26]="$PSRF103,04,00,01,01*21\r\n";
+  14:gps.c         **** unsigned char ENABLE_GPVTG[26]="$PSRF103,05,00,01,01*20\r\n";
+  15:gps.c         **** */
+  16:gps.c         **** #include "stm32f10x.h"
+  17:gps.c         **** #include "gps.h" 
+  18:gps.c         **** #include "lcd.h"
+  19:gps.c         **** #include "utils.h"
+  20:gps.c         **** #include "defines.h"
+  21:gps.c         **** #include "main.h"
+  22:gps.c         **** 
+  23:gps.c         **** char recvBuff[82];	// buffer de reception		
+  24:gps.c         **** char recvTemp[82];	// buffer temporaire de reception
+  25:gps.c         **** __IO int recvIndex=0;           // index courant de reception
+  26:gps.c         **** 
+  27:gps.c         **** __IO int newGPSData=FALSE;
+  28:gps.c         **** 
+  29:gps.c         **** 
+  30:gps.c         **** 
+  31:gps.c         **** double longitude;
+  32:gps.c         **** double latitude;
+  33:gps.c         **** int fix;
+  34:gps.c         **** double hdop;
+  35:gps.c         **** int heures;
+  36:gps.c         **** int minutes;
+  37:gps.c         **** int secondes;
+  38:gps.c         **** int nbSats;
+  39:gps.c         **** 
+  40:gps.c         **** 
+  41:gps.c         **** 
+  42:gps.c         **** void gpsSetEnabled(int enable){
+  27              		.loc 1 42 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31              		@ link register save eliminated.
+  32              	.LVL0:
+  43:gps.c         ****   if(enable==TRUE){
+  33              		.loc 1 43 0
+  34 0000 0128     		cmp	r0, #1
+  35 0002 04D0     		beq	.L4
+  44:gps.c         ****     GPIO_WriteBit(GPS_POWER_PORT,GPS_POWER_PIN,Bit_SET);
+  45:gps.c         ****   }
+  46:gps.c         ****   else{
+  47:gps.c         ****     GPIO_WriteBit(GPS_POWER_PORT,GPS_POWER_PIN,Bit_RESET);  
+  36              		.loc 1 47 0
+  37 0004 0022     		movs	r2, #0
+  38 0006 0421     		movs	r1, #4
+  39 0008 0348     		ldr	r0, .L5
+  40              	.LVL1:
+  41 000a 044B     		ldr	r3, .L5+4
+  42 000c 1847     		bx	r3	@ indirect register sibling call
+  43              	.LVL2:
+  44              	.L4:
+  44:gps.c         ****     GPIO_WriteBit(GPS_POWER_PORT,GPS_POWER_PIN,Bit_SET);
+  45              		.loc 1 44 0
+  46 000e 0246     		mov	r2, r0
+  47 0010 0421     		movs	r1, #4
+  48 0012 0148     		ldr	r0, .L5
+  49              	.LVL3:
+  50 0014 014B     		ldr	r3, .L5+4
+  51 0016 1847     		bx	r3	@ indirect register sibling call
+  52              	.LVL4:
+  53              	.L6:
+  54              		.align	2
+  55              	.L5:
+  56 0018 00140140 		.word	1073812480
+  57 001c 00000000 		.word	GPIO_WriteBit
+  58              		.cfi_endproc
+  59              	.LFE27:
+  61              		.section	.text.gpsInit,"ax",%progbits
+  62              		.align	1
+  63              		.p2align 2,,3
+  64              		.global	gpsInit
+  65              		.syntax unified
+  66              		.thumb
+  67              		.thumb_func
+  68              		.fpu softvfp
+  70              	gpsInit:
+  71              	.LFB28:
+  48:gps.c         ****   }
+  49:gps.c         **** }
+  50:gps.c         ****  
+  51:gps.c         **** 
+  52:gps.c         **** void gpsInit(){
+  72              		.loc 1 52 0
+  73              		.cfi_startproc
+  74              		@ args = 0, pretend = 0, frame = 48
+  75              		@ frame_needed = 0, uses_anonymous_args = 0
+  76 0000 2DE9F047 		push	{r4, r5, r6, r7, r8, r9, r10, lr}
+  77              	.LCFI0:
+  78              		.cfi_def_cfa_offset 32
+  79              		.cfi_offset 4, -32
+  80              		.cfi_offset 5, -28
+  81              		.cfi_offset 6, -24
+  82              		.cfi_offset 7, -20
+  83              		.cfi_offset 8, -16
+  84              		.cfi_offset 9, -12
+  85              		.cfi_offset 10, -8
+  86              		.cfi_offset 14, -4
+  87 0004 8CB0     		sub	sp, sp, #48
+  88              	.LCFI1:
+  89              		.cfi_def_cfa_offset 80
+  53:gps.c         ****   int i;
+  54:gps.c         ****   const char initSeq1[]="$PSRF151,00*0E\r\n";
+  90              		.loc 1 54 0
+  91 0006 6F46     		mov	r7, sp
+  55:gps.c         ****   const char initSeq2[]="$PSRF103,03,00,05,01*22\r\n";
+  56:gps.c         ****   heures=minutes=secondes=0;
+  92              		.loc 1 56 0
+  93 0008 4FF0000E 		mov	lr, #0
+  94 000c 5026     		movs	r6, #80
+  57:gps.c         ****   for(i=0;initSeq1[i]!=0;i++)
+  95              		.loc 1 57 0
+  96 000e 4FF02408 		mov	r8, #36
+  54:gps.c         ****   const char initSeq2[]="$PSRF103,03,00,05,01*22\r\n";
+  97              		.loc 1 54 0
+  98 0012 DFF8A8C0 		ldr	ip, .L20+28
+  55:gps.c         ****   const char initSeq2[]="$PSRF103,03,00,05,01*22\r\n";
+  99              		.loc 1 55 0
+ 100 0016 224D     		ldr	r5, .L20
+ 101 0018 05AC     		add	r4, sp, #20
+  54:gps.c         ****   const char initSeq2[]="$PSRF103,03,00,05,01*22\r\n";
+ 102              		.loc 1 54 0
+ 103 001a BCE80F00 		ldmia	ip!, {r0, r1, r2, r3}
+ 104 001e 0FC7     		stmia	r7!, {r0, r1, r2, r3}
+  55:gps.c         ****   const char initSeq2[]="$PSRF103,03,00,05,01*22\r\n";
+ 105              		.loc 1 55 0
+ 106 0020 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
+ 107 0022 0FC4     		stmia	r4!, {r0, r1, r2, r3}
+ 108 0024 95E80700 		ldm	r5, {r0, r1, r2}
+ 109 0028 03C4     		stmia	r4!, {r0, r1}
+  54:gps.c         ****   const char initSeq2[]="$PSRF103,03,00,05,01*22\r\n";
+ 110              		.loc 1 54 0
+ 111 002a DCF80030 		ldr	r3, [ip]
+  55:gps.c         ****   const char initSeq2[]="$PSRF103,03,00,05,01*22\r\n";
+ 112              		.loc 1 55 0
+ 113 002e 2280     		strh	r2, [r4]	@ movhi
+  54:gps.c         ****   const char initSeq2[]="$PSRF103,03,00,05,01*22\r\n";
+ 114              		.loc 1 54 0
+ 115 0030 3B70     		strb	r3, [r7]
+  56:gps.c         ****   for(i=0;initSeq1[i]!=0;i++)
+ 116              		.loc 1 56 0
+ 117 0032 1C49     		ldr	r1, .L20+4
+ 118 0034 1C4A     		ldr	r2, .L20+8
+ 119 0036 1D4B     		ldr	r3, .L20+12
+ 120 0038 1D4C     		ldr	r4, .L20+16
+ 121 003a 1E4F     		ldr	r7, .L20+20
+  58:gps.c         ****   {
+  59:gps.c         ****     while(USART_GetFlagStatus(USART1, USART_FLAG_TXE)==RESET){};
+ 122              		.loc 1 59 0
+ 123 003c 1E4D     		ldr	r5, .L20+24
+  56:gps.c         ****   for(i=0;initSeq1[i]!=0;i++)
+ 124              		.loc 1 56 0
+ 125 003e C1F800E0 		str	lr, [r1]
+ 126 0042 C2F800E0 		str	lr, [r2]
+ 127 0046 C3F800E0 		str	lr, [r3]
+ 128              	.LVL5:
+ 129 004a 0DF10109 		add	r9, sp, #1
+ 130              	.LVL6:
+ 131              	.L8:
+ 132              		.loc 1 59 0 discriminator 1
+ 133 004e 8021     		movs	r1, #128
+ 134 0050 2846     		mov	r0, r5
+ 135 0052 A047     		blx	r4
+ 136              	.LVL7:
+ 137 0054 0028     		cmp	r0, #0
+ 138 0056 FAD0     		beq	.L8
+  60:gps.c         ****     USART_SendData(USART1, initSeq1[i]);
+ 139              		.loc 1 60 0 discriminator 2
+ 140 0058 1FFA88F1 		uxth	r1, r8
+ 141 005c 2846     		mov	r0, r5
+ 142 005e B847     		blx	r7
+ 143              	.LVL8:
+  57:gps.c         ****   {
+ 144              		.loc 1 57 0 discriminator 2
+ 145 0060 1EB1     		cbz	r6, .L19
+ 146 0062 B046     		mov	r8, r6
+  57:gps.c         ****   {
+ 147              		.loc 1 57 0 is_stmt 0
+ 148 0064 19F8016F 		ldrb	r6, [r9, #1]!	@ zero_extendqisi2
+ 149              	.LVL9:
+ 150 0068 F1E7     		b	.L8
+ 151              	.LVL10:
+ 152              	.L19:
+ 153 006a 6E46     		mov	r6, sp
+ 154 006c 4FF05009 		mov	r9, #80
+ 155              	.LVL11:
+ 156 0070 4FF02408 		mov	r8, #36
+  61:gps.c         ****   }
+  62:gps.c         ****   
+  63:gps.c         ****   for(i=0;initSeq2[i]!=0;i++)
+  64:gps.c         ****   {
+  65:gps.c         ****     while(USART_GetFlagStatus(USART1, USART_FLAG_TXE)==RESET){};
+ 157              		.loc 1 65 0 is_stmt 1
+ 158 0074 104D     		ldr	r5, .L20+24
+ 159 0076 0DF1150A 		add	r10, sp, #21
+ 160              	.L12:
+ 161              		.loc 1 65 0 is_stmt 0 discriminator 1
+ 162 007a 8021     		movs	r1, #128
+ 163 007c 2846     		mov	r0, r5
+ 164 007e A047     		blx	r4
+ 165              	.LVL12:
+ 166 0080 0028     		cmp	r0, #0
+ 167 0082 FAD0     		beq	.L12
+  66:gps.c         ****     USART_SendData(USART1, initSeq1[i]);
+ 168              		.loc 1 66 0 is_stmt 1 discriminator 2
+ 169 0084 4146     		mov	r1, r8
+ 170 0086 2846     		mov	r0, r5
+ 171 0088 B847     		blx	r7
+ 172              	.LVL13:
+  63:gps.c         ****   {
+ 173              		.loc 1 63 0 discriminator 2
+ 174 008a B9F1000F 		cmp	r9, #0
+ 175 008e 04D0     		beq	.L7
+ 176 0090 16F8018F 		ldrb	r8, [r6, #1]!	@ zero_extendqisi2
+ 177              	.LVL14:
+ 178 0094 1AF8019F 		ldrb	r9, [r10, #1]!	@ zero_extendqisi2
+ 179 0098 EFE7     		b	.L12
+ 180              	.LVL15:
+ 181              	.L7:
+  67:gps.c         ****   }
+  68:gps.c         **** }
+ 182              		.loc 1 68 0
+ 183 009a 0CB0     		add	sp, sp, #48
+ 184              	.LCFI2:
+ 185              		.cfi_def_cfa_offset 32
+ 186              		@ sp needed
+ 187 009c BDE8F087 		pop	{r4, r5, r6, r7, r8, r9, r10, pc}
+ 188              	.LVL16:
+ 189              	.L21:
+ 190              		.align	2
+ 191              	.L20:
+ 192 00a0 00000000 		.word	.LC1
+ 193 00a4 00000000 		.word	secondes
+ 194 00a8 00000000 		.word	minutes
+ 195 00ac 00000000 		.word	heures
+ 196 00b0 00000000 		.word	USART_GetFlagStatus
+ 197 00b4 00000000 		.word	USART_SendData
+ 198 00b8 00380140 		.word	1073821696
+ 199 00bc 1C000000 		.word	.LC0
+ 200              		.cfi_endproc
+ 201              	.LFE28:
+ 203              		.section	.text.gpsGetMessage,"ax",%progbits
+ 204              		.align	1
+ 205              		.p2align 2,,3
+ 206              		.global	gpsGetMessage
+ 207              		.syntax unified
+ 208              		.thumb
+ 209              		.thumb_func
+ 210              		.fpu softvfp
+ 212              	gpsGetMessage:
+ 213              	.LFB30:
+  69:gps.c         **** 
+  70:gps.c         **** 
+  71:gps.c         **** // New gps data has arrived
+  72:gps.c         **** void gpsDataReceived(char data){
+  73:gps.c         ****   if(data == '$'){  // previous NMEA frame finished
+  74:gps.c         ****     int j;
+  75:gps.c         ****     for(j=0;j<recvIndex;j++)
+  76:gps.c         ****       recvBuff[j] = recvTemp[j];
+  77:gps.c         ****     recvBuff[j] = '\0';
+  78:gps.c         ****     recvIndex = 0;
+  79:gps.c         ****     gpsAnalyse(recvBuff);
+  80:gps.c         ****     newGPSData=TRUE;
+  81:gps.c         ****   }
+  82:gps.c         ****   recvTemp[recvIndex++] = data;
+  83:gps.c         **** }
+  84:gps.c         **** 
+  85:gps.c         **** /**
+  86:gps.c         ****  * takes a source string, a target buffer, the length of the target buffer,
+  87:gps.c         ****  * a delimiter character, and the count of the delimiters (before getting a value)
+  88:gps.c         ****  * for a string (like an NMEA message that delimits fields with a comma) where
+  89:gps.c         ****  * you want the third field, you would use something like so:
+  90:gps.c         ****  *  gps_get_message(source,buffer,80,',',3);
+  91:gps.c         ****  */ 
+  92:gps.c         **** void gpsGetMessage(char *source, char *buffer, int bufferlen,char delimiter,int instance)
+  93:gps.c         **** {
+ 214              		.loc 1 93 0
+ 215              		.cfi_startproc
+ 216              		@ args = 4, pretend = 0, frame = 0
+ 217              		@ frame_needed = 0, uses_anonymous_args = 0
+ 218              		@ link register save eliminated.
+ 219              	.LVL17:
+ 220 0000 F0B4     		push	{r4, r5, r6, r7}
+ 221              	.LCFI3:
+ 222              		.cfi_def_cfa_offset 16
+ 223              		.cfi_offset 4, -16
+ 224              		.cfi_offset 5, -12
+ 225              		.cfi_offset 6, -8
+ 226              		.cfi_offset 7, -4
+  94:gps.c         ****  int i = 0;
+  95:gps.c         ****  int j = 0;
+  96:gps.c         ****  int k = 0;
+  97:gps.c         ****  while (source[i] != '\0' && k <= instance)
+ 227              		.loc 1 97 0
+ 228 0002 0278     		ldrb	r2, [r0]	@ zero_extendqisi2
+ 229              	.LVL18:
+  93:gps.c         ****  int i = 0;
+ 230              		.loc 1 93 0
+ 231 0004 049D     		ldr	r5, [sp, #16]
+ 232              		.loc 1 97 0
+ 233 0006 CAB1     		cbz	r2, .L23
+ 234 0008 002D     		cmp	r5, #0
+ 235 000a 19DB     		blt	.L22
+  96:gps.c         ****  while (source[i] != '\0' && k <= instance)
+ 236              		.loc 1 96 0
+ 237 000c 0024     		movs	r4, #0
+ 238 000e 0130     		adds	r0, r0, #1
+ 239              	.LVL19:
+  95:gps.c         ****  int k = 0;
+ 240              		.loc 1 95 0
+ 241 0010 2646     		mov	r6, r4
+  98:gps.c         ****  {
+  99:gps.c         ****   if (k == instance) {
+ 100:gps.c         ****    if (source[i] != delimiter) {
+ 101:gps.c         ****     buffer[j] = source[i];
+ 102:gps.c         ****     j++;
+ 103:gps.c         ****    }
+ 104:gps.c         ****    else
+ 105:gps.c         ****    {
+ 106:gps.c         ****     buffer[j] = '\0';
+ 242              		.loc 1 106 0
+ 243 0012 2746     		mov	r7, r4
+ 244 0014 07E0     		b	.L25
+ 245              	.LVL20:
+ 246              	.L27:
+ 107:gps.c         ****     k++;
+ 108:gps.c         ****    }
+ 109:gps.c         ****   }
+ 110:gps.c         ****   else if(source[i] == delimiter)
+ 247              		.loc 1 110 0
+ 248 0016 9342     		cmp	r3, r2
+ 249              	.LVL21:
+ 111:gps.c         ****   {
+ 112:gps.c         ****    k++;
+ 250              		.loc 1 112 0
+ 251 0018 08BF     		it	eq
+ 252 001a 0134     		addeq	r4, r4, #1
+ 253              	.LVL22:
+ 254              	.L30:
+  97:gps.c         ****  {
+ 255              		.loc 1 97 0
+ 256 001c 0278     		ldrb	r2, [r0]	@ zero_extendqisi2
+ 257 001e 62B1     		cbz	r2, .L37
+  97:gps.c         ****  {
+ 258              		.loc 1 97 0 is_stmt 0 discriminator 1
+ 259 0020 AC42     		cmp	r4, r5
+ 260 0022 0DDC     		bgt	.L22
+ 261              	.LVL23:
+ 262              	.L29:
+ 263 0024 0130     		adds	r0, r0, #1
+ 264              	.LVL24:
+ 265              	.L25:
+  99:gps.c         ****    if (source[i] != delimiter) {
+ 266              		.loc 1 99 0 is_stmt 1
+ 267 0026 A542     		cmp	r5, r4
+ 268 0028 F5D1     		bne	.L27
+ 269              	.LVL25:
+ 100:gps.c         ****     buffer[j] = source[i];
+ 270              		.loc 1 100 0
+ 271 002a 9342     		cmp	r3, r2
+ 272 002c 0AD0     		beq	.L28
+ 101:gps.c         ****     j++;
+ 273              		.loc 1 101 0
+ 274 002e 8A55     		strb	r2, [r1, r6]
+  97:gps.c         ****  {
+ 275              		.loc 1 97 0
+ 276 0030 0278     		ldrb	r2, [r0]	@ zero_extendqisi2
+ 102:gps.c         ****    }
+ 277              		.loc 1 102 0
+ 278 0032 0136     		adds	r6, r6, #1
+ 279              	.LVL26:
+  97:gps.c         ****  {
+ 280              		.loc 1 97 0
+ 281 0034 0AB1     		cbz	r2, .L37
+ 282 0036 2C46     		mov	r4, r5
+ 283 0038 F4E7     		b	.L29
+ 284              	.LVL27:
+ 285              	.L37:
+ 286 003a 3144     		add	r1, r1, r6
+ 287              	.LVL28:
+ 288              	.L23:
+ 113:gps.c         ****   }
+ 114:gps.c         ****   i++;
+ 115:gps.c         ****  }
+ 116:gps.c         ****  if(source[i] == '\0')
+ 117:gps.c         ****   buffer[j] = '\0';
+ 289              		.loc 1 117 0
+ 290 003c 0023     		movs	r3, #0
+ 291              	.LVL29:
+ 292 003e 0B70     		strb	r3, [r1]
+ 293              	.L22:
+ 118:gps.c         **** }
+ 294              		.loc 1 118 0
+ 295 0040 F0BC     		pop	{r4, r5, r6, r7}
+ 296              	.LCFI4:
+ 297              		.cfi_remember_state
+ 298              		.cfi_restore 7
+ 299              		.cfi_restore 6
+ 300              		.cfi_restore 5
+ 301              		.cfi_restore 4
+ 302              		.cfi_def_cfa_offset 0
+ 303              	.LVL30:
+ 304 0042 7047     		bx	lr
+ 305              	.LVL31:
+ 306              	.L28:
+ 307              	.LCFI5:
+ 308              		.cfi_restore_state
+ 106:gps.c         ****     k++;
+ 309              		.loc 1 106 0
+ 310 0044 8F55     		strb	r7, [r1, r6]
+ 311              	.LVL32:
+ 107:gps.c         ****    }
+ 312              		.loc 1 107 0
+ 313 0046 6C1C     		adds	r4, r5, #1
+ 314              	.LVL33:
+ 315 0048 E8E7     		b	.L30
+ 316              		.cfi_endproc
+ 317              	.LFE30:
+ 319              		.global	__aeabi_i2d
+ 320              		.global	__aeabi_ddiv
+ 321              		.global	__aeabi_dadd
+ 322 004a 00BF     		.section	.text.gpsAnalyse,"ax",%progbits
+ 323              		.align	1
+ 324              		.p2align 2,,3
+ 325              		.global	gpsAnalyse
+ 326              		.syntax unified
+ 327              		.thumb
+ 328              		.thumb_func
+ 329              		.fpu softvfp
+ 331              	gpsAnalyse:
+ 332              	.LFB31:
+ 119:gps.c         **** 
+ 120:gps.c         **** 
+ 121:gps.c         **** void gpsAnalyse(char* buffer)
+ 122:gps.c         **** {
+ 333              		.loc 1 122 0
+ 334              		.cfi_startproc
+ 335              		@ args = 0, pretend = 0, frame = 24
+ 336              		@ frame_needed = 0, uses_anonymous_args = 0
+ 337              	.LVL34:
+ 123:gps.c         ****   char result[20];
+ 124:gps.c         ****   if (buffer[0] == '$' && buffer[3] == 'G' && buffer[4] == 'S' && buffer[5] == 'V'){
+ 338              		.loc 1 124 0
+ 339 0000 0278     		ldrb	r2, [r0]	@ zero_extendqisi2
+ 340 0002 242A     		cmp	r2, #36
+ 341 0004 00D0     		beq	.L55
+ 342 0006 7047     		bx	lr
+ 343              	.L55:
+ 122:gps.c         ****   char result[20];
+ 344              		.loc 1 122 0 discriminator 1
+ 345 0008 2DE9F047 		push	{r4, r5, r6, r7, r8, r9, r10, lr}
+ 346              	.LCFI6:
+ 347              		.cfi_def_cfa_offset 32
+ 348              		.cfi_offset 4, -32
+ 349              		.cfi_offset 5, -28
+ 350              		.cfi_offset 6, -24
+ 351              		.cfi_offset 7, -20
+ 352              		.cfi_offset 8, -16
+ 353              		.cfi_offset 9, -12
+ 354              		.cfi_offset 10, -8
+ 355              		.cfi_offset 14, -4
+ 356              		.loc 1 124 0 discriminator 1
+ 357 000c C278     		ldrb	r2, [r0, #3]	@ zero_extendqisi2
+ 122:gps.c         ****   char result[20];
+ 358              		.loc 1 122 0 discriminator 1
+ 359 000e 88B0     		sub	sp, sp, #32
+ 360              	.LCFI7:
+ 361              		.cfi_def_cfa_offset 64
+ 362              		.loc 1 124 0 discriminator 1
+ 363 0010 472A     		cmp	r2, #71
+ 364 0012 0446     		mov	r4, r0
+ 365 0014 02D0     		beq	.L56
+ 366              	.LVL35:
+ 367              	.L38:
+ 125:gps.c         ****     gpsGetMessage(buffer,result,12,',',3);
+ 126:gps.c         ****     nbSats = atoi(result);
+ 127:gps.c         ****   }
+ 128:gps.c         ****  
+ 129:gps.c         ****   if (buffer[0] == '$' && buffer[3] == 'G' && buffer[4] == 'G' && buffer[5] == 'A'){
+ 130:gps.c         ****     //trouve l'heure
+ 131:gps.c         ****     gpsGetMessage(buffer,result,20,',',1);
+ 132:gps.c         ****     if(strlen(result)>5){
+ 133:gps.c         ****       heures = 10*(result[0]-'0') + (result[1]-'0');
+ 134:gps.c         ****       minutes = 10*(result[2]-'0') + (result[3]-'0');
+ 135:gps.c         ****       secondes = 10*(result[4]-'0') + (result[5]-'0');
+ 136:gps.c         ****     }
+ 137:gps.c         ****   
+ 138:gps.c         ****     double degs, mins;
+ 139:gps.c         ****     //trouve la Latitude
+ 140:gps.c         ****     gpsGetMessage(buffer,result,20,',',2);
+ 141:gps.c         ****     //strcpy(debug,result);
+ 142:gps.c         ****     if(strlen(result)>3){
+ 143:gps.c         ****       degs = 10*(result[0]-'0') + (result[1]-'0');
+ 144:gps.c         ****       mins = atof(result+2);
+ 145:gps.c         ****       latitude = degs+mins/60;
+ 146:gps.c         ****     }  
+ 147:gps.c         ****     else
+ 148:gps.c         ****       latitude = -1;
+ 149:gps.c         ****     //Nord ou sud ?
+ 150:gps.c         ****     gpsGetMessage(buffer,result,20,',',3);
+ 151:gps.c         ****     if(result[0] == 'S')
+ 152:gps.c         ****       latitude = -latitude;
+ 153:gps.c         ****    
+ 154:gps.c         ****     //Trouve la Longitude
+ 155:gps.c         ****     gpsGetMessage(buffer,result,20,',',4);
+ 156:gps.c         ****     if(strlen(result)>3){
+ 157:gps.c         ****       degs = 100*(result[0]-'0') + 10*(result[1]-'0') + (result[2]-'0');
+ 158:gps.c         ****       mins = atof(result+3);
+ 159:gps.c         ****       longitude = degs+mins/60;
+ 160:gps.c         ****     }
+ 161:gps.c         ****     else
+ 162:gps.c         ****       longitude = -1;
+ 163:gps.c         ****   
+ 164:gps.c         ****     //est ou west ?
+ 165:gps.c         ****     gpsGetMessage(buffer,result,20,',',5);
+ 166:gps.c         ****     if(result[0] == 'W')
+ 167:gps.c         ****       longitude = -longitude;
+ 168:gps.c         ****     
+ 169:gps.c         ****     //fix
+ 170:gps.c         ****     gpsGetMessage(buffer,result,20,',',6);
+ 171:gps.c         ****     fix = result[0]-'0';
+ 172:gps.c         ****     
+ 173:gps.c         ****     //hdop
+ 174:gps.c         ****     gpsGetMessage(buffer,result,20,',',8);
+ 175:gps.c         ****     hdop = atof(result);
+ 176:gps.c         ****   }
+ 177:gps.c         **** }
+ 368              		.loc 1 177 0
+ 369 0016 08B0     		add	sp, sp, #32
+ 370              	.LCFI8:
+ 371              		.cfi_remember_state
+ 372              		.cfi_def_cfa_offset 32
+ 373              		@ sp needed
+ 374 0018 BDE8F087 		pop	{r4, r5, r6, r7, r8, r9, r10, pc}
+ 375              	.LVL36:
+ 376              	.L56:
+ 377              	.LCFI9:
+ 378              		.cfi_restore_state
+ 124:gps.c         ****     gpsGetMessage(buffer,result,12,',',3);
+ 379              		.loc 1 124 0 discriminator 2
+ 380 001c 0379     		ldrb	r3, [r0, #4]	@ zero_extendqisi2
+ 381 001e 532B     		cmp	r3, #83
+ 382 0020 00F09380 		beq	.L57
+ 383              	.LVL37:
+ 384              	.L42:
+ 129:gps.c         ****     //trouve l'heure
+ 385              		.loc 1 129 0 discriminator 2
+ 386 0024 472B     		cmp	r3, #71
+ 387 0026 F6D1     		bne	.L38
+ 129:gps.c         ****     //trouve l'heure
+ 388              		.loc 1 129 0 is_stmt 0 discriminator 3
+ 389 0028 6379     		ldrb	r3, [r4, #5]	@ zero_extendqisi2
+ 390 002a 412B     		cmp	r3, #65
+ 391 002c F3D1     		bne	.L38
+ 392              	.LBB2:
+ 131:gps.c         ****     if(strlen(result)>5){
+ 393              		.loc 1 131 0 is_stmt 1
+ 394 002e 0123     		movs	r3, #1
+ 395 0030 03A9     		add	r1, sp, #12
+ 396 0032 0093     		str	r3, [sp]
+ 397 0034 1422     		movs	r2, #20
+ 398 0036 2C23     		movs	r3, #44
+ 399 0038 2046     		mov	r0, r4
+ 400 003a 734D     		ldr	r5, .L60
+ 401 003c A847     		blx	r5
+ 402              	.LVL38:
+ 132:gps.c         ****       heures = 10*(result[0]-'0') + (result[1]-'0');
+ 403              		.loc 1 132 0
+ 404 003e 734E     		ldr	r6, .L60+4
+ 405 0040 03A8     		add	r0, sp, #12
+ 406 0042 B047     		blx	r6
+ 407              	.LVL39:
+ 408 0044 0528     		cmp	r0, #5
+ 409 0046 23DD     		ble	.L43
+ 133:gps.c         ****       minutes = 10*(result[2]-'0') + (result[3]-'0');
+ 410              		.loc 1 133 0
+ 411 0048 9DF80C20 		ldrb	r2, [sp, #12]	@ zero_extendqisi2
+ 412 004c 9DF80D10 		ldrb	r1, [sp, #13]	@ zero_extendqisi2
+ 413 0050 303A     		subs	r2, r2, #48
+ 414 0052 3039     		subs	r1, r1, #48
+ 415 0054 6E4F     		ldr	r7, .L60+8
+ 416 0056 02EB8202 		add	r2, r2, r2, lsl #2
+ 417 005a 01EB4202 		add	r2, r1, r2, lsl #1
+ 135:gps.c         ****     }
+ 418              		.loc 1 135 0
+ 419 005e 9DF81000 		ldrb	r0, [sp, #16]	@ zero_extendqisi2
+ 133:gps.c         ****       minutes = 10*(result[2]-'0') + (result[3]-'0');
+ 420              		.loc 1 133 0
+ 421 0062 3A60     		str	r2, [r7]
+ 134:gps.c         ****       secondes = 10*(result[4]-'0') + (result[5]-'0');
+ 422              		.loc 1 134 0
+ 423 0064 9DF80E30 		ldrb	r3, [sp, #14]	@ zero_extendqisi2
+ 135:gps.c         ****     }
+ 424              		.loc 1 135 0
+ 425 0068 9DF81120 		ldrb	r2, [sp, #17]	@ zero_extendqisi2
+ 426 006c 3038     		subs	r0, r0, #48
+ 134:gps.c         ****       secondes = 10*(result[4]-'0') + (result[5]-'0');
+ 427              		.loc 1 134 0
+ 428 006e 9DF80F10 		ldrb	r1, [sp, #15]	@ zero_extendqisi2
+ 135:gps.c         ****     }
+ 429              		.loc 1 135 0
+ 430 0072 303A     		subs	r2, r2, #48
+ 134:gps.c         ****       secondes = 10*(result[4]-'0') + (result[5]-'0');
+ 431              		.loc 1 134 0
+ 432 0074 303B     		subs	r3, r3, #48
+ 135:gps.c         ****     }
+ 433              		.loc 1 135 0
+ 434 0076 00EB8000 		add	r0, r0, r0, lsl #2
+ 435 007a 02EB4000 		add	r0, r2, r0, lsl #1
+ 134:gps.c         ****       secondes = 10*(result[4]-'0') + (result[5]-'0');
+ 436              		.loc 1 134 0
+ 437 007e 03EB8303 		add	r3, r3, r3, lsl #2
+ 438 0082 3039     		subs	r1, r1, #48
+ 439 0084 634F     		ldr	r7, .L60+12
+ 135:gps.c         ****     }
+ 440              		.loc 1 135 0
+ 441 0086 644A     		ldr	r2, .L60+16
+ 134:gps.c         ****       secondes = 10*(result[4]-'0') + (result[5]-'0');
+ 442              		.loc 1 134 0
+ 443 0088 01EB4301 		add	r1, r1, r3, lsl #1
+ 444 008c 3960     		str	r1, [r7]
+ 135:gps.c         ****     }
+ 445              		.loc 1 135 0
+ 446 008e 1060     		str	r0, [r2]
+ 447              	.L43:
+ 140:gps.c         ****     //strcpy(debug,result);
+ 448              		.loc 1 140 0
+ 449 0090 0222     		movs	r2, #2
+ 450 0092 2C23     		movs	r3, #44
+ 451 0094 0092     		str	r2, [sp]
+ 452 0096 03A9     		add	r1, sp, #12
+ 453 0098 1422     		movs	r2, #20
+ 454 009a 2046     		mov	r0, r4
+ 455 009c A847     		blx	r5
+ 456              	.LVL40:
+ 142:gps.c         ****       degs = 10*(result[0]-'0') + (result[1]-'0');
+ 457              		.loc 1 142 0
+ 458 009e 03A8     		add	r0, sp, #12
+ 459 00a0 B047     		blx	r6
+ 460              	.LVL41:
+ 461 00a2 0328     		cmp	r0, #3
+ 462 00a4 00F38E80 		bgt	.L58
+ 148:gps.c         ****     //Nord ou sud ?
+ 463              		.loc 1 148 0
+ 464 00a8 0022     		movs	r2, #0
+ 465 00aa 5C4B     		ldr	r3, .L60+20
+ 466 00ac DFF89881 		ldr	r8, .L60+64
+ 467 00b0 5B4F     		ldr	r7, .L60+24
+ 468 00b2 C8E90023 		strd	r2, [r8]
+ 469              	.L45:
+ 150:gps.c         ****     if(result[0] == 'S')
+ 470              		.loc 1 150 0
+ 471 00b6 0322     		movs	r2, #3
+ 472 00b8 2C23     		movs	r3, #44
+ 473 00ba 0092     		str	r2, [sp]
+ 474 00bc 03A9     		add	r1, sp, #12
+ 475 00be 1422     		movs	r2, #20
+ 476 00c0 2046     		mov	r0, r4
+ 477 00c2 A847     		blx	r5
+ 478              	.LVL42:
+ 151:gps.c         ****       latitude = -latitude;
+ 479              		.loc 1 151 0
+ 480 00c4 9DF80C30 		ldrb	r3, [sp, #12]	@ zero_extendqisi2
+ 481 00c8 532B     		cmp	r3, #83
+ 482 00ca 05D1     		bne	.L46
+ 152:gps.c         ****    
+ 483              		.loc 1 152 0
+ 484 00cc D8F80430 		ldr	r3, [r8, #4]
+ 485 00d0 03F10043 		add	r3, r3, #-2147483648
+ 486 00d4 C8F80430 		str	r3, [r8, #4]
+ 487              	.L46:
+ 155:gps.c         ****     if(strlen(result)>3){
+ 488              		.loc 1 155 0
+ 489 00d8 0422     		movs	r2, #4
+ 490 00da 2C23     		movs	r3, #44
+ 491 00dc 0092     		str	r2, [sp]
+ 492 00de 03A9     		add	r1, sp, #12
+ 493 00e0 1422     		movs	r2, #20
+ 494 00e2 2046     		mov	r0, r4
+ 495 00e4 A847     		blx	r5
+ 496              	.LVL43:
+ 156:gps.c         ****       degs = 100*(result[0]-'0') + 10*(result[1]-'0') + (result[2]-'0');
+ 497              		.loc 1 156 0
+ 498 00e6 03A8     		add	r0, sp, #12
+ 499 00e8 B047     		blx	r6
+ 500              	.LVL44:
+ 501 00ea 0328     		cmp	r0, #3
+ 502 00ec 47DC     		bgt	.L59
+ 162:gps.c         ****   
+ 503              		.loc 1 162 0
+ 504 00ee 0022     		movs	r2, #0
+ 505 00f0 4A4B     		ldr	r3, .L60+20
+ 506 00f2 4C4E     		ldr	r6, .L60+28
+ 507 00f4 C6E90023 		strd	r2, [r6]
+ 508              	.L48:
+ 165:gps.c         ****     if(result[0] == 'W')
+ 509              		.loc 1 165 0
+ 510 00f8 0522     		movs	r2, #5
+ 511 00fa 2C23     		movs	r3, #44
+ 512 00fc 0092     		str	r2, [sp]
+ 513 00fe 03A9     		add	r1, sp, #12
+ 514 0100 1422     		movs	r2, #20
+ 515 0102 2046     		mov	r0, r4
+ 516 0104 A847     		blx	r5
+ 517              	.LVL45:
+ 166:gps.c         ****       longitude = -longitude;
+ 518              		.loc 1 166 0
+ 519 0106 9DF80C30 		ldrb	r3, [sp, #12]	@ zero_extendqisi2
+ 520 010a 572B     		cmp	r3, #87
+ 521 010c 03D1     		bne	.L49
+ 167:gps.c         ****     
+ 522              		.loc 1 167 0
+ 523 010e 7368     		ldr	r3, [r6, #4]
+ 524 0110 03F10043 		add	r3, r3, #-2147483648
+ 525 0114 7360     		str	r3, [r6, #4]
+ 526              	.L49:
+ 170:gps.c         ****     fix = result[0]-'0';
+ 527              		.loc 1 170 0
+ 528 0116 0622     		movs	r2, #6
+ 529 0118 2046     		mov	r0, r4
+ 530 011a 2C23     		movs	r3, #44
+ 531 011c 0092     		str	r2, [sp]
+ 532 011e 03A9     		add	r1, sp, #12
+ 533 0120 1422     		movs	r2, #20
+ 534 0122 A847     		blx	r5
+ 535              	.LVL46:
+ 174:gps.c         ****     hdop = atof(result);
+ 536              		.loc 1 174 0
+ 537 0124 0822     		movs	r2, #8
+ 171:gps.c         ****     
+ 538              		.loc 1 171 0
+ 539 0126 9DF80C30 		ldrb	r3, [sp, #12]	@ zero_extendqisi2
+ 540 012a 3F4E     		ldr	r6, .L60+32
+ 174:gps.c         ****     hdop = atof(result);
+ 541              		.loc 1 174 0
+ 542 012c 2046     		mov	r0, r4
+ 171:gps.c         ****     
+ 543              		.loc 1 171 0
+ 544 012e A3F13004 		sub	r4, r3, #48
+ 545              	.LVL47:
+ 174:gps.c         ****     hdop = atof(result);
+ 546              		.loc 1 174 0
+ 547 0132 0092     		str	r2, [sp]
+ 548 0134 2C23     		movs	r3, #44
+ 549 0136 1422     		movs	r2, #20
+ 550 0138 03A9     		add	r1, sp, #12
+ 171:gps.c         ****     
+ 551              		.loc 1 171 0
+ 552 013a 3460     		str	r4, [r6]
+ 174:gps.c         ****     hdop = atof(result);
+ 553              		.loc 1 174 0
+ 554 013c A847     		blx	r5
+ 555              	.LVL48:
+ 175:gps.c         ****   }
+ 556              		.loc 1 175 0
+ 557 013e 03A8     		add	r0, sp, #12
+ 558 0140 B847     		blx	r7
+ 559              	.LVL49:
+ 560 0142 3A4B     		ldr	r3, .L60+36
+ 561 0144 C3E90001 		strd	r0, [r3]
+ 562              	.LBE2:
+ 563              		.loc 1 177 0
+ 564 0148 65E7     		b	.L38
+ 565              	.LVL50:
+ 566              	.L57:
+ 124:gps.c         ****     gpsGetMessage(buffer,result,12,',',3);
+ 567              		.loc 1 124 0 discriminator 3
+ 568 014a 4379     		ldrb	r3, [r0, #5]	@ zero_extendqisi2
+ 569 014c 562B     		cmp	r3, #86
+ 570 014e 7FF462AF 		bne	.L38
+ 125:gps.c         ****     nbSats = atoi(result);
+ 571              		.loc 1 125 0
+ 572 0152 0323     		movs	r3, #3
+ 573 0154 03A9     		add	r1, sp, #12
+ 574 0156 0093     		str	r3, [sp]
+ 575 0158 0C22     		movs	r2, #12
+ 576 015a 2C23     		movs	r3, #44
+ 577 015c 2A4D     		ldr	r5, .L60
+ 578 015e A847     		blx	r5
+ 579              	.LVL51:
+ 126:gps.c         ****   }
+ 580              		.loc 1 126 0
+ 581 0160 334B     		ldr	r3, .L60+40
+ 582 0162 03A8     		add	r0, sp, #12
+ 583 0164 9847     		blx	r3
+ 584              	.LVL52:
+ 585 0166 334B     		ldr	r3, .L60+44
+ 586 0168 1860     		str	r0, [r3]
+ 129:gps.c         ****     //trouve l'heure
+ 587              		.loc 1 129 0
+ 588 016a 2378     		ldrb	r3, [r4]	@ zero_extendqisi2
+ 589 016c 242B     		cmp	r3, #36
+ 590 016e 7FF452AF 		bne	.L38
+ 591 0172 E378     		ldrb	r3, [r4, #3]	@ zero_extendqisi2
+ 592 0174 472B     		cmp	r3, #71
+ 593 0176 7FF44EAF 		bne	.L38
+ 594 017a 2379     		ldrb	r3, [r4, #4]	@ zero_extendqisi2
+ 595 017c 52E7     		b	.L42
+ 596              	.L59:
+ 597              	.LBB3:
+ 157:gps.c         ****       mins = atof(result+3);
+ 598              		.loc 1 157 0
+ 599 017e 6421     		movs	r1, #100
+ 600 0180 9DF80D30 		ldrb	r3, [sp, #13]	@ zero_extendqisi2
+ 601 0184 9DF80C20 		ldrb	r2, [sp, #12]	@ zero_extendqisi2
+ 602 0188 303B     		subs	r3, r3, #48
+ 603 018a 03EB8303 		add	r3, r3, r3, lsl #2
+ 604 018e 303A     		subs	r2, r2, #48
+ 605 0190 5B00     		lsls	r3, r3, #1
+ 606 0192 01FB0233 		mla	r3, r1, r2, r3
+ 607 0196 9DF80E00 		ldrb	r0, [sp, #14]	@ zero_extendqisi2
+ 608 019a 274A     		ldr	r2, .L60+48
+ 609 019c 3038     		subs	r0, r0, #48
+ 610 019e 1844     		add	r0, r0, r3
+ 611 01a0 9047     		blx	r2
+ 612              	.LVL53:
+ 613 01a2 8046     		mov	r8, r0
+ 614 01a4 8946     		mov	r9, r1
+ 615              	.LVL54:
+ 158:gps.c         ****       longitude = degs+mins/60;
+ 616              		.loc 1 158 0
+ 617 01a6 0DF10F00 		add	r0, sp, #15
+ 618 01aa B847     		blx	r7
+ 619              	.LVL55:
+ 159:gps.c         ****     }
+ 620              		.loc 1 159 0
+ 621 01ac 234E     		ldr	r6, .L60+52
+ 622 01ae 0022     		movs	r2, #0
+ 623 01b0 234B     		ldr	r3, .L60+56
+ 624 01b2 B047     		blx	r6
+ 625              	.LVL56:
+ 626 01b4 234E     		ldr	r6, .L60+60
+ 627 01b6 4246     		mov	r2, r8
+ 628 01b8 4B46     		mov	r3, r9
+ 629 01ba B047     		blx	r6
+ 630              	.LVL57:
+ 631 01bc 194E     		ldr	r6, .L60+28
+ 632 01be C6E90001 		strd	r0, [r6]
+ 633 01c2 99E7     		b	.L48
+ 634              	.LVL58:
+ 635              	.L58:
+ 143:gps.c         ****       mins = atof(result+2);
+ 636              		.loc 1 143 0
+ 637 01c4 9DF80C00 		ldrb	r0, [sp, #12]	@ zero_extendqisi2
+ 638 01c8 9DF80D30 		ldrb	r3, [sp, #13]	@ zero_extendqisi2
+ 639 01cc 3038     		subs	r0, r0, #48
+ 640 01ce 303B     		subs	r3, r3, #48
+ 641 01d0 00EB8000 		add	r0, r0, r0, lsl #2
+ 642 01d4 03EB4000 		add	r0, r3, r0, lsl #1
+ 643 01d8 174B     		ldr	r3, .L60+48
+ 644 01da 9847     		blx	r3
+ 645              	.LVL59:
+ 646 01dc 8046     		mov	r8, r0
+ 647 01de 8946     		mov	r9, r1
+ 648              	.LVL60:
+ 144:gps.c         ****       latitude = degs+mins/60;
+ 649              		.loc 1 144 0
+ 650 01e0 0F4F     		ldr	r7, .L60+24
+ 651 01e2 0DF10E00 		add	r0, sp, #14
+ 652 01e6 B847     		blx	r7
+ 653              	.LVL61:
+ 145:gps.c         ****     }  
+ 654              		.loc 1 145 0
+ 655 01e8 DFF850A0 		ldr	r10, .L60+52
+ 656 01ec 0022     		movs	r2, #0
+ 657 01ee 144B     		ldr	r3, .L60+56
+ 658 01f0 D047     		blx	r10
+ 659              	.LVL62:
+ 660 01f2 4246     		mov	r2, r8
+ 661 01f4 4B46     		mov	r3, r9
+ 662 01f6 DFF84C80 		ldr	r8, .L60+60
+ 663              	.LVL63:
+ 664 01fa C047     		blx	r8
+ 665              	.LVL64:
+ 666 01fc DFF84880 		ldr	r8, .L60+64
+ 667 0200 C8E90001 		strd	r0, [r8]
+ 668 0204 57E7     		b	.L45
+ 669              	.L61:
+ 670 0206 00BF     		.align	2
+ 671              	.L60:
+ 672 0208 00000000 		.word	gpsGetMessage
+ 673 020c 00000000 		.word	strlen
+ 674 0210 00000000 		.word	heures
+ 675 0214 00000000 		.word	minutes
+ 676 0218 00000000 		.word	secondes
+ 677 021c 0000F0BF 		.word	-1074790400
+ 678 0220 00000000 		.word	atof
+ 679 0224 00000000 		.word	longitude
+ 680 0228 00000000 		.word	fix
+ 681 022c 00000000 		.word	hdop
+ 682 0230 00000000 		.word	atoi
+ 683 0234 00000000 		.word	nbSats
+ 684 0238 00000000 		.word	__aeabi_i2d
+ 685 023c 00000000 		.word	__aeabi_ddiv
+ 686 0240 00004E40 		.word	1078853632
+ 687 0244 00000000 		.word	__aeabi_dadd
+ 688 0248 00000000 		.word	latitude
+ 689              	.LBE3:
+ 690              		.cfi_endproc
+ 691              	.LFE31:
+ 693              		.section	.text.gpsDataReceived,"ax",%progbits
+ 694              		.align	1
+ 695              		.p2align 2,,3
+ 696              		.global	gpsDataReceived
+ 697              		.syntax unified
+ 698              		.thumb
+ 699              		.thumb_func
+ 700              		.fpu softvfp
+ 702              	gpsDataReceived:
+ 703              	.LFB29:
+  72:gps.c         ****   if(data == '$'){  // previous NMEA frame finished
+ 704              		.loc 1 72 0
+ 705              		.cfi_startproc
+ 706              		@ args = 0, pretend = 0, frame = 0
+ 707              		@ frame_needed = 0, uses_anonymous_args = 0
+ 708              	.LVL65:
+  73:gps.c         ****     int j;
+ 709              		.loc 1 73 0
+ 710 0000 2428     		cmp	r0, #36
+  72:gps.c         ****   if(data == '$'){  // previous NMEA frame finished
+ 711              		.loc 1 72 0
+ 712 0002 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 713              	.LCFI10:
+ 714              		.cfi_def_cfa_offset 24
+ 715              		.cfi_offset 3, -24
+ 716              		.cfi_offset 4, -20
+ 717              		.cfi_offset 5, -16
+ 718              		.cfi_offset 6, -12
+ 719              		.cfi_offset 7, -8
+ 720              		.cfi_offset 14, -4
+  72:gps.c         ****   if(data == '$'){  // previous NMEA frame finished
+ 721              		.loc 1 72 0
+ 722 0004 0646     		mov	r6, r0
+ 723              	.LBB4:
+  75:gps.c         ****       recvBuff[j] = recvTemp[j];
+ 724              		.loc 1 75 0
+ 725 0006 164C     		ldr	r4, .L71
+ 726              	.LBE4:
+  73:gps.c         ****     int j;
+ 727              		.loc 1 73 0
+ 728 0008 05D0     		beq	.L69
+  82:gps.c         **** }
+ 729              		.loc 1 82 0
+ 730 000a 2368     		ldr	r3, [r4]
+ 731 000c 154F     		ldr	r7, .L71+4
+ 732 000e 5A1C     		adds	r2, r3, #1
+ 733 0010 FE54     		strb	r6, [r7, r3]
+ 734 0012 2260     		str	r2, [r4]
+  83:gps.c         **** 
+ 735              		.loc 1 83 0
+ 736 0014 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 737              	.L69:
+ 738              	.LVL66:
+ 739              	.LBB5:
+  75:gps.c         ****       recvBuff[j] = recvTemp[j];
+ 740              		.loc 1 75 0
+ 741 0016 2368     		ldr	r3, [r4]
+ 742 0018 002B     		cmp	r3, #0
+ 743 001a 1CDD     		ble	.L66
+ 744 001c 114F     		ldr	r7, .L71+4
+ 745 001e DFF848C0 		ldr	ip, .L71+8
+ 746 0022 3946     		mov	r1, r7
+ 747 0024 6246     		mov	r2, ip
+ 748 0026 0023     		movs	r3, #0
+ 749              	.LVL67:
+ 750              	.L65:
+  75:gps.c         ****       recvBuff[j] = recvTemp[j];
+ 751              		.loc 1 75 0 is_stmt 0 discriminator 3
+ 752 0028 2068     		ldr	r0, [r4]
+  76:gps.c         ****     recvBuff[j] = '\0';
+ 753              		.loc 1 76 0 is_stmt 1 discriminator 3
+ 754 002a 11F8015B 		ldrb	r5, [r1], #1	@ zero_extendqisi2
+  75:gps.c         ****       recvBuff[j] = recvTemp[j];
+ 755              		.loc 1 75 0 discriminator 3
+ 756 002e 0133     		adds	r3, r3, #1
+ 757              	.LVL68:
+ 758 0030 9842     		cmp	r0, r3
+  76:gps.c         ****     recvBuff[j] = '\0';
+ 759              		.loc 1 76 0 discriminator 3
+ 760 0032 02F8015B 		strb	r5, [r2], #1
+  75:gps.c         ****       recvBuff[j] = recvTemp[j];
+ 761              		.loc 1 75 0 discriminator 3
+ 762 0036 F7DC     		bgt	.L65
+ 763              	.LVL69:
+ 764              	.L64:
+  77:gps.c         ****     recvIndex = 0;
+ 765              		.loc 1 77 0
+ 766 0038 0022     		movs	r2, #0
+  79:gps.c         ****     newGPSData=TRUE;
+ 767              		.loc 1 79 0
+ 768 003a 0B48     		ldr	r0, .L71+8
+  77:gps.c         ****     recvIndex = 0;
+ 769              		.loc 1 77 0
+ 770 003c 0CF80320 		strb	r2, [ip, r3]
+  79:gps.c         ****     newGPSData=TRUE;
+ 771              		.loc 1 79 0
+ 772 0040 0A4B     		ldr	r3, .L71+12
+  78:gps.c         ****     gpsAnalyse(recvBuff);
+ 773              		.loc 1 78 0
+ 774 0042 2260     		str	r2, [r4]
+  79:gps.c         ****     newGPSData=TRUE;
+ 775              		.loc 1 79 0
+ 776 0044 9847     		blx	r3
+ 777              	.LVL70:
+  80:gps.c         ****   }
+ 778              		.loc 1 80 0
+ 779 0046 0122     		movs	r2, #1
+ 780 0048 094B     		ldr	r3, .L71+16
+ 781 004a 1A60     		str	r2, [r3]
+ 782              	.LBE5:
+  82:gps.c         **** }
+ 783              		.loc 1 82 0
+ 784 004c 2368     		ldr	r3, [r4]
+ 785 004e 5A1C     		adds	r2, r3, #1
+ 786 0050 FE54     		strb	r6, [r7, r3]
+ 787 0052 2260     		str	r2, [r4]
+  83:gps.c         **** 
+ 788              		.loc 1 83 0
+ 789 0054 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 790              	.LVL71:
+ 791              	.L66:
+ 792              	.LBB6:
+  75:gps.c         ****       recvBuff[j] = recvTemp[j];
+ 793              		.loc 1 75 0
+ 794 0056 0023     		movs	r3, #0
+ 795 0058 024F     		ldr	r7, .L71+4
+ 796 005a DFF80CC0 		ldr	ip, .L71+8
+ 797 005e EBE7     		b	.L64
+ 798              	.L72:
+ 799              		.align	2
+ 800              	.L71:
+ 801 0060 00000000 		.word	.LANCHOR0
+ 802 0064 00000000 		.word	recvTemp
+ 803 0068 00000000 		.word	recvBuff
+ 804 006c 00000000 		.word	gpsAnalyse
+ 805 0070 00000000 		.word	.LANCHOR1
+ 806              	.LBE6:
+ 807              		.cfi_endproc
+ 808              	.LFE29:
+ 810              		.comm	nbSats,4,4
+ 811              		.comm	secondes,4,4
+ 812              		.comm	minutes,4,4
+ 813              		.comm	heures,4,4
+ 814              		.comm	hdop,8,8
+ 815              		.comm	fix,4,4
+ 816              		.comm	latitude,8,8
+ 817              		.comm	longitude,8,8
+ 818              		.global	newGPSData
+ 819              		.global	recvIndex
+ 820              		.comm	recvTemp,82,4
+ 821              		.comm	recvBuff,82,4
+ 822              		.comm	screen,1,1
+ 823              		.comm	posY,4,4
+ 824              		.comm	posX,4,4
+ 825              		.section	.bss.newGPSData,"aw",%nobits
+ 826              		.align	2
+ 827              		.set	.LANCHOR1,. + 0
+ 830              	newGPSData:
+ 831 0000 00000000 		.space	4
+ 832              		.section	.bss.recvIndex,"aw",%nobits
+ 833              		.align	2
+ 834              		.set	.LANCHOR0,. + 0
+ 837              	recvIndex:
+ 838 0000 00000000 		.space	4
+ 839              		.section	.rodata.gpsInit.str1.4,"aMS",%progbits,1
+ 840              		.align	2
+ 841              	.LC1:
+ 842 0000 24505352 		.ascii	"$PSRF103,03,00,05,01*22\015\012\000"
+ 842      46313033 
+ 842      2C30332C 
+ 842      30302C30 
+ 842      352C3031 
+ 843 001a 0000     		.space	2
+ 844              	.LC0:
+ 845 001c 24505352 		.ascii	"$PSRF151,00*0E\015\012\000"
+ 845      46313531 
+ 845      2C30302A 
+ 845      30450D0A 
+ 845      00
+ 846              		.text
+ 847              	.Letext0:
+ 848              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include\
+ 849              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\7 2017-q4-major\\arm-none-eabi\\include\
+ 850              		.file 4 "./Libraries/CMSIS/Core/CM3/system_stm32f10x.h"
+ 851              		.file 5 "./Libraries/CMSIS/Core/CM3/stm32f10x.h"
+ 852              		.file 6 "./Libraries/STM32F10x_StdPeriph_Driver/inc/stm32f10x_gpio.h"
+ 853              		.file 7 "gps.h"
+ 854              		.file 8 "u8g/u8g.h"
+ 855              		.file 9 "lcd.h"
+ 856              		.file 10 "utils.h"
+ 857              		.file 11 "main.h"
+ 858              		.file 12 "./Libraries/STM32F10x_StdPeriph_Driver/inc/stm32f10x_usart.h"
+ 859              		.file 13 "<built-in>"
+DEFINED SYMBOLS
+                            *ABS*:00000000 gps.c
+C:\Users\BOBAFW~1\AppData\Local\Temp\ccc4okb5.s:16     .text.gpsSetEnabled:00000000 $t
+C:\Users\BOBAFW~1\AppData\Local\Temp\ccc4okb5.s:24     .text.gpsSetEnabled:00000000 gpsSetEnabled
+C:\Users\BOBAFW~1\AppData\Local\Temp\ccc4okb5.s:56     .text.gpsSetEnabled:00000018 $d
+C:\Users\BOBAFW~1\AppData\Local\Temp\ccc4okb5.s:62     .text.gpsInit:00000000 $t
+C:\Users\BOBAFW~1\AppData\Local\Temp\ccc4okb5.s:70     .text.gpsInit:00000000 gpsInit
+C:\Users\BOBAFW~1\AppData\Local\Temp\ccc4okb5.s:192    .text.gpsInit:000000a0 $d
+                            *COM*:00000004 secondes
+                            *COM*:00000004 minutes
+                            *COM*:00000004 heures
+C:\Users\BOBAFW~1\AppData\Local\Temp\ccc4okb5.s:204    .text.gpsGetMessage:00000000 $t
+C:\Users\BOBAFW~1\AppData\Local\Temp\ccc4okb5.s:212    .text.gpsGetMessage:00000000 gpsGetMessage
+C:\Users\BOBAFW~1\AppData\Local\Temp\ccc4okb5.s:323    .text.gpsAnalyse:00000000 $t
+C:\Users\BOBAFW~1\AppData\Local\Temp\ccc4okb5.s:331    .text.gpsAnalyse:00000000 gpsAnalyse
+C:\Users\BOBAFW~1\AppData\Local\Temp\ccc4okb5.s:672    .text.gpsAnalyse:00000208 $d
+                            *COM*:00000008 longitude
+                            *COM*:00000004 fix
+                            *COM*:00000008 hdop
+                            *COM*:00000004 nbSats
+                            *COM*:00000008 latitude
+C:\Users\BOBAFW~1\AppData\Local\Temp\ccc4okb5.s:694    .text.gpsDataReceived:00000000 $t
+C:\Users\BOBAFW~1\AppData\Local\Temp\ccc4okb5.s:702    .text.gpsDataReceived:00000000 gpsDataReceived
+C:\Users\BOBAFW~1\AppData\Local\Temp\ccc4okb5.s:801    .text.gpsDataReceived:00000060 $d
+                            *COM*:00000052 recvTemp
+                            *COM*:00000052 recvBuff
+C:\Users\BOBAFW~1\AppData\Local\Temp\ccc4okb5.s:830    .bss.newGPSData:00000000 newGPSData
+C:\Users\BOBAFW~1\AppData\Local\Temp\ccc4okb5.s:837    .bss.recvIndex:00000000 recvIndex
+                            *COM*:00000001 screen
+                            *COM*:00000004 posY
+                            *COM*:00000004 posX
+C:\Users\BOBAFW~1\AppData\Local\Temp\ccc4okb5.s:826    .bss.newGPSData:00000000 $d
+C:\Users\BOBAFW~1\AppData\Local\Temp\ccc4okb5.s:833    .bss.recvIndex:00000000 $d
+C:\Users\BOBAFW~1\AppData\Local\Temp\ccc4okb5.s:840    .rodata.gpsInit.str1.4:00000000 $d
+
+UNDEFINED SYMBOLS
+GPIO_WriteBit
+USART_GetFlagStatus
+USART_SendData
+__aeabi_i2d
+__aeabi_ddiv
+__aeabi_dadd
+strlen
+atof
+atoi

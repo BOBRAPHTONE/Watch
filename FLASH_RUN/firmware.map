@@ -1,0 +1,2081 @@
+Archive member included to satisfy reference by file (symbol)
+
+c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-locale.o)
+                              FLASH_RUN/utils.o (__locale_ctype_ptr)
+c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-mbtowc_r.o)
+                              c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-locale.o) (__ascii_mbtowc)
+c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-strcmp.o)
+                              c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-locale.o) (strcmp)
+c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-wctomb_r.o)
+                              c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-locale.o) (__ascii_wctomb)
+c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-ctype_.o)
+                              c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-locale.o) (_ctype_)
+c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-impure.o)
+                              c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-locale.o) (_impure_ptr)
+c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_addsubdf3.o)
+                              FLASH_RUN/utils.o (__aeabi_dadd)
+c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_muldivdf3.o)
+                              FLASH_RUN/utils.o (__aeabi_dmul)
+c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_fixdfsi.o)
+                              FLASH_RUN/utils.o (__aeabi_d2iz)
+
+Allocating common symbols
+Common symbol       size              file
+
+heures              0x4               FLASH_RUN/gps.o
+u8g                 0x3c              FLASH_RUN/lcd.o
+screen              0x1               FLASH_RUN/main.o
+secondes            0x4               FLASH_RUN/gps.o
+posY                0x4               FLASH_RUN/main.o
+debug               0xf               FLASH_RUN/utils.o
+u8g_dev             0xc               FLASH_RUN/lcd.o
+recvBuff            0x52              FLASH_RUN/gps.o
+ADCValues           0x8               FLASH_RUN/main.o
+buffer              0xc80             FLASH_RUN/lcd.o
+longitude           0x8               FLASH_RUN/gps.o
+fix                 0x4               FLASH_RUN/gps.o
+recvTemp            0x52              FLASH_RUN/gps.o
+nbSats              0x4               FLASH_RUN/gps.o
+latitude            0x8               FLASH_RUN/gps.o
+minutes             0x4               FLASH_RUN/gps.o
+posX                0x4               FLASH_RUN/main.o
+hdop                0x8               FLASH_RUN/gps.o
+
+Discarded input sections
+
+ .text          0x00000000        0x0 FLASH_RUN/main.o
+ .data          0x00000000        0x0 FLASH_RUN/main.o
+ .bss           0x00000000        0x0 FLASH_RUN/main.o
+ .text.powerOff
+                0x00000000       0x14 FLASH_RUN/main.o
+ .text.powerOn  0x00000000       0x14 FLASH_RUN/main.o
+ .text.switchLed
+                0x00000000       0x14 FLASH_RUN/main.o
+ .text.dispImage
+                0x00000000        0x8 FLASH_RUN/main.o
+ .text          0x00000000        0x0 FLASH_RUN/lcd.o
+ .data          0x00000000        0x0 FLASH_RUN/lcd.o
+ .bss           0x00000000        0x0 FLASH_RUN/lcd.o
+ .text.reverse  0x00000000       0x18 FLASH_RUN/lcd.o
+ .text.LCDGotoXY
+                0x00000000       0x14 FLASH_RUN/lcd.o
+ .text.LCDPrintTest
+                0x00000000       0x84 FLASH_RUN/lcd.o
+ .text.LCDClearScreen
+                0x00000000       0x38 FLASH_RUN/lcd.o
+ .text.LCDGotoColumn
+                0x00000000       0x10 FLASH_RUN/lcd.o
+ .text.LCDGotoLine
+                0x00000000       0x10 FLASH_RUN/lcd.o
+ .text.LCDSetPixel
+                0x00000000       0x34 FLASH_RUN/lcd.o
+ .text.LCDGetPageBox
+                0x00000000       0x10 FLASH_RUN/lcd.o
+ .text          0x00000000        0x0 FLASH_RUN/utils.o
+ .data          0x00000000        0x0 FLASH_RUN/utils.o
+ .bss           0x00000000        0x0 FLASH_RUN/utils.o
+ .text.strncpy  0x00000000       0x24 FLASH_RUN/utils.o
+ .text.strchrn  0x00000000       0x78 FLASH_RUN/utils.o
+ COMMON         0x00000000        0xf FLASH_RUN/utils.o
+ .text          0x00000000        0x0 FLASH_RUN/gps.o
+ .data          0x00000000        0x0 FLASH_RUN/gps.o
+ .bss           0x00000000        0x0 FLASH_RUN/gps.o
+ .text          0x00000000        0x0 FLASH_RUN/it_handlers.o
+ .data          0x00000000        0x0 FLASH_RUN/it_handlers.o
+ .bss           0x00000000        0x0 FLASH_RUN/it_handlers.o
+ .text          0x00000000        0x0 FLASH_RUN/u8g_font.o
+ .data          0x00000000        0x0 FLASH_RUN/u8g_font.o
+ .bss           0x00000000        0x0 FLASH_RUN/u8g_font.o
+ .text.u8g_font_calc_vref_bottom
+                0x00000000        0x8 FLASH_RUN/u8g_font.o
+ .text.u8g_font_calc_vref_top
+                0x00000000        0xc FLASH_RUN/u8g_font.o
+ .text.u8g_font_calc_vref_center
+                0x00000000       0x18 FLASH_RUN/u8g_font.o
+ .text.u8g_font_get_char
+                0x00000000        0x4 FLASH_RUN/u8g_font.o
+ .text.u8g_font_get_charP
+                0x00000000        0x4 FLASH_RUN/u8g_font.o
+ .text.u8g_font_GetCapitalAHeight
+                0x00000000        0x4 FLASH_RUN/u8g_font.o
+ .text.u8g_font_GetLowerGDescent
+                0x00000000        0x8 FLASH_RUN/u8g_font.o
+ .text.u8g_font_GetFontAscent
+                0x00000000        0x8 FLASH_RUN/u8g_font.o
+ .text.u8g_font_GetFontDescent
+                0x00000000        0x8 FLASH_RUN/u8g_font.o
+ .text.u8g_font_GetFontXAscent
+                0x00000000        0x8 FLASH_RUN/u8g_font.o
+ .text.u8g_font_GetFontXDescent
+                0x00000000        0x8 FLASH_RUN/u8g_font.o
+ .text.u8g_font_GetSize
+                0x00000000       0x6c FLASH_RUN/u8g_font.o
+ .text.u8g_GetFontBBXWidth
+                0x00000000        0x8 FLASH_RUN/u8g_font.o
+ .text.u8g_GetFontBBXHeight
+                0x00000000        0x8 FLASH_RUN/u8g_font.o
+ .text.u8g_GetFontBBXOffX
+                0x00000000        0x8 FLASH_RUN/u8g_font.o
+ .text.u8g_GetFontBBXOffY
+                0x00000000        0x8 FLASH_RUN/u8g_font.o
+ .text.u8g_GetFontCapitalAHeight
+                0x00000000        0x8 FLASH_RUN/u8g_font.o
+ .text.u8g_font_calc_str_min_box.part.2
+                0x00000000       0x78 FLASH_RUN/u8g_font.o
+ .text.u8g_IsGlyph
+                0x00000000       0x14 FLASH_RUN/u8g_font.o
+ .text.u8g_GetGlyphDeltaX
+                0x00000000       0x14 FLASH_RUN/u8g_font.o
+ .text.u8g_DrawGlyph
+                0x00000000       0x28 FLASH_RUN/u8g_font.o
+ .text.u8g_draw_glyph90
+                0x00000000       0xd4 FLASH_RUN/u8g_font.o
+ .text.u8g_DrawGlyph90
+                0x00000000       0x28 FLASH_RUN/u8g_font.o
+ .text.u8g_draw_glyph180
+                0x00000000       0xe0 FLASH_RUN/u8g_font.o
+ .text.u8g_DrawGlyph180
+                0x00000000       0x28 FLASH_RUN/u8g_font.o
+ .text.u8g_draw_glyph270
+                0x00000000       0xd4 FLASH_RUN/u8g_font.o
+ .text.u8g_DrawGlyph270
+                0x00000000       0x28 FLASH_RUN/u8g_font.o
+ .text.u8g_DrawStr90
+                0x00000000       0x50 FLASH_RUN/u8g_font.o
+ .text.u8g_DrawStr180
+                0x00000000       0x50 FLASH_RUN/u8g_font.o
+ .text.u8g_DrawStr270
+                0x00000000       0x50 FLASH_RUN/u8g_font.o
+ .text.u8g_DrawStrDir
+                0x00000000       0x50 FLASH_RUN/u8g_font.o
+ .text.u8g_DrawStrP
+                0x00000000       0x50 FLASH_RUN/u8g_font.o
+ .text.u8g_DrawStr90P
+                0x00000000       0x60 FLASH_RUN/u8g_font.o
+ .text.u8g_DrawStr180P
+                0x00000000       0x60 FLASH_RUN/u8g_font.o
+ .text.u8g_DrawStr270P
+                0x00000000       0x5c FLASH_RUN/u8g_font.o
+ .text.u8g_DrawStrFontBBX
+                0x00000000       0x34 FLASH_RUN/u8g_font.o
+ .text.u8g_DrawGlyphFontBBX
+                0x00000000       0x30 FLASH_RUN/u8g_font.o
+ .text.u8g_SetFontRefHeightText
+                0x00000000       0x10 FLASH_RUN/u8g_font.o
+ .text.u8g_SetFontRefHeightExtendedText
+                0x00000000       0x10 FLASH_RUN/u8g_font.o
+ .text.u8g_SetFontRefHeightAll
+                0x00000000       0x10 FLASH_RUN/u8g_font.o
+ .text.u8g_SetFontLineSpacingFactor
+                0x00000000        0xc FLASH_RUN/u8g_font.o
+ .text.u8g_SetFontPosBaseline
+                0x00000000        0xc FLASH_RUN/u8g_font.o
+ .text.u8g_SetFontPosBottom
+                0x00000000        0xc FLASH_RUN/u8g_font.o
+ .text.u8g_SetFontPosTop
+                0x00000000        0xc FLASH_RUN/u8g_font.o
+ .text.u8g_SetFontPosCenter
+                0x00000000        0xc FLASH_RUN/u8g_font.o
+ .text.u8g_font_calc_str_pixel_width
+                0x00000000       0x68 FLASH_RUN/u8g_font.o
+ .text.u8g_GetStrPixelWidth
+                0x00000000       0x10 FLASH_RUN/u8g_font.o
+ .text.u8g_GetStrPixelWidthP
+                0x00000000       0x10 FLASH_RUN/u8g_font.o
+ .text.u8g_GetStrX
+                0x00000000       0x14 FLASH_RUN/u8g_font.o
+ .text.u8g_GetStrXP
+                0x00000000       0x14 FLASH_RUN/u8g_font.o
+ .text.u8g_GetStrWidth
+                0x00000000       0x30 FLASH_RUN/u8g_font.o
+ .text.u8g_GetStrWidthP
+                0x00000000       0x30 FLASH_RUN/u8g_font.o
+ .text.u8g_font_box_min
+                0x00000000       0x20 FLASH_RUN/u8g_font.o
+ .text.u8g_font_box_left_gA
+                0x00000000        0x4 FLASH_RUN/u8g_font.o
+ .text.u8g_font_box_all_gA
+                0x00000000        0x4 FLASH_RUN/u8g_font.o
+ .text.u8g_GetStrMinBox
+                0x00000000       0x64 FLASH_RUN/u8g_font.o
+ .text.u8g_GetStrAMinBox
+                0x00000000       0x7c FLASH_RUN/u8g_font.o
+ .text.u8g_draw_aa_glyph
+                0x00000000       0xcc FLASH_RUN/u8g_font.o
+ .text.u8g_DrawAAGlyph
+                0x00000000       0x28 FLASH_RUN/u8g_font.o
+ .text.u8g_DrawAAStr
+                0x00000000       0x5c FLASH_RUN/u8g_font.o
+ .text          0x00000000        0x0 FLASH_RUN/u8g_ll_api.o
+ .data          0x00000000        0x0 FLASH_RUN/u8g_ll_api.o
+ .bss           0x00000000        0x0 FLASH_RUN/u8g_ll_api.o
+ .text.u8g_call_dev_fn
+                0x00000000        0xc FLASH_RUN/u8g_ll_api.o
+ .text.u8g_InitLL
+                0x00000000       0x2c FLASH_RUN/u8g_ll_api.o
+ .text.u8g_FirstPageLL
+                0x00000000       0x38 FLASH_RUN/u8g_ll_api.o
+ .text.u8g_NextPageLL
+                0x00000000       0x3c FLASH_RUN/u8g_ll_api.o
+ .text.u8g_SetContrastLL
+                0x00000000       0x14 FLASH_RUN/u8g_ll_api.o
+ .text.u8g_DrawPixelLL
+                0x00000000       0x18 FLASH_RUN/u8g_ll_api.o
+ .text.u8g_Draw8PixelLL
+                0x00000000       0x28 FLASH_RUN/u8g_ll_api.o
+ .text.u8g_Draw4TPixelLL
+                0x00000000       0x28 FLASH_RUN/u8g_ll_api.o
+ .text.u8g_GetWidthLL
+                0x00000000       0x18 FLASH_RUN/u8g_ll_api.o
+ .text.u8g_GetHeightLL
+                0x00000000       0x18 FLASH_RUN/u8g_ll_api.o
+ .text.u8g_GetModeLL
+                0x00000000       0x10 FLASH_RUN/u8g_ll_api.o
+ .text.u8g_UpdateDimension
+                0x00000000       0x4c FLASH_RUN/u8g_ll_api.o
+ .text.u8g_Begin
+                0x00000000       0x20 FLASH_RUN/u8g_ll_api.o
+ .text.u8g_Init
+                0x00000000       0x48 FLASH_RUN/u8g_ll_api.o
+ .text.u8g_InitComFn
+                0x00000000       0x50 FLASH_RUN/u8g_ll_api.o
+ .text.u8g_FirstPage
+                0x00000000        0xc FLASH_RUN/u8g_ll_api.o
+ .text.u8g_NextPage
+                0x00000000       0x1c FLASH_RUN/u8g_ll_api.o
+ .text.u8g_SetContrast
+                0x00000000       0x18 FLASH_RUN/u8g_ll_api.o
+ .text.u8g_SleepOn
+                0x00000000       0x10 FLASH_RUN/u8g_ll_api.o
+ .text.u8g_SleepOff
+                0x00000000       0x10 FLASH_RUN/u8g_ll_api.o
+ .text.u8g_DrawPixel
+                0x00000000       0x1c FLASH_RUN/u8g_ll_api.o
+ .text.u8g_Draw4TPixel
+                0x00000000       0x28 FLASH_RUN/u8g_ll_api.o
+ .text.u8g_SetColorEntry
+                0x00000000       0x28 FLASH_RUN/u8g_ll_api.o
+ .text.u8g_SetColorIndex
+                0x00000000        0x8 FLASH_RUN/u8g_ll_api.o
+ .text.u8g_SetHiColor
+                0x00000000        0xc FLASH_RUN/u8g_ll_api.o
+ .text.u8g_SetHiColorByRGB
+                0x00000000       0x20 FLASH_RUN/u8g_ll_api.o
+ .text.u8g_SetRGB
+                0x00000000       0x50 FLASH_RUN/u8g_ll_api.o
+ .text.u8g_GetColorIndex
+                0x00000000        0x8 FLASH_RUN/u8g_ll_api.o
+ .text.u8g_GetDefaultForegroundColor
+                0x00000000       0x14 FLASH_RUN/u8g_ll_api.o
+ .text.u8g_SetDefaultForegroundColor
+                0x00000000       0x2c FLASH_RUN/u8g_ll_api.o
+ .text.u8g_GetDefaultBackgroundColor
+                0x00000000        0x4 FLASH_RUN/u8g_ll_api.o
+ .text.u8g_SetDefaultBackgroundColor
+                0x00000000        0x8 FLASH_RUN/u8g_ll_api.o
+ .text.u8g_GetDefaultMidColor
+                0x00000000        0xc FLASH_RUN/u8g_ll_api.o
+ .text.u8g_SetDefaultMidColor
+                0x00000000       0x10 FLASH_RUN/u8g_ll_api.o
+ .text          0x00000000        0x0 FLASH_RUN/u8g_clip.o
+ .data          0x00000000        0x0 FLASH_RUN/u8g_clip.o
+ .bss           0x00000000        0x0 FLASH_RUN/u8g_clip.o
+ .text          0x00000000        0x0 FLASH_RUN/u8g_font_6x10r.o
+ .data          0x00000000        0x0 FLASH_RUN/u8g_font_6x10r.o
+ .bss           0x00000000        0x0 FLASH_RUN/u8g_font_6x10r.o
+ .text          0x00000000        0x0 FLASH_RUN/u8g_font_5x7r.o
+ .data          0x00000000        0x0 FLASH_RUN/u8g_font_5x7r.o
+ .bss           0x00000000        0x0 FLASH_RUN/u8g_font_5x7r.o
+ .text          0x00000000        0x0 FLASH_RUN/u8g_font_gdr30n.o
+ .data          0x00000000        0x0 FLASH_RUN/u8g_font_gdr30n.o
+ .bss           0x00000000        0x0 FLASH_RUN/u8g_font_gdr30n.o
+ .text          0x00000000        0x0 FLASH_RUN/startup_stm32f10x.o
+ .data          0x00000000        0x0 FLASH_RUN/startup_stm32f10x.o
+ .bss           0x00000000        0x0 FLASH_RUN/startup_stm32f10x.o
+ .text.__Init_Data
+                0x00000000       0x5c FLASH_RUN/startup_stm32f10x.o
+ .text          0x00000000        0x0 FLASH_RUN/system_stm32f10x.o
+ .data          0x00000000        0x0 FLASH_RUN/system_stm32f10x.o
+ .bss           0x00000000        0x0 FLASH_RUN/system_stm32f10x.o
+ .rodata.SystemFrequency
+                0x00000000        0x4 FLASH_RUN/system_stm32f10x.o
+ .rodata.SystemFrequency_AHBClk
+                0x00000000        0x4 FLASH_RUN/system_stm32f10x.o
+ .rodata.SystemFrequency_APB1Clk
+                0x00000000        0x4 FLASH_RUN/system_stm32f10x.o
+ .rodata.SystemFrequency_APB2Clk
+                0x00000000        0x4 FLASH_RUN/system_stm32f10x.o
+ .rodata.SystemFrequency_SysClk
+                0x00000000        0x4 FLASH_RUN/system_stm32f10x.o
+ .text          0x00000000        0x0 FLASH_RUN/stm32f10x_usart.o
+ .data          0x00000000        0x0 FLASH_RUN/stm32f10x_usart.o
+ .bss           0x00000000        0x0 FLASH_RUN/stm32f10x_usart.o
+ .text.USART_DeInit
+                0x00000000       0xb8 FLASH_RUN/stm32f10x_usart.o
+ .text.USART_StructInit
+                0x00000000       0x14 FLASH_RUN/stm32f10x_usart.o
+ .text.USART_ClockInit
+                0x00000000       0x20 FLASH_RUN/stm32f10x_usart.o
+ .text.USART_ClockStructInit
+                0x00000000        0xc FLASH_RUN/stm32f10x_usart.o
+ .text.USART_DMACmd
+                0x00000000       0x14 FLASH_RUN/stm32f10x_usart.o
+ .text.USART_SetAddress
+                0x00000000       0x14 FLASH_RUN/stm32f10x_usart.o
+ .text.USART_WakeUpConfig
+                0x00000000       0x14 FLASH_RUN/stm32f10x_usart.o
+ .text.USART_ReceiverWakeUpCmd
+                0x00000000       0x18 FLASH_RUN/stm32f10x_usart.o
+ .text.USART_LINBreakDetectLengthConfig
+                0x00000000       0x14 FLASH_RUN/stm32f10x_usart.o
+ .text.USART_LINCmd
+                0x00000000       0x18 FLASH_RUN/stm32f10x_usart.o
+ .text.USART_SendBreak
+                0x00000000        0xc FLASH_RUN/stm32f10x_usart.o
+ .text.USART_SetGuardTime
+                0x00000000       0x10 FLASH_RUN/stm32f10x_usart.o
+ .text.USART_SetPrescaler
+                0x00000000       0x10 FLASH_RUN/stm32f10x_usart.o
+ .text.USART_SmartCardCmd
+                0x00000000       0x18 FLASH_RUN/stm32f10x_usart.o
+ .text.USART_SmartCardNACKCmd
+                0x00000000       0x18 FLASH_RUN/stm32f10x_usart.o
+ .text.USART_HalfDuplexCmd
+                0x00000000       0x18 FLASH_RUN/stm32f10x_usart.o
+ .text.USART_IrDAConfig
+                0x00000000       0x14 FLASH_RUN/stm32f10x_usart.o
+ .text.USART_IrDACmd
+                0x00000000       0x18 FLASH_RUN/stm32f10x_usart.o
+ .text.USART_ClearFlag
+                0x00000000        0x8 FLASH_RUN/stm32f10x_usart.o
+ .text.USART_ClearITPendingBit
+                0x00000000       0x10 FLASH_RUN/stm32f10x_usart.o
+ .text          0x00000000        0x0 FLASH_RUN/stm32f10x_adc.o
+ .data          0x00000000        0x0 FLASH_RUN/stm32f10x_adc.o
+ .bss           0x00000000        0x0 FLASH_RUN/stm32f10x_adc.o
+ .text.ADC_DeInit
+                0x00000000       0x70 FLASH_RUN/stm32f10x_adc.o
+ .text.ADC_StructInit
+                0x00000000       0x14 FLASH_RUN/stm32f10x_adc.o
+ .text.ADC_ITConfig
+                0x00000000       0x14 FLASH_RUN/stm32f10x_adc.o
+ .text.ADC_GetSoftwareStartConvStatus
+                0x00000000        0x8 FLASH_RUN/stm32f10x_adc.o
+ .text.ADC_DiscModeChannelCountConfig
+                0x00000000       0x10 FLASH_RUN/stm32f10x_adc.o
+ .text.ADC_DiscModeCmd
+                0x00000000       0x14 FLASH_RUN/stm32f10x_adc.o
+ .text.ADC_ExternalTrigConvCmd
+                0x00000000       0x14 FLASH_RUN/stm32f10x_adc.o
+ .text.ADC_GetConversionValue
+                0x00000000        0x8 FLASH_RUN/stm32f10x_adc.o
+ .text.ADC_GetDualModeConversionValue
+                0x00000000        0xc FLASH_RUN/stm32f10x_adc.o
+ .text.ADC_AutoInjectedConvCmd
+                0x00000000       0x14 FLASH_RUN/stm32f10x_adc.o
+ .text.ADC_InjectedDiscModeCmd
+                0x00000000       0x14 FLASH_RUN/stm32f10x_adc.o
+ .text.ADC_ExternalTrigInjectedConvConfig
+                0x00000000        0xc FLASH_RUN/stm32f10x_adc.o
+ .text.ADC_ExternalTrigInjectedConvCmd
+                0x00000000       0x14 FLASH_RUN/stm32f10x_adc.o
+ .text.ADC_SoftwareStartInjectedConvCmd
+                0x00000000       0x14 FLASH_RUN/stm32f10x_adc.o
+ .text.ADC_GetSoftwareStartInjectedConvCmdStatus
+                0x00000000        0x8 FLASH_RUN/stm32f10x_adc.o
+ .text.ADC_InjectedChannelConfig
+                0x00000000       0x58 FLASH_RUN/stm32f10x_adc.o
+ .text.ADC_InjectedSequencerLengthConfig
+                0x00000000       0x10 FLASH_RUN/stm32f10x_adc.o
+ .text.ADC_SetInjectedOffset
+                0x00000000       0x18 FLASH_RUN/stm32f10x_adc.o
+ .text.ADC_GetInjectedConversionValue
+                0x00000000       0x1c FLASH_RUN/stm32f10x_adc.o
+ .text.ADC_AnalogWatchdogCmd
+                0x00000000       0x10 FLASH_RUN/stm32f10x_adc.o
+ .text.ADC_AnalogWatchdogThresholdsConfig
+                0x00000000        0x8 FLASH_RUN/stm32f10x_adc.o
+ .text.ADC_AnalogWatchdogSingleChannelConfig
+                0x00000000        0xc FLASH_RUN/stm32f10x_adc.o
+ .text.ADC_TempSensorVrefintCmd
+                0x00000000       0x1c FLASH_RUN/stm32f10x_adc.o
+ .text.ADC_GetFlagStatus
+                0x00000000        0xc FLASH_RUN/stm32f10x_adc.o
+ .text.ADC_ClearFlag
+                0x00000000        0x8 FLASH_RUN/stm32f10x_adc.o
+ .text.ADC_GetITStatus
+                0x00000000       0x18 FLASH_RUN/stm32f10x_adc.o
+ .text.ADC_ClearITPendingBit
+                0x00000000        0x8 FLASH_RUN/stm32f10x_adc.o
+ .text          0x00000000        0x0 FLASH_RUN/stm32f10x_gpio.o
+ .data          0x00000000        0x0 FLASH_RUN/stm32f10x_gpio.o
+ .bss           0x00000000        0x0 FLASH_RUN/stm32f10x_gpio.o
+ .text.GPIO_DeInit
+                0x00000000       0xe0 FLASH_RUN/stm32f10x_gpio.o
+ .text.GPIO_AFIODeInit
+                0x00000000       0x1c FLASH_RUN/stm32f10x_gpio.o
+ .text.GPIO_StructInit
+                0x00000000       0x10 FLASH_RUN/stm32f10x_gpio.o
+ .text.GPIO_ReadInputDataBit
+                0x00000000        0xc FLASH_RUN/stm32f10x_gpio.o
+ .text.GPIO_ReadInputData
+                0x00000000        0x8 FLASH_RUN/stm32f10x_gpio.o
+ .text.GPIO_ReadOutputDataBit
+                0x00000000        0xc FLASH_RUN/stm32f10x_gpio.o
+ .text.GPIO_ReadOutputData
+                0x00000000        0x8 FLASH_RUN/stm32f10x_gpio.o
+ .text.GPIO_SetBits
+                0x00000000        0x4 FLASH_RUN/stm32f10x_gpio.o
+ .text.GPIO_ResetBits
+                0x00000000        0x4 FLASH_RUN/stm32f10x_gpio.o
+ .text.GPIO_Write
+                0x00000000        0x4 FLASH_RUN/stm32f10x_gpio.o
+ .text.GPIO_PinLockConfig
+                0x00000000       0x10 FLASH_RUN/stm32f10x_gpio.o
+ .text.GPIO_EventOutputConfig
+                0x00000000       0x1c FLASH_RUN/stm32f10x_gpio.o
+ .text.GPIO_EventOutputCmd
+                0x00000000        0xc FLASH_RUN/stm32f10x_gpio.o
+ .text.GPIO_PinRemapConfig
+                0x00000000       0x60 FLASH_RUN/stm32f10x_gpio.o
+ .text.GPIO_EXTILineConfig
+                0x00000000       0x30 FLASH_RUN/stm32f10x_gpio.o
+ .text.GPIO_ETH_MediaInterfaceConfig
+                0x00000000        0xc FLASH_RUN/stm32f10x_gpio.o
+ .text          0x00000000        0x0 FLASH_RUN/stm32f10x_rcc.o
+ .data          0x00000000        0x0 FLASH_RUN/stm32f10x_rcc.o
+ .bss           0x00000000        0x0 FLASH_RUN/stm32f10x_rcc.o
+ .text.RCC_DeInit
+                0x00000000       0x40 FLASH_RUN/stm32f10x_rcc.o
+ .text.RCC_HSEConfig
+                0x00000000       0x38 FLASH_RUN/stm32f10x_rcc.o
+ .text.RCC_WaitForHSEStartUp
+                0x00000000       0x30 FLASH_RUN/stm32f10x_rcc.o
+ .text.RCC_AdjustHSICalibrationValue
+                0x00000000       0x14 FLASH_RUN/stm32f10x_rcc.o
+ .text.RCC_HSICmd
+                0x00000000        0xc FLASH_RUN/stm32f10x_rcc.o
+ .text.RCC_PLLConfig
+                0x00000000       0x14 FLASH_RUN/stm32f10x_rcc.o
+ .text.RCC_PLLCmd
+                0x00000000        0xc FLASH_RUN/stm32f10x_rcc.o
+ .text.RCC_SYSCLKConfig
+                0x00000000       0x14 FLASH_RUN/stm32f10x_rcc.o
+ .text.RCC_GetSYSCLKSource
+                0x00000000       0x10 FLASH_RUN/stm32f10x_rcc.o
+ .text.RCC_HCLKConfig
+                0x00000000       0x14 FLASH_RUN/stm32f10x_rcc.o
+ .text.RCC_PCLK1Config
+                0x00000000       0x14 FLASH_RUN/stm32f10x_rcc.o
+ .text.RCC_PCLK2Config
+                0x00000000       0x14 FLASH_RUN/stm32f10x_rcc.o
+ .text.RCC_ITConfig
+                0x00000000       0x18 FLASH_RUN/stm32f10x_rcc.o
+ .text.RCC_USBCLKConfig
+                0x00000000        0xc FLASH_RUN/stm32f10x_rcc.o
+ .text.RCC_ADCCLKConfig
+                0x00000000       0x14 FLASH_RUN/stm32f10x_rcc.o
+ .text.RCC_LSEConfig
+                0x00000000       0x20 FLASH_RUN/stm32f10x_rcc.o
+ .text.RCC_LSICmd
+                0x00000000        0xc FLASH_RUN/stm32f10x_rcc.o
+ .text.RCC_RTCCLKConfig
+                0x00000000       0x10 FLASH_RUN/stm32f10x_rcc.o
+ .text.RCC_RTCCLKCmd
+                0x00000000        0xc FLASH_RUN/stm32f10x_rcc.o
+ .text.RCC_APB1PeriphClockCmd
+                0x00000000       0x18 FLASH_RUN/stm32f10x_rcc.o
+ .text.RCC_APB2PeriphResetCmd
+                0x00000000       0x18 FLASH_RUN/stm32f10x_rcc.o
+ .text.RCC_APB1PeriphResetCmd
+                0x00000000       0x18 FLASH_RUN/stm32f10x_rcc.o
+ .text.RCC_BackupResetCmd
+                0x00000000        0xc FLASH_RUN/stm32f10x_rcc.o
+ .text.RCC_ClockSecuritySystemCmd
+                0x00000000        0xc FLASH_RUN/stm32f10x_rcc.o
+ .text.RCC_MCOConfig
+                0x00000000        0xc FLASH_RUN/stm32f10x_rcc.o
+ .text.RCC_GetFlagStatus
+                0x00000000       0x34 FLASH_RUN/stm32f10x_rcc.o
+ .text.RCC_ClearFlag
+                0x00000000       0x10 FLASH_RUN/stm32f10x_rcc.o
+ .text.RCC_GetITStatus
+                0x00000000       0x14 FLASH_RUN/stm32f10x_rcc.o
+ .text.RCC_ClearITPendingBit
+                0x00000000        0xc FLASH_RUN/stm32f10x_rcc.o
+ .text          0x00000000        0x0 FLASH_RUN/stm32f10x_bkp.o
+ .data          0x00000000        0x0 FLASH_RUN/stm32f10x_bkp.o
+ .bss           0x00000000        0x0 FLASH_RUN/stm32f10x_bkp.o
+ .text.BKP_DeInit
+                0x00000000       0x18 FLASH_RUN/stm32f10x_bkp.o
+ .text.BKP_TamperPinLevelConfig
+                0x00000000        0xc FLASH_RUN/stm32f10x_bkp.o
+ .text.BKP_TamperPinCmd
+                0x00000000        0xc FLASH_RUN/stm32f10x_bkp.o
+ .text.BKP_ITConfig
+                0x00000000        0xc FLASH_RUN/stm32f10x_bkp.o
+ .text.BKP_RTCOutputConfig
+                0x00000000       0x18 FLASH_RUN/stm32f10x_bkp.o
+ .text.BKP_SetRTCCalibrationValue
+                0x00000000       0x18 FLASH_RUN/stm32f10x_bkp.o
+ .text.BKP_ReadBackupRegister
+                0x00000000       0x1c FLASH_RUN/stm32f10x_bkp.o
+ .text.BKP_GetFlagStatus
+                0x00000000        0xc FLASH_RUN/stm32f10x_bkp.o
+ .text.BKP_ClearFlag
+                0x00000000       0x10 FLASH_RUN/stm32f10x_bkp.o
+ .text.BKP_GetITStatus
+                0x00000000        0xc FLASH_RUN/stm32f10x_bkp.o
+ .text.BKP_ClearITPendingBit
+                0x00000000       0x10 FLASH_RUN/stm32f10x_bkp.o
+ .text          0x00000000        0x0 FLASH_RUN/stm32f10x_pwr.o
+ .data          0x00000000        0x0 FLASH_RUN/stm32f10x_pwr.o
+ .bss           0x00000000        0x0 FLASH_RUN/stm32f10x_pwr.o
+ .text.PWR_DeInit
+                0x00000000       0x20 FLASH_RUN/stm32f10x_pwr.o
+ .text.PWR_PVDCmd
+                0x00000000        0xc FLASH_RUN/stm32f10x_pwr.o
+ .text.PWR_PVDLevelConfig
+                0x00000000       0x14 FLASH_RUN/stm32f10x_pwr.o
+ .text.PWR_WakeUpPinCmd
+                0x00000000        0xc FLASH_RUN/stm32f10x_pwr.o
+ .text.PWR_EnterSTOPMode
+                0x00000000       0x34 FLASH_RUN/stm32f10x_pwr.o
+ .text.PWR_EnterSTANDBYMode
+                0x00000000       0x28 FLASH_RUN/stm32f10x_pwr.o
+ .text.PWR_GetFlagStatus
+                0x00000000       0x14 FLASH_RUN/stm32f10x_pwr.o
+ .text.PWR_ClearFlag
+                0x00000000       0x10 FLASH_RUN/stm32f10x_pwr.o
+ .text          0x00000000        0x0 FLASH_RUN/stm32f10x_dma.o
+ .data          0x00000000        0x0 FLASH_RUN/stm32f10x_dma.o
+ .bss           0x00000000        0x0 FLASH_RUN/stm32f10x_dma.o
+ .text.DMA_StructInit
+                0x00000000       0x1c FLASH_RUN/stm32f10x_dma.o
+ .text.DMA_ITConfig
+                0x00000000       0x14 FLASH_RUN/stm32f10x_dma.o
+ .text.DMA_GetCurrDataCounter
+                0x00000000        0x8 FLASH_RUN/stm32f10x_dma.o
+ .text.DMA_GetFlagStatus
+                0x00000000       0x1c FLASH_RUN/stm32f10x_dma.o
+ .text.DMA_ClearFlag
+                0x00000000       0x14 FLASH_RUN/stm32f10x_dma.o
+ .text.DMA_GetITStatus
+                0x00000000        0x8 FLASH_RUN/stm32f10x_dma.o
+ .text.DMA_ClearITPendingBit
+                0x00000000        0x8 FLASH_RUN/stm32f10x_dma.o
+ .text          0x00000000        0x0 FLASH_RUN/misc.o
+ .data          0x00000000        0x0 FLASH_RUN/misc.o
+ .bss           0x00000000        0x0 FLASH_RUN/misc.o
+ .text.NVIC_PriorityGroupConfig
+                0x00000000       0x14 FLASH_RUN/misc.o
+ .text.NVIC_SystemLPConfig
+                0x00000000       0x18 FLASH_RUN/misc.o
+ .text.SysTick_CLKSourceConfig
+                0x00000000       0x18 FLASH_RUN/misc.o
+ .text          0x00000000        0x0 c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-locale.o)
+ .data          0x00000000        0x0 c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-locale.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-locale.o)
+ .text._setlocale_r
+                0x00000000       0x40 c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-locale.o)
+ .text.__locale_mb_cur_max
+                0x00000000       0x1c c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-locale.o)
+ .text.__locale_ctype_ptr_l
+                0x00000000        0x8 c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-locale.o)
+ .text.setlocale
+                0x00000000       0x10 c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-locale.o)
+ .bss._PathLocale
+                0x00000000        0x4 c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-locale.o)
+ .text          0x00000000        0x0 c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-mbtowc_r.o)
+ .data          0x00000000        0x0 c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-mbtowc_r.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-mbtowc_r.o)
+ .text._mbtowc_r
+                0x00000000       0x24 c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-mbtowc_r.o)
+ .text          0x00000000      0x1bc c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-strcmp.o)
+ .data          0x00000000        0x0 c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-strcmp.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-strcmp.o)
+ .debug_frame   0x00000000       0x34 c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-strcmp.o)
+ .text          0x00000000        0x0 c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-wctomb_r.o)
+ .data          0x00000000        0x0 c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-wctomb_r.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-wctomb_r.o)
+ .text._wctomb_r
+                0x00000000       0x24 c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-wctomb_r.o)
+ .text          0x00000000        0x0 c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-ctype_.o)
+ .data          0x00000000        0x0 c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-ctype_.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-ctype_.o)
+ .text          0x00000000        0x0 c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-impure.o)
+ .data          0x00000000        0x0 c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-impure.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-impure.o)
+ .rodata._global_impure_ptr
+                0x00000000        0x4 c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-impure.o)
+ .data          0x00000000        0x0 c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_addsubdf3.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_addsubdf3.o)
+ .data          0x00000000        0x0 c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_muldivdf3.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_muldivdf3.o)
+ .data          0x00000000        0x0 c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_fixdfsi.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_fixdfsi.o)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+RAM              0x20000000         0x0000f000         xrw
+FLASH            0x08003000         0x0007d000         xr
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD FLASH_RUN/main.o
+LOAD FLASH_RUN/lcd.o
+LOAD FLASH_RUN/utils.o
+LOAD FLASH_RUN/gps.o
+LOAD FLASH_RUN/it_handlers.o
+LOAD FLASH_RUN/u8g_font.o
+LOAD FLASH_RUN/u8g_ll_api.o
+LOAD FLASH_RUN/u8g_clip.o
+LOAD FLASH_RUN/u8g_font_6x10r.o
+LOAD FLASH_RUN/u8g_font_5x7r.o
+LOAD FLASH_RUN/u8g_font_gdr30n.o
+LOAD FLASH_RUN/startup_stm32f10x.o
+LOAD FLASH_RUN/system_stm32f10x.o
+LOAD FLASH_RUN/stm32f10x_usart.o
+LOAD FLASH_RUN/stm32f10x_adc.o
+LOAD FLASH_RUN/stm32f10x_gpio.o
+LOAD FLASH_RUN/stm32f10x_rcc.o
+LOAD FLASH_RUN/stm32f10x_bkp.o
+LOAD FLASH_RUN/stm32f10x_pwr.o
+LOAD FLASH_RUN/stm32f10x_dma.o
+LOAD FLASH_RUN/misc.o
+LOAD c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a
+LOAD c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libm.a
+LOAD c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a
+LOAD c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a
+START GROUP
+LOAD c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a
+LOAD c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libg.a
+LOAD c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a
+END GROUP
+                0x2000f000                _estack = (ORIGIN (RAM) + LENGTH (RAM))
+                0x00000100                _Minimum_Stack_Size = 0x100
+                0x00000001                ASSERT ((ORIGIN (FLASH) == ALIGN (ORIGIN (FLASH), 0x80)), Start of memory region flash not aligned for startup vector table)
+
+.text           0x08003000     0x401c
+                0x08003000                . = ALIGN (0x80)
+                0x00003000                _isr_vectorsflash_offs = (. - 0x8000000)
+ *(.isr_vectorsflash)
+ .isr_vectorsflash
+                0x08003000      0x10c FLASH_RUN/startup_stm32f10x.o
+                0x08003000                g_pfnVectors
+                0x0800310c                . = ALIGN (0x4)
+ *(.text)
+ .text          0x0800310c      0x378 c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_addsubdf3.o)
+                0x0800310c                __aeabi_drsub
+                0x08003114                __aeabi_dsub
+                0x08003114                __subdf3
+                0x08003118                __aeabi_dadd
+                0x08003118                __adddf3
+                0x08003390                __floatunsidf
+                0x08003390                __aeabi_ui2d
+                0x080033b0                __floatsidf
+                0x080033b0                __aeabi_i2d
+                0x080033d4                __aeabi_f2d
+                0x080033d4                __extendsfdf2
+                0x08003418                __floatundidf
+                0x08003418                __aeabi_ul2d
+                0x08003428                __floatdidf
+                0x08003428                __aeabi_l2d
+ .text          0x08003484      0x424 c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_muldivdf3.o)
+                0x08003484                __aeabi_dmul
+                0x08003484                __muldf3
+                0x080036d8                __divdf3
+                0x080036d8                __aeabi_ddiv
+ .text          0x080038a8       0x50 c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_fixdfsi.o)
+                0x080038a8                __aeabi_d2iz
+                0x080038a8                __fixdfsi
+ *(.text.*)
+ .text.gotoBootloader
+                0x080038f8       0x48 FLASH_RUN/main.o
+                0x080038f8                gotoBootloader
+ .text.dispInfos
+                0x08003940      0x170 FLASH_RUN/main.o
+                0x08003940                dispInfos
+ .text.dispTime
+                0x08003ab0       0x6c FLASH_RUN/main.o
+                0x08003ab0                dispTime
+ .text.dispPosition
+                0x08003b1c       0x90 FLASH_RUN/main.o
+                0x08003b1c                dispPosition
+ .text.dispUpdate
+                0x08003bac       0x38 FLASH_RUN/main.o
+                0x08003bac                dispUpdate
+ .text.USART_Configuration
+                0x08003be4       0x40 FLASH_RUN/main.o
+                0x08003be4                USART_Configuration
+ .text.RCC_Configuration
+                0x08003c24       0x40 FLASH_RUN/main.o
+                0x08003c24                RCC_Configuration
+ .text.ADC_Configuration
+                0x08003c64       0xa8 FLASH_RUN/main.o
+                0x08003c64                ADC_Configuration
+ .text.DMA_Configuration
+                0x08003d0c       0x6c FLASH_RUN/main.o
+                0x08003d0c                DMA_Configuration
+ .text.NVIC_Configuration
+                0x08003d78       0x38 FLASH_RUN/main.o
+                0x08003d78                NVIC_Configuration
+ .text.GPIO_Configuration
+                0x08003db0      0x118 FLASH_RUN/main.o
+                0x08003db0                GPIO_Configuration
+ .text.startup.main
+                0x08003ec8      0x14c FLASH_RUN/main.o
+                0x08003ec8                main
+ .text.LCDInit_u8g
+                0x08004014       0x44 FLASH_RUN/lcd.o
+                0x08004014                LCDInit_u8g
+ .text.LCDSetFontSize
+                0x08004058       0x38 FLASH_RUN/lcd.o
+                0x08004058                LCDSetFontSize
+ .text.LCDPulseClock
+                0x08004090       0x24 FLASH_RUN/lcd.o
+                0x08004090                LCDPulseClock
+ .text.LCDSendCommand
+                0x080040b4       0x50 FLASH_RUN/lcd.o
+                0x080040b4                LCDSendCommand
+ .text.LCDGotoLine.part.0
+                0x08004104       0x28 FLASH_RUN/lcd.o
+ .text.LCDGotoXY.part.1
+                0x0800412c       0x24 FLASH_RUN/lcd.o
+ .text.LCDSendData
+                0x08004150       0x64 FLASH_RUN/lcd.o
+                0x08004150                LCDSendData
+ .text.LCDInit  0x080041b4       0x64 FLASH_RUN/lcd.o
+                0x080041b4                LCDInit
+ .text.LCDPrintStringXY
+                0x08004218       0x1c FLASH_RUN/lcd.o
+                0x08004218                LCDPrintStringXY
+ .text.LCDDrawImageTest
+                0x08004234       0x30 FLASH_RUN/lcd.o
+                0x08004234                LCDDrawImageTest
+ .text.LCDDrawImage
+                0x08004264       0x28 FLASH_RUN/lcd.o
+                0x08004264                LCDDrawImage
+ .text.LCDDrawBuffer
+                0x0800428c       0x10 FLASH_RUN/lcd.o
+                0x0800428c                LCDDrawBuffer
+ .text.LCDClearBuffer
+                0x0800429c       0x18 FLASH_RUN/lcd.o
+                0x0800429c                LCDClearBuffer
+ .text.LCDSet8Pixels
+                0x080042b4       0x70 FLASH_RUN/lcd.o
+                0x080042b4                LCDSet8Pixels
+ .text.u8g_dev_kalenji700gps_fn
+                0x08004324       0xe4 FLASH_RUN/lcd.o
+                0x08004324                u8g_dev_kalenji700gps_fn
+ .text.strlen   0x08004408       0x28 FLASH_RUN/utils.o
+                0x08004408                strlen
+ .text.intToStr2
+                0x08004430       0x2c FLASH_RUN/utils.o
+                0x08004430                intToStr2
+ .text.intToStr
+                0x0800445c       0x6c FLASH_RUN/utils.o
+                0x0800445c                intToStr
+ .text.doubleToStr
+                0x080044c8       0x68 FLASH_RUN/utils.o
+                0x080044c8                doubleToStr
+ .text.delai    0x08004530       0x1c FLASH_RUN/utils.o
+                0x08004530                delai
+ .text.atoi     0x0800454c       0x38 FLASH_RUN/utils.o
+                0x0800454c                atoi
+ *fill*         0x08004584        0x4 
+ .text.atof     0x08004588       0xec FLASH_RUN/utils.o
+                0x08004588                atof
+ .text.gpsSetEnabled
+                0x08004674       0x20 FLASH_RUN/gps.o
+                0x08004674                gpsSetEnabled
+ .text.gpsInit  0x08004694       0xc0 FLASH_RUN/gps.o
+                0x08004694                gpsInit
+ .text.gpsGetMessage
+                0x08004754       0x4c FLASH_RUN/gps.o
+                0x08004754                gpsGetMessage
+ .text.gpsAnalyse
+                0x080047a0      0x24c FLASH_RUN/gps.o
+                0x080047a0                gpsAnalyse
+ .text.gpsDataReceived
+                0x080049ec       0x74 FLASH_RUN/gps.o
+                0x080049ec                gpsDataReceived
+ .text.USART1_IRQHandler
+                0x08004a60       0x30 FLASH_RUN/it_handlers.o
+                0x08004a60                USART1_IRQHandler
+ .text.HardFault_Handler
+                0x08004a90       0x14 FLASH_RUN/it_handlers.o
+                0x08004a90                HardFault_Handler
+ .text.MemManage_Handler
+                0x08004aa4       0x14 FLASH_RUN/it_handlers.o
+                0x08004aa4                MemManage_Handler
+ .text.BusFault_Handler
+                0x08004ab8       0x14 FLASH_RUN/it_handlers.o
+                0x08004ab8                BusFault_Handler
+ .text.UsageFault_Handler
+                0x08004acc       0x14 FLASH_RUN/it_handlers.o
+                0x08004acc                UsageFault_Handler
+ .text.u8g_font_get_word
+                0x08004ae0       0x10 FLASH_RUN/u8g_font.o
+ .text.u8g_font_calc_vref_font
+                0x08004af0        0x4 FLASH_RUN/u8g_font.o
+                0x08004af0                u8g_font_calc_vref_font
+ .text.u8g_font_GetFormat.isra.0
+                0x08004af4        0x4 FLASH_RUN/u8g_font.o
+ .text.u8g_font_GetFontGlyphStructureSize.isra.1
+                0x08004af8       0x18 FLASH_RUN/u8g_font.o
+ .text.u8g_font_GetEncoding65Pos
+                0x08004b10        0xc FLASH_RUN/u8g_font.o
+                0x08004b10                u8g_font_GetEncoding65Pos
+ .text.u8g_font_GetEncoding97Pos
+                0x08004b1c        0xc FLASH_RUN/u8g_font.o
+                0x08004b1c                u8g_font_GetEncoding97Pos
+ .text.u8g_font_GetFontStartEncoding
+                0x08004b28        0x4 FLASH_RUN/u8g_font.o
+                0x08004b28                u8g_font_GetFontStartEncoding
+ .text.u8g_font_GetFontEndEncoding
+                0x08004b2c        0x4 FLASH_RUN/u8g_font.o
+                0x08004b2c                u8g_font_GetFontEndEncoding
+ .text.u8g_GetGlyph
+                0x08004b30      0x114 FLASH_RUN/u8g_font.o
+                0x08004b30                u8g_GetGlyph
+ .text.u8g_draw_glyph
+                0x08004c44       0xcc FLASH_RUN/u8g_font.o
+                0x08004c44                u8g_draw_glyph
+ .text.u8g_DrawStr
+                0x08004d10       0x50 FLASH_RUN/u8g_font.o
+                0x08004d10                u8g_DrawStr
+ .text.u8g_UpdateRefHeight
+                0x08004d60       0x5c FLASH_RUN/u8g_font.o
+                0x08004d60                u8g_UpdateRefHeight
+ .text.u8g_SetFont
+                0x08004dbc       0x20 FLASH_RUN/u8g_font.o
+                0x08004dbc                u8g_SetFont
+ .text.u8g_Draw8Pixel
+                0x08004ddc       0x28 FLASH_RUN/u8g_ll_api.o
+                0x08004ddc                u8g_Draw8Pixel
+ .text.u8g_IsBBXIntersection
+                0x08004e04       0x60 FLASH_RUN/u8g_clip.o
+                0x08004e04                u8g_IsBBXIntersection
+ .text.Default_Handler
+                0x08004e64        0x4 FLASH_RUN/startup_stm32f10x.o
+                0x08004e64                EXTI2_IRQHandler
+                0x08004e64                DebugMon_Handler
+                0x08004e64                TIM1_CC_IRQHandler
+                0x08004e64                SysTick_Handler
+                0x08004e64                PVD_IRQHandler
+                0x08004e64                PendSV_Handler
+                0x08004e64                EXTI3_IRQHandler
+                0x08004e64                EXTI0_IRQHandler
+                0x08004e64                I2C2_EV_IRQHandler
+                0x08004e64                ADC1_2_IRQHandler
+                0x08004e64                SPI1_IRQHandler
+                0x08004e64                TAMPER_IRQHandler
+                0x08004e64                DMA1_Channel4_IRQHandler
+                0x08004e64                USART3_IRQHandler
+                0x08004e64                RTC_IRQHandler
+                0x08004e64                DMA1_Channel7_IRQHandler
+                0x08004e64                CAN1_RX1_IRQHandler
+                0x08004e64                TIM4_IRQHandler
+                0x08004e64                I2C1_EV_IRQHandler
+                0x08004e64                DMA1_Channel6_IRQHandler
+                0x08004e64                TIM3_IRQHandler
+                0x08004e64                RCC_IRQHandler
+                0x08004e64                TIM1_TRG_COM_IRQHandler
+                0x08004e64                DMA1_Channel1_IRQHandler
+                0x08004e64                Default_Handler
+                0x08004e64                EXTI15_10_IRQHandler
+                0x08004e64                EXTI9_5_IRQHandler
+                0x08004e64                SPI2_IRQHandler
+                0x08004e64                SVC_Handler
+                0x08004e64                DMA1_Channel5_IRQHandler
+                0x08004e64                EXTI4_IRQHandler
+                0x08004e64                USB_LP_CAN1_RX0_IRQHandler
+                0x08004e64                USB_HP_CAN1_TX_IRQHandler
+                0x08004e64                DMA1_Channel3_IRQHandler
+                0x08004e64                TIM1_UP_IRQHandler
+                0x08004e64                WWDG_IRQHandler
+                0x08004e64                TIM2_IRQHandler
+                0x08004e64                TIM1_BRK_IRQHandler
+                0x08004e64                EXTI1_IRQHandler
+                0x08004e64                RTCAlarm_IRQHandler
+                0x08004e64                USART2_IRQHandler
+                0x08004e64                I2C2_ER_IRQHandler
+                0x08004e64                DMA1_Channel2_IRQHandler
+                0x08004e64                CAN1_SCE_IRQHandler
+                0x08004e64                FLASH_IRQHandler
+                0x08004e64                I2C1_ER_IRQHandler
+                0x08004e64                MMI_Handler
+                0x08004e64                USBWakeUp_IRQHandler
+ .text.Reset_Handler
+                0x08004e68       0x8c FLASH_RUN/startup_stm32f10x.o
+                0x08004e68                Reset_Handler
+ .text.SystemInit
+                0x08004ef4       0xf8 FLASH_RUN/system_stm32f10x.o
+                0x08004ef4                SystemInit
+ .text.USART_Init
+                0x08004fec       0x6c FLASH_RUN/stm32f10x_usart.o
+                0x08004fec                USART_Init
+ .text.USART_Cmd
+                0x08005058       0x18 FLASH_RUN/stm32f10x_usart.o
+                0x08005058                USART_Cmd
+ .text.USART_ITConfig
+                0x08005070       0x38 FLASH_RUN/stm32f10x_usart.o
+                0x08005070                USART_ITConfig
+ .text.USART_SendData
+                0x080050a8        0x8 FLASH_RUN/stm32f10x_usart.o
+                0x080050a8                USART_SendData
+ .text.USART_ReceiveData
+                0x080050b0        0x8 FLASH_RUN/stm32f10x_usart.o
+                0x080050b0                USART_ReceiveData
+ .text.USART_GetFlagStatus
+                0x080050b8        0xc FLASH_RUN/stm32f10x_usart.o
+                0x080050b8                USART_GetFlagStatus
+ .text.USART_GetITStatus
+                0x080050c4       0x44 FLASH_RUN/stm32f10x_usart.o
+                0x080050c4                USART_GetITStatus
+ .text.ADC_Init
+                0x08005108       0x48 FLASH_RUN/stm32f10x_adc.o
+                0x08005108                ADC_Init
+ .text.ADC_Cmd  0x08005150       0x14 FLASH_RUN/stm32f10x_adc.o
+                0x08005150                ADC_Cmd
+ .text.ADC_DMACmd
+                0x08005164       0x14 FLASH_RUN/stm32f10x_adc.o
+                0x08005164                ADC_DMACmd
+ .text.ADC_ResetCalibration
+                0x08005178        0xc FLASH_RUN/stm32f10x_adc.o
+                0x08005178                ADC_ResetCalibration
+ .text.ADC_GetResetCalibrationStatus
+                0x08005184        0x8 FLASH_RUN/stm32f10x_adc.o
+                0x08005184                ADC_GetResetCalibrationStatus
+ .text.ADC_StartCalibration
+                0x0800518c        0xc FLASH_RUN/stm32f10x_adc.o
+                0x0800518c                ADC_StartCalibration
+ .text.ADC_GetCalibrationStatus
+                0x08005198        0x8 FLASH_RUN/stm32f10x_adc.o
+                0x08005198                ADC_GetCalibrationStatus
+ .text.ADC_SoftwareStartConvCmd
+                0x080051a0       0x14 FLASH_RUN/stm32f10x_adc.o
+                0x080051a0                ADC_SoftwareStartConvCmd
+ .text.ADC_RegularChannelConfig
+                0x080051b4       0x90 FLASH_RUN/stm32f10x_adc.o
+                0x080051b4                ADC_RegularChannelConfig
+ .text.GPIO_Init
+                0x08005244       0xbc FLASH_RUN/stm32f10x_gpio.o
+                0x08005244                GPIO_Init
+ .text.GPIO_WriteBit
+                0x08005300        0xc FLASH_RUN/stm32f10x_gpio.o
+                0x08005300                GPIO_WriteBit
+ .text.RCC_GetClocksFreq
+                0x0800530c       0x90 FLASH_RUN/stm32f10x_rcc.o
+                0x0800530c                RCC_GetClocksFreq
+ .text.RCC_AHBPeriphClockCmd
+                0x0800539c       0x18 FLASH_RUN/stm32f10x_rcc.o
+                0x0800539c                RCC_AHBPeriphClockCmd
+ .text.RCC_APB2PeriphClockCmd
+                0x080053b4       0x18 FLASH_RUN/stm32f10x_rcc.o
+                0x080053b4                RCC_APB2PeriphClockCmd
+ .text.BKP_WriteBackupRegister
+                0x080053cc       0x1c FLASH_RUN/stm32f10x_bkp.o
+                0x080053cc                BKP_WriteBackupRegister
+ .text.PWR_BackupAccessCmd
+                0x080053e8        0xc FLASH_RUN/stm32f10x_pwr.o
+                0x080053e8                PWR_BackupAccessCmd
+ .text.DMA_DeInit
+                0x080053f4      0x124 FLASH_RUN/stm32f10x_dma.o
+                0x080053f4                DMA_DeInit
+ .text.DMA_Init
+                0x08005518       0x40 FLASH_RUN/stm32f10x_dma.o
+                0x08005518                DMA_Init
+ .text.DMA_Cmd  0x08005558       0x14 FLASH_RUN/stm32f10x_dma.o
+                0x08005558                DMA_Cmd
+ .text.NVIC_Init
+                0x0800556c       0x58 FLASH_RUN/misc.o
+                0x0800556c                NVIC_Init
+ .text.NVIC_SetVectorTable
+                0x080055c4       0x14 FLASH_RUN/misc.o
+                0x080055c4                NVIC_SetVectorTable
+ .text.__locale_ctype_ptr
+                0x080055d8       0x1c c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-locale.o)
+                0x080055d8                __locale_ctype_ptr
+ .text.__ascii_mbtowc
+                0x080055f4       0x2c c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-mbtowc_r.o)
+                0x080055f4                __ascii_mbtowc
+ .text.__ascii_wctomb
+                0x08005620       0x18 c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-wctomb_r.o)
+                0x08005620                __ascii_wctomb
+ *(.stub .gnu.linkonce.t.*)
+ *(.rodata .rodata.* .gnu.linkonce.r.*)
+ .rodata.dispInfos.str1.4
+                0x08005638       0x48 FLASH_RUN/main.o
+ .rodata.dispPosition.str1.4
+                0x08005680        0x9 FLASH_RUN/main.o
+ *fill*         0x08005689        0x3 
+ .rodata.dispTime.str1.4
+                0x0800568c        0x2 FLASH_RUN/main.o
+ *fill*         0x0800568e        0x2 
+ .rodata.imagedata
+                0x08005690      0xc80 FLASH_RUN/lcd.o
+                0x08005690                imagedata
+ .rodata.gpsInit.str1.4
+                0x08006310       0x2d FLASH_RUN/gps.o
+ *fill*         0x0800633d        0x3 
+ .rodata.BusFault_Handler.str1.4
+                0x08006340        0x9 FLASH_RUN/it_handlers.o
+ *fill*         0x08006349        0x3 
+ .rodata.HardFault_Handler.str1.4
+                0x0800634c        0xa FLASH_RUN/it_handlers.o
+ *fill*         0x08006356        0x2 
+ .rodata.MemManage_Handler.str1.4
+                0x08006358        0xb FLASH_RUN/it_handlers.o
+ *fill*         0x08006363        0x1 
+ .rodata.UsageFault_Handler.str1.4
+                0x08006364        0xc FLASH_RUN/it_handlers.o
+ .rodata.u8g_font_6x10r
+                0x08006370      0x379 FLASH_RUN/u8g_font_6x10r.o
+                0x08006370                u8g_font_6x10r
+ *fill*         0x080066e9        0x3 
+ .rodata.u8g_font_5x7r
+                0x080066ec      0x315 FLASH_RUN/u8g_font_5x7r.o
+                0x080066ec                u8g_font_5x7r
+ *fill*         0x08006a01        0x3 
+ .rodata.u8g_font_gdr30n
+                0x08006a04      0x501 FLASH_RUN/u8g_font_gdr30n.o
+                0x08006a04                u8g_font_gdr30n
+ *fill*         0x08006f05        0x3 
+ .rodata._setlocale_r.str1.4
+                0x08006f08        0xa c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-locale.o)
+                                  0xd (size before relaxing)
+ *fill*         0x08006f12        0x2 
+ .rodata.str1.4
+                0x08006f14        0x4 c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-locale.o)
+                                  0x2 (size before relaxing)
+ .rodata._ctype_
+                0x08006f18      0x101 c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-ctype_.o)
+                0x08006f18                _ctype_
+ *(.glue_7 .glue_7t)
+ .glue_7        0x08007019        0x0 linker stubs
+ .glue_7t       0x08007019        0x0 linker stubs
+                0x0800701c                . = ALIGN (0x4)
+ *fill*         0x08007019        0x3 
+                0x0800701c                _etext = .
+                0x0800701c                _sidata = _etext
+
+.vfp11_veneer   0x0800701c        0x0
+ .vfp11_veneer  0x0800701c        0x0 linker stubs
+
+.v4_bx          0x0800701c        0x0
+ .v4_bx         0x0800701c        0x0 linker stubs
+
+.iplt           0x0800701c        0x0
+ .iplt          0x0800701c        0x0 FLASH_RUN/main.o
+
+.rel.dyn        0x0800701c        0x0
+ .rel.iplt      0x0800701c        0x0 FLASH_RUN/main.o
+
+.data           0x20000000      0x5b0 load address 0x0800701c
+                0x20000000                . = .
+                0x20000000                . = ALIGN (0x4)
+                0x20000000                _sdata = .
+                0x20000000                . = ALIGN (0x80)
+                0x00000000                _isr_vectorsram_offs = (. - 0x20000000)
+ *(.isr_vectorsram)
+                0x20000000                . = ALIGN (0x4)
+ *(.ramfunc*)
+                0x20000000                . = ALIGN (0x4)
+ *(.data .data.* .gnu.linkonce.d.*)
+ .data.ADCPrescTable
+                0x20000000        0x4 FLASH_RUN/stm32f10x_rcc.o
+ .data.APBAHBPrescTable
+                0x20000004       0x10 FLASH_RUN/stm32f10x_rcc.o
+ .data.__global_locale
+                0x20000014      0x16c c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-locale.o)
+                0x20000014                __global_locale
+ .data._impure_ptr
+                0x20000180        0x4 c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-impure.o)
+                0x20000180                _impure_ptr
+ *fill*         0x20000184        0x4 
+ .data.impure_data
+                0x20000188      0x428 c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-impure.o)
+                0x200005b0                . = ALIGN (0x4)
+                0x200005b0                _edata = .
+
+.igot.plt       0x200005b0        0x0 load address 0x080075cc
+ .igot.plt      0x200005b0        0x0 FLASH_RUN/main.o
+
+.bss            0x200005b0      0xdc8 load address 0x080075d0
+                0x200005b0                . = ALIGN (0x4)
+                0x200005b0                _sbss = .
+ *(.bss .bss.*)
+ .bss.newGPSData
+                0x200005b0        0x4 FLASH_RUN/gps.o
+                0x200005b0                newGPSData
+ .bss.recvIndex
+                0x200005b4        0x4 FLASH_RUN/gps.o
+                0x200005b4                recvIndex
+ *(COMMON)
+ COMMON         0x200005b8       0x14 FLASH_RUN/main.o
+                0x200005b8                screen
+                0x200005bc                posY
+                0x200005c0                ADCValues
+                0x200005c8                posX
+ COMMON         0x200005cc      0xcc8 FLASH_RUN/lcd.o
+                0x200005cc                u8g
+                0x20000608                u8g_dev
+                0x20000614                buffer
+ *fill*         0x20001294        0x4 
+ COMMON         0x20001298       0xe0 FLASH_RUN/gps.o
+                0x20001298                heures
+                0x2000129c                secondes
+                0x200012a0                recvBuff
+                0x200012f8                longitude
+                0x20001300                fix
+                0x20001304                recvTemp
+                0x20001358                nbSats
+                0x20001360                latitude
+                0x20001368                minutes
+                0x20001370                hdop
+                0x20001378                . = ALIGN (0x4)
+                0x20001378                _ebss = .
+                [!provide]                PROVIDE (end, _ebss)
+                [!provide]                PROVIDE (_end, _ebss)
+
+._usrstack      0x20001378      0x100 load address 0x08008398
+                0x20001378                . = ALIGN (0x4)
+                0x20001378                _susrstack = .
+                0x20001478                . = (. + _Minimum_Stack_Size)
+ *fill*         0x20001378      0x100 
+                0x20001478                . = ALIGN (0x4)
+                0x20001478                _eusrstack = .
+
+.fill           0x080075cc    0x78a34
+ FILL mask 0xff
+                0x0807ffff                . = ((ORIGIN (FLASH) + LENGTH (FLASH)) - 0x1)
+ *fill*         0x080075cc    0x78a33 ff
+                0x0807ffff        0x1 BYTE 0x0
+                [!provide]                PROVIDE (end, _ebss)
+                [!provide]                PROVIDE (_end, _ebss)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment        0x00000000       0x7e
+ *(.comment)
+ .comment       0x00000000       0x7e FLASH_RUN/main.o
+                                 0x7f (size before relaxing)
+ .comment       0x0000007e       0x7f FLASH_RUN/lcd.o
+ .comment       0x0000007e       0x7f FLASH_RUN/utils.o
+ .comment       0x0000007e       0x7f FLASH_RUN/gps.o
+ .comment       0x0000007e       0x7f FLASH_RUN/it_handlers.o
+ .comment       0x0000007e       0x7f FLASH_RUN/u8g_font.o
+ .comment       0x0000007e       0x7f FLASH_RUN/u8g_ll_api.o
+ .comment       0x0000007e       0x7f FLASH_RUN/u8g_clip.o
+ .comment       0x0000007e       0x7f FLASH_RUN/u8g_font_6x10r.o
+ .comment       0x0000007e       0x7f FLASH_RUN/u8g_font_5x7r.o
+ .comment       0x0000007e       0x7f FLASH_RUN/u8g_font_gdr30n.o
+ .comment       0x0000007e       0x7f FLASH_RUN/startup_stm32f10x.o
+ .comment       0x0000007e       0x7f FLASH_RUN/system_stm32f10x.o
+ .comment       0x0000007e       0x7f FLASH_RUN/stm32f10x_usart.o
+ .comment       0x0000007e       0x7f FLASH_RUN/stm32f10x_adc.o
+ .comment       0x0000007e       0x7f FLASH_RUN/stm32f10x_gpio.o
+ .comment       0x0000007e       0x7f FLASH_RUN/stm32f10x_rcc.o
+ .comment       0x0000007e       0x7f FLASH_RUN/stm32f10x_bkp.o
+ .comment       0x0000007e       0x7f FLASH_RUN/stm32f10x_pwr.o
+ .comment       0x0000007e       0x7f FLASH_RUN/stm32f10x_dma.o
+ .comment       0x0000007e       0x7f FLASH_RUN/misc.o
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x00000000      0xbd8
+ *(.debug_aranges)
+ .debug_aranges
+                0x00000000       0x98 FLASH_RUN/main.o
+ .debug_aranges
+                0x00000098       0xd0 FLASH_RUN/lcd.o
+ .debug_aranges
+                0x00000168       0x60 FLASH_RUN/utils.o
+ .debug_aranges
+                0x000001c8       0x40 FLASH_RUN/gps.o
+ .debug_aranges
+                0x00000208       0x40 FLASH_RUN/it_handlers.o
+ .debug_aranges
+                0x00000248      0x250 FLASH_RUN/u8g_font.o
+ .debug_aranges
+                0x00000498      0x130 FLASH_RUN/u8g_ll_api.o
+ .debug_aranges
+                0x000005c8       0x20 FLASH_RUN/u8g_clip.o
+ .debug_aranges
+                0x000005e8       0x18 FLASH_RUN/u8g_font_6x10r.o
+ .debug_aranges
+                0x00000600       0x18 FLASH_RUN/u8g_font_5x7r.o
+ .debug_aranges
+                0x00000618       0x18 FLASH_RUN/u8g_font_gdr30n.o
+ .debug_aranges
+                0x00000630       0x30 FLASH_RUN/startup_stm32f10x.o
+ .debug_aranges
+                0x00000660       0x20 FLASH_RUN/system_stm32f10x.o
+ .debug_aranges
+                0x00000680       0xf0 FLASH_RUN/stm32f10x_usart.o
+ .debug_aranges
+                0x00000770      0x138 FLASH_RUN/stm32f10x_adc.o
+ .debug_aranges
+                0x000008a8       0xa8 FLASH_RUN/stm32f10x_gpio.o
+ .debug_aranges
+                0x00000950      0x118 FLASH_RUN/stm32f10x_rcc.o
+ .debug_aranges
+                0x00000a68       0x78 FLASH_RUN/stm32f10x_bkp.o
+ .debug_aranges
+                0x00000ae0       0x60 FLASH_RUN/stm32f10x_pwr.o
+ .debug_aranges
+                0x00000b40       0x58 FLASH_RUN/stm32f10x_dma.o
+ .debug_aranges
+                0x00000b98       0x40 FLASH_RUN/misc.o
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info     0x00000000    0x22314
+ *(.debug_info .gnu.linkonce.wi.*)
+ .debug_info    0x00000000     0x3b1e FLASH_RUN/main.o
+ .debug_info    0x00003b1e     0x31e9 FLASH_RUN/lcd.o
+ .debug_info    0x00006d07      0x472 FLASH_RUN/utils.o
+ .debug_info    0x00007179     0x2c85 FLASH_RUN/gps.o
+ .debug_info    0x00009dfe     0x27a5 FLASH_RUN/it_handlers.o
+ .debug_info    0x0000c5a3     0x4c6b FLASH_RUN/u8g_font.o
+ .debug_info    0x0001120e     0x3aa9 FLASH_RUN/u8g_ll_api.o
+ .debug_info    0x00014cb7     0x24b0 FLASH_RUN/u8g_clip.o
+ .debug_info    0x00017167     0x23a0 FLASH_RUN/u8g_font_6x10r.o
+ .debug_info    0x00019507     0x23a0 FLASH_RUN/u8g_font_5x7r.o
+ .debug_info    0x0001b8a7     0x23a0 FLASH_RUN/u8g_font_gdr30n.o
+ .debug_info    0x0001dc47      0x1b0 FLASH_RUN/startup_stm32f10x.o
+ .debug_info    0x0001ddf7      0x31b FLASH_RUN/system_stm32f10x.o
+ .debug_info    0x0001e112      0xb72 FLASH_RUN/stm32f10x_usart.o
+ .debug_info    0x0001ec84      0xd1a FLASH_RUN/stm32f10x_adc.o
+ .debug_info    0x0001f99e      0x8fe FLASH_RUN/stm32f10x_gpio.o
+ .debug_info    0x0002029c      0x9f8 FLASH_RUN/stm32f10x_rcc.o
+ .debug_info    0x00020c94      0x908 FLASH_RUN/stm32f10x_bkp.o
+ .debug_info    0x0002159c      0x378 FLASH_RUN/stm32f10x_pwr.o
+ .debug_info    0x00021914      0x48a FLASH_RUN/stm32f10x_dma.o
+ .debug_info    0x00021d9e      0x576 FLASH_RUN/misc.o
+
+.debug_abbrev   0x00000000     0x2da7
+ *(.debug_abbrev)
+ .debug_abbrev  0x00000000      0x39c FLASH_RUN/main.o
+ .debug_abbrev  0x0000039c      0x452 FLASH_RUN/lcd.o
+ .debug_abbrev  0x000007ee      0x1f7 FLASH_RUN/utils.o
+ .debug_abbrev  0x000009e5      0x29b FLASH_RUN/gps.o
+ .debug_abbrev  0x00000c80      0x20d FLASH_RUN/it_handlers.o
+ .debug_abbrev  0x00000e8d      0x4b7 FLASH_RUN/u8g_font.o
+ .debug_abbrev  0x00001344      0x3f0 FLASH_RUN/u8g_ll_api.o
+ .debug_abbrev  0x00001734      0x183 FLASH_RUN/u8g_clip.o
+ .debug_abbrev  0x000018b7       0xfa FLASH_RUN/u8g_font_6x10r.o
+ .debug_abbrev  0x000019b1       0xfa FLASH_RUN/u8g_font_5x7r.o
+ .debug_abbrev  0x00001aab       0xfa FLASH_RUN/u8g_font_gdr30n.o
+ .debug_abbrev  0x00001ba5      0x133 FLASH_RUN/startup_stm32f10x.o
+ .debug_abbrev  0x00001cd8      0x124 FLASH_RUN/system_stm32f10x.o
+ .debug_abbrev  0x00001dfc      0x226 FLASH_RUN/stm32f10x_usart.o
+ .debug_abbrev  0x00002022      0x22a FLASH_RUN/stm32f10x_adc.o
+ .debug_abbrev  0x0000224c      0x21d FLASH_RUN/stm32f10x_gpio.o
+ .debug_abbrev  0x00002469      0x2a8 FLASH_RUN/stm32f10x_rcc.o
+ .debug_abbrev  0x00002711      0x1bc FLASH_RUN/stm32f10x_bkp.o
+ .debug_abbrev  0x000028cd      0x1ae FLASH_RUN/stm32f10x_pwr.o
+ .debug_abbrev  0x00002a7b      0x1d8 FLASH_RUN/stm32f10x_dma.o
+ .debug_abbrev  0x00002c53      0x154 FLASH_RUN/misc.o
+
+.debug_line     0x00000000     0x4444
+ *(.debug_line)
+ .debug_line    0x00000000      0x4cb FLASH_RUN/main.o
+ .debug_line    0x000004cb      0x4bc FLASH_RUN/lcd.o
+ .debug_line    0x00000987      0x20f FLASH_RUN/utils.o
+ .debug_line    0x00000b96      0x30e FLASH_RUN/gps.o
+ .debug_line    0x00000ea4      0x1fe FLASH_RUN/it_handlers.o
+ .debug_line    0x000010a2      0xb3f FLASH_RUN/u8g_font.o
+ .debug_line    0x00001be1      0x50f FLASH_RUN/u8g_ll_api.o
+ .debug_line    0x000020f0      0x159 FLASH_RUN/u8g_clip.o
+ .debug_line    0x00002249      0x113 FLASH_RUN/u8g_font_6x10r.o
+ .debug_line    0x0000235c      0x112 FLASH_RUN/u8g_font_5x7r.o
+ .debug_line    0x0000246e      0x114 FLASH_RUN/u8g_font_gdr30n.o
+ .debug_line    0x00002582       0x83 FLASH_RUN/startup_stm32f10x.o
+ .debug_line    0x00002605      0x19e FLASH_RUN/system_stm32f10x.o
+ .debug_line    0x000027a3      0x499 FLASH_RUN/stm32f10x_usart.o
+ .debug_line    0x00002c3c      0x567 FLASH_RUN/stm32f10x_adc.o
+ .debug_line    0x000031a3      0x3cc FLASH_RUN/stm32f10x_gpio.o
+ .debug_line    0x0000356f      0x4c8 FLASH_RUN/stm32f10x_rcc.o
+ .debug_line    0x00003a37      0x29c FLASH_RUN/stm32f10x_bkp.o
+ .debug_line    0x00003cd3      0x297 FLASH_RUN/stm32f10x_pwr.o
+ .debug_line    0x00003f6a      0x2b9 FLASH_RUN/stm32f10x_dma.o
+ .debug_line    0x00004223      0x221 FLASH_RUN/misc.o
+
+.debug_frame    0x00000000     0x23ac
+ *(.debug_frame)
+ .debug_frame   0x00000000      0x218 FLASH_RUN/main.o
+ .debug_frame   0x00000218      0x2f4 FLASH_RUN/lcd.o
+ .debug_frame   0x0000050c      0x174 FLASH_RUN/utils.o
+ .debug_frame   0x00000680       0xe4 FLASH_RUN/gps.o
+ .debug_frame   0x00000764       0x70 FLASH_RUN/it_handlers.o
+ .debug_frame   0x000007d4      0x8b4 FLASH_RUN/u8g_font.o
+ .debug_frame   0x00001088      0x400 FLASH_RUN/u8g_ll_api.o
+ .debug_frame   0x00001488       0x50 FLASH_RUN/u8g_clip.o
+ .debug_frame   0x000014d8       0x50 FLASH_RUN/startup_stm32f10x.o
+ .debug_frame   0x00001528       0x38 FLASH_RUN/system_stm32f10x.o
+ .debug_frame   0x00001560      0x250 FLASH_RUN/stm32f10x_usart.o
+ .debug_frame   0x000017b0      0x2e4 FLASH_RUN/stm32f10x_adc.o
+ .debug_frame   0x00001a94      0x1d8 FLASH_RUN/stm32f10x_gpio.o
+ .debug_frame   0x00001c6c      0x22c FLASH_RUN/stm32f10x_rcc.o
+ .debug_frame   0x00001e98       0xf0 FLASH_RUN/stm32f10x_bkp.o
+ .debug_frame   0x00001f88       0xc4 FLASH_RUN/stm32f10x_pwr.o
+ .debug_frame   0x0000204c       0xc0 FLASH_RUN/stm32f10x_dma.o
+ .debug_frame   0x0000210c       0x8c FLASH_RUN/misc.o
+ .debug_frame   0x00002198       0x6c c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-locale.o)
+ .debug_frame   0x00002204       0x4c c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-mbtowc_r.o)
+ .debug_frame   0x00002250       0x3c c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-wctomb_r.o)
+ .debug_frame   0x0000228c       0xac c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_addsubdf3.o)
+ .debug_frame   0x00002338       0x50 c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_muldivdf3.o)
+ .debug_frame   0x00002388       0x24 c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_fixdfsi.o)
+
+.debug_str      0x00000000     0x625e
+ *(.debug_str)
+ .debug_str     0x00000000     0x4054 FLASH_RUN/main.o
+                               0x4125 (size before relaxing)
+ .debug_str     0x00004054      0x120 FLASH_RUN/lcd.o
+                               0x36eb (size before relaxing)
+ .debug_str     0x00004174       0x4c FLASH_RUN/utils.o
+                                0x1f6 (size before relaxing)
+ .debug_str     0x000041c0       0xb5 FLASH_RUN/gps.o
+                               0x3720 (size before relaxing)
+ .debug_str     0x00004275       0x8c FLASH_RUN/it_handlers.o
+                               0x3695 (size before relaxing)
+ .debug_str     0x00004301      0x750 FLASH_RUN/u8g_font.o
+                               0x3c0f (size before relaxing)
+ .debug_str     0x00004a51      0x27e FLASH_RUN/u8g_ll_api.o
+                               0x373f (size before relaxing)
+ .debug_str     0x00004ccf       0x31 FLASH_RUN/u8g_clip.o
+                               0x34ab (size before relaxing)
+ .debug_str     0x00004d00       0x15 FLASH_RUN/u8g_font_6x10r.o
+                               0x3479 (size before relaxing)
+ .debug_str     0x00004d15       0x14 FLASH_RUN/u8g_font_5x7r.o
+                               0x3478 (size before relaxing)
+ .debug_str     0x00004d29       0x16 FLASH_RUN/u8g_font_gdr30n.o
+                               0x347a (size before relaxing)
+ .debug_str     0x00004d3f       0x93 FLASH_RUN/startup_stm32f10x.o
+                                0x198 (size before relaxing)
+ .debug_str     0x00004dd2       0xc4 FLASH_RUN/system_stm32f10x.o
+                                0x2e7 (size before relaxing)
+ .debug_str     0x00004e96      0x3c6 FLASH_RUN/stm32f10x_usart.o
+                                0x74e (size before relaxing)
+ .debug_str     0x0000525c      0x3b5 FLASH_RUN/stm32f10x_adc.o
+                                0x7bd (size before relaxing)
+ .debug_str     0x00005611      0x227 FLASH_RUN/stm32f10x_gpio.o
+                                0x5cb (size before relaxing)
+ .debug_str     0x00005838      0x322 FLASH_RUN/stm32f10x_rcc.o
+                                0x6c5 (size before relaxing)
+ .debug_str     0x00005b5a      0x396 FLASH_RUN/stm32f10x_bkp.o
+                                0x673 (size before relaxing)
+ .debug_str     0x00005ef0      0x104 FLASH_RUN/stm32f10x_pwr.o
+                                0x372 (size before relaxing)
+ .debug_str     0x00005ff4       0xf0 FLASH_RUN/stm32f10x_dma.o
+                                0x437 (size before relaxing)
+ .debug_str     0x000060e4      0x17a FLASH_RUN/misc.o
+                                0x463 (size before relaxing)
+
+.debug_loc      0x00000000     0x9da6
+ *(.debug_loc)
+ .debug_loc     0x00000000      0x2ef FLASH_RUN/main.o
+ .debug_loc     0x000002ef      0xc84 FLASH_RUN/lcd.o
+ .debug_loc     0x00000f73      0x72f FLASH_RUN/utils.o
+ .debug_loc     0x000016a2      0x461 FLASH_RUN/gps.o
+ .debug_loc     0x00001b03       0x3f FLASH_RUN/it_handlers.o
+ .debug_loc     0x00001b42     0x3598 FLASH_RUN/u8g_font.o
+ .debug_loc     0x000050da     0x1ec5 FLASH_RUN/u8g_ll_api.o
+ .debug_loc     0x00006f9f      0x406 FLASH_RUN/u8g_clip.o
+ .debug_loc     0x000073a5       0xc2 FLASH_RUN/startup_stm32f10x.o
+ .debug_loc     0x00007467       0x44 FLASH_RUN/system_stm32f10x.o
+ .debug_loc     0x000074ab      0x8fb FLASH_RUN/stm32f10x_usart.o
+ .debug_loc     0x00007da6      0xb1a FLASH_RUN/stm32f10x_adc.o
+ .debug_loc     0x000088c0      0x7c4 FLASH_RUN/stm32f10x_gpio.o
+ .debug_loc     0x00009084      0x72a FLASH_RUN/stm32f10x_rcc.o
+ .debug_loc     0x000097ae      0x172 FLASH_RUN/stm32f10x_bkp.o
+ .debug_loc     0x00009920      0x181 FLASH_RUN/stm32f10x_pwr.o
+ .debug_loc     0x00009aa1      0x156 FLASH_RUN/stm32f10x_dma.o
+ .debug_loc     0x00009bf7      0x1af FLASH_RUN/misc.o
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.debug_pubtypes
+ *(.debug_pubtypes)
+
+.debug_ranges   0x00000000     0x1070
+ *(.debug_ranges)
+ .debug_ranges  0x00000000       0xa0 FLASH_RUN/main.o
+ .debug_ranges  0x000000a0      0x1f0 FLASH_RUN/lcd.o
+ .debug_ranges  0x00000290       0x98 FLASH_RUN/utils.o
+ .debug_ranges  0x00000328       0x68 FLASH_RUN/gps.o
+ .debug_ranges  0x00000390       0x48 FLASH_RUN/it_handlers.o
+ .debug_ranges  0x000003d8      0x438 FLASH_RUN/u8g_font.o
+ .debug_ranges  0x00000810      0x2b0 FLASH_RUN/u8g_ll_api.o
+ .debug_ranges  0x00000ac0       0x68 FLASH_RUN/u8g_clip.o
+ .debug_ranges  0x00000b28       0x20 FLASH_RUN/startup_stm32f10x.o
+ .debug_ranges  0x00000b48       0x30 FLASH_RUN/system_stm32f10x.o
+ .debug_ranges  0x00000b78       0xe0 FLASH_RUN/stm32f10x_usart.o
+ .debug_ranges  0x00000c58      0x128 FLASH_RUN/stm32f10x_adc.o
+ .debug_ranges  0x00000d80       0x98 FLASH_RUN/stm32f10x_gpio.o
+ .debug_ranges  0x00000e18      0x128 FLASH_RUN/stm32f10x_rcc.o
+ .debug_ranges  0x00000f40       0x68 FLASH_RUN/stm32f10x_bkp.o
+ .debug_ranges  0x00000fa8       0x50 FLASH_RUN/stm32f10x_pwr.o
+ .debug_ranges  0x00000ff8       0x48 FLASH_RUN/stm32f10x_dma.o
+ .debug_ranges  0x00001040       0x30 FLASH_RUN/misc.o
+
+.ARM.attributes
+                0x00000000       0x31
+ *(.ARM.attributes)
+ .ARM.attributes
+                0x00000000       0x33 FLASH_RUN/main.o
+ .ARM.attributes
+                0x00000033       0x33 FLASH_RUN/lcd.o
+ .ARM.attributes
+                0x00000066       0x33 FLASH_RUN/utils.o
+ .ARM.attributes
+                0x00000099       0x33 FLASH_RUN/gps.o
+ .ARM.attributes
+                0x000000cc       0x33 FLASH_RUN/it_handlers.o
+ .ARM.attributes
+                0x000000ff       0x33 FLASH_RUN/u8g_font.o
+ .ARM.attributes
+                0x00000132       0x33 FLASH_RUN/u8g_ll_api.o
+ .ARM.attributes
+                0x00000165       0x33 FLASH_RUN/u8g_clip.o
+ .ARM.attributes
+                0x00000198       0x33 FLASH_RUN/u8g_font_6x10r.o
+ .ARM.attributes
+                0x000001cb       0x33 FLASH_RUN/u8g_font_5x7r.o
+ .ARM.attributes
+                0x000001fe       0x33 FLASH_RUN/u8g_font_gdr30n.o
+ .ARM.attributes
+                0x00000231       0x33 FLASH_RUN/startup_stm32f10x.o
+ .ARM.attributes
+                0x00000264       0x33 FLASH_RUN/system_stm32f10x.o
+ .ARM.attributes
+                0x00000297       0x33 FLASH_RUN/stm32f10x_usart.o
+ .ARM.attributes
+                0x000002ca       0x33 FLASH_RUN/stm32f10x_adc.o
+ .ARM.attributes
+                0x000002fd       0x33 FLASH_RUN/stm32f10x_gpio.o
+ .ARM.attributes
+                0x00000330       0x33 FLASH_RUN/stm32f10x_rcc.o
+ .ARM.attributes
+                0x00000363       0x33 FLASH_RUN/stm32f10x_bkp.o
+ .ARM.attributes
+                0x00000396       0x33 FLASH_RUN/stm32f10x_pwr.o
+ .ARM.attributes
+                0x000003c9       0x33 FLASH_RUN/stm32f10x_dma.o
+ .ARM.attributes
+                0x000003fc       0x33 FLASH_RUN/misc.o
+ .ARM.attributes
+                0x0000042f       0x2d c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-locale.o)
+ .ARM.attributes
+                0x0000045c       0x2d c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-mbtowc_r.o)
+ .ARM.attributes
+                0x00000489       0x1b c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-strcmp.o)
+ .ARM.attributes
+                0x000004a4       0x2d c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-wctomb_r.o)
+ .ARM.attributes
+                0x000004d1       0x2d c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-ctype_.o)
+ .ARM.attributes
+                0x000004fe       0x2d c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-impure.o)
+ .ARM.attributes
+                0x0000052b       0x1d c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_addsubdf3.o)
+ .ARM.attributes
+                0x00000548       0x1d c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_muldivdf3.o)
+ .ARM.attributes
+                0x00000565       0x1d c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_fixdfsi.o)
+ *(.gnu.attributes)
+
+.note.gnu.arm.ident
+ *(.note.gnu.arm.ident)
+
+/DISCARD/
+ *(.note.GNU-stack)
+ *(.gnu_debuglink)
+                0x00000400                __Stack_Size = 0x400
+                [!provide]                PROVIDE (_Stack_Size, __Stack_Size)
+                0x2000ec00                __Stack_Init = (_estack - __Stack_Size)
+                [!provide]                PROVIDE (_Stack_Init, __Stack_Init)
+OUTPUT(FLASH_RUN/firmware.elf elf32-littlearm)
+
+Cross Reference Table
+
+Symbol                                            File
+ADC1_2_IRQHandler                                 FLASH_RUN/startup_stm32f10x.o
+ADCValues                                         FLASH_RUN/main.o
+ADC_AnalogWatchdogCmd                             FLASH_RUN/stm32f10x_adc.o
+ADC_AnalogWatchdogSingleChannelConfig             FLASH_RUN/stm32f10x_adc.o
+ADC_AnalogWatchdogThresholdsConfig                FLASH_RUN/stm32f10x_adc.o
+ADC_AutoInjectedConvCmd                           FLASH_RUN/stm32f10x_adc.o
+ADC_ClearFlag                                     FLASH_RUN/stm32f10x_adc.o
+ADC_ClearITPendingBit                             FLASH_RUN/stm32f10x_adc.o
+ADC_Cmd                                           FLASH_RUN/stm32f10x_adc.o
+                                                  FLASH_RUN/main.o
+ADC_Configuration                                 FLASH_RUN/main.o
+ADC_DMACmd                                        FLASH_RUN/stm32f10x_adc.o
+                                                  FLASH_RUN/main.o
+ADC_DeInit                                        FLASH_RUN/stm32f10x_adc.o
+ADC_DiscModeChannelCountConfig                    FLASH_RUN/stm32f10x_adc.o
+ADC_DiscModeCmd                                   FLASH_RUN/stm32f10x_adc.o
+ADC_ExternalTrigConvCmd                           FLASH_RUN/stm32f10x_adc.o
+ADC_ExternalTrigInjectedConvCmd                   FLASH_RUN/stm32f10x_adc.o
+ADC_ExternalTrigInjectedConvConfig                FLASH_RUN/stm32f10x_adc.o
+ADC_GetCalibrationStatus                          FLASH_RUN/stm32f10x_adc.o
+                                                  FLASH_RUN/main.o
+ADC_GetConversionValue                            FLASH_RUN/stm32f10x_adc.o
+ADC_GetDualModeConversionValue                    FLASH_RUN/stm32f10x_adc.o
+ADC_GetFlagStatus                                 FLASH_RUN/stm32f10x_adc.o
+ADC_GetITStatus                                   FLASH_RUN/stm32f10x_adc.o
+ADC_GetInjectedConversionValue                    FLASH_RUN/stm32f10x_adc.o
+ADC_GetResetCalibrationStatus                     FLASH_RUN/stm32f10x_adc.o
+                                                  FLASH_RUN/main.o
+ADC_GetSoftwareStartConvStatus                    FLASH_RUN/stm32f10x_adc.o
+ADC_GetSoftwareStartInjectedConvCmdStatus         FLASH_RUN/stm32f10x_adc.o
+ADC_ITConfig                                      FLASH_RUN/stm32f10x_adc.o
+ADC_Init                                          FLASH_RUN/stm32f10x_adc.o
+                                                  FLASH_RUN/main.o
+ADC_InjectedChannelConfig                         FLASH_RUN/stm32f10x_adc.o
+ADC_InjectedDiscModeCmd                           FLASH_RUN/stm32f10x_adc.o
+ADC_InjectedSequencerLengthConfig                 FLASH_RUN/stm32f10x_adc.o
+ADC_RegularChannelConfig                          FLASH_RUN/stm32f10x_adc.o
+                                                  FLASH_RUN/main.o
+ADC_ResetCalibration                              FLASH_RUN/stm32f10x_adc.o
+                                                  FLASH_RUN/main.o
+ADC_SetInjectedOffset                             FLASH_RUN/stm32f10x_adc.o
+ADC_SoftwareStartConvCmd                          FLASH_RUN/stm32f10x_adc.o
+                                                  FLASH_RUN/main.o
+ADC_SoftwareStartInjectedConvCmd                  FLASH_RUN/stm32f10x_adc.o
+ADC_StartCalibration                              FLASH_RUN/stm32f10x_adc.o
+                                                  FLASH_RUN/main.o
+ADC_StructInit                                    FLASH_RUN/stm32f10x_adc.o
+ADC_TempSensorVrefintCmd                          FLASH_RUN/stm32f10x_adc.o
+BKP_ClearFlag                                     FLASH_RUN/stm32f10x_bkp.o
+BKP_ClearITPendingBit                             FLASH_RUN/stm32f10x_bkp.o
+BKP_DeInit                                        FLASH_RUN/stm32f10x_bkp.o
+BKP_GetFlagStatus                                 FLASH_RUN/stm32f10x_bkp.o
+BKP_GetITStatus                                   FLASH_RUN/stm32f10x_bkp.o
+BKP_ITConfig                                      FLASH_RUN/stm32f10x_bkp.o
+BKP_RTCOutputConfig                               FLASH_RUN/stm32f10x_bkp.o
+BKP_ReadBackupRegister                            FLASH_RUN/stm32f10x_bkp.o
+BKP_SetRTCCalibrationValue                        FLASH_RUN/stm32f10x_bkp.o
+BKP_TamperPinCmd                                  FLASH_RUN/stm32f10x_bkp.o
+BKP_TamperPinLevelConfig                          FLASH_RUN/stm32f10x_bkp.o
+BKP_WriteBackupRegister                           FLASH_RUN/stm32f10x_bkp.o
+                                                  FLASH_RUN/main.o
+BusFault_Handler                                  FLASH_RUN/it_handlers.o
+CAN1_RX1_IRQHandler                               FLASH_RUN/startup_stm32f10x.o
+CAN1_SCE_IRQHandler                               FLASH_RUN/startup_stm32f10x.o
+DMA1_Channel1_IRQHandler                          FLASH_RUN/startup_stm32f10x.o
+DMA1_Channel2_IRQHandler                          FLASH_RUN/startup_stm32f10x.o
+DMA1_Channel3_IRQHandler                          FLASH_RUN/startup_stm32f10x.o
+DMA1_Channel4_IRQHandler                          FLASH_RUN/startup_stm32f10x.o
+DMA1_Channel5_IRQHandler                          FLASH_RUN/startup_stm32f10x.o
+DMA1_Channel6_IRQHandler                          FLASH_RUN/startup_stm32f10x.o
+DMA1_Channel7_IRQHandler                          FLASH_RUN/startup_stm32f10x.o
+DMA_ClearFlag                                     FLASH_RUN/stm32f10x_dma.o
+DMA_ClearITPendingBit                             FLASH_RUN/stm32f10x_dma.o
+DMA_Cmd                                           FLASH_RUN/stm32f10x_dma.o
+                                                  FLASH_RUN/main.o
+DMA_Configuration                                 FLASH_RUN/main.o
+DMA_DeInit                                        FLASH_RUN/stm32f10x_dma.o
+                                                  FLASH_RUN/main.o
+DMA_GetCurrDataCounter                            FLASH_RUN/stm32f10x_dma.o
+DMA_GetFlagStatus                                 FLASH_RUN/stm32f10x_dma.o
+DMA_GetITStatus                                   FLASH_RUN/stm32f10x_dma.o
+DMA_ITConfig                                      FLASH_RUN/stm32f10x_dma.o
+DMA_Init                                          FLASH_RUN/stm32f10x_dma.o
+                                                  FLASH_RUN/main.o
+DMA_StructInit                                    FLASH_RUN/stm32f10x_dma.o
+DebugMon_Handler                                  FLASH_RUN/startup_stm32f10x.o
+Default_Handler                                   FLASH_RUN/startup_stm32f10x.o
+EXTI0_IRQHandler                                  FLASH_RUN/startup_stm32f10x.o
+EXTI15_10_IRQHandler                              FLASH_RUN/startup_stm32f10x.o
+EXTI1_IRQHandler                                  FLASH_RUN/startup_stm32f10x.o
+EXTI2_IRQHandler                                  FLASH_RUN/startup_stm32f10x.o
+EXTI3_IRQHandler                                  FLASH_RUN/startup_stm32f10x.o
+EXTI4_IRQHandler                                  FLASH_RUN/startup_stm32f10x.o
+EXTI9_5_IRQHandler                                FLASH_RUN/startup_stm32f10x.o
+FLASH_IRQHandler                                  FLASH_RUN/startup_stm32f10x.o
+GPIO_AFIODeInit                                   FLASH_RUN/stm32f10x_gpio.o
+GPIO_Configuration                                FLASH_RUN/main.o
+GPIO_DeInit                                       FLASH_RUN/stm32f10x_gpio.o
+GPIO_ETH_MediaInterfaceConfig                     FLASH_RUN/stm32f10x_gpio.o
+GPIO_EXTILineConfig                               FLASH_RUN/stm32f10x_gpio.o
+GPIO_EventOutputCmd                               FLASH_RUN/stm32f10x_gpio.o
+GPIO_EventOutputConfig                            FLASH_RUN/stm32f10x_gpio.o
+GPIO_Init                                         FLASH_RUN/stm32f10x_gpio.o
+                                                  FLASH_RUN/main.o
+GPIO_PinLockConfig                                FLASH_RUN/stm32f10x_gpio.o
+GPIO_PinRemapConfig                               FLASH_RUN/stm32f10x_gpio.o
+GPIO_ReadInputData                                FLASH_RUN/stm32f10x_gpio.o
+GPIO_ReadInputDataBit                             FLASH_RUN/stm32f10x_gpio.o
+GPIO_ReadOutputData                               FLASH_RUN/stm32f10x_gpio.o
+GPIO_ReadOutputDataBit                            FLASH_RUN/stm32f10x_gpio.o
+GPIO_ResetBits                                    FLASH_RUN/stm32f10x_gpio.o
+GPIO_SetBits                                      FLASH_RUN/stm32f10x_gpio.o
+GPIO_StructInit                                   FLASH_RUN/stm32f10x_gpio.o
+GPIO_Write                                        FLASH_RUN/stm32f10x_gpio.o
+GPIO_WriteBit                                     FLASH_RUN/stm32f10x_gpio.o
+                                                  FLASH_RUN/gps.o
+                                                  FLASH_RUN/lcd.o
+                                                  FLASH_RUN/main.o
+HardFault_Handler                                 FLASH_RUN/it_handlers.o
+                                                  FLASH_RUN/startup_stm32f10x.o
+I2C1_ER_IRQHandler                                FLASH_RUN/startup_stm32f10x.o
+I2C1_EV_IRQHandler                                FLASH_RUN/startup_stm32f10x.o
+I2C2_ER_IRQHandler                                FLASH_RUN/startup_stm32f10x.o
+I2C2_EV_IRQHandler                                FLASH_RUN/startup_stm32f10x.o
+LCDClearBuffer                                    FLASH_RUN/lcd.o
+                                                  FLASH_RUN/main.o
+LCDClearScreen                                    FLASH_RUN/lcd.o
+LCDDrawBuffer                                     FLASH_RUN/lcd.o
+                                                  FLASH_RUN/main.o
+LCDDrawImage                                      FLASH_RUN/lcd.o
+LCDDrawImageTest                                  FLASH_RUN/lcd.o
+                                                  FLASH_RUN/main.o
+LCDGetPageBox                                     FLASH_RUN/lcd.o
+LCDGotoColumn                                     FLASH_RUN/lcd.o
+LCDGotoLine                                       FLASH_RUN/lcd.o
+LCDGotoXY                                         FLASH_RUN/lcd.o
+LCDInit                                           FLASH_RUN/lcd.o
+                                                  FLASH_RUN/main.o
+LCDInit_u8g                                       FLASH_RUN/lcd.o
+LCDPrintStringXY                                  FLASH_RUN/lcd.o
+                                                  FLASH_RUN/it_handlers.o
+                                                  FLASH_RUN/main.o
+LCDPrintTest                                      FLASH_RUN/lcd.o
+LCDPulseClock                                     FLASH_RUN/lcd.o
+LCDSendCommand                                    FLASH_RUN/lcd.o
+LCDSendData                                       FLASH_RUN/lcd.o
+LCDSet8Pixels                                     FLASH_RUN/lcd.o
+LCDSetFontSize                                    FLASH_RUN/lcd.o
+                                                  FLASH_RUN/main.o
+LCDSetPixel                                       FLASH_RUN/lcd.o
+MMI_Handler                                       FLASH_RUN/startup_stm32f10x.o
+MemManage_Handler                                 FLASH_RUN/it_handlers.o
+NMI_Handler                                       FLASH_RUN/startup_stm32f10x.o
+NVIC_Configuration                                FLASH_RUN/main.o
+NVIC_Init                                         FLASH_RUN/misc.o
+                                                  FLASH_RUN/main.o
+NVIC_PriorityGroupConfig                          FLASH_RUN/misc.o
+NVIC_SetVectorTable                               FLASH_RUN/misc.o
+                                                  FLASH_RUN/main.o
+NVIC_SystemLPConfig                               FLASH_RUN/misc.o
+PVD_IRQHandler                                    FLASH_RUN/startup_stm32f10x.o
+PWR_BackupAccessCmd                               FLASH_RUN/stm32f10x_pwr.o
+                                                  FLASH_RUN/main.o
+PWR_ClearFlag                                     FLASH_RUN/stm32f10x_pwr.o
+PWR_DeInit                                        FLASH_RUN/stm32f10x_pwr.o
+PWR_EnterSTANDBYMode                              FLASH_RUN/stm32f10x_pwr.o
+PWR_EnterSTOPMode                                 FLASH_RUN/stm32f10x_pwr.o
+PWR_GetFlagStatus                                 FLASH_RUN/stm32f10x_pwr.o
+PWR_PVDCmd                                        FLASH_RUN/stm32f10x_pwr.o
+PWR_PVDLevelConfig                                FLASH_RUN/stm32f10x_pwr.o
+PWR_WakeUpPinCmd                                  FLASH_RUN/stm32f10x_pwr.o
+PendSV_Handler                                    FLASH_RUN/startup_stm32f10x.o
+RCC_ADCCLKConfig                                  FLASH_RUN/stm32f10x_rcc.o
+RCC_AHBPeriphClockCmd                             FLASH_RUN/stm32f10x_rcc.o
+                                                  FLASH_RUN/main.o
+RCC_APB1PeriphClockCmd                            FLASH_RUN/stm32f10x_rcc.o
+RCC_APB1PeriphResetCmd                            FLASH_RUN/stm32f10x_rcc.o
+                                                  FLASH_RUN/stm32f10x_pwr.o
+                                                  FLASH_RUN/stm32f10x_usart.o
+RCC_APB2PeriphClockCmd                            FLASH_RUN/stm32f10x_rcc.o
+                                                  FLASH_RUN/main.o
+RCC_APB2PeriphResetCmd                            FLASH_RUN/stm32f10x_rcc.o
+                                                  FLASH_RUN/stm32f10x_gpio.o
+                                                  FLASH_RUN/stm32f10x_adc.o
+                                                  FLASH_RUN/stm32f10x_usart.o
+RCC_AdjustHSICalibrationValue                     FLASH_RUN/stm32f10x_rcc.o
+RCC_BackupResetCmd                                FLASH_RUN/stm32f10x_rcc.o
+                                                  FLASH_RUN/stm32f10x_bkp.o
+RCC_ClearFlag                                     FLASH_RUN/stm32f10x_rcc.o
+RCC_ClearITPendingBit                             FLASH_RUN/stm32f10x_rcc.o
+RCC_ClockSecuritySystemCmd                        FLASH_RUN/stm32f10x_rcc.o
+RCC_Configuration                                 FLASH_RUN/main.o
+RCC_DeInit                                        FLASH_RUN/stm32f10x_rcc.o
+RCC_GetClocksFreq                                 FLASH_RUN/stm32f10x_rcc.o
+                                                  FLASH_RUN/stm32f10x_usart.o
+RCC_GetFlagStatus                                 FLASH_RUN/stm32f10x_rcc.o
+RCC_GetITStatus                                   FLASH_RUN/stm32f10x_rcc.o
+RCC_GetSYSCLKSource                               FLASH_RUN/stm32f10x_rcc.o
+RCC_HCLKConfig                                    FLASH_RUN/stm32f10x_rcc.o
+RCC_HSEConfig                                     FLASH_RUN/stm32f10x_rcc.o
+RCC_HSICmd                                        FLASH_RUN/stm32f10x_rcc.o
+RCC_IRQHandler                                    FLASH_RUN/startup_stm32f10x.o
+RCC_ITConfig                                      FLASH_RUN/stm32f10x_rcc.o
+RCC_LSEConfig                                     FLASH_RUN/stm32f10x_rcc.o
+RCC_LSICmd                                        FLASH_RUN/stm32f10x_rcc.o
+RCC_MCOConfig                                     FLASH_RUN/stm32f10x_rcc.o
+RCC_PCLK1Config                                   FLASH_RUN/stm32f10x_rcc.o
+RCC_PCLK2Config                                   FLASH_RUN/stm32f10x_rcc.o
+RCC_PLLCmd                                        FLASH_RUN/stm32f10x_rcc.o
+RCC_PLLConfig                                     FLASH_RUN/stm32f10x_rcc.o
+RCC_RTCCLKCmd                                     FLASH_RUN/stm32f10x_rcc.o
+RCC_RTCCLKConfig                                  FLASH_RUN/stm32f10x_rcc.o
+RCC_SYSCLKConfig                                  FLASH_RUN/stm32f10x_rcc.o
+RCC_USBCLKConfig                                  FLASH_RUN/stm32f10x_rcc.o
+RCC_WaitForHSEStartUp                             FLASH_RUN/stm32f10x_rcc.o
+RTCAlarm_IRQHandler                               FLASH_RUN/startup_stm32f10x.o
+RTC_IRQHandler                                    FLASH_RUN/startup_stm32f10x.o
+Reset_Handler                                     FLASH_RUN/startup_stm32f10x.o
+SPI1_IRQHandler                                   FLASH_RUN/startup_stm32f10x.o
+SPI2_IRQHandler                                   FLASH_RUN/startup_stm32f10x.o
+SVC_Handler                                       FLASH_RUN/startup_stm32f10x.o
+SysTick_CLKSourceConfig                           FLASH_RUN/misc.o
+SysTick_Handler                                   FLASH_RUN/startup_stm32f10x.o
+SystemFrequency                                   FLASH_RUN/system_stm32f10x.o
+SystemFrequency_AHBClk                            FLASH_RUN/system_stm32f10x.o
+SystemFrequency_APB1Clk                           FLASH_RUN/system_stm32f10x.o
+SystemFrequency_APB2Clk                           FLASH_RUN/system_stm32f10x.o
+SystemFrequency_SysClk                            FLASH_RUN/system_stm32f10x.o
+SystemInit                                        FLASH_RUN/system_stm32f10x.o
+                                                  FLASH_RUN/main.o
+TAMPER_IRQHandler                                 FLASH_RUN/startup_stm32f10x.o
+TIM1_BRK_IRQHandler                               FLASH_RUN/startup_stm32f10x.o
+TIM1_CC_IRQHandler                                FLASH_RUN/startup_stm32f10x.o
+TIM1_TRG_COM_IRQHandler                           FLASH_RUN/startup_stm32f10x.o
+TIM1_UP_IRQHandler                                FLASH_RUN/startup_stm32f10x.o
+TIM2_IRQHandler                                   FLASH_RUN/startup_stm32f10x.o
+TIM3_IRQHandler                                   FLASH_RUN/startup_stm32f10x.o
+TIM4_IRQHandler                                   FLASH_RUN/startup_stm32f10x.o
+USART1_IRQHandler                                 FLASH_RUN/it_handlers.o
+USART2_IRQHandler                                 FLASH_RUN/startup_stm32f10x.o
+USART3_IRQHandler                                 FLASH_RUN/startup_stm32f10x.o
+USART_ClearFlag                                   FLASH_RUN/stm32f10x_usart.o
+USART_ClearITPendingBit                           FLASH_RUN/stm32f10x_usart.o
+USART_ClockInit                                   FLASH_RUN/stm32f10x_usart.o
+USART_ClockStructInit                             FLASH_RUN/stm32f10x_usart.o
+USART_Cmd                                         FLASH_RUN/stm32f10x_usart.o
+                                                  FLASH_RUN/main.o
+USART_Configuration                               FLASH_RUN/main.o
+USART_DMACmd                                      FLASH_RUN/stm32f10x_usart.o
+USART_DeInit                                      FLASH_RUN/stm32f10x_usart.o
+USART_GetFlagStatus                               FLASH_RUN/stm32f10x_usart.o
+                                                  FLASH_RUN/gps.o
+USART_GetITStatus                                 FLASH_RUN/stm32f10x_usart.o
+                                                  FLASH_RUN/it_handlers.o
+USART_HalfDuplexCmd                               FLASH_RUN/stm32f10x_usart.o
+USART_ITConfig                                    FLASH_RUN/stm32f10x_usart.o
+                                                  FLASH_RUN/main.o
+USART_Init                                        FLASH_RUN/stm32f10x_usart.o
+                                                  FLASH_RUN/main.o
+USART_IrDACmd                                     FLASH_RUN/stm32f10x_usart.o
+USART_IrDAConfig                                  FLASH_RUN/stm32f10x_usart.o
+USART_LINBreakDetectLengthConfig                  FLASH_RUN/stm32f10x_usart.o
+USART_LINCmd                                      FLASH_RUN/stm32f10x_usart.o
+USART_ReceiveData                                 FLASH_RUN/stm32f10x_usart.o
+                                                  FLASH_RUN/it_handlers.o
+USART_ReceiverWakeUpCmd                           FLASH_RUN/stm32f10x_usart.o
+USART_SendBreak                                   FLASH_RUN/stm32f10x_usart.o
+USART_SendData                                    FLASH_RUN/stm32f10x_usart.o
+                                                  FLASH_RUN/gps.o
+USART_SetAddress                                  FLASH_RUN/stm32f10x_usart.o
+USART_SetGuardTime                                FLASH_RUN/stm32f10x_usart.o
+USART_SetPrescaler                                FLASH_RUN/stm32f10x_usart.o
+USART_SmartCardCmd                                FLASH_RUN/stm32f10x_usart.o
+USART_SmartCardNACKCmd                            FLASH_RUN/stm32f10x_usart.o
+USART_StructInit                                  FLASH_RUN/stm32f10x_usart.o
+USART_WakeUpConfig                                FLASH_RUN/stm32f10x_usart.o
+USBWakeUp_IRQHandler                              FLASH_RUN/startup_stm32f10x.o
+USB_HP_CAN1_TX_IRQHandler                         FLASH_RUN/startup_stm32f10x.o
+USB_LP_CAN1_RX0_IRQHandler                        FLASH_RUN/startup_stm32f10x.o
+UsageFault_Handler                                FLASH_RUN/it_handlers.o
+WWDG_IRQHandler                                   FLASH_RUN/startup_stm32f10x.o
+_PathLocale                                       c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-locale.o)
+__Init_Data                                       FLASH_RUN/startup_stm32f10x.o
+__adddf3                                          c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_addsubdf3.o)
+__aeabi_d2iz                                      c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_fixdfsi.o)
+                                                  FLASH_RUN/utils.o
+__aeabi_dadd                                      c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_addsubdf3.o)
+                                                  FLASH_RUN/gps.o
+                                                  FLASH_RUN/utils.o
+__aeabi_ddiv                                      c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_muldivdf3.o)
+                                                  FLASH_RUN/gps.o
+__aeabi_dmul                                      c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_muldivdf3.o)
+                                                  FLASH_RUN/utils.o
+__aeabi_drsub                                     c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_addsubdf3.o)
+__aeabi_dsub                                      c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_addsubdf3.o)
+__aeabi_f2d                                       c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_addsubdf3.o)
+__aeabi_i2d                                       c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_addsubdf3.o)
+                                                  FLASH_RUN/gps.o
+                                                  FLASH_RUN/utils.o
+__aeabi_l2d                                       c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_addsubdf3.o)
+__aeabi_ui2d                                      c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_addsubdf3.o)
+__aeabi_ul2d                                      c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_addsubdf3.o)
+__ascii_mbtowc                                    c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-mbtowc_r.o)
+                                                  c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-locale.o)
+__ascii_wctomb                                    c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-wctomb_r.o)
+                                                  c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-locale.o)
+__divdf3                                          c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_muldivdf3.o)
+__extendsfdf2                                     c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_addsubdf3.o)
+__fixdfsi                                         c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_fixdfsi.o)
+__floatdidf                                       c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_addsubdf3.o)
+__floatsidf                                       c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_addsubdf3.o)
+__floatundidf                                     c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_addsubdf3.o)
+__floatunsidf                                     c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_addsubdf3.o)
+__global_locale                                   c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-locale.o)
+                                                  c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-wctomb_r.o)
+                                                  c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-mbtowc_r.o)
+__locale_ctype_ptr                                c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-locale.o)
+                                                  FLASH_RUN/utils.o
+__locale_ctype_ptr_l                              c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-locale.o)
+__locale_mb_cur_max                               c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-locale.o)
+__muldf3                                          c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_muldivdf3.o)
+__subdf3                                          c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m\libgcc.a(_arm_addsubdf3.o)
+_ctype_                                           c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-ctype_.o)
+                                                  c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-locale.o)
+_ebss                                             FLASH_RUN/startup_stm32f10x.o
+_edata                                            FLASH_RUN/startup_stm32f10x.o
+_estack                                           FLASH_RUN/startup_stm32f10x.o
+_global_impure_ptr                                c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-impure.o)
+_impure_ptr                                       c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-impure.o)
+                                                  c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-wctomb_r.o)
+                                                  c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-mbtowc_r.o)
+                                                  c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-locale.o)
+_isr_vectorsflash_offs                            FLASH_RUN/main.o
+_mbtowc_r                                         c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-mbtowc_r.o)
+_sbss                                             FLASH_RUN/startup_stm32f10x.o
+_sdata                                            FLASH_RUN/startup_stm32f10x.o
+_setlocale_r                                      c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-locale.o)
+_sidata                                           FLASH_RUN/startup_stm32f10x.o
+_wctomb_r                                         c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-wctomb_r.o)
+atof                                              FLASH_RUN/utils.o
+                                                  FLASH_RUN/gps.o
+atoi                                              FLASH_RUN/utils.o
+                                                  FLASH_RUN/gps.o
+buffer                                            FLASH_RUN/lcd.o
+debug                                             FLASH_RUN/utils.o
+delai                                             FLASH_RUN/utils.o
+                                                  FLASH_RUN/main.o
+dispImage                                         FLASH_RUN/main.o
+dispInfos                                         FLASH_RUN/main.o
+dispPosition                                      FLASH_RUN/main.o
+dispTime                                          FLASH_RUN/main.o
+dispUpdate                                        FLASH_RUN/main.o
+doubleToStr                                       FLASH_RUN/utils.o
+                                                  FLASH_RUN/main.o
+fix                                               FLASH_RUN/gps.o
+g_pfnVectors                                      FLASH_RUN/startup_stm32f10x.o
+gotoBootloader                                    FLASH_RUN/main.o
+gpsAnalyse                                        FLASH_RUN/gps.o
+gpsDataReceived                                   FLASH_RUN/gps.o
+                                                  FLASH_RUN/it_handlers.o
+gpsGetMessage                                     FLASH_RUN/gps.o
+gpsInit                                           FLASH_RUN/gps.o
+                                                  FLASH_RUN/main.o
+gpsSetEnabled                                     FLASH_RUN/gps.o
+                                                  FLASH_RUN/main.o
+hdop                                              FLASH_RUN/gps.o
+heures                                            FLASH_RUN/gps.o
+                                                  FLASH_RUN/main.o
+imagedata                                         FLASH_RUN/lcd.o
+intToStr                                          FLASH_RUN/utils.o
+                                                  FLASH_RUN/main.o
+intToStr2                                         FLASH_RUN/utils.o
+                                                  FLASH_RUN/main.o
+latitude                                          FLASH_RUN/gps.o
+                                                  FLASH_RUN/main.o
+longitude                                         FLASH_RUN/gps.o
+                                                  FLASH_RUN/main.o
+main                                              FLASH_RUN/main.o
+                                                  FLASH_RUN/startup_stm32f10x.o
+minutes                                           FLASH_RUN/gps.o
+                                                  FLASH_RUN/main.o
+nbSats                                            FLASH_RUN/gps.o
+                                                  FLASH_RUN/main.o
+newGPSData                                        FLASH_RUN/gps.o
+                                                  FLASH_RUN/main.o
+posX                                              FLASH_RUN/it_handlers.o
+                                                  FLASH_RUN/gps.o
+                                                  FLASH_RUN/lcd.o
+                                                  FLASH_RUN/main.o
+posY                                              FLASH_RUN/it_handlers.o
+                                                  FLASH_RUN/gps.o
+                                                  FLASH_RUN/lcd.o
+                                                  FLASH_RUN/main.o
+powerOff                                          FLASH_RUN/main.o
+powerOn                                           FLASH_RUN/main.o
+recvBuff                                          FLASH_RUN/gps.o
+recvIndex                                         FLASH_RUN/gps.o
+recvTemp                                          FLASH_RUN/gps.o
+reverse                                           FLASH_RUN/lcd.o
+screen                                            FLASH_RUN/it_handlers.o
+                                                  FLASH_RUN/gps.o
+                                                  FLASH_RUN/main.o
+secondes                                          FLASH_RUN/gps.o
+                                                  FLASH_RUN/main.o
+setlocale                                         c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-locale.o)
+strchrn                                           FLASH_RUN/utils.o
+strcmp                                            c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-strcmp.o)
+                                                  c:/program files (x86)/gnu tools arm embedded/7 2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-locale.o)
+strlen                                            FLASH_RUN/utils.o
+                                                  FLASH_RUN/gps.o
+                                                  FLASH_RUN/main.o
+strncpy                                           FLASH_RUN/utils.o
+switchLed                                         FLASH_RUN/main.o
+u8g                                               FLASH_RUN/lcd.o
+u8g_Begin                                         FLASH_RUN/u8g_ll_api.o
+u8g_Draw4TPixel                                   FLASH_RUN/u8g_ll_api.o
+                                                  FLASH_RUN/u8g_font.o
+u8g_Draw4TPixelLL                                 FLASH_RUN/u8g_ll_api.o
+u8g_Draw8Pixel                                    FLASH_RUN/u8g_ll_api.o
+                                                  FLASH_RUN/u8g_font.o
+u8g_Draw8PixelLL                                  FLASH_RUN/u8g_ll_api.o
+u8g_DrawAAGlyph                                   FLASH_RUN/u8g_font.o
+u8g_DrawAAStr                                     FLASH_RUN/u8g_font.o
+u8g_DrawGlyph                                     FLASH_RUN/u8g_font.o
+u8g_DrawGlyph180                                  FLASH_RUN/u8g_font.o
+u8g_DrawGlyph270                                  FLASH_RUN/u8g_font.o
+u8g_DrawGlyph90                                   FLASH_RUN/u8g_font.o
+u8g_DrawGlyphFontBBX                              FLASH_RUN/u8g_font.o
+u8g_DrawPixel                                     FLASH_RUN/u8g_ll_api.o
+u8g_DrawPixelLL                                   FLASH_RUN/u8g_ll_api.o
+u8g_DrawStr                                       FLASH_RUN/u8g_font.o
+                                                  FLASH_RUN/lcd.o
+u8g_DrawStr180                                    FLASH_RUN/u8g_font.o
+u8g_DrawStr180P                                   FLASH_RUN/u8g_font.o
+u8g_DrawStr270                                    FLASH_RUN/u8g_font.o
+u8g_DrawStr270P                                   FLASH_RUN/u8g_font.o
+u8g_DrawStr90                                     FLASH_RUN/u8g_font.o
+u8g_DrawStr90P                                    FLASH_RUN/u8g_font.o
+u8g_DrawStrDir                                    FLASH_RUN/u8g_font.o
+u8g_DrawStrFontBBX                                FLASH_RUN/u8g_font.o
+u8g_DrawStrP                                      FLASH_RUN/u8g_font.o
+u8g_FirstPage                                     FLASH_RUN/u8g_ll_api.o
+u8g_FirstPageLL                                   FLASH_RUN/u8g_ll_api.o
+u8g_GetColorIndex                                 FLASH_RUN/u8g_ll_api.o
+u8g_GetDefaultBackgroundColor                     FLASH_RUN/u8g_ll_api.o
+u8g_GetDefaultForegroundColor                     FLASH_RUN/u8g_ll_api.o
+u8g_GetDefaultMidColor                            FLASH_RUN/u8g_ll_api.o
+u8g_GetFontBBXHeight                              FLASH_RUN/u8g_font.o
+u8g_GetFontBBXOffX                                FLASH_RUN/u8g_font.o
+u8g_GetFontBBXOffY                                FLASH_RUN/u8g_font.o
+u8g_GetFontBBXWidth                               FLASH_RUN/u8g_font.o
+u8g_GetFontCapitalAHeight                         FLASH_RUN/u8g_font.o
+u8g_GetGlyph                                      FLASH_RUN/u8g_font.o
+u8g_GetGlyphDeltaX                                FLASH_RUN/u8g_font.o
+u8g_GetHeightLL                                   FLASH_RUN/u8g_ll_api.o
+u8g_GetModeLL                                     FLASH_RUN/u8g_ll_api.o
+u8g_GetStrAMinBox                                 FLASH_RUN/u8g_font.o
+u8g_GetStrMinBox                                  FLASH_RUN/u8g_font.o
+u8g_GetStrPixelWidth                              FLASH_RUN/u8g_font.o
+u8g_GetStrPixelWidthP                             FLASH_RUN/u8g_font.o
+u8g_GetStrWidth                                   FLASH_RUN/u8g_font.o
+u8g_GetStrWidthP                                  FLASH_RUN/u8g_font.o
+u8g_GetStrX                                       FLASH_RUN/u8g_font.o
+u8g_GetStrXP                                      FLASH_RUN/u8g_font.o
+u8g_GetWidthLL                                    FLASH_RUN/u8g_ll_api.o
+u8g_Init                                          FLASH_RUN/u8g_ll_api.o
+u8g_InitComFn                                     FLASH_RUN/u8g_ll_api.o
+u8g_InitLL                                        FLASH_RUN/u8g_ll_api.o
+u8g_IsBBXIntersection                             FLASH_RUN/u8g_clip.o
+                                                  FLASH_RUN/u8g_font.o
+u8g_IsGlyph                                       FLASH_RUN/u8g_font.o
+u8g_NextPage                                      FLASH_RUN/u8g_ll_api.o
+u8g_NextPageLL                                    FLASH_RUN/u8g_ll_api.o
+u8g_SetColorEntry                                 FLASH_RUN/u8g_ll_api.o
+u8g_SetColorIndex                                 FLASH_RUN/u8g_ll_api.o
+u8g_SetContrast                                   FLASH_RUN/u8g_ll_api.o
+u8g_SetContrastLL                                 FLASH_RUN/u8g_ll_api.o
+u8g_SetDefaultBackgroundColor                     FLASH_RUN/u8g_ll_api.o
+u8g_SetDefaultForegroundColor                     FLASH_RUN/u8g_ll_api.o
+u8g_SetDefaultMidColor                            FLASH_RUN/u8g_ll_api.o
+u8g_SetFont                                       FLASH_RUN/u8g_font.o
+                                                  FLASH_RUN/lcd.o
+u8g_SetFontLineSpacingFactor                      FLASH_RUN/u8g_font.o
+u8g_SetFontPosBaseline                            FLASH_RUN/u8g_font.o
+                                                  FLASH_RUN/u8g_ll_api.o
+u8g_SetFontPosBottom                              FLASH_RUN/u8g_font.o
+u8g_SetFontPosCenter                              FLASH_RUN/u8g_font.o
+u8g_SetFontPosTop                                 FLASH_RUN/u8g_font.o
+u8g_SetFontRefHeightAll                           FLASH_RUN/u8g_font.o
+u8g_SetFontRefHeightExtendedText                  FLASH_RUN/u8g_font.o
+u8g_SetFontRefHeightText                          FLASH_RUN/u8g_font.o
+u8g_SetHiColor                                    FLASH_RUN/u8g_ll_api.o
+u8g_SetHiColorByRGB                               FLASH_RUN/u8g_ll_api.o
+u8g_SetRGB                                        FLASH_RUN/u8g_ll_api.o
+u8g_SleepOff                                      FLASH_RUN/u8g_ll_api.o
+u8g_SleepOn                                       FLASH_RUN/u8g_ll_api.o
+u8g_UpdateDimension                               FLASH_RUN/u8g_ll_api.o
+u8g_UpdateRefHeight                               FLASH_RUN/u8g_font.o
+u8g_call_dev_fn                                   FLASH_RUN/u8g_ll_api.o
+u8g_dev                                           FLASH_RUN/lcd.o
+u8g_dev_kalenji700gps_fn                          FLASH_RUN/lcd.o
+u8g_draw_aa_glyph                                 FLASH_RUN/u8g_font.o
+u8g_draw_glyph                                    FLASH_RUN/u8g_font.o
+u8g_draw_glyph180                                 FLASH_RUN/u8g_font.o
+u8g_draw_glyph270                                 FLASH_RUN/u8g_font.o
+u8g_draw_glyph90                                  FLASH_RUN/u8g_font.o
+u8g_font_5x7r                                     FLASH_RUN/u8g_font_5x7r.o
+                                                  FLASH_RUN/lcd.o
+u8g_font_6x10r                                    FLASH_RUN/u8g_font_6x10r.o
+                                                  FLASH_RUN/lcd.o
+u8g_font_GetCapitalAHeight                        FLASH_RUN/u8g_font.o
+u8g_font_GetEncoding65Pos                         FLASH_RUN/u8g_font.o
+u8g_font_GetEncoding97Pos                         FLASH_RUN/u8g_font.o
+u8g_font_GetFontAscent                            FLASH_RUN/u8g_font.o
+u8g_font_GetFontDescent                           FLASH_RUN/u8g_font.o
+u8g_font_GetFontEndEncoding                       FLASH_RUN/u8g_font.o
+u8g_font_GetFontStartEncoding                     FLASH_RUN/u8g_font.o
+u8g_font_GetFontXAscent                           FLASH_RUN/u8g_font.o
+u8g_font_GetFontXDescent                          FLASH_RUN/u8g_font.o
+u8g_font_GetLowerGDescent                         FLASH_RUN/u8g_font.o
+u8g_font_GetSize                                  FLASH_RUN/u8g_font.o
+u8g_font_box_all_gA                               FLASH_RUN/u8g_font.o
+u8g_font_box_left_gA                              FLASH_RUN/u8g_font.o
+u8g_font_box_min                                  FLASH_RUN/u8g_font.o
+u8g_font_calc_str_pixel_width                     FLASH_RUN/u8g_font.o
+u8g_font_calc_vref_bottom                         FLASH_RUN/u8g_font.o
+u8g_font_calc_vref_center                         FLASH_RUN/u8g_font.o
+u8g_font_calc_vref_font                           FLASH_RUN/u8g_font.o
+u8g_font_calc_vref_top                            FLASH_RUN/u8g_font.o
+u8g_font_gdr30n                                   FLASH_RUN/u8g_font_gdr30n.o
+                                                  FLASH_RUN/lcd.o
+u8g_font_get_char                                 FLASH_RUN/u8g_font.o
+u8g_font_get_charP                                FLASH_RUN/u8g_font.o
+u8g_state_dummy_cb                                FLASH_RUN/u8g_ll_api.o
